@@ -28,110 +28,89 @@ import {
   Link2,
   Unlink,
   History,
+  Cloud,
+  CloudOff,
+  Loader2,
+  AlertTriangle,
 } from "lucide-react";
 
+// Firebase importy
+import { initializeApp } from "firebase/app";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+  where,
+  serverTimestamp,
+} from "firebase/firestore";
+import {
+  getAuth,
+  signInAnonymously,
+  signInWithCustomToken,
+  onAuthStateChanged,
+} from "firebase/auth";
+
 // ==========================================
-// 🔧 KONFIGURACE A DATOVÉ MODELY
+// 🔧 KONFIGURACE FIREBASE (Podle vzoru Modelářský Sklad)
 // ==========================================
 
-const APP_VERSION = "v1.5.0-ui-final";
+const APP_VERSION = "v1.8.0-stable";
+
+// Pomocná funkce pro bezpečné čtení env proměnných
+const getEnv = (key) => {
+  try {
+    if (import.meta && import.meta.env && import.meta.env[key])
+      return import.meta.env[key];
+  } catch (e) {}
+  try {
+    if (typeof process !== "undefined" && process.env && process.env[key])
+      return process.env[key];
+  } catch (e) {}
+  return "";
+};
+
+const firebaseConfig = {
+  apiKey: getEnv("VITE_FIREBASE_API_KEY"),
+  authDomain: getEnv("VITE_FIREBASE_AUTH_DOMAIN"),
+  projectId: getEnv("VITE_FIREBASE_PROJECT_ID"),
+  storageBucket: getEnv("VITE_FIREBASE_STORAGE_BUCKET"),
+  messagingSenderId: getEnv("VITE_FIREBASE_MESSAGING_SENDER_ID"),
+  appId: getEnv("VITE_FIREBASE_APP_ID"),
+};
+
+// Pokud jsme v Canvas prostředí, přepíšeme config injektovanými hodnotami
+if (typeof __firebase_config !== "undefined") {
+  Object.assign(firebaseConfig, JSON.parse(__firebase_config));
+}
+
+// Inicializace
+let app, auth, db;
+try {
+  if (firebaseConfig.apiKey) {
+    app = initializeApp(firebaseConfig);
+    auth = getAuth(app);
+    db = getFirestore(app);
+  } else {
+    console.warn("OFFLINE MODE: API Key nenalezen.");
+  }
+} catch (error) {
+  console.error("Firebase Init Error:", error);
+}
 
 // Výchozí data pro ukázku
-const DEMO_KITS = [
-  {
-    id: 1,
-    status: "wip",
-    brand: "Tamiya",
-    catNum: "35216",
-    scale: "1/35",
-    name: "Tiger I Early Production",
-    projectId: 1,
-    progress: 45,
-    todo: [
-      { id: "t1", text: "Slepit podvozek", done: true },
-      { id: "t2", text: "Nabarvit kola", done: true },
-      { id: "t3", text: "Zimmerit", done: false },
-      { id: "t4", text: "Weathering", done: false },
-    ],
-    accessories: [
-      { id: "a1", name: "Kovová hlaveň (Aber)", status: "owned", url: "" },
-      {
-        id: "a2",
-        name: "Friul pásy",
-        status: "wanted",
-        url: "https://super-hobby.cz",
-      },
-    ],
-    scalematesUrl:
-      "https://www.scalemates.com/kits/tamiya-35216-tiger-i--132865",
-    attachments: [
-      { id: 1, name: "Návod PDF (Drive)", url: "#", type: "manual" },
-      {
-        id: 2,
-        name: "Walkaround PrimePortal",
-        url: "http://www.primeportal.net/tanks/tiger.htm",
-        type: "ref",
-      },
-    ],
-    notes: "Pozor na geometrii věže. Plánuji zimní kamufláž.",
-  },
-  {
-    id: 2,
-    status: "new",
-    brand: "Eduard",
-    catNum: "82151",
-    scale: "1/48",
-    name: "Spitfire Mk.IXc",
-    projectId: null,
-    progress: 0,
-    todo: [],
-    accessories: [],
-    scalematesUrl: "",
-    attachments: [],
-    notes: "",
-  },
-  {
-    id: 3,
-    status: "wishlist",
-    brand: "Meng",
-    catNum: "TS-031",
-    scale: "1/35",
-    name: "King Tiger (Henschel)",
-    projectId: 1,
-    progress: 0,
-    todo: [],
-    accessories: [],
-    scalematesUrl: "",
-    attachments: [],
-    notes: "Čekám na slevu.",
-  },
-];
-
-const DEMO_PROJECTS = [
-  {
-    id: 1,
-    name: "Zimní ofenzíva 1944",
-    description: "Dioráma z Arden. Tiger + King Tiger + figurky.",
-    status: "active",
-    accessories: [
-      { id: "pa1", name: "Sádra na terén", status: "owned", url: "" },
-      { id: "pa2", name: "Statická tráva (zimní)", status: "wanted", url: "" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Bitva o Británii",
-    description: "Série letadel RAF vs Luftwaffe.",
-    status: "planned",
-    accessories: [],
-  },
-];
+const DEMO_KITS = [];
+const DEMO_PROJECTS = [];
 
 // ==========================================
 // 🧩 KOMPONENTY
 // ==========================================
 
-// --- HLAVNÍ KARTA MODELU (MINIMALISTICKÁ) ---
+// --- HLAVNÍ KARTA MODELU ---
 const KitCard = ({ kit, onClick, projectName }) => {
   const getStatusColor = (s) => {
     switch (s) {
@@ -167,9 +146,7 @@ const KitCard = ({ kit, onClick, projectName }) => {
             {kit.name}
           </h3>
 
-          {/* Zobrazení Projektu (Aktivní nebo Historie) */}
           {projectName && (
-            // ZVĚTŠENÁ IKONA A PÍSMO PRO PROJEKT
             <div className="flex items-center gap-1.5 text-xs text-blue-400 mt-2 font-medium">
               <Folder size={14} /> <span>{projectName}</span>
             </div>
@@ -200,7 +177,6 @@ const KitCard = ({ kit, onClick, projectName }) => {
           <ShoppingCart size={16} className="text-purple-400" />
         )}
 
-        {/* Indikátor příloh */}
         {(kit.scalematesUrl ||
           (kit.attachments && kit.attachments.length > 0)) && (
           <div className="absolute bottom-2 right-2 text-slate-600">
@@ -212,7 +188,7 @@ const KitCard = ({ kit, onClick, projectName }) => {
   );
 };
 
-// --- MODÁLNÍ OKNO DETAILU PROJEKTU (VYLEPŠENÉ) ---
+// --- MODÁLNÍ OKNO DETAILU PROJEKTU ---
 const ProjectDetailModal = ({
   project,
   onClose,
@@ -225,7 +201,6 @@ const ProjectDetailModal = ({
   const [data, setData] = useState({ accessories: [], ...project });
   const [activeTab, setActiveTab] = useState("info");
 
-  // States for Kits management
   const [showLinkKit, setShowLinkKit] = useState(false);
   const [selectedKitId, setSelectedKitId] = useState("");
   const [newWishlistKit, setNewWishlistKit] = useState({
@@ -234,22 +209,18 @@ const ProjectDetailModal = ({
     scale: "",
   });
   const [showAddWishlist, setShowAddWishlist] = useState(false);
-
-  // States for Accessories
   const [newAccessory, setNewAccessory] = useState({
     name: "",
     status: "owned",
     url: "",
   });
 
-  // Derived: Kits in this project
   const projectKits = allKits.filter((k) => k.projectId === project.id);
-  // Derived: Available kits (not in any project)
   const availableKits = allKits.filter((k) => !k.projectId);
 
   const handleLinkKit = () => {
     if (selectedKitId) {
-      onUpdateKitLink(Number(selectedKitId), project.id);
+      onUpdateKitLink(selectedKitId, project.id);
       setShowLinkKit(false);
       setSelectedKitId("");
     }
@@ -366,12 +337,10 @@ const ProjectDetailModal = ({
 
           {activeTab === "content" && (
             <>
-              {/* --- SEKCE MODELY --- */}
               <div className="bg-slate-800/50 p-3 rounded-xl border border-slate-700/50">
                 <h4 className="text-xs font-bold text-slate-400 uppercase mb-3 flex items-center gap-2">
                   <Box size={14} /> Modely v projektu
                 </h4>
-
                 <div className="space-y-2 mb-3">
                   {projectKits.map((k) => (
                     <div
@@ -404,7 +373,6 @@ const ProjectDetailModal = ({
                     </p>
                   )}
                 </div>
-
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     onClick={() => {
@@ -425,8 +393,6 @@ const ProjectDetailModal = ({
                     <ShoppingCart size={14} /> Přidat do nákupu
                   </button>
                 </div>
-
-                {/* Form: Připojit existující */}
                 {showLinkKit && (
                   <div className="mt-3 p-2 bg-slate-900 rounded border border-slate-700 animate-in slide-in-from-top-2">
                     <select
@@ -450,8 +416,6 @@ const ProjectDetailModal = ({
                     </button>
                   </div>
                 )}
-
-                {/* Form: Přidat k nákupu */}
                 {showAddWishlist && (
                   <div className="mt-3 p-2 bg-slate-900 rounded border border-slate-700 animate-in slide-in-from-top-2 space-y-2">
                     <input
@@ -500,12 +464,10 @@ const ProjectDetailModal = ({
                 )}
               </div>
 
-              {/* --- SEKCE DOPLŇKY PROJEKTU --- */}
               <div className="bg-slate-800/50 p-3 rounded-xl border border-slate-700/50">
                 <h4 className="text-xs font-bold text-slate-400 uppercase mb-3 flex items-center gap-2">
                   <Layers size={14} /> Doplňky projektu
                 </h4>
-
                 <div className="mb-3 p-2 bg-slate-800 rounded border border-slate-700">
                   <input
                     className="w-full bg-slate-900 border border-slate-600 rounded p-1.5 text-xs text-white mb-2"
@@ -548,7 +510,6 @@ const ProjectDetailModal = ({
                     </button>
                   </div>
                 </div>
-
                 <div className="space-y-2">
                   {data.accessories &&
                     data.accessories.map((acc) => (
@@ -644,7 +605,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
 
   const handleSave = () => onSave(data);
 
-  // Todo List Logic
   const addTodo = () => {
     if (!newTodo.trim()) return;
     setData({
@@ -669,7 +629,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
     setData({ ...data, todo: data.todo.filter((t) => t.id !== id) });
   };
 
-  // Accessories Logic
   const addAccessory = () => {
     if (!newAccessory.name.trim()) return;
     setData({
@@ -688,7 +647,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
     });
   };
 
-  // Attachments Logic
   const addAttachment = () => {
     if (!newAttachment.name.trim() || !newAttachment.url.trim()) return;
     setData({
@@ -717,7 +675,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-2xl rounded-xl border border-slate-700 flex flex-col max-h-[95vh] shadow-2xl">
-        {/* HEADER */}
         <div className="p-4 border-b border-slate-800 bg-slate-800/50 flex justify-between items-start rounded-t-xl">
           <div className="flex-1 mr-4">
             <input
@@ -749,7 +706,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
           </button>
         </div>
 
-        {/* TABS */}
         <div className="flex border-b border-slate-800 bg-slate-950 overflow-x-auto">
           <button
             onClick={() => setActiveTab("info")}
@@ -781,7 +737,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
           </button>
         </div>
 
-        {/* CONTENT */}
         <div className="flex-1 overflow-y-auto p-4 bg-slate-900">
           {activeTab === "info" && (
             <div className="space-y-4">
@@ -825,7 +780,7 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
                   onChange={(e) =>
                     setData({
                       ...data,
-                      projectId: e.target.value ? Number(e.target.value) : null,
+                      projectId: e.target.value ? String(e.target.value) : null,
                     })
                   }
                   className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-sm text-white"
@@ -1155,7 +1110,6 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
           )}
         </div>
 
-        {/* FOOTER */}
         <div className="p-4 border-t border-slate-800 bg-slate-800/50 flex justify-between rounded-b-xl">
           <button
             onClick={() => onDelete(data.id)}
@@ -1180,32 +1134,99 @@ const KitDetailModal = ({ kit, onClose, onSave, onDelete, projects }) => {
 // ==========================================
 
 export default function App() {
-  const [view, setView] = useState("kits"); // 'kits' | 'projects'
-  const [kits, setKits] = useState(() => {
-    const saved = localStorage.getItem("modelDiaryKits");
-    return saved ? JSON.parse(saved) : DEMO_KITS;
-  });
-  const [projects, setProjects] = useState(() => {
-    const saved = localStorage.getItem("modelDiaryProjects");
-    return saved ? JSON.parse(saved) : DEMO_PROJECTS;
-  });
+  const [view, setView] = useState("kits");
+  const [kits, setKits] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // State pro modální okna
   const [activeKit, setActiveKit] = useState(null);
   const [isNewKit, setIsNewKit] = useState(false);
 
   const [activeProject, setActiveProject] = useState(null);
   const [isNewProject, setIsNewProject] = useState(false);
 
-  // Ukládání do LS
+  // --- FIREBASE AUTH & DATA SYNC ---
   useEffect(() => {
-    localStorage.setItem("modelDiaryKits", JSON.stringify(kits));
-  }, [kits]);
-  useEffect(() => {
-    localStorage.setItem("modelDiaryProjects", JSON.stringify(projects));
-  }, [projects]);
+    // Pokud není Firebase inicializované, nenačítáme nic (demo data jsou prázdná)
+    if (!auth) {
+      setKits(DEMO_KITS);
+      setProjects(DEMO_PROJECTS);
+      setLoading(false);
+      return;
+    }
+
+    const initAuth = async () => {
+      try {
+        // Podpora custom tokenu jako v první aplikaci
+        if (
+          typeof __initial_auth_token !== "undefined" &&
+          __initial_auth_token
+        ) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+      } catch (e) {
+        console.error("Chyba přihlášení:", e);
+        setLoading(false);
+      }
+    };
+    initAuth();
+
+    const unsubscribeAuth = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (!currentUser) {
+        setLoading(false);
+        return;
+      }
+
+      // Data posloucháme jen když je uživatel přihlášen
+      // Používáme strukturu 'model-diary', aby se data nemíchala s 'modelarsky-sklad-v1'
+      const kitsRef = collection(
+        db,
+        "artifacts",
+        "model-diary",
+        "users",
+        currentUser.uid,
+        "kits",
+      );
+      const projectsRef = collection(
+        db,
+        "artifacts",
+        "model-diary",
+        "users",
+        currentUser.uid,
+        "projects",
+      );
+
+      const unsubscribeKits = onSnapshot(kitsRef, (snapshot) => {
+        const kitsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setKits(kitsData);
+      });
+
+      const unsubscribeProjects = onSnapshot(projectsRef, (snapshot) => {
+        const projectsData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProjects(projectsData);
+        setLoading(false);
+      });
+
+      return () => {
+        unsubscribeKits();
+        unsubscribeProjects();
+      };
+    });
+
+    return () => unsubscribeAuth();
+  }, []);
 
   // --- HELPER PRO ZÍSKÁNÍ NÁZVU PROJEKTU ---
   const getProjectName = (projectId) => {
@@ -1213,27 +1234,78 @@ export default function App() {
     return proj ? proj.name : null;
   };
 
-  // --- CRUD KITS ---
-  const handleSaveKit = (kitData) => {
-    // Pokud je kit přiřazen k aktivnímu projektu, vyčistíme "legacy" historii
+  // --- CRUD FUNCTIONS (Firebase) ---
+
+  const saveToFirestore = async (collectionName, data) => {
+    if (!user || !db) return;
+    const colRef = collection(
+      db,
+      "artifacts",
+      "model-diary",
+      "users",
+      user.uid,
+      collectionName,
+    );
+
+    if (data.id && typeof data.id === "string") {
+      // Update existing
+      const docRef = doc(
+        db,
+        "artifacts",
+        "model-diary",
+        "users",
+        user.uid,
+        collectionName,
+        data.id,
+      );
+      const { id, ...dataToSave } = data; // remove ID from data
+      await updateDoc(docRef, dataToSave);
+    } else {
+      // Create new
+      const { id, ...dataToSave } = data; // remove temporary ID if any
+      await addDoc(colRef, { ...dataToSave, createdAt: serverTimestamp() });
+    }
+  };
+
+  const deleteFromFirestore = async (collectionName, docId) => {
+    if (!user || !db) return;
+    await deleteDoc(
+      doc(
+        db,
+        "artifacts",
+        "model-diary",
+        "users",
+        user.uid,
+        collectionName,
+        docId,
+      ),
+    );
+  };
+
+  // --- HANDLERS ---
+  const handleSaveKit = async (kitData) => {
     const updatedKitData = { ...kitData };
     if (updatedKitData.projectId) {
       updatedKitData.legacyProject = null;
     }
 
-    if (isNewKit) {
-      setKits([...kits, { ...updatedKitData, id: Date.now() }]);
+    // Optimistický update (než se ozve Firebase)
+    if (!db) {
+      if (isNewKit) setKits([...kits, { ...updatedKitData, id: Date.now() }]);
+      else
+        setKits(
+          kits.map((k) => (k.id === updatedKitData.id ? updatedKitData : k)),
+        );
     } else {
-      setKits(
-        kits.map((k) => (k.id === updatedKitData.id ? updatedKitData : k)),
-      );
+      await saveToFirestore("kits", updatedKitData);
     }
     setActiveKit(null);
   };
 
-  const handleDeleteKit = (id) => {
+  const handleDeleteKit = async (id) => {
     if (confirm("Opravdu odstranit tento model?")) {
-      setKits(kits.filter((k) => k.id !== id));
+      if (!db) setKits(kits.filter((k) => k.id !== id));
+      else await deleteFromFirestore("kits", id);
       setActiveKit(null);
     }
   };
@@ -1257,27 +1329,25 @@ export default function App() {
     });
   };
 
-  // Helper pro Projekty (aby mohly manipulovat s Kity)
-  const handleUpdateKitLink = (kitId, projectId) => {
-    setKits(
-      kits.map((k) => {
-        if (k.id === kitId) {
-          // Pokud přiřazujeme do projektu, mažeme legacy. Pokud odebíráme (null), legacy nenastavujeme (to dělá jen smazání projektu)
-          return {
-            ...k,
-            projectId: projectId,
-            legacyProject: projectId ? null : k.legacyProject,
-          };
-        }
-        return k;
-      }),
-    );
+  const handleUpdateKitLink = async (kitId, projectId) => {
+    const kit = kits.find((k) => k.id === kitId);
+    if (kit) {
+      const updatedKit = {
+        ...kit,
+        projectId: projectId,
+        legacyProject: projectId ? null : kit.legacyProject,
+      };
+      if (!db) {
+        setKits(kits.map((k) => (k.id === kitId ? updatedKit : k)));
+      } else {
+        await saveToFirestore("kits", updatedKit);
+      }
+    }
   };
 
-  const handleCreateWishlistKit = (newKitData) => {
+  const handleCreateWishlistKit = async (newKitData) => {
     const newKit = {
       ...newKitData,
-      id: Date.now(),
       status: "wishlist",
       catNum: "",
       progress: 0,
@@ -1288,20 +1358,26 @@ export default function App() {
       notes: "",
       legacyProject: null,
     };
-    setKits([...kits, newKit]);
+    if (!db) {
+      setKits([...kits, { ...newKit, id: Date.now() }]);
+    } else {
+      await saveToFirestore("kits", newKit);
+    }
   };
 
-  // --- CRUD PROJECTS ---
-  const handleSaveProject = (projData) => {
-    if (isNewProject) {
-      setProjects([...projects, { ...projData, id: Date.now() }]);
+  const handleSaveProject = async (projData) => {
+    if (!db) {
+      if (isNewProject)
+        setProjects([...projects, { ...projData, id: Date.now() }]);
+      else
+        setProjects(projects.map((p) => (p.id === projData.id ? projData : p)));
     } else {
-      setProjects(projects.map((p) => (p.id === projData.id ? projData : p)));
+      await saveToFirestore("projects", projData);
     }
     setActiveProject(null);
   };
 
-  const handleDeleteProject = (id) => {
+  const handleDeleteProject = async (id) => {
     const projectToDelete = projects.find((p) => p.id === id);
     const projName = projectToDelete ? projectToDelete.name : "Neznámý projekt";
 
@@ -1310,21 +1386,28 @@ export default function App() {
         `Smazat projekt "${projName}"? Modely zůstanou a uloží se informace o historii.`,
       )
     ) {
-      setProjects(projects.filter((p) => p.id !== id));
-
-      // Aktualizace kitů: zrušíme vazbu ID, ale uložíme jméno do legacyProject
-      setKits(
-        kits.map((k) =>
-          k.projectId === id
-            ? {
-                ...k,
-                projectId: null,
-                legacyProject: projName,
-              }
-            : k,
-        ),
-      );
-
+      if (!db) {
+        setProjects(projects.filter((p) => p.id !== id));
+        setKits(
+          kits.map((k) =>
+            k.projectId === id
+              ? { ...k, projectId: null, legacyProject: projName }
+              : k,
+          ),
+        );
+      } else {
+        // 1. Smazat projekt
+        await deleteFromFirestore("projects", id);
+        // 2. Upravit kity (toto by správně mělo být v Cloud Function nebo batch, ale pro jednoduchost zde)
+        const linkedKits = kits.filter((k) => k.projectId === id);
+        linkedKits.forEach(async (k) => {
+          await saveToFirestore("kits", {
+            ...k,
+            projectId: null,
+            legacyProject: projName,
+          });
+        });
+      }
       setActiveProject(null);
     }
   };
@@ -1357,22 +1440,44 @@ export default function App() {
     };
   }, [filteredKits]);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-slate-400">
+        <Loader2 size={48} className="animate-spin mb-4 text-blue-500" />
+        <p>Načítám tvůj deník z cloudu...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-20">
       {/* HLAVIČKA */}
       <div className="bg-slate-800 border-b border-slate-700 sticky top-0 z-10">
         <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex justify-between items-center mb-4">
-            {/* ZMĚNA: Modrý nadpis a ikona favicon.png */}
             <div className="flex items-center gap-3">
               <img
                 src="favicon.png"
                 alt="Logo"
                 className="w-10 h-10 rounded-xl shadow-lg border border-slate-600 object-cover"
               />
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-                Modelářský Deník
-              </h1>
+              <div className="flex flex-col">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                  Modelářský Deník
+                </h1>
+                {db ? (
+                  <span className="text-[10px] text-green-500 flex items-center gap-1">
+                    <Cloud size={10} /> Cloud Sync Active
+                  </span>
+                ) : (
+                  <span
+                    className="text-[10px] text-orange-500 flex items-center gap-1"
+                    title="Nastavte .env soubor pro aktivaci cloudu"
+                  >
+                    <AlertTriangle size={10} /> DEMO / Offline Mode
+                  </span>
+                )}
+              </div>
             </div>
 
             <button
