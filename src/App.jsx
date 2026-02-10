@@ -38,6 +38,8 @@ import {
   CloudCog,
   Skull,
   Trophy,
+  Upload,
+  FileJson,
 } from "lucide-react";
 
 // Firebase importy
@@ -53,6 +55,8 @@ import {
   query,
   where,
   serverTimestamp,
+  setDoc,
+  writeBatch,
 } from "firebase/firestore";
 import {
   getAuth,
@@ -65,7 +69,7 @@ import {
 // 🔧 KONFIGURACE FIREBASE (Modelářský Deník)
 // ==========================================
 
-const APP_VERSION = "v1.9.8-icons-trunc";
+const APP_VERSION = "v1.9.9-import-export";
 
 // Pomocná funkce pro bezpečné čtení env proměnných
 const getEnv = (key) => {
@@ -227,8 +231,9 @@ const KitCard = ({ kit, onClick, projectName }) => {
 };
 
 // --- MODÁLNÍ OKNO NASTAVENÍ / CLOUD IDENTITY ---
-const SettingsModal = ({ user, onClose }) => {
+const SettingsModal = ({ user, onClose, kits, projects }) => {
   const [copied, setCopied] = useState(false);
+  const [importing, setImporting] = useState(false);
 
   const copyToClipboard = () => {
     if (user?.uid) {
@@ -238,9 +243,117 @@ const SettingsModal = ({ user, onClose }) => {
     }
   };
 
+  const handleExport = () => {
+    const dataToExport = {
+      version: APP_VERSION,
+      exportedAt: new Date().toISOString(),
+      kits: kits,
+      projects: projects,
+    };
+
+    const blob = new Blob([JSON.stringify(dataToExport, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `model-diary-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleImport = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (
+      !confirm(
+        "Pozor! Import dat přepíše existující modely a projekty se stejným ID. Chcete pokračovat?",
+      )
+    ) {
+      e.target.value = ""; // reset input
+      return;
+    }
+
+    try {
+      setImporting(true);
+      const text = await file.text();
+      const data = JSON.parse(text);
+
+      if (!data.kits && !data.projects) {
+        alert(
+          "Chyba: Neplatný formát souboru (chybí sekce kits nebo projects).",
+        );
+        return;
+      }
+
+      if (!db || !user) {
+        alert("Chyba: Nejste připojeni k databázi.");
+        return;
+      }
+
+      const batch = writeBatch(db);
+      let count = 0;
+
+      // Import Kits
+      if (data.kits && Array.isArray(data.kits)) {
+        data.kits.forEach((kit) => {
+          if (kit.id) {
+            const ref = doc(
+              db,
+              "artifacts",
+              "model-diary",
+              "users",
+              user.uid,
+              "kits",
+              kit.id.toString(),
+            );
+            batch.set(ref, kit);
+            count++;
+          }
+        });
+      }
+
+      // Import Projects
+      if (data.projects && Array.isArray(data.projects)) {
+        data.projects.forEach((proj) => {
+          if (proj.id) {
+            const ref = doc(
+              db,
+              "artifacts",
+              "model-diary",
+              "users",
+              user.uid,
+              "projects",
+              proj.id.toString(),
+            );
+            batch.set(ref, proj);
+            count++;
+          }
+        });
+      }
+
+      if (count > 0) {
+        await batch.commit();
+        alert(`Úspěšně importováno ${count} položek.`);
+        onClose();
+      } else {
+        alert("Nebyly nalezeny žádné platné položky k importu.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Chyba při importu souboru: " + err.message);
+    } finally {
+      setImporting(false);
+      e.target.value = "";
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
-      <div className="bg-slate-900 w-full max-w-md rounded-2xl border border-slate-700 shadow-2xl overflow-hidden">
+      <div className="bg-slate-900 w-full max-w-md rounded-2xl border border-slate-700 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
         <div className="bg-slate-800 p-4 border-b border-slate-700 flex justify-between items-center">
           <h2 className="text-lg font-bold text-white flex items-center gap-2">
             <Cloud className="text-blue-400" size={20} /> Nastavení Cloudu
@@ -283,6 +396,46 @@ const SettingsModal = ({ user, onClose }) => {
             </h4>
             <p className="text-sm text-blue-200/80">
               Všechna data jsou automaticky ukládána do cloudu v reálném čase.
+            </p>
+          </div>
+
+          <div className="border-t border-slate-800 pt-4">
+            <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
+              <FileJson size={18} className="text-orange-400" /> Správa dat
+              (Záloha)
+            </h4>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                onClick={handleExport}
+                className="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-3 rounded-xl flex flex-col items-center gap-2 transition-all active:scale-95"
+              >
+                <Download size={24} className="text-blue-400" />
+                <span className="text-xs font-bold">Exportovat Data</span>
+              </button>
+
+              <label
+                className={`bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-3 rounded-xl flex flex-col items-center gap-2 transition-all active:scale-95 cursor-pointer ${importing ? "opacity-50 pointer-events-none" : ""}`}
+              >
+                {importing ? (
+                  <Loader2 size={24} className="animate-spin text-orange-400" />
+                ) : (
+                  <Upload size={24} className="text-orange-400" />
+                )}
+                <span className="text-xs font-bold">
+                  {importing ? "Importuji..." : "Importovat Data"}
+                </span>
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={handleImport}
+                  className="hidden"
+                  disabled={importing}
+                />
+              </label>
+            </div>
+            <p className="text-[10px] text-slate-500 mt-2 text-center">
+              Export vytvoří soubor JSON se všemi modely a projekty. Import
+              tento soubor načte a obnoví data.
             </p>
           </div>
         </div>
@@ -1963,7 +2116,12 @@ export default function App() {
 
       {/* SETTINGS MODAL */}
       {showSettings && (
-        <SettingsModal user={user} onClose={() => setShowSettings(false)} />
+        <SettingsModal
+          user={user}
+          onClose={() => setShowSettings(false)}
+          kits={kits}
+          projects={projects}
+        />
       )}
     </div>
   );
