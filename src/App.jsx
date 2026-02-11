@@ -41,6 +41,9 @@ import {
   Ghost,
   WifiOff,
   Key,
+  Filter,
+  XCircle,
+  ClipboardCopy,
 } from "lucide-react";
 
 // Firebase importy
@@ -74,7 +77,7 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.6.0-production";
+const APP_VERSION = "v2.11.0-status-filters";
 
 // Normalizace vstupů
 const Normalizer = {
@@ -134,8 +137,105 @@ try {
 }
 
 // ==========================================
-// 🧩 SUB-KOMPONENTY
+// 🧩 SUB-KOMPONENTY (UI Elements)
 // ==========================================
+
+// --- INPUT S PLOVOUCÍM LABELEM ---
+const FloatingInput = ({
+  label,
+  value,
+  onChange,
+  placeholder,
+  className = "",
+  classNameInput = "",
+  labelColor = "text-slate-500",
+  ...props
+}) => (
+  <div className={`relative ${className}`}>
+    <label
+      className={`absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 ${labelColor}`}
+    >
+      {label}
+    </label>
+    <input
+      className={`w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 transition-colors placeholder-slate-700 italic ${classNameInput}`}
+      value={value}
+      onChange={onChange}
+      placeholder={placeholder}
+      {...props}
+    />
+  </div>
+);
+
+// --- TEXTAREA S PLOVOUCÍM LABELEM ---
+const FloatingTextarea = ({
+  label,
+  value,
+  onChange,
+  className = "",
+  labelColor = "text-slate-500",
+  height = "h-24",
+  ...props
+}) => (
+  <div className={`relative ${className}`}>
+    <label
+      className={`absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 ${labelColor}`}
+    >
+      {label}
+    </label>
+    <textarea
+      className={`w-full bg-slate-950 text-sm text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 transition-colors resize-none ${height}`}
+      value={value}
+      onChange={onChange}
+      {...props}
+    />
+  </div>
+);
+
+// --- SELECT S PLOVOUCÍM LABELEM ---
+const FloatingSelect = ({
+  label,
+  value,
+  onChange,
+  options,
+  className = "",
+  labelColor = "text-slate-500",
+  ...props
+}) => (
+  <div className={`relative ${className}`}>
+    <label
+      className={`absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 ${labelColor}`}
+    >
+      {label}
+    </label>
+    <select
+      className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
+      value={value}
+      onChange={onChange}
+      {...props}
+    >
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+  </div>
+);
+
+// --- FILTROVACÍ CHIP ---
+const FilterChip = ({ label, active, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`text-[10px] font-bold px-2 py-1 rounded border transition-all whitespace-nowrap ${
+      active
+        ? "bg-blue-600 border-blue-500 text-white shadow-sm"
+        : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600"
+    }`}
+  >
+    {label}
+  </button>
+);
 
 // --- KARTA MODELU ---
 const KitCard = React.memo(({ kit, onClick, projectName }) => {
@@ -570,21 +670,13 @@ const ProjectDetailModal = ({
   onSave,
   allKits,
   onUpdateKitLink,
-  onCreateWishlistKit,
+  onAddWishlistKit,
 }) => {
   const [data, setData] = useState({ accessories: [], ...project });
   const [activeTab, setActiveTab] = useState("info");
 
   const [showLinkKit, setShowLinkKit] = useState(false);
   const [selectedKitId, setSelectedKitId] = useState("");
-
-  const [newWishlistKit, setNewWishlistKit] = useState({
-    brand: "",
-    name: "",
-    scale: "",
-    subject: "",
-  });
-  const [showAddWishlist, setShowAddWishlist] = useState(false);
   const [newAccessory, setNewAccessory] = useState({
     name: "",
     status: "owned",
@@ -600,18 +692,6 @@ const ProjectDetailModal = ({
     [allKits],
   );
 
-  const handleCreateWishlist = () => {
-    if (newWishlistKit.name) {
-      onCreateWishlistKit({
-        ...newWishlistKit,
-        status: "wishlist",
-        projectId: project.id,
-      });
-      setNewWishlistKit({ brand: "", name: "", scale: "", subject: "" });
-      setShowAddWishlist(false);
-    }
-  };
-
   const addAccessory = () => {
     if (!newAccessory.name.trim()) return;
     setData({
@@ -623,6 +703,8 @@ const ProjectDetailModal = ({
     });
     setNewAccessory({ name: "", status: "owned", url: "" });
   };
+
+  const isFormValid = data.name && data.name.trim().length > 0;
 
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
@@ -652,45 +734,40 @@ const ProjectDetailModal = ({
         </div>
         <div className="p-4 space-y-4 flex-1 overflow-y-auto bg-slate-900">
           {activeTab === "info" && (
-            <>
-              <div>
-                <label className="block text-xs text-slate-500 mb-1">
-                  Název projektu
-                </label>
-                <input
-                  className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-white outline-none"
-                  value={data.name}
-                  onChange={(e) => setData({ ...data, name: e.target.value })}
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-slate-500 mb-1">
-                  Popis
-                </label>
-                <textarea
-                  className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-white h-24 resize-none outline-none"
-                  value={data.description}
-                  onChange={(e) =>
-                    setData({ ...data, description: e.target.value })
-                  }
-                />
-              </div>
-              <div>
-                <label className="block text-xs text-slate-500 mb-1">
-                  Stav
-                </label>
-                <select
-                  className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-white outline-none"
-                  value={data.status}
-                  onChange={(e) => setData({ ...data, status: e.target.value })}
-                >
-                  <option value="planned">📅 Plánováno</option>
-                  <option value="active">🔥 Aktivní</option>
-                  <option value="finished">✅ Dokončeno</option>
-                  <option value="hold">⏸️ Pozastaveno</option>
-                </select>
-              </div>
-            </>
+            <div className="space-y-4 pt-2">
+              <FloatingInput
+                label="Název projektu *"
+                value={data.name}
+                onChange={(e) => setData({ ...data, name: e.target.value })}
+                placeholder="Můj projekt"
+                labelColor="text-blue-400"
+              />
+
+              <FloatingSelect
+                label="Stav"
+                value={data.status}
+                onChange={(e) => setData({ ...data, status: e.target.value })}
+                options={[
+                  { value: "planned", label: "📅 Plánováno" },
+                  { value: "active", label: "🔥 Aktivní" },
+                  { value: "finished", label: "✅ Dokončeno" },
+                  { value: "hold", label: "⏸️ Pozastaveno" },
+                ]}
+              />
+
+              <FloatingTextarea
+                label="Popis"
+                value={data.description}
+                onChange={(e) =>
+                  setData({ ...data, description: e.target.value })
+                }
+                height="h-32"
+              />
+
+              <p className="text-[10px] text-blue-400/50 font-bold">
+                * tyto údaje jsou povinné
+              </p>
+            </div>
           )}
           {activeTab === "content" && (
             <>
@@ -742,17 +819,13 @@ const ProjectDetailModal = ({
                   <button
                     onClick={() => {
                       setShowLinkKit(!showLinkKit);
-                      setShowAddWishlist(false);
                     }}
                     className="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs py-2 rounded flex items-center justify-center gap-1"
                   >
                     <Link2 size={14} /> Připojit ze skladu
                   </button>
                   <button
-                    onClick={() => {
-                      setShowAddWishlist(!showAddWishlist);
-                      setShowLinkKit(false);
-                    }}
+                    onClick={onAddWishlistKit}
                     className="bg-purple-900/40 hover:bg-purple-900/60 text-purple-300 border border-purple-500/30 text-xs py-2 rounded flex items-center justify-center gap-1"
                   >
                     <ShoppingCart size={14} /> Přidat do nákupu
@@ -782,65 +855,6 @@ const ProjectDetailModal = ({
                       className="w-full bg-blue-600 text-white text-xs py-1.5 rounded disabled:opacity-50"
                     >
                       Připojit
-                    </button>
-                  </div>
-                )}
-                {showAddWishlist && (
-                  <div className="mt-3 p-2 bg-slate-900 rounded border border-slate-700 animate-in slide-in-from-top-2 space-y-2">
-                    <div className="space-y-2">
-                      <input
-                        className="w-full bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
-                        placeholder="Předloha / Typ"
-                        value={newWishlistKit.subject}
-                        onChange={(e) =>
-                          setNewWishlistKit({
-                            ...newWishlistKit,
-                            subject: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        className="w-full bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
-                        placeholder="Název"
-                        value={newWishlistKit.name}
-                        onChange={(e) =>
-                          setNewWishlistKit({
-                            ...newWishlistKit,
-                            name: Normalizer.name(e.target.value),
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="flex gap-2">
-                      <input
-                        className="flex-1 bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
-                        placeholder="Výrobce"
-                        value={newWishlistKit.brand}
-                        onChange={(e) =>
-                          setNewWishlistKit({
-                            ...newWishlistKit,
-                            brand: Normalizer.brand(e.target.value),
-                          })
-                        }
-                      />
-                      <input
-                        className="w-20 bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
-                        placeholder="Měřítko"
-                        value={newWishlistKit.scale}
-                        onChange={(e) =>
-                          setNewWishlistKit({
-                            ...newWishlistKit,
-                            scale: e.target.value,
-                          })
-                        }
-                      />
-                    </div>
-                    <button
-                      onClick={handleCreateWishlist}
-                      disabled={!newWishlistKit.name}
-                      className="w-full bg-purple-600 text-white text-xs py-1.5 rounded disabled:opacity-50"
-                    >
-                      Přidat do nákupního seznamu
                     </button>
                   </div>
                 )}
@@ -952,8 +966,9 @@ const ProjectDetailModal = ({
         </div>
         <div className="p-4 border-t border-slate-800 bg-slate-800/30 flex justify-end rounded-b-xl">
           <button
-            onClick={() => onSave(data)}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2"
+            onClick={() => isFormValid && onSave(data)}
+            disabled={!isFormValid}
+            className={`px-6 py-2 rounded-lg font-bold shadow-lg flex items-center gap-2 transition-all ${isFormValid ? "bg-blue-600 hover:bg-blue-500 text-white" : "bg-slate-700 text-slate-500 cursor-not-allowed"}`}
           >
             <Save size={18} /> Uložit
           </button>
@@ -1008,6 +1023,9 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
     });
   };
 
+  // Validace povinných polí: Výrobce, Předloha, Měřítko
+  const isFormValid = data.brand && data.subject && data.scale;
+
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-2xl rounded-xl border border-slate-700 flex flex-col max-h-[95vh] shadow-2xl">
@@ -1023,56 +1041,55 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
               <X size={20} />
             </button>
           </div>
-          <div className="space-y-3">
-            <div className="flex gap-2">
-              <input
-                className="flex-1 bg-slate-950 text-sm text-white border border-slate-700 rounded px-3 py-2 outline-none"
+          <div className="space-y-4 pt-2">
+            <div className="grid grid-cols-2 sm:flex gap-3">
+              <FloatingInput
+                className="col-span-2 sm:flex-1"
+                label="Výrobce *"
                 value={data.brand}
                 onChange={(e) =>
                   setData({ ...data, brand: Normalizer.brand(e.target.value) })
                 }
-                placeholder="Výrobce"
+                placeholder="Tamiya"
+                labelColor="text-blue-400"
               />
-              <input
-                className={`w-20 text-center bg-slate-950 text-sm text-white border ${isScaleValid(data.scale) ? "border-slate-700" : "border-red-500"} rounded px-3 py-2 outline-none`}
+              <FloatingInput
+                className="col-span-1 sm:w-20"
+                label="Měřítko *"
                 value={data.scale}
                 onChange={(e) => setData({ ...data, scale: e.target.value })}
                 placeholder="1/48"
+                labelColor="text-blue-400"
+                classNameInput={
+                  !isScaleValid(data.scale) ? "border-red-500" : ""
+                }
               />
-              <input
-                className="w-24 text-center bg-slate-950 text-sm text-white border border-slate-700 rounded px-3 py-2 outline-none"
+              <FloatingInput
+                className="col-span-1 sm:w-24"
+                label="Kat. č."
                 value={data.catNum}
                 onChange={(e) => setData({ ...data, catNum: e.target.value })}
-                placeholder="Kat. č."
+                placeholder="61100"
               />
             </div>
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] text-blue-400 font-bold z-10">
-                  Předloha
-                </label>
-                <input
-                  className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2 outline-none"
-                  value={data.subject || ""}
-                  onChange={(e) =>
-                    setData({ ...data, subject: e.target.value })
-                  }
-                  placeholder="F-16C"
-                />
-              </div>
-              <div className="relative flex-[1.5]">
-                <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] text-slate-500 font-bold z-10">
-                  Název
-                </label>
-                <input
-                  className="w-full bg-slate-950 text-xs font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none"
-                  value={data.name}
-                  onChange={(e) =>
-                    setData({ ...data, name: Normalizer.name(e.target.value) })
-                  }
-                  placeholder="tiger meet"
-                />
-              </div>
+            <div className="flex gap-3">
+              <FloatingInput
+                className="flex-1"
+                label="Předloha *"
+                value={data.subject || ""}
+                onChange={(e) => setData({ ...data, subject: e.target.value })}
+                placeholder="F-16C"
+                labelColor="text-blue-400"
+              />
+              <FloatingInput
+                className="flex-[1.5]"
+                label="Název"
+                value={data.name}
+                onChange={(e) =>
+                  setData({ ...data, name: Normalizer.name(e.target.value) })
+                }
+                placeholder="Block 50"
+              />
             </div>
           </div>
         </div>
@@ -1139,15 +1156,16 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-slate-500 mb-1">
-                  Poznámky
-                </label>
-                <textarea
-                  className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-sm text-white h-32 outline-none"
+                <FloatingTextarea
+                  label="Poznámky"
                   value={data.notes}
                   onChange={(e) => setData({ ...data, notes: e.target.value })}
+                  height="h-32"
                 />
               </div>
+              <p className="text-[10px] text-blue-400/50 font-bold">
+                * tyto údaje jsou povinné
+              </p>
             </div>
           )}
           {activeTab === "build" && !isBuildLocked && (
@@ -1365,8 +1383,9 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
         </div>
         <div className="p-4 border-t border-slate-800 bg-slate-800/50 flex justify-end rounded-b-xl">
           <button
-            onClick={() => onSave(data)}
-            className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded font-bold shadow-lg flex items-center gap-2"
+            onClick={() => isFormValid && onSave(data)}
+            disabled={!isFormValid}
+            className={`px-6 py-2 rounded font-bold shadow-lg flex items-center gap-2 transition-all ${isFormValid ? "bg-blue-600 hover:bg-blue-500 text-white" : "bg-slate-700 text-slate-500 cursor-not-allowed"}`}
           >
             <Save size={18} /> Uložit
           </button>
@@ -1388,6 +1407,15 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Filtry
+  const [showFilter, setShowFilter] = useState(false);
+  const [activeFilters, setActiveFilters] = useState({
+    scales: [],
+    brands: [],
+    kitStatuses: [], // Nový filtr pro stav modelu
+    projectStatuses: [],
+  });
 
   // Přidáno: Možnost ručně přepsat ID pro data (nezávisle na Auth ID)
   const [manualDataUid, setManualDataUid] = useState(null);
@@ -1541,15 +1569,69 @@ export default function App() {
     else setActiveProject(null);
   };
 
-  // --- FILTROVÁNÍ ---
+  // --- FILTROVÁNÍ HELPERS ---
+  const availableScales = useMemo(
+    () => [...new Set(kits.map((k) => k.scale).filter(Boolean))].sort(),
+    [kits],
+  );
+  const availableBrands = useMemo(
+    () => [...new Set(kits.map((k) => k.brand).filter(Boolean))].sort(),
+    [kits],
+  );
+
+  const toggleFilter = (type, value) => {
+    setActiveFilters((prev) => {
+      const current = prev[type];
+      const next = current.includes(value)
+        ? current.filter((i) => i !== value)
+        : [...current, value];
+      return { ...prev, [type]: next };
+    });
+  };
+
+  const clearFilters = () =>
+    setActiveFilters({
+      scales: [],
+      brands: [],
+      kitStatuses: [],
+      projectStatuses: [],
+    });
+  const hasActiveFilters =
+    activeFilters.scales.length > 0 ||
+    activeFilters.brands.length > 0 ||
+    activeFilters.projectStatuses.length > 0 ||
+    activeFilters.kitStatuses.length > 0;
+
+  // --- VÝPOČET FILTROVANÝCH DAT ---
   const filteredKits = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase();
-    return kits.filter((k) =>
-      (k.name + k.brand + (k.subject || ""))
+    return kits.filter((k) => {
+      const matchesSearch = (k.name + k.brand + (k.subject || ""))
         .toLowerCase()
-        .includes(lowerSearch),
-    );
-  }, [kits, searchTerm]);
+        .includes(lowerSearch);
+      const matchesScale =
+        activeFilters.scales.length === 0 ||
+        activeFilters.scales.includes(k.scale);
+      const matchesBrand =
+        activeFilters.brands.length === 0 ||
+        activeFilters.brands.includes(k.brand);
+      const matchesStatus =
+        activeFilters.kitStatuses.length === 0 ||
+        activeFilters.kitStatuses.includes(k.status);
+      return matchesSearch && matchesScale && matchesBrand && matchesStatus;
+    });
+  }, [kits, searchTerm, activeFilters]);
+
+  const filteredProjects = useMemo(() => {
+    const lowerSearch = searchTerm.toLowerCase();
+    return projects.filter((p) => {
+      const matchesSearch = p.name.toLowerCase().includes(lowerSearch);
+      const matchesStatus =
+        activeFilters.projectStatuses.length === 0 ||
+        activeFilters.projectStatuses.includes(p.status);
+      return matchesSearch && matchesStatus;
+    });
+  }, [projects, searchTerm, activeFilters]);
 
   const groupedKits = useMemo(
     () => ({
@@ -1561,6 +1643,15 @@ export default function App() {
     }),
     [filteredKits],
   );
+
+  // Copy wishlist logic
+  const copyWishlistToClipboard = () => {
+    const items = groupedKits.wishlist
+      .map((k) => `- ${k.brand} ${k.scale} ${k.subject || ""} ${k.name}`)
+      .join("\n");
+    navigator.clipboard.writeText("Můj nákupní seznam:\n" + items);
+    alert("Nákupní seznam zkopírován do schránky!");
+  };
 
   if (loading)
     return (
@@ -1633,20 +1724,147 @@ export default function App() {
               <Folder size={16} /> Projekty
             </button>
           </div>
-          {view === "kits" && (
-            <div className="relative mb-3">
+
+          <div className="flex gap-2 mb-3">
+            <div className="relative flex-1">
               <Search
                 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500"
                 size={16}
               />
               <input
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-blue-500"
-                placeholder="Hledat model..."
+                placeholder={
+                  view === "kits" ? "Hledat model..." : "Hledat projekt..."
+                }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+            <button
+              onClick={() => setShowFilter(!showFilter)}
+              className={`p-2 rounded-lg border flex items-center justify-center ${showFilter || hasActiveFilters ? "bg-blue-600 border-blue-500 text-white" : "bg-slate-800 border-slate-700 text-slate-400"}`}
+            >
+              <Filter size={20} />
+            </button>
+          </div>
+
+          {/* FILTER PANEL */}
+          {showFilter && (
+            <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 mb-3 animate-in slide-in-from-top-2">
+              <div className="flex justify-between items-center mb-2">
+                <h4 className="text-xs font-bold text-slate-500 uppercase">
+                  Filtrování {view === "kits" ? "modelů" : "projektů"}
+                </h4>
+                {hasActiveFilters && (
+                  <button
+                    onClick={clearFilters}
+                    className="text-[10px] text-red-400 flex items-center gap-1 hover:underline"
+                  >
+                    <XCircle size={12} /> Zrušit vše
+                  </button>
+                )}
+              </div>
+
+              {view === "kits" ? (
+                <div className="space-y-3">
+                  <div>
+                    <span className="text-[10px] text-slate-600 font-bold block mb-1">
+                      Stav modelu
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {["new", "wip", "finished", "wishlist", "scrap"].map(
+                        (s) => (
+                          <FilterChip
+                            key={s}
+                            label={
+                              s === "new"
+                                ? "V kitníku"
+                                : s === "wip"
+                                  ? "Na stole"
+                                  : s === "finished"
+                                    ? "Hotovo"
+                                    : s === "wishlist"
+                                      ? "Nákupní seznam"
+                                      : "Vrakoviště"
+                            }
+                            active={activeFilters.kitStatuses.includes(s)}
+                            onClick={() => toggleFilter("kitStatuses", s)}
+                          />
+                        ),
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-600 font-bold block mb-1">
+                      Měřítko
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {availableScales.length > 0 ? (
+                        availableScales.map((s) => (
+                          <FilterChip
+                            key={s}
+                            label={s}
+                            active={activeFilters.scales.includes(s)}
+                            onClick={() => toggleFilter("scales", s)}
+                          />
+                        ))
+                      ) : (
+                        <span className="text-xs text-slate-600 italic">
+                          Žádná data
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-600 font-bold block mb-1">
+                      Výrobce
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {availableBrands.length > 0 ? (
+                        availableBrands.map((b) => (
+                          <FilterChip
+                            key={b}
+                            label={b}
+                            active={activeFilters.brands.includes(b)}
+                            onClick={() => toggleFilter("brands", b)}
+                          />
+                        ))
+                      ) : (
+                        <span className="text-xs text-slate-600 italic">
+                          Žádná data
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <span className="text-[10px] text-slate-600 font-bold block mb-1">
+                    Stav projektu
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {["planned", "active", "finished", "hold"].map((s) => (
+                      <FilterChip
+                        key={s}
+                        label={
+                          s === "planned"
+                            ? "Plánováno"
+                            : s === "active"
+                              ? "Aktivní"
+                              : s === "finished"
+                                ? "Hotovo"
+                                : "Pozastaveno"
+                        }
+                        active={activeFilters.projectStatuses.includes(s)}
+                        onClick={() => toggleFilter("projectStatuses", s)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           )}
+
           <div className="flex justify-between px-1 text-[10px] text-slate-500">
             <div className="flex gap-1">
               <Cloud size={10} /> ID:{" "}
@@ -1669,31 +1887,41 @@ export default function App() {
               ([key, list]) =>
                 list.length > 0 && (
                   <section key={key}>
-                    <h2
-                      className={`text-xs font-bold uppercase tracking-wider mb-2 flex items-center gap-2 ${key === "wip" ? "text-orange-400" : key === "new" ? "text-blue-400" : key === "finished" ? "text-green-600" : key === "scrap" ? "text-slate-600" : "text-purple-400"}`}
-                    >
-                      {key === "wip" ? (
-                        <Hammer size={12} />
-                      ) : key === "new" ? (
-                        <Box size={12} />
-                      ) : key === "finished" ? (
-                        <CheckSquare size={12} />
-                      ) : key === "scrap" ? (
-                        <Trash2 size={12} />
-                      ) : (
-                        <ShoppingCart size={12} />
+                    <div className="flex justify-between items-center mb-2">
+                      <h2
+                        className={`text-xs font-bold uppercase tracking-wider flex items-center gap-2 ${key === "wip" ? "text-orange-400" : key === "new" ? "text-blue-400" : key === "finished" ? "text-green-600" : key === "scrap" ? "text-slate-600" : "text-purple-400"}`}
+                      >
+                        {key === "wip" ? (
+                          <Hammer size={12} />
+                        ) : key === "new" ? (
+                          <Box size={12} />
+                        ) : key === "finished" ? (
+                          <CheckSquare size={12} />
+                        ) : key === "scrap" ? (
+                          <Trash2 size={12} />
+                        ) : (
+                          <ShoppingCart size={12} />
+                        )}
+                        {key === "wip"
+                          ? "Na stole"
+                          : key === "new"
+                            ? "V kitníku"
+                            : key === "finished"
+                              ? "Hotovo"
+                              : key === "scrap"
+                                ? "Vrakoviště"
+                                : "Nákupní seznam"}{" "}
+                        ({list.length})
+                      </h2>
+                      {key === "wishlist" && (
+                        <button
+                          onClick={copyWishlistToClipboard}
+                          className="text-slate-500 hover:text-white flex items-center gap-1 text-[10px] bg-slate-800 px-2 py-1 rounded border border-slate-700"
+                        >
+                          <ClipboardCopy size={10} /> Kopírovat seznam
+                        </button>
                       )}
-                      {key === "wip"
-                        ? "Na stole"
-                        : key === "new"
-                          ? "V kitníku"
-                          : key === "finished"
-                            ? "Hotovo"
-                            : key === "scrap"
-                              ? "Vrakoviště"
-                              : "Nákupní seznam"}{" "}
-                      ({list.length})
-                    </h2>
+                    </div>
                     {list.map((k) => (
                       <KitCard
                         key={k.id}
@@ -1713,65 +1941,76 @@ export default function App() {
             {filteredKits.length === 0 && (
               <div className="text-center text-slate-500 py-10">
                 <Package size={48} className="mx-auto mb-2 opacity-20" />
-                <p>Prázdno.</p>
+                <p>Prázdno (nebo skryto filtrem).</p>
               </div>
             )}
           </>
         ) : (
-          projects.map((p) => (
-            <div
-              key={p.id}
-              onClick={() => {
-                setIsNewProject(false);
-                setActiveProject(p);
-              }}
-              className="bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer hover:border-slate-500 transition-colors group"
-            >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="font-bold text-lg text-white group-hover:text-blue-400">
-                  {p.name}
-                </h3>
-                <span
-                  className={`text-[10px] px-2 py-0.5 rounded uppercase font-bold ${p.status === "active" ? "bg-orange-500/20 text-orange-400" : p.status === "finished" ? "bg-green-500/20 text-green-400" : "bg-slate-700 text-slate-300"}`}
+          <>
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((p) => (
+                <div
+                  key={p.id}
+                  onClick={() => {
+                    setIsNewProject(false);
+                    setActiveProject(p);
+                  }}
+                  className="bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer hover:border-slate-500 transition-colors group mb-4"
                 >
-                  {p.status}
-                </span>
+                  <div className="flex justify-between items-start mb-2">
+                    <h3 className="font-bold text-lg text-white group-hover:text-blue-400">
+                      {p.name}
+                    </h3>
+                    <span
+                      className={`text-[10px] px-2 py-0.5 rounded uppercase font-bold ${p.status === "active" ? "bg-orange-500/20 text-orange-400" : p.status === "finished" ? "bg-green-500/20 text-green-400" : "bg-slate-700 text-slate-300"}`}
+                    >
+                      {p.status}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-400 mb-4 truncate">
+                    {p.description || "Bez popisu"}
+                  </p>
+                  <div className="bg-slate-900/50 rounded-lg p-3 space-y-2">
+                    <h4 className="text-xs font-bold text-slate-500 uppercase flex items-center gap-2">
+                      <Box size={12} /> Modely:
+                    </h4>
+                    {kits.filter((k) => k.projectId === p.id).length > 0 ? (
+                      kits
+                        .filter((k) => k.projectId === p.id)
+                        .map((k) => (
+                          <div
+                            key={k.id}
+                            className="text-sm text-slate-300 truncate"
+                          >
+                            • {k.subject} {k.name}
+                          </div>
+                        ))
+                    ) : (
+                      <p className="text-xs text-slate-600 italic">Prázdno.</p>
+                    )}
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="text-center text-slate-500 py-10">
+                <Folder size={48} className="mx-auto mb-2 opacity-20" />
+                <p>Prázdno (nebo skryto filtrem).</p>
               </div>
-              <p className="text-sm text-slate-400 mb-4 truncate">
-                {p.description || "Bez popisu"}
-              </p>
-              <div className="bg-slate-900/50 rounded-lg p-3 space-y-2">
-                <h4 className="text-xs font-bold text-slate-500 uppercase flex items-center gap-2">
-                  <Box size={12} /> Modely:
-                </h4>
-                {kits.filter((k) => k.projectId === p.id).length > 0 ? (
-                  kits
-                    .filter((k) => k.projectId === p.id)
-                    .map((k) => (
-                      <div
-                        key={k.id}
-                        className="text-sm text-slate-300 truncate"
-                      >
-                        • {k.subject} {k.name}
-                      </div>
-                    ))
-                ) : (
-                  <p className="text-xs text-slate-600 italic">Prázdno.</p>
-                )}
-              </div>
-            </div>
-          ))
+            )}
+          </>
         )}
       </div>
 
-      {/* MODALS */}
-      {activeKit && (
-        <KitDetailModal
-          kit={activeKit}
+      {/* MODALS - ORDER MATTERS FOR STACKING */}
+      {/* Nastavení a Projekt jsou v pozadí */}
+      {showSettings && (
+        <SettingsModal
+          user={user}
+          currentUid={activeUid}
+          onSetUid={setManualDataUid}
+          onClose={() => setShowSettings(false)}
+          kits={kits}
           projects={projects}
-          onClose={() => setActiveKit(null)}
-          onSave={(d) => handleSaveItem("kits", d, isNewKit, setKits, kits)}
-          onDelete={(id) => deleteItem("kits", id, kits, setKits)}
         />
       )}
       {activeProject && (
@@ -1798,16 +2037,29 @@ export default function App() {
           onCreateWishlistKit={(d) =>
             handleSaveItem("kits", d, true, setKits, kits)
           }
+          onAddWishlistKit={() => {
+            setIsNewKit(true);
+            setActiveKit({
+              status: "wishlist",
+              projectId: activeProject.id,
+              brand: "",
+              scale: "",
+              name: "",
+              accessories: [],
+              todo: [],
+            });
+          }}
         />
       )}
-      {showSettings && (
-        <SettingsModal
-          user={user}
-          currentUid={activeUid}
-          onSetUid={setManualDataUid}
-          onClose={() => setShowSettings(false)}
-          kits={kits}
+
+      {/* KitDetailModal je poslední, aby překryl Projekt */}
+      {activeKit && (
+        <KitDetailModal
+          kit={activeKit}
           projects={projects}
+          onClose={() => setActiveKit(null)}
+          onSave={(d) => handleSaveItem("kits", d, isNewKit, setKits, kits)}
+          onDelete={(id) => deleteItem("kits", id, kits, setKits)}
         />
       )}
     </div>
