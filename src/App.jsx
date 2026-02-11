@@ -44,6 +44,8 @@ import {
   Filter,
   XCircle,
   ClipboardCopy,
+  ShoppingBag,
+  ArrowRight,
 } from "lucide-react";
 
 // Firebase importy
@@ -77,7 +79,7 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.11.0-status-filters";
+const APP_VERSION = "v2.14.0-shopping-logic-fix";
 
 // Normalizace vstupů
 const Normalizer = {
@@ -981,12 +983,20 @@ const ProjectDetailModal = ({
 // --- KIT DETAIL MODAL ---
 const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
   const [activeTab, setActiveTab] = useState("info");
-  const [data, setData] = useState({ ...kit });
+  const [data, setData] = useState({
+    ...kit,
+    accessories: kit.accessories || [],
+  }); // Zajistíme pole
   const [newTodo, setNewTodo] = useState("");
   const [newAttachment, setNewAttachment] = useState({
     name: "",
     url: "",
     type: "manual",
+  });
+  const [newAccessory, setNewAccessory] = useState({
+    name: "",
+    status: "owned",
+    url: "",
   });
 
   const isScaleValid = (s) => !s || /^\d+\/\d+$/.test(s);
@@ -1020,6 +1030,24 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
     setData({
       ...data,
       attachments: data.attachments.filter((a) => a.id !== id),
+    });
+  };
+
+  const addAccessory = () => {
+    if (!newAccessory.name.trim()) return;
+    setData({
+      ...data,
+      accessories: [
+        ...(data.accessories || []),
+        { id: Date.now(), ...newAccessory },
+      ],
+    });
+    setNewAccessory({ name: "", status: "owned", url: "" });
+  };
+  const deleteAccessory = (id) => {
+    setData({
+      ...data,
+      accessories: data.accessories.filter((a) => a.id !== id),
     });
   };
 
@@ -1094,7 +1122,7 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
           </div>
         </div>
         <div className="flex border-b border-slate-800 bg-slate-950">
-          {["info", "build", "files"].map((tab) => (
+          {["info", "parts", "build", "files"].map((tab) => (
             <button
               key={tab}
               onClick={() =>
@@ -1104,6 +1132,7 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
               className={`flex-1 py-3 text-sm font-medium flex justify-center items-center gap-2 ${activeTab === tab ? "text-blue-400 border-b-2 border-blue-400" : tab === "build" && isBuildLocked ? "text-slate-700 cursor-not-allowed" : "text-slate-500 hover:text-slate-300"}`}
             >
               {tab === "info" && <FileText size={16} />}
+              {tab === "parts" && <Layers size={16} />}
               {tab === "build" &&
                 (isBuildLocked ? <Lock size={14} /> : <Hammer size={16} />)}
               {tab === "files" && <Paperclip size={16} />}
@@ -1112,7 +1141,9 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
                   ? "Přílohy"
                   : tab === "build"
                     ? "Stavba"
-                    : "Info"}
+                    : tab === "parts"
+                      ? "Doplňky"
+                      : "Info"}
               </span>
             </button>
           ))}
@@ -1166,6 +1197,105 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
               <p className="text-[10px] text-blue-400/50 font-bold">
                 * tyto údaje jsou povinné
               </p>
+            </div>
+          )}
+          {activeTab === "parts" && (
+            <div className="space-y-4">
+              <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
+                <h4 className="text-xs font-bold text-slate-400 uppercase mb-3 flex items-center gap-2">
+                  <Layers size={14} /> Doplňky pro tento model
+                </h4>
+                <div className="mb-3 p-2 bg-slate-900 rounded border border-slate-700">
+                  <input
+                    className="w-full bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white mb-2"
+                    placeholder="Název (např. Eduard Plechy)"
+                    value={newAccessory.name}
+                    onChange={(e) =>
+                      setNewAccessory({ ...newAccessory, name: e.target.value })
+                    }
+                  />
+                  <div className="flex gap-2">
+                    <select
+                      className="bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
+                      value={newAccessory.status}
+                      onChange={(e) =>
+                        setNewAccessory({
+                          ...newAccessory,
+                          status: e.target.value,
+                        })
+                      }
+                    >
+                      <option value="owned">Mám</option>
+                      <option value="wanted">Koupit</option>
+                    </select>
+                    <input
+                      className="flex-1 bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
+                      placeholder="URL obchodu..."
+                      value={newAccessory.url}
+                      onChange={(e) =>
+                        setNewAccessory({
+                          ...newAccessory,
+                          url: e.target.value,
+                        })
+                      }
+                    />
+                    <button
+                      onClick={addAccessory}
+                      className="bg-green-600 text-white px-3 rounded"
+                    >
+                      <Plus size={16} />
+                    </button>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  {data.accessories?.map((acc) => (
+                    <div
+                      key={acc.id}
+                      className="flex items-center justify-between bg-slate-900 p-2 rounded border border-slate-700"
+                    >
+                      <div className="flex items-center gap-2 overflow-hidden">
+                        {acc.status === "owned" ? (
+                          <Check
+                            size={14}
+                            className="text-green-400 shrink-0"
+                          />
+                        ) : (
+                          <ShoppingCart
+                            size={14}
+                            className="text-purple-400 shrink-0"
+                          />
+                        )}
+                        <div className="min-w-0">
+                          <p className="text-sm text-white truncate">
+                            {acc.name}
+                          </p>
+                          {acc.url && (
+                            <a
+                              href={acc.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="text-xs text-blue-400 flex items-center gap-1 hover:underline"
+                            >
+                              <LinkIcon size={10} /> Odkaz
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => deleteAccessory(acc.id)}
+                        className="text-slate-600 hover:text-red-400"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  ))}
+                  {(!data.accessories || data.accessories.length === 0) && (
+                    <p className="text-xs text-slate-600 italic">
+                      Žádné doplňky.
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           )}
           {activeTab === "build" && !isBuildLocked && (
@@ -1569,6 +1699,68 @@ export default function App() {
     else setActiveProject(null);
   };
 
+  // --- SHOPPING LIST LOGIC ---
+  const shoppingList = useMemo(() => {
+    // 1. Modely co chci koupit (Wishlist)
+    const wishlistKits = kits.filter((k) => k.status === "wishlist");
+
+    // 2. Doplňky co chci koupit (ze všech modelů KROMĚ HOTOVÝCH)
+    const kitAccessories = kits
+      .filter((k) => k.status !== "finished") // Exclude finished kits
+      .flatMap((k) =>
+        (k.accessories || [])
+          .filter((a) => a.status === "wanted")
+          .map((a) => ({
+            ...a,
+            parentId: k.id,
+            parentName: `${k.brand} ${k.subject || ""} ${k.name} (${k.scale})`,
+            parentType: "kit",
+          })),
+      );
+
+    // 3. Doplňky co chci koupit (ze všech projektů KROMĚ HOTOVÝCH)
+    const projectAccessories = projects
+      .filter((p) => p.status !== "finished") // Exclude finished projects
+      .flatMap((p) =>
+        (p.accessories || [])
+          .filter((a) => a.status === "wanted")
+          .map((a) => ({
+            ...a,
+            parentId: p.id,
+            parentName: p.name,
+            parentType: "project",
+          })),
+      );
+
+    return {
+      kits: wishlistKits,
+      accessories: [...kitAccessories, ...projectAccessories],
+    };
+  }, [kits, projects]);
+
+  const handleBuyAccessory = async (acc) => {
+    if (!confirm(`Označit "${acc.name}" jako koupené? Přesune se do "Mám".`))
+      return;
+
+    const collectionName = acc.parentType === "kit" ? "kits" : "projects";
+    const parentItem = (acc.parentType === "kit" ? kits : projects).find(
+      (i) => i.id === acc.parentId,
+    );
+
+    if (parentItem) {
+      const updatedAccessories = parentItem.accessories.map((a) =>
+        a.id === acc.id ? { ...a, status: "owned" } : a,
+      );
+      await handleSaveItem(
+        collectionName,
+        { ...parentItem, accessories: updatedAccessories },
+        false,
+        acc.parentType === "kit" ? setKits : setProjects,
+        acc.parentType === "kit" ? kits : projects,
+      );
+    }
+  };
+
   // --- FILTROVÁNÍ HELPERS ---
   const availableScales = useMemo(
     () => [...new Set(kits.map((k) => k.scale).filter(Boolean))].sort(),
@@ -1646,11 +1838,26 @@ export default function App() {
 
   // Copy wishlist logic
   const copyWishlistToClipboard = () => {
-    const items = groupedKits.wishlist
-      .map((k) => `- ${k.brand} ${k.scale} ${k.subject || ""} ${k.name}`)
-      .join("\n");
-    navigator.clipboard.writeText("Můj nákupní seznam:\n" + items);
-    alert("Nákupní seznam zkopírován do schránky!");
+    let text = "NÁKUPNÍ SEZNAM - MODELÁŘSKÝ DENÍK\n\n";
+
+    if (shoppingList.kits.length > 0) {
+      text += "MODELY:\n";
+      shoppingList.kits.forEach(
+        (k) =>
+          (text += `[ ] ${k.brand} ${k.scale} ${k.subject || ""} ${k.name}\n`),
+      );
+      text += "\n";
+    }
+
+    if (shoppingList.accessories.length > 0) {
+      text += "DOPLŇKY:\n";
+      shoppingList.accessories.forEach(
+        (a) => (text += `[ ] ${a.name} (pro: ${a.parentName})\n`),
+      );
+    }
+
+    navigator.clipboard.writeText(text);
+    alert("Kompletní nákupní seznam zkopírován do schránky!");
   };
 
   if (loading)
@@ -1662,7 +1869,7 @@ export default function App() {
     );
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-20">
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-20 overflow-y-scroll">
       {/* HEADER */}
       <div className="bg-slate-800 border-b border-slate-700 sticky top-0 z-10 shadow-md">
         <div className="max-w-md mx-auto px-4 py-4">
@@ -1699,9 +1906,13 @@ export default function App() {
                       todo: [],
                       accessories: [],
                     });
-                  } else {
+                  } else if (view === "projects") {
                     setIsNewProject(true);
                     setActiveProject({ status: "active", accessories: [] });
+                  } else {
+                    alert(
+                      "Pro přidání položky přepněte na Sklad nebo Projekty.",
+                    );
                   }
                 }}
                 className="bg-blue-600 p-2 rounded-full shadow text-white hover:bg-blue-500"
@@ -1723,6 +1934,12 @@ export default function App() {
             >
               <Folder size={16} /> Projekty
             </button>
+            <button
+              onClick={() => setView("shopping")}
+              className={`flex-1 py-2 text-sm font-bold rounded flex gap-2 justify-center ${view === "shopping" ? "bg-slate-700 text-orange-400" : "text-slate-500"}`}
+            >
+              <ShoppingCart size={16} /> Nákup
+            </button>
           </div>
 
           <div className="flex gap-2 mb-3">
@@ -1734,22 +1951,32 @@ export default function App() {
               <input
                 className="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-9 pr-4 text-sm outline-none focus:border-blue-500"
                 placeholder={
-                  view === "kits" ? "Hledat model..." : "Hledat projekt..."
+                  view === "kits"
+                    ? "Hledat model..."
+                    : view === "projects"
+                      ? "Hledat projekt..."
+                      : "Hledat v nákupu..."
                 }
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             <button
-              onClick={() => setShowFilter(!showFilter)}
-              className={`p-2 rounded-lg border flex items-center justify-center ${showFilter || hasActiveFilters ? "bg-blue-600 border-blue-500 text-white" : "bg-slate-800 border-slate-700 text-slate-400"}`}
+              onClick={() => view !== "shopping" && setShowFilter(!showFilter)}
+              className={`p-2 rounded-lg border flex items-center justify-center transition-opacity ${
+                view === "shopping"
+                  ? "opacity-0 pointer-events-none border-transparent bg-transparent"
+                  : showFilter || hasActiveFilters
+                    ? "bg-blue-600 border-blue-500 text-white"
+                    : "bg-slate-800 border-slate-700 text-slate-400"
+              }`}
             >
               <Filter size={20} />
             </button>
           </div>
 
           {/* FILTER PANEL */}
-          {showFilter && (
+          {showFilter && view !== "shopping" && (
             <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 mb-3 animate-in slide-in-from-top-2">
               <div className="flex justify-between items-center mb-2">
                 <h4 className="text-xs font-bold text-slate-500 uppercase">
@@ -1881,7 +2108,7 @@ export default function App() {
 
       {/* CONTENT */}
       <div className="max-w-md mx-auto px-4 py-4 space-y-6">
-        {view === "kits" ? (
+        {view === "kits" && (
           <>
             {Object.entries(groupedKits).map(
               ([key, list]) =>
@@ -1913,14 +2140,6 @@ export default function App() {
                                 : "Nákupní seznam"}{" "}
                         ({list.length})
                       </h2>
-                      {key === "wishlist" && (
-                        <button
-                          onClick={copyWishlistToClipboard}
-                          className="text-slate-500 hover:text-white flex items-center gap-1 text-[10px] bg-slate-800 px-2 py-1 rounded border border-slate-700"
-                        >
-                          <ClipboardCopy size={10} /> Kopírovat seznam
-                        </button>
-                      )}
                     </div>
                     {list.map((k) => (
                       <KitCard
@@ -1945,7 +2164,9 @@ export default function App() {
               </div>
             )}
           </>
-        ) : (
+        )}
+
+        {view === "projects" && (
           <>
             {filteredProjects.length > 0 ? (
               filteredProjects.map((p) => (
@@ -1998,6 +2219,101 @@ export default function App() {
               </div>
             )}
           </>
+        )}
+
+        {view === "shopping" && (
+          <div className="space-y-6">
+            <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 text-center">
+              <h2 className="text-lg font-bold text-white mb-2 flex items-center justify-center gap-2">
+                <ShoppingCart size={24} className="text-orange-400" /> Nákupní
+                seznam
+              </h2>
+              <p className="text-xs text-slate-400 mb-4">
+                Agregovaný seznam všeho, co máte označené jako "Chci koupit"
+                (modely) nebo "Koupit" (doplňky) - kromě hotových projektů.
+              </p>
+              <button
+                onClick={copyWishlistToClipboard}
+                className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 mx-auto"
+              >
+                <ClipboardCopy size={16} /> Kopírovat text
+              </button>
+            </div>
+
+            {shoppingList.kits.length === 0 &&
+              shoppingList.accessories.length === 0 && (
+                <div className="text-center text-slate-500 py-10">
+                  <ShoppingBag size={48} className="mx-auto mb-2 opacity-20" />
+                  <p>Váš nákupní seznam je prázdný.</p>
+                </div>
+              )}
+
+            {shoppingList.kits.length > 0 && (
+              <div>
+                <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <Box size={14} /> Chybějící Modely
+                </h3>
+                {shoppingList.kits.map((k) => (
+                  <KitCard
+                    key={k.id}
+                    kit={k}
+                    onClick={() => {
+                      setIsNewKit(false);
+                      setActiveKit(k);
+                    }}
+                    projectName={
+                      projects.find((p) => p.id === k.projectId)?.name
+                    }
+                  />
+                ))}
+              </div>
+            )}
+
+            {shoppingList.accessories.length > 0 && (
+              <div>
+                <h3 className="text-xs font-bold text-orange-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                  <Layers size={14} /> Chybějící Doplňky
+                </h3>
+                <div className="space-y-2">
+                  {shoppingList.accessories.map((acc, index) => (
+                    <div
+                      key={`${acc.id}-${index}`}
+                      className="bg-slate-800 p-3 rounded-lg border border-slate-700 flex justify-between items-center group"
+                    >
+                      <div className="min-w-0 flex-1 pr-2">
+                        <p className="text-sm font-bold text-white truncate">
+                          {acc.name}
+                        </p>
+                        <p className="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                          <ArrowRight size={10} /> pro:{" "}
+                          <span className="text-blue-400 font-medium truncate">
+                            {acc.parentName}
+                          </span>
+                        </p>
+                        {acc.url && (
+                          <a
+                            href={acc.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[10px] text-slate-400 hover:text-blue-300 flex items-center gap-1 mt-1"
+                          >
+                            <LinkIcon size={10} /> Odkaz do obchodu
+                          </a>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => handleBuyAccessory(acc)}
+                        className="bg-green-600/20 hover:bg-green-600/40 text-green-400 p-2 rounded-lg border border-green-500/30 transition-colors"
+                        title="Označit jako koupené"
+                      >
+                        <ShoppingBag size={18} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         )}
       </div>
 
