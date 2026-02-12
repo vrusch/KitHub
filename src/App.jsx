@@ -58,6 +58,8 @@ import {
   AlertCircle,
   Wand2,
   Info,
+  CheckCircle2,
+  Ban,
 } from "lucide-react";
 
 // Firebase importy
@@ -92,11 +94,9 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.17.2-big-catalog";
+const APP_VERSION = "v2.18.1-fixes";
 
 // --- MASTER CATALOG (Zadrátovaná data) ---
-// Toto se při buildu stane součástí aplikace.
-// Není to externí databáze, ale "statický slovník".
 const MASTER_CATALOG = {
   // --- TAMIYA XF (Flat - Akryl) ---
   TAMIYA_XF1: {
@@ -651,6 +651,53 @@ try {
 // 🧩 SUB-KOMPONENTY (UI Elements)
 // ==========================================
 
+// --- CONFIRM MODAL (Náhrada za systémový confirm) ---
+const ConfirmModal = ({
+  isOpen,
+  title,
+  message,
+  onConfirm,
+  onCancel,
+  confirmText = "Ano",
+  cancelText = "Ne",
+  isDestructive = false,
+}) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+      <div className="bg-slate-900 border border-slate-700 rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95">
+        <div className="p-4 text-center">
+          <div
+            className={`mx-auto w-12 h-12 rounded-full flex items-center justify-center mb-3 ${isDestructive ? "bg-red-500/20 text-red-500" : "bg-blue-500/20 text-blue-500"}`}
+          >
+            {isDestructive ? (
+              <AlertTriangle size={24} />
+            ) : (
+              <HelpCircle size={24} />
+            )}
+          </div>
+          <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+          <p className="text-sm text-slate-400">{message}</p>
+        </div>
+        <div className="flex border-t border-slate-800">
+          <button
+            onClick={onCancel}
+            className="flex-1 py-3 text-sm font-bold text-slate-400 hover:bg-slate-800 transition-colors"
+          >
+            {cancelText}
+          </button>
+          <button
+            onClick={onConfirm}
+            className={`flex-1 py-3 text-sm font-bold border-l border-slate-800 transition-colors ${isDestructive ? "text-red-500 hover:bg-red-500/10" : "text-blue-500 hover:bg-blue-500/10"}`}
+          >
+            {confirmText}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- INPUT S PLOVOUCÍM LABELEM ---
 const FloatingInput = ({
   label,
@@ -749,7 +796,7 @@ const FilterChip = ({ label, active, onClick }) => (
 );
 
 // --- KARTA MODELU ---
-const KitCard = React.memo(({ kit, onClick, projectName }) => {
+const KitCard = React.memo(({ kit, onClick, projectName, onBuy }) => {
   const getStatusStyle = (s) => {
     switch (s) {
       case "new":
@@ -783,7 +830,7 @@ const KitCard = React.memo(({ kit, onClick, projectName }) => {
 
   return (
     <div
-      onClick={() => onClick(kit)}
+      onClick={() => onClick && onClick(kit)}
       className={`bg-slate-800 rounded-lg p-3 mb-2 shadow-sm hover:bg-slate-750 cursor-pointer transition-all border border-slate-700 border-l-4 ${statusStyle.border} relative group`}
     >
       <div className="flex justify-between items-start">
@@ -825,29 +872,43 @@ const KitCard = React.memo(({ kit, onClick, projectName }) => {
         </div>
 
         <div className="ml-2 flex flex-col items-end shrink-0 gap-1">
-          {kit.status === "wip" ? (
-            <div className="flex flex-col items-end">
-              <span className="text-xs font-mono text-orange-400">
-                {kit.progress}%
-              </span>
-              <div className="w-12 h-1 bg-slate-700 rounded-full mt-1">
-                <div
-                  className="h-full bg-orange-500 rounded-full"
-                  style={{ width: `${kit.progress}%` }}
-                ></div>
-              </div>
-            </div>
-          ) : (
-            statusStyle.icon
-          )}
-
-          {(kit.scalematesUrl ||
-            (kit.attachments && kit.attachments.length > 0)) && (
-            <div
-              className={`text-slate-600 ${kit.status === "wip" ? "mt-1" : ""}`}
+          {onBuy ? (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onBuy(kit);
+              }}
+              className="bg-green-600 hover:bg-green-500 text-white p-2 rounded-lg shadow-lg flex items-center justify-center transition-all active:scale-95"
             >
-              <Paperclip size={14} />
-            </div>
+              <ShoppingBag size={20} />
+            </button>
+          ) : (
+            <>
+              {kit.status === "wip" ? (
+                <div className="flex flex-col items-end">
+                  <span className="text-xs font-mono text-orange-400">
+                    {kit.progress}%
+                  </span>
+                  <div className="w-12 h-1 bg-slate-700 rounded-full mt-1">
+                    <div
+                      className="h-full bg-orange-500 rounded-full"
+                      style={{ width: `${kit.progress}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ) : (
+                statusStyle.icon
+              )}
+
+              {(kit.scalematesUrl ||
+                (kit.attachments && kit.attachments.length > 0)) && (
+                <div
+                  className={`text-slate-600 ${kit.status === "wip" ? "mt-1" : ""}`}
+                >
+                  <Paperclip size={14} />
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -856,7 +917,7 @@ const KitCard = React.memo(({ kit, onClick, projectName }) => {
 });
 
 // --- KARTA BARVY ---
-const PaintCard = React.memo(({ paint, onClick }) => {
+const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
   // Sjednocení stylu levého okraje s KitCard
   const getStatusStyle = (s) => {
     switch (s) {
@@ -875,7 +936,7 @@ const PaintCard = React.memo(({ paint, onClick }) => {
 
   return (
     <div
-      onClick={() => onClick(paint)}
+      onClick={() => onClick && onClick(paint)}
       className={`bg-slate-800 rounded-lg p-3 mb-2 shadow-sm hover:bg-slate-750 cursor-pointer transition-all border border-slate-700 border-l-4 ${getStatusStyle(paint.status)} flex items-center justify-between group`}
     >
       <div className="flex items-center gap-3 overflow-hidden">
@@ -897,34 +958,61 @@ const PaintCard = React.memo(({ paint, onClick }) => {
         </div>
       </div>
 
-      <div className="flex flex-col items-end gap-1 ml-2">
-        <span
-          className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${
-            paint.status === "in_stock"
-              ? "bg-green-500/10 text-green-500"
-              : paint.status === "low"
-                ? "bg-orange-500/10 text-orange-500"
-                : paint.status === "wanted"
-                  ? "bg-purple-500/10 text-purple-500"
-                  : "bg-red-500/10 text-red-500"
-          }`}
-        >
-          {paint.status === "in_stock"
-            ? "Skladem"
-            : paint.status === "low"
-              ? "Dochází"
-              : paint.status === "wanted"
-                ? "Koupit"
-                : "Prázdné"}
-        </span>
-        <span className="text-[10px] text-slate-600">{paint.type}</span>
+      <div className="flex items-center gap-2 ml-2">
+        {onBuy ? (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onBuy(paint);
+            }}
+            className="bg-green-600 hover:bg-green-500 text-white p-2 rounded-lg shadow-lg flex items-center justify-center transition-all active:scale-95"
+          >
+            <ShoppingBag size={20} />
+          </button>
+        ) : (
+          <>
+            <div className="flex flex-col items-end gap-1">
+              <span
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${
+                  paint.status === "in_stock"
+                    ? "bg-green-500/10 text-green-500"
+                    : paint.status === "low"
+                      ? "bg-orange-500/10 text-orange-500"
+                      : paint.status === "wanted"
+                        ? "bg-purple-500/10 text-purple-500"
+                        : "bg-red-500/10 text-red-500"
+                }`}
+              >
+                {paint.status === "in_stock"
+                  ? "Skladem"
+                  : paint.status === "low"
+                    ? "Dochází"
+                    : paint.status === "wanted"
+                      ? "Koupit"
+                      : "Prázdné"}
+              </span>
+              <span className="text-[10px] text-slate-600">{paint.type}</span>
+            </div>
+            {onDelete && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onDelete(paint.id);
+                }}
+                className="text-slate-600 hover:text-red-500 p-2 rounded-full hover:bg-red-500/10 transition-colors ml-1"
+              >
+                <Trash2 size={16} />
+              </button>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
 });
 
 // --- SETTINGS MODAL ---
-const SettingsModal = ({ user, onClose, kits, projects, paints }) => {
+const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
   const [copied, setCopied] = useState(false);
   const [importing, setImporting] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
@@ -951,88 +1039,12 @@ const SettingsModal = ({ user, onClose, kits, projects, paints }) => {
     URL.revokeObjectURL(url);
   };
 
-  const handleImport = async (e) => {
+  const handleImportClick = (e) => {
     const file = e.target.files[0];
-    if (
-      !file ||
-      !confirm("Pozor! Import přepíše data se stejným ID. Chcete pokračovat?")
-    )
-      return;
-
-    try {
-      setImporting(true);
-      const text = await file.text();
-      const data = JSON.parse(text);
-      if (!data.kits && !data.projects && !data.paints)
-        throw new Error("Neplatná struktura dat.");
-
-      const batch = db ? writeBatch(db) : null;
-      let count = 0;
-
-      if (!user || !db) {
-        alert("Pro import dat musíte být online a přihlášeni.");
-        setImporting(false);
-        return;
-      }
-
-      data.kits?.forEach((kit) => {
-        if (kit.id) {
-          batch.set(
-            doc(
-              db,
-              "artifacts",
-              "model-diary",
-              "users",
-              user.uid,
-              "kits",
-              kit.id.toString(),
-            ),
-            kit,
-          );
-          count++;
-        }
-      });
-      data.projects?.forEach((proj) => {
-        if (proj.id) {
-          batch.set(
-            doc(
-              db,
-              "artifacts",
-              "model-diary",
-              "users",
-              user.uid,
-              "projects",
-              proj.id.toString(),
-            ),
-            proj,
-          );
-          count++;
-        }
-      });
-      // Paints - use manual ID if available, else standard
-      data.paints?.forEach((paint) => {
-        const id =
-          paint.id ||
-          Normalizer.generateId(paint.brand, paint.code) ||
-          Date.now().toString();
-        batch.set(
-          doc(db, "artifacts", "model-diary", "users", user.uid, "paints", id),
-          { ...paint, id },
-        );
-        count++;
-      });
-
-      if (count > 0) {
-        await batch.commit();
-        alert(`Obnoveno ${count} položek.`);
-        onClose();
-      } else alert("Žádná data k importu.");
-    } catch (err) {
-      alert("Chyba importu: " + err.message);
-    } finally {
-      setImporting(false);
-      e.target.value = "";
-    }
+    if (!file) return;
+    // Předáme soubor do rodičovské komponenty k zpracování přes ConfirmModal
+    onImport(file);
+    e.target.value = "";
   };
 
   const copyToClipboard = () => {
@@ -1067,7 +1079,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints }) => {
       setAuthLoading(true);
       await signInAnonymously(auth);
     } catch (e) {
-      alert("Chyba přihlášení: " + e.message);
+      console.error(e);
     } finally {
       setAuthLoading(false);
     }
@@ -1080,7 +1092,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints }) => {
       await signOut(auth);
       onClose();
     } catch (error) {
-      alert("Chyba při odhlašování: " + error.message);
+      console.error(error);
     } finally {
       setAuthLoading(false);
     }
@@ -1256,7 +1268,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints }) => {
                 <input
                   type="file"
                   accept=".json"
-                  onChange={handleImport}
+                  onChange={handleImportClick}
                   className="hidden"
                   disabled={importing}
                 />
@@ -1407,11 +1419,9 @@ const ProjectDetailModal = ({
                           {k.scale}
                         </span>
                       </div>
+                      {/* Zde nepotřebujeme potvrzení přes modal, protože je to jen odlinkování, ne destruktivní operace dat */}
                       <button
-                        onClick={() =>
-                          confirm("Odebrat model z projektu?") &&
-                          onUpdateKitLink(k.id, null)
-                        }
+                        onClick={() => onUpdateKitLink(k.id, null)}
                         className="text-slate-600 hover:text-red-400 p-1"
                       >
                         <Unlink size={16} />
@@ -2133,7 +2143,7 @@ const KitDetailModal = ({ kit, onClose, onSave, projects }) => {
 };
 
 // --- PAINT DETAIL MODAL ---
-const PaintDetailModal = ({ paint, onClose, onSave }) => {
+const PaintDetailModal = ({ paint, onClose, onSave, existingPaints }) => {
   const [data, setData] = useState({
     brand: "",
     code: "",
@@ -2152,6 +2162,31 @@ const PaintDetailModal = ({ paint, onClose, onSave }) => {
   // Našeptávač state
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [duplicateError, setDuplicateError] = useState(null);
+
+  // Detekce duplicit - NYNÍ JAKO ERROR, NE WARNING
+  useEffect(() => {
+    if (data.brand && data.code && existingPaints) {
+      const cleanBrand = data.brand.toLowerCase();
+      const cleanCode = data.code.toLowerCase().replace(/[\s\-\.]/g, "");
+
+      // Hledáme shodu, ale ignorujeme právě editovanou barvu (pokud existuje)
+      const duplicate = existingPaints.find(
+        (p) =>
+          p.id !== paint.id &&
+          p.brand.toLowerCase() === cleanBrand &&
+          p.code.toLowerCase().replace(/[\s\-\.]/g, "") === cleanCode,
+      );
+
+      if (duplicate) {
+        setDuplicateError(
+          `Tuto barvu už máte ve skladu (${duplicate.status === "in_stock" ? "Skladem" : duplicate.status}).`,
+        );
+      } else {
+        setDuplicateError(null);
+      }
+    }
+  }, [data.brand, data.code, existingPaints, paint.id]);
 
   // Efekt pro Našeptávač
   useEffect(() => {
@@ -2189,7 +2224,7 @@ const PaintDetailModal = ({ paint, onClose, onSave }) => {
     setShowSuggestions(false);
   };
 
-  const isFormValid = data.brand && data.code && data.name;
+  const isFormValid = data.brand && data.code && data.name && !duplicateError;
 
   // Funkce pro dynamický přepočet poměru
   const handleRatioChange = (type, value) => {
@@ -2219,6 +2254,14 @@ const PaintDetailModal = ({ paint, onClose, onSave }) => {
         </div>
 
         <div className="p-4 space-y-4 flex-1 overflow-y-auto bg-slate-900 relative">
+          {/* ERROR O DUPLICITĚ - ZMĚNA NA ČERVENOU A BLOKACI */}
+          {duplicateError && (
+            <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-3 py-2 rounded-lg text-xs flex items-center gap-2 animate-pulse font-bold">
+              <Ban size={16} className="shrink-0 text-red-500" />
+              Nelze uložit duplikát: {duplicateError}
+            </div>
+          )}
+
           <div className="flex gap-3">
             <div className="flex-1 relative">
               <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 text-blue-400">
@@ -2449,6 +2492,15 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Custom Confirmation Modal State
+  const [confirmModal, setConfirmModal] = useState({
+    isOpen: false,
+    title: "",
+    message: "",
+    onConfirm: null,
+    isDestructive: false,
+  });
+
   // Filtry
   const [showFilter, setShowFilter] = useState(false);
   const [activeFilters, setActiveFilters] = useState({
@@ -2557,6 +2609,20 @@ export default function App() {
     };
   }, [user, activeUid]);
 
+  // --- CONFIRMATION HELPER ---
+  const requestConfirm = (title, message, onConfirm, isDestructive = false) => {
+    setConfirmModal({
+      isOpen: true,
+      title,
+      message,
+      onConfirm: () => {
+        onConfirm();
+        setConfirmModal((prev) => ({ ...prev, isOpen: false }));
+      },
+      isDestructive,
+    });
+  };
+
   // --- SAVE LOGIC ---
   const handleSaveItem = async (
     collectionName,
@@ -2628,23 +2694,120 @@ export default function App() {
   };
 
   const deleteItem = async (collectionName, id, list, setList) => {
-    if (!confirm("Opravdu smazat?")) return;
-    if (!db || !user) setList(list.filter((i) => i.id !== id));
-    else if (user && activeUid)
-      await deleteDoc(
-        doc(
-          db,
-          "artifacts",
-          "model-diary",
-          "users",
-          activeUid,
-          collectionName,
-          id,
-        ),
-      );
-    if (collectionName === "kits") setActiveKit(null);
-    else if (collectionName === "projects") setActiveProject(null);
-    else setActivePaint(null);
+    // Používáme custom modal, volání funkce až po potvrzení
+    const performDelete = async () => {
+      if (!db || !user) setList(list.filter((i) => i.id !== id));
+      else if (user && activeUid)
+        await deleteDoc(
+          doc(
+            db,
+            "artifacts",
+            "model-diary",
+            "users",
+            activeUid,
+            collectionName,
+            id,
+          ),
+        );
+      if (collectionName === "kits") setActiveKit(null);
+      else if (collectionName === "projects") setActiveProject(null);
+      else setActivePaint(null);
+    };
+
+    requestConfirm(
+      "Opravdu smazat?",
+      "Tato akce je nevratná. Položka bude trvale odstraněna.",
+      performDelete,
+      true,
+    );
+  };
+
+  // --- IMPORT LOGIC S MODALEM ---
+  const handleImportRequest = (file) => {
+    requestConfirm(
+      "Import dat",
+      "Pozor! Import přepíše všechna data se stejným ID. Opravdu chcete pokračovat?",
+      async () => {
+        // Zde zopakujeme logiku importu, ale bez confirm dialogu
+        try {
+          const text = await file.text();
+          const data = JSON.parse(text);
+          if (!data.kits && !data.projects && !data.paints)
+            throw new Error("Neplatná struktura dat.");
+
+          const batch = db ? writeBatch(db) : null;
+          let count = 0;
+
+          if (!user || !db) {
+            alert("Pro import dat musíte být online a přihlášeni.");
+            return;
+          }
+
+          data.kits?.forEach((kit) => {
+            if (kit.id) {
+              batch.set(
+                doc(
+                  db,
+                  "artifacts",
+                  "model-diary",
+                  "users",
+                  user.uid,
+                  "kits",
+                  kit.id.toString(),
+                ),
+                kit,
+              );
+              count++;
+            }
+          });
+          data.projects?.forEach((proj) => {
+            if (proj.id) {
+              batch.set(
+                doc(
+                  db,
+                  "artifacts",
+                  "model-diary",
+                  "users",
+                  user.uid,
+                  "projects",
+                  proj.id.toString(),
+                ),
+                proj,
+              );
+              count++;
+            }
+          });
+          data.paints?.forEach((paint) => {
+            const id =
+              paint.id ||
+              Normalizer.generateId(paint.brand, paint.code) ||
+              Date.now().toString();
+            batch.set(
+              doc(
+                db,
+                "artifacts",
+                "model-diary",
+                "users",
+                user.uid,
+                "paints",
+                id,
+              ),
+              { ...paint, id },
+            );
+            count++;
+          });
+
+          if (count > 0) {
+            await batch.commit();
+            alert(`Obnoveno ${count} položek.`);
+            setShowSettings(false);
+          } else alert("Žádná data k importu.");
+        } catch (err) {
+          alert("Chyba importu: " + err.message);
+        }
+      },
+      true,
+    );
   };
 
   // --- SHOPPING LIST LOGIC ---
@@ -2689,24 +2852,56 @@ export default function App() {
     };
   }, [kits, projects, paints]);
 
-  const handleBuyAccessory = async (acc) => {
-    if (!confirm(`Označit "${acc.name}" jako koupené?`)) return;
-    const collectionName = acc.parentType === "kit" ? "kits" : "projects";
-    const parentItem = (acc.parentType === "kit" ? kits : projects).find(
-      (i) => i.id === acc.parentId,
+  // --- NEW: Mark as Bought Functions with Custom Confirm ---
+  const handleMarkAsBought = (item, type) => {
+    requestConfirm(
+      "Označit jako koupené?",
+      `Položka "${item.name || item.brand}" se přesune do skladu.`,
+      async () => {
+        if (type === "kit") {
+          await handleSaveItem(
+            "kits",
+            { ...item, status: "new" },
+            false,
+            setKits,
+            kits,
+          );
+        } else if (type === "paint") {
+          await handleSaveItem(
+            "paints",
+            { ...item, status: "in_stock" },
+            false,
+            setPaints,
+            paints,
+          );
+        }
+      },
     );
-    if (parentItem) {
-      const updatedAccessories = parentItem.accessories.map((a) =>
-        a.id === acc.id ? { ...a, status: "owned" } : a,
-      );
-      await handleSaveItem(
-        collectionName,
-        { ...parentItem, accessories: updatedAccessories },
-        false,
-        acc.parentType === "kit" ? setKits : setProjects,
-        acc.parentType === "kit" ? kits : projects,
-      );
-    }
+  };
+
+  const handleBuyAccessory = (acc) => {
+    requestConfirm(
+      "Koupeno?",
+      `Označit doplněk "${acc.name}" jako koupený?`,
+      async () => {
+        const collectionName = acc.parentType === "kit" ? "kits" : "projects";
+        const parentItem = (acc.parentType === "kit" ? kits : projects).find(
+          (i) => i.id === acc.parentId,
+        );
+        if (parentItem) {
+          const updatedAccessories = parentItem.accessories.map((a) =>
+            a.id === acc.id ? { ...a, status: "owned" } : a,
+          );
+          await handleSaveItem(
+            collectionName,
+            { ...parentItem, accessories: updatedAccessories },
+            false,
+            acc.parentType === "kit" ? setKits : setProjects,
+            acc.parentType === "kit" ? kits : projects,
+          );
+        }
+      },
+    );
   };
 
   // --- FILTERING ---
@@ -2801,34 +2996,6 @@ export default function App() {
     }),
     [filteredKits],
   );
-
-  const copyWishlistToClipboard = () => {
-    let text = "NÁKUPNÍ SEZNAM - MODELÁŘSKÝ DENÍK\n\n";
-    if (shoppingList.kits.length > 0) {
-      text += "MODELY:\n";
-      shoppingList.kits.forEach(
-        (k) =>
-          (text += `[ ] ${k.brand} ${k.scale} ${k.subject || ""} ${k.name}\n`),
-      );
-      text += "\n";
-    }
-    if (shoppingList.paints.length > 0) {
-      text += "BARVY:\n";
-      shoppingList.paints.forEach(
-        (p) =>
-          (text += `[ ] ${p.brand} ${p.code} ${p.name} (${p.status === "low" ? "Dochází" : "Chci"})\n`),
-      );
-      text += "\n";
-    }
-    if (shoppingList.accessories.length > 0) {
-      text += "DOPLŇKY:\n";
-      shoppingList.accessories.forEach(
-        (a) => (text += `[ ] ${a.name} (pro: ${a.parentName})\n`),
-      );
-    }
-    navigator.clipboard.writeText(text);
-    alert("Zkopírováno!");
-  };
 
   if (loading)
     return (
@@ -3227,6 +3394,7 @@ export default function App() {
                     setIsNewPaint(false);
                     setActivePaint(paint);
                   }}
+                  onDelete={(id) => deleteItem("paints", id, paints, setPaints)}
                 />
               ))
             ) : (
@@ -3246,15 +3414,10 @@ export default function App() {
                 seznam
               </h2>
               <p className="text-xs text-slate-400 mb-4">
-                Agregovaný seznam všeho, co máte označené jako "Chci koupit"
-                (modely, barvy, doplňky).
+                Interaktivní seznam. Kliknutím na tašku{" "}
+                <ShoppingBag size={12} className="inline" /> přesunete položku
+                do skladu (koupeno).
               </p>
-              <button
-                onClick={copyWishlistToClipboard}
-                className="bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 mx-auto"
-              >
-                <ClipboardCopy size={16} /> Kopírovat text
-              </button>
             </div>
 
             {shoppingList.kits.length === 0 &&
@@ -3282,6 +3445,7 @@ export default function App() {
                     projectName={
                       projects.find((p) => p.id === k.projectId)?.name
                     }
+                    onBuy={(item) => handleMarkAsBought(item, "kit")}
                   />
                 ))}
               </div>
@@ -3301,6 +3465,7 @@ export default function App() {
                         setIsNewPaint(false);
                         setActivePaint(p);
                       }}
+                      onBuy={(item) => handleMarkAsBought(item, "paint")}
                     />
                   ))}
                 </div>
@@ -3331,10 +3496,10 @@ export default function App() {
                       </div>
                       <button
                         onClick={() => handleBuyAccessory(acc)}
-                        className="bg-green-600/20 hover:bg-green-600/40 text-green-400 p-2 rounded-lg border border-green-500/30 transition-colors"
+                        className="bg-green-600 hover:bg-green-500 text-white p-2 rounded-lg shadow-lg flex items-center justify-center transition-all active:scale-95"
                         title="Označit jako koupené"
                       >
-                        <ShoppingBag size={18} />
+                        <ShoppingBag size={20} />
                       </button>
                     </div>
                   ))}
@@ -3345,6 +3510,16 @@ export default function App() {
         )}
       </div>
 
+      {/* CONFIRMATION MODAL */}
+      <ConfirmModal
+        isOpen={confirmModal.isOpen}
+        title={confirmModal.title}
+        message={confirmModal.message}
+        onConfirm={confirmModal.onConfirm}
+        onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
+        isDestructive={confirmModal.isDestructive}
+      />
+
       {/* MODALS - ORDER MATTERS FOR STACKING */}
       {showSettings && (
         <SettingsModal
@@ -3353,6 +3528,7 @@ export default function App() {
           kits={kits}
           projects={projects}
           paints={paints}
+          onImport={handleImportRequest}
         />
       )}
       {activeProject && (
@@ -3405,6 +3581,7 @@ export default function App() {
       {activePaint && (
         <PaintDetailModal
           paint={activePaint}
+          existingPaints={paints}
           onClose={() => setActivePaint(null)}
           onSave={(d) =>
             handleSaveItem("paints", d, isNewPaint, setPaints, paints)
