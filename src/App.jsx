@@ -83,7 +83,7 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.15.0-dashboard";
+const APP_VERSION = "v2.15.1-auth-fix";
 
 // Normalizace vstupů
 const Normalizer = {
@@ -1596,33 +1596,43 @@ export default function App() {
       return;
     }
 
+    // 1. Sledování stavu (Listener) - musíme ho nastavit hned
+    const unsubAuth = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      if (!currentUser) {
+        // Při odhlášení vyčistit data, ale NE při inicializaci (to řeší initAuth)
+        setKits([]);
+        setProjects([]);
+      }
+      // Pokud uživatele máme, vypneme loading. Pokud ne, čekáme na initAuth.
+      if (currentUser) setLoading(false);
+    });
+
+    // 2. Inicializace přihlášení
     const initAuth = async () => {
       try {
-        if (
-          typeof __initial_auth_token !== "undefined" &&
-          __initial_auth_token
-        ) {
-          await signInWithCustomToken(auth, __initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
+        // Počkáme, až Firebase zjistí, jestli už uživatel není přihlášený (z minula)
+        await auth.authStateReady();
+
+        // Pokud uživatel NENÍ přihlášený (currentUser je null), provedeme přihlášení
+        if (!auth.currentUser) {
+          if (
+            typeof __initial_auth_token !== "undefined" &&
+            __initial_auth_token
+          ) {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } else {
+            await signInAnonymously(auth);
+          }
         }
       } catch (e) {
         console.error("Auth Error:", e);
+      } finally {
         setLoading(false);
       }
     };
-    initAuth();
 
-    // 1. Sledování přihlášení
-    const unsubAuth = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      // Pokud se odhlásil, vyčistíme data
-      if (!currentUser) {
-        setKits([]);
-        setProjects([]);
-        setLoading(false);
-      }
-    });
+    initAuth();
 
     return () => unsubAuth();
   }, []);
