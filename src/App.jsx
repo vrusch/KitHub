@@ -97,7 +97,7 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.26.0-mix-feature";
+const APP_VERSION = "v2.26.1-mix-fix";
 
 // --- BEZPEČNÉ VYKRESLOVÁNÍ ---
 const safeRender = (value) => {
@@ -814,7 +814,7 @@ const KitCard = React.memo(
       }
     };
     const st = getStatusStyle(kit.status);
-    const missingPaints = useMemo(() => {
+    const missingPaintsCount = useMemo(() => {
       if (!kit.paints || !allPaints) return 0;
       return kit.paints.filter((p) => {
         const paintInStock = allPaints.find((ap) => ap.id === p.id);
@@ -866,12 +866,12 @@ const KitCard = React.memo(
                       e.stopPropagation();
                       if (onOpenPaints) onOpenPaints(kit);
                     }}
-                    className={`flex items-center gap-1.5 text-xs font-bold rounded px-1.5 py-0.5 border cursor-pointer hover:opacity-80 transition-opacity ${missingPaints > 0 ? "bg-red-500/10 text-red-400 border-red-500/20" : "bg-green-500/10 text-green-400 border-green-500/20"}`}
+                    className={`flex items-center gap-1.5 text-xs font-bold rounded px-1.5 py-0.5 border cursor-pointer hover:opacity-80 transition-opacity ${missingPaintsCount > 0 ? "bg-red-500/10 text-red-400 border-red-500/20" : "bg-green-500/10 text-green-400 border-green-500/20"}`}
                   >
-                    {missingPaints > 0 ? (
+                    {missingPaintsCount > 0 ? (
                       <>
                         <Droplets size={12} className="fill-current" />
-                        <span>-{missingPaints}</span>
+                        <span>-{missingPaintsCount}</span>
                       </>
                     ) : (
                       <>
@@ -1047,7 +1047,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `model-diary-backup-${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -1058,6 +1058,13 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
     if (!file) return;
     onImport(file);
     e.target.value = "";
+  };
+  const copyToClipboard = () => {
+    if (user?.uid) {
+      navigator.clipboard.writeText(user.uid);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
   const handleAuth = async (type) => {
     if (!auth) return;
@@ -1460,7 +1467,7 @@ const ProjectDetailModal = ({
                 <h4 className="text-xs font-bold text-slate-400 uppercase mb-3 flex items-center gap-2">
                   <Layers size={14} /> Doplňky projektu
                 </h4>
-                <div className="mb-3 p-2 bg-slate-800 rounded border border-slate-700">
+                <div className="mb-3 p-2 bg-slate-900 rounded border border-slate-700">
                   <input
                     className="w-full bg-slate-900 border border-slate-600 rounded p-1.5 text-xs text-white mb-2"
                     placeholder="Název"
