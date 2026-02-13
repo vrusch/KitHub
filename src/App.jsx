@@ -98,7 +98,33 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.21.1-fab-fix";
+const APP_VERSION = "v2.21.2-google-groups";
+
+// --- GOOGLE ICON COMPONENT ---
+const GoogleIcon = ({ className }) => (
+  <svg
+    className={className}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="#4285F4"
+      d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+    />
+    <path
+      fill="#34A853"
+      d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+    />
+    <path
+      fill="#FBBC05"
+      d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+    />
+    <path
+      fill="#EA4335"
+      d="M12 4.6c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 1.09 14.97 0 12 0 7.7 0 3.99 2.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+    />
+  </svg>
+);
 
 // --- MASTER CATALOG (Zadrátovaná data) ---
 const MASTER_CATALOG = {
@@ -1148,6 +1174,8 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
     return user.displayName || `Uživatel (ID: ${user.uid.substring(0, 6)}...)`;
   };
 
+  const isGoogle = user?.providerData?.[0]?.providerId === "google.com";
+
   return (
     <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-md rounded-2xl border border-slate-700 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
@@ -1169,8 +1197,14 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
                 {user ? <User size={20} /> : <WifiOff size={20} />}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-slate-500 font-bold uppercase">
-                  Přihlášen jako
+                <p className="text-xs text-slate-500 font-bold uppercase flex items-center gap-1">
+                  {isGoogle ? (
+                    <>
+                      Přihlášen přes <GoogleIcon className="w-3 h-3" /> jako
+                    </>
+                  ) : (
+                    "Přihlášen jako"
+                  )}
                 </p>
                 <p className="text-sm text-white font-medium truncate">
                   {getDisplayName()}
@@ -1186,7 +1220,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
                   disabled={authLoading}
                   className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
                 >
-                  <LogIn size={16} /> Přihlásit se přes Google
+                  <GoogleIcon className="w-4 h-4" /> Přihlásit se přes Google
                 </button>
               )}
 
@@ -1351,10 +1385,13 @@ const ProjectDetailModal = ({
     url: "",
   });
 
+  // Pouze modely patřící tomuto projektu
   const projectKits = useMemo(
     () => allKits.filter((k) => k.projectId === project.id),
     [allKits, project.id],
   );
+
+  // Pouze modely, které NEMAJÍ žádný projekt (orphans) = 1 model 1 project rule enforcement
   const availableKits = useMemo(
     () => allKits.filter((k) => !k.projectId),
     [allKits],
@@ -1512,6 +1549,9 @@ const ProjectDetailModal = ({
                 </div>
                 {showLinkKit && (
                   <div className="mt-3 p-2 bg-slate-900 rounded border border-slate-700 animate-in slide-in-from-top-2">
+                    <div className="mb-2 text-[10px] text-slate-500 italic">
+                      Zobrazují se pouze modely, které nejsou v jiném projektu.
+                    </div>
                     <select
                       className="w-full bg-slate-800 text-white text-xs p-2 rounded mb-2 border border-slate-600"
                       value={selectedKitId}
@@ -3532,6 +3572,19 @@ export default function App() {
     [filteredKits],
   );
 
+  // --- NOVÉ: Grupování barev pro přehlednější zobrazení ---
+  const groupedPaints = useMemo(
+    () => ({
+      // "Mám" (Skladem + Dochází + Prázdné = barvy, které fyzicky vlastním, i když došly)
+      inventory: filteredPaints.filter((p) =>
+        ["in_stock", "low", "empty"].includes(p.status),
+      ),
+      // "Koupit" (Chtěné)
+      wishlist: filteredPaints.filter((p) => p.status === "wanted"),
+    }),
+    [filteredPaints],
+  );
+
   if (loading)
     return (
       <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-slate-400">
@@ -3918,21 +3971,64 @@ export default function App() {
           </>
         )}
 
+        {/* --- NOVÉ: BARVY NYNÍ V SEKCÍCH (MÁM vs KOUPIT) --- */}
         {view === "paints" && (
-          <div className="space-y-4">
-            {filteredPaints.length > 0 ? (
-              filteredPaints.map((paint) => (
-                <PaintCard
-                  key={paint.id}
-                  paint={paint}
-                  onClick={() => {
-                    setIsNewPaint(false);
-                    setActivePaint(paint);
-                  }}
-                  onDelete={(id) => deleteItem("paints", id, paints, setPaints)}
-                />
-              ))
-            ) : (
+          <div className="space-y-6">
+            {/* SKLADEM / HISTORIE */}
+            {groupedPaints.inventory.length > 0 && (
+              <section>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xs font-bold text-blue-400 uppercase tracking-wider flex items-center gap-2">
+                    <Package size={12} /> Mám ve skladu (
+                    {groupedPaints.inventory.length})
+                  </h2>
+                </div>
+                <div className="space-y-2">
+                  {groupedPaints.inventory.map((paint) => (
+                    <PaintCard
+                      key={paint.id}
+                      paint={paint}
+                      onClick={() => {
+                        setIsNewPaint(false);
+                        setActivePaint(paint);
+                      }}
+                      onDelete={(id) =>
+                        deleteItem("paints", id, paints, setPaints)
+                      }
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* NÁKUPNÍ SEZNAM */}
+            {groupedPaints.wishlist.length > 0 && (
+              <section>
+                <div className="flex justify-between items-center mb-2">
+                  <h2 className="text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-2">
+                    <ShoppingCart size={12} /> Nákupní seznam (
+                    {groupedPaints.wishlist.length})
+                  </h2>
+                </div>
+                <div className="space-y-2">
+                  {groupedPaints.wishlist.map((paint) => (
+                    <PaintCard
+                      key={paint.id}
+                      paint={paint}
+                      onClick={() => {
+                        setIsNewPaint(false);
+                        setActivePaint(paint);
+                      }}
+                      onDelete={(id) =>
+                        deleteItem("paints", id, paints, setPaints)
+                      }
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {filteredPaints.length === 0 && (
               <div className="text-center text-slate-500 py-10">
                 <Palette size={48} className="mx-auto mb-2 opacity-20" />
                 <p>Žádné barvy (nebo skryto filtrem).</p>
