@@ -64,9 +64,8 @@ import {
   Sparkles,
   ChevronDown,
   ChevronUp,
+  FlaskConical,
 } from "lucide-react";
-
-// Firebase importy
 import { initializeApp } from "firebase/app";
 import {
   getFirestore,
@@ -98,9 +97,16 @@ import {
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.21.2-google-groups";
+const APP_VERSION = "v2.26.0-mix-feature";
 
-// --- GOOGLE ICON COMPONENT ---
+// --- BEZPEČNÉ VYKRESLOVÁNÍ ---
+const safeRender = (value) => {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "object") return JSON.stringify(value);
+  return value;
+};
+
+// --- ICONS ---
 const GoogleIcon = ({ className }) => (
   <svg
     className={className}
@@ -126,9 +132,8 @@ const GoogleIcon = ({ className }) => (
   </svg>
 );
 
-// --- MASTER CATALOG (Zadrátovaná data) ---
+// --- MASTER CATALOG (Zhutněno) ---
 const MASTER_CATALOG = {
-  // --- TAMIYA XF (Flat - Akryl) - Ponecháno s pomlčkou (standard Tamiya) ---
   TAMIYA_XF1: {
     displayCode: "XF-1",
     name: "Flat Black",
@@ -332,8 +337,6 @@ const MASTER_CATALOG = {
     finish: "Matná",
     hex: "#eeeeee",
   },
-
-  // --- TAMIYA X (Gloss - Akryl) ---
   TAMIYA_X1: {
     displayCode: "X-1",
     name: "Black",
@@ -390,8 +393,6 @@ const MASTER_CATALOG = {
     finish: "Transparentní",
     hex: "#ffcccb",
   },
-
-  // --- GUNZE H (Aqueous - Akryl) - ZMĚNA: Bez pomlčky (např. H1) ---
   GUNZE_H1: {
     displayCode: "H1",
     name: "White",
@@ -455,8 +456,6 @@ const MASTER_CATALOG = {
     finish: "Matná",
     hex: "#a3b7c2",
   },
-
-  // --- GUNZE C (Mr. Color - Lacquer) - ZMĚNA: Bez pomlčky (např. C1) ---
   GUNZE_C1: {
     displayCode: "C1",
     name: "White",
@@ -499,8 +498,6 @@ const MASTER_CATALOG = {
     finish: "Matná",
     hex: "#232323",
   },
-
-  // --- AK INTERACTIVE (Real Colors) ---
   AKINTERACTIVE_RC001: {
     displayCode: "RC001",
     name: "Flat Black",
@@ -522,8 +519,6 @@ const MASTER_CATALOG = {
     finish: "Matná",
     hex: "#483c32",
   },
-
-  // --- AK INTERACTIVE (3rd Gen Acrylics) ---
   AKINTERACTIVE_AK11001: {
     displayCode: "AK11001",
     name: "White",
@@ -538,8 +533,6 @@ const MASTER_CATALOG = {
     finish: "Matná",
     hex: "#000000",
   },
-
-  // --- VALLEJO (Model Color) ---
   VALLEJO_70950: {
     displayCode: "70.950",
     name: "Black",
@@ -568,8 +561,6 @@ const MASTER_CATALOG = {
     finish: "Kovová",
     hex: "#727472",
   },
-
-  // --- VALLEJO (Model Air) ---
   VALLEJO_71057: {
     displayCode: "71.057",
     name: "Black",
@@ -604,47 +595,32 @@ const BRANDS = [
   "Jiné",
 ];
 
-// Normalizace vstupů
 const Normalizer = {
-  // První velké, ostatní malé
   brand: (val) =>
     val && val.length > 0
       ? val.charAt(0).toUpperCase() + val.slice(1).toLowerCase()
       : val,
-  // Vše malé
   name: (val) => (val ? val.toLowerCase() : val),
-  // Vše velké
   code: (val) => (val ? val.toUpperCase() : val),
-  // Normalizace pro vyhledávání (odstraní mezery, pomlčky, tečky)
   search: (val) => (val ? val.toLowerCase().replace(/[^a-z0-9]/g, "") : ""),
-  // Generování ID
   generateId: (brand, code) => {
     if (!brand || !code) return null;
-    const cleanBrand = brand
-      .toUpperCase()
-      .replace(/\s+/g, "")
-      .replace(/\./g, "");
-    const cleanCode = code.toUpperCase().replace(/[\s\-\.]/g, "");
-    return `${cleanBrand}_${cleanCode}`;
+    return `${brand.toUpperCase().replace(/\s+/g, "").replace(/\./g, "")}_${code.toUpperCase().replace(/[\s\-\.]/g, "")}`;
   },
 };
 
-// --- BEZPEČNÉ NAČÍTÁNÍ ENV PROMĚNNÝCH ---
 const getEnv = (key) => {
   try {
-    if (typeof import.meta !== "undefined" && import.meta.env) {
+    if (typeof import.meta !== "undefined" && import.meta.env)
       return import.meta.env[key] || "";
-    }
   } catch (e) {}
   try {
-    if (typeof process !== "undefined" && process.env) {
+    if (typeof process !== "undefined" && process.env)
       return process.env[key] || "";
-    }
   } catch (e) {}
   return "";
 };
 
-// Firebase Config
 const firebaseConfig = {
   apiKey: getEnv("VITE_FIREBASE_API_KEY"),
   authDomain: getEnv("VITE_FIREBASE_AUTH_DOMAIN"),
@@ -653,7 +629,6 @@ const firebaseConfig = {
   messagingSenderId: getEnv("VITE_FIREBASE_MESSAGING_SENDER_ID"),
   appId: getEnv("VITE_FIREBASE_APP_ID"),
 };
-
 if (typeof __firebase_config !== "undefined") {
   try {
     Object.assign(firebaseConfig, JSON.parse(__firebase_config));
@@ -662,28 +637,21 @@ if (typeof __firebase_config !== "undefined") {
   }
 }
 
-// Inicializace Firebase
 let app, auth, db;
-let initError = null;
-
 try {
   if (firebaseConfig.apiKey) {
     app = initializeApp(firebaseConfig);
     auth = getAuth(app);
     db = getFirestore(app);
-  } else {
-    initError = "Chybí API Key. Zkontrolujte .env soubor.";
   }
 } catch (error) {
   console.error("Firebase Init Error:", error);
-  initError = error.message;
 }
 
 // ==========================================
 // 🧩 SUB-KOMPONENTY (UI Elements)
 // ==========================================
 
-// --- CONFIRM MODAL (Náhrada za systémový confirm) ---
 const ConfirmModal = ({
   isOpen,
   title,
@@ -705,7 +673,7 @@ const ConfirmModal = ({
             {isDestructive ? <AlertTriangle size={24} /> : <Wand2 size={24} />}
           </div>
           <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-          <p className="text-sm text-slate-400">{message}</p>
+          <p className="text-sm text-slate-400">{safeRender(message)}</p>
         </div>
         <div className="flex border-t border-slate-800">
           <button
@@ -726,7 +694,6 @@ const ConfirmModal = ({
   );
 };
 
-// --- INPUT S PLOVOUCÍM LABELEM ---
 const FloatingInput = ({
   label,
   value,
@@ -753,7 +720,6 @@ const FloatingInput = ({
   </div>
 );
 
-// --- TEXTAREA S PLOVOUCÍM LABELEM ---
 const FloatingTextarea = ({
   label,
   value,
@@ -778,7 +744,6 @@ const FloatingTextarea = ({
   </div>
 );
 
-// --- SELECT S PLOVOUCÍM LABELEM ---
 const FloatingSelect = ({
   label,
   value,
@@ -809,23 +774,17 @@ const FloatingSelect = ({
   </div>
 );
 
-// --- FILTROVACÍ CHIP ---
 const FilterChip = ({ label, active, onClick }) => (
   <button
     onClick={onClick}
-    className={`text-[10px] font-bold px-2 py-1 rounded border transition-all whitespace-nowrap ${
-      active
-        ? "bg-blue-600 border-blue-500 text-white shadow-sm"
-        : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600"
-    }`}
+    className={`text-[10px] font-bold px-2 py-1 rounded border transition-all whitespace-nowrap ${active ? "bg-blue-600 border-blue-500 text-white shadow-sm" : "bg-slate-800 border-slate-700 text-slate-400 hover:border-slate-600"}`}
   >
     {label}
   </button>
 );
 
-// --- KARTA MODELU ---
 const KitCard = React.memo(
-  ({ kit, onClick, projectName, onBuy, allPaints }) => {
+  ({ kit, onClick, projectName, onBuy, allPaints, onOpenPaints }) => {
     const getStatusStyle = (s) => {
       switch (s) {
         case "new":
@@ -854,74 +813,65 @@ const KitCard = React.memo(
           return { border: "border-slate-700", icon: null };
       }
     };
-
-    const statusStyle = getStatusStyle(kit.status);
-
-    // --- NOVÉ: Logika pro chytrý status barev ---
-    const missingPaintsCount = useMemo(() => {
+    const st = getStatusStyle(kit.status);
+    const missingPaints = useMemo(() => {
       if (!kit.paints || !allPaints) return 0;
-      // Spočítáme barvy, které NEJSOU "in_stock"
       return kit.paints.filter((p) => {
         const paintInStock = allPaints.find((ap) => ap.id === p.id);
-        // Pokud barva není ve skladu vůbec, nebo není 'in_stock'
         return !paintInStock || paintInStock.status !== "in_stock";
       }).length;
     }, [kit.paints, allPaints]);
-
     const hasPaintsAssigned = kit.paints && kit.paints.length > 0;
 
     return (
       <div
         onClick={() => onClick && onClick(kit)}
-        className={`bg-slate-800 rounded-lg p-3 mb-2 shadow-sm hover:bg-slate-750 cursor-pointer transition-all border border-slate-700 border-l-4 ${statusStyle.border} relative group`}
+        className={`bg-slate-800 rounded-lg p-3 mb-2 shadow-sm hover:bg-slate-750 cursor-pointer transition-all border border-slate-700 border-l-4 ${st.border} relative group`}
       >
         <div className="flex justify-between items-start">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-[10px] font-bold bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-700 whitespace-nowrap">
-                {kit.scale}
+                {safeRender(kit.scale)}
               </span>
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider truncate">
-                {kit.brand} {kit.catNum && `• ${kit.catNum}`}
+                {safeRender(kit.brand)}{" "}
+                {kit.catNum && `• ${safeRender(kit.catNum)}`}
               </span>
             </div>
-
             <h3 className="font-bold text-slate-100 leading-tight truncate text-base">
               {kit.subject ? (
                 <>
-                  {kit.subject}
+                  {safeRender(kit.subject)}
                   <span className="text-slate-400 text-xs font-bold ml-1.5 opacity-80">
-                    {kit.name}
+                    {safeRender(kit.name)}
                   </span>
                 </>
               ) : (
-                kit.name
+                safeRender(kit.name)
               )}
             </h3>
-
             <div className="flex flex-wrap gap-2 mt-2">
               {projectName && (
                 <div className="flex items-center gap-1.5 text-xs text-blue-400 font-medium">
                   <Folder size={14} />{" "}
-                  <span className="truncate">{projectName}</span>
+                  <span className="truncate">{safeRender(projectName)}</span>
                 </div>
               )}
-
-              {/* NOVÉ: Indikátor stavu barev */}
               {hasPaintsAssigned &&
                 kit.status !== "finished" &&
                 kit.status !== "scrap" && (
                   <div
-                    className={`flex items-center gap-1.5 text-xs font-bold rounded px-1.5 py-0.5 border ${
-                      missingPaintsCount > 0
-                        ? "bg-red-500/10 text-red-400 border-red-500/20"
-                        : "bg-green-500/10 text-green-400 border-green-500/20"
-                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (onOpenPaints) onOpenPaints(kit);
+                    }}
+                    className={`flex items-center gap-1.5 text-xs font-bold rounded px-1.5 py-0.5 border cursor-pointer hover:opacity-80 transition-opacity ${missingPaints > 0 ? "bg-red-500/10 text-red-400 border-red-500/20" : "bg-green-500/10 text-green-400 border-green-500/20"}`}
                   >
-                    {missingPaintsCount > 0 ? (
+                    {missingPaints > 0 ? (
                       <>
                         <Droplets size={12} className="fill-current" />
-                        <span>-{missingPaintsCount}</span>
+                        <span>-{missingPaints}</span>
                       </>
                     ) : (
                       <>
@@ -932,15 +882,15 @@ const KitCard = React.memo(
                   </div>
                 )}
             </div>
-
             {!projectName && kit.legacyProject && (
               <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2 italic">
                 <History size={14} />{" "}
-                <span className="truncate">Ex: {kit.legacyProject}</span>
+                <span className="truncate">
+                  Ex: {safeRender(kit.legacyProject)}
+                </span>
               </div>
             )}
           </div>
-
           <div className="ml-2 flex flex-col items-end shrink-0 gap-1">
             {onBuy ? (
               <button
@@ -967,9 +917,8 @@ const KitCard = React.memo(
                     </div>
                   </div>
                 ) : (
-                  statusStyle.icon
+                  st.icon
                 )}
-
                 {(kit.scalematesUrl ||
                   (kit.attachments && kit.attachments.length > 0)) && (
                   <div
@@ -987,9 +936,7 @@ const KitCard = React.memo(
   },
 );
 
-// --- KARTA BARVY ---
 const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
-  // Sjednocení stylu levého okraje s KitCard
   const getStatusStyle = (s) => {
     switch (s) {
       case "in_stock":
@@ -1004,7 +951,6 @@ const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
         return "border-l-slate-700";
     }
   };
-
   return (
     <div
       onClick={() => onClick && onClick(paint)}
@@ -1012,23 +958,28 @@ const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
     >
       <div className="flex items-center gap-3 overflow-hidden">
         <div
-          className="w-8 h-8 rounded-full shadow-inner border border-slate-600 shrink-0"
+          className="w-8 h-8 rounded-full shadow-inner border border-slate-600 shrink-0 flex items-center justify-center bg-slate-900"
           style={{ backgroundColor: paint.hex || "#999" }}
           title={paint.hex}
-        ></div>
+        >
+          {paint.isMix && (
+            <FlaskConical size={14} className="text-white opacity-50" />
+          )}
+        </div>
         <div className="min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
             <span className="text-[10px] font-bold bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-700 whitespace-nowrap">
-              {paint.brand}
+              {safeRender(paint.brand)}
             </span>
             <span className="text-xs font-bold text-white truncate">
-              {paint.code}
+              {safeRender(paint.code)}
             </span>
           </div>
-          <p className="text-xs text-slate-400 truncate">{paint.name}</p>
+          <p className="text-xs text-slate-400 truncate">
+            {safeRender(paint.name)}
+          </p>
         </div>
       </div>
-
       <div className="flex items-center gap-2 ml-2">
         {onBuy ? (
           <button
@@ -1044,15 +995,7 @@ const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
           <>
             <div className="flex flex-col items-end gap-1">
               <span
-                className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${
-                  paint.status === "in_stock"
-                    ? "bg-green-500/10 text-green-500"
-                    : paint.status === "low"
-                      ? "bg-orange-500/10 text-orange-500"
-                      : paint.status === "wanted"
-                        ? "bg-purple-500/10 text-purple-500"
-                        : "bg-red-500/10 text-red-500"
-                }`}
+                className={`text-[10px] font-bold px-1.5 py-0.5 rounded uppercase ${paint.status === "in_stock" ? "bg-green-500/10 text-green-500" : paint.status === "low" ? "bg-orange-500/10 text-orange-500" : paint.status === "wanted" ? "bg-purple-500/10 text-purple-500" : "bg-red-500/10 text-red-500"}`}
               >
                 {paint.status === "in_stock"
                   ? "Skladem"
@@ -1062,7 +1005,9 @@ const PaintCard = React.memo(({ paint, onClick, onDelete, onBuy }) => {
                       ? "Koupit"
                       : "Prázdné"}
               </span>
-              <span className="text-[10px] text-slate-600">{paint.type}</span>
+              <span className="text-[10px] text-slate-600">
+                {paint.isMix ? "Vlastní Mix" : safeRender(paint.type)}
+              </span>
             </div>
             {onDelete && (
               <button
@@ -1088,94 +1033,56 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
   const [importing, setImporting] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
-
   const handleExport = () => {
-    const dataToExport = {
+    const data = {
       version: APP_VERSION,
       exportedAt: new Date().toISOString(),
       kits,
       projects,
       paints,
     };
-    const blob = new Blob([JSON.stringify(dataToExport, null, 2)], {
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
       type: "application/json",
     });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `model-diary-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `backup-${new Date().toISOString().slice(0, 10)}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   };
-
   const handleImportClick = (e) => {
     const file = e.target.files[0];
     if (!file) return;
     onImport(file);
     e.target.value = "";
   };
-
-  const copyToClipboard = () => {
-    if (user?.uid) {
-      navigator.clipboard.writeText(user.uid);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
+  const handleAuth = async (type) => {
     if (!auth) return;
     setAuthLoading(true);
     setAuthError(null);
     try {
-      const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error("Google Auth Error:", error);
-      setAuthError(error.code + ": " + error.message);
-    } finally {
-      setAuthLoading(false);
-    }
-  };
-
-  const handleAnonymousLogin = async () => {
-    if (!auth) {
-      alert(`CHYBA: Aplikace nevidí API klíče.`);
-      return;
-    }
-    try {
-      setAuthLoading(true);
-      await signInAnonymously(auth);
+      if (type === "google")
+        await signInWithPopup(auth, new GoogleAuthProvider());
+      else if (type === "anon") await signInAnonymously(auth);
+      else if (type === "logout") {
+        await signOut(auth);
+        onClose();
+      }
     } catch (e) {
-      console.error(e);
+      setAuthError(e.code + ": " + e.message);
     } finally {
       setAuthLoading(false);
     }
   };
-
-  const handleLogout = async () => {
-    if (!auth) return;
-    setAuthLoading(true);
-    try {
-      await signOut(auth);
-      onClose();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setAuthLoading(false);
-    }
-  };
-
-  const getDisplayName = () => {
-    if (!user) return "Nepřihlášen (Offline)";
-    if (user.isAnonymous) return "Anonymní uživatel";
-    return user.displayName || `Uživatel (ID: ${user.uid.substring(0, 6)}...)`;
-  };
-
-  const isGoogle = user?.providerData?.[0]?.providerId === "google.com";
-
+  const getDisplayName = () =>
+    !user
+      ? "Nepřihlášen (Offline)"
+      : user.isAnonymous
+        ? "Anonymní uživatel"
+        : user.displayName || `ID: ${user.uid.substring(0, 6)}...`;
   return (
     <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-md rounded-2xl border border-slate-700 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
@@ -1187,7 +1094,6 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
             <X size={24} />
           </button>
         </div>
-
         <div className="p-6 space-y-6">
           <div className="bg-slate-800 rounded-xl p-4 border border-slate-700">
             <div className="flex items-center gap-3 mb-3">
@@ -1198,7 +1104,7 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-slate-500 font-bold uppercase flex items-center gap-1">
-                  {isGoogle ? (
+                  {user?.providerData?.[0]?.providerId === "google.com" ? (
                     <>
                       Přihlášen přes <GoogleIcon className="w-3 h-3" /> jako
                     </>
@@ -1211,50 +1117,37 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
                 </p>
               </div>
             </div>
-
             <div className="space-y-2">
-              {/* Google Login */}
               {(!user || user.isAnonymous) && (
                 <button
-                  onClick={handleGoogleLogin}
+                  onClick={() => handleAuth("google")}
                   disabled={authLoading}
                   className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
                 >
                   <GoogleIcon className="w-4 h-4" /> Přihlásit se přes Google
                 </button>
               )}
-
-              {/* Error Message */}
               {authError && (
-                <div className="bg-red-900/30 border border-red-500/30 text-red-200 p-3 rounded text-xs break-words animate-in slide-in-from-top-1">
-                  <strong className="block mb-1 flex items-center gap-1">
-                    <AlertTriangle size={12} /> Chyba přihlášení
-                  </strong>
+                <div className="bg-red-900/30 border border-red-500/30 text-red-200 p-3 rounded text-xs break-words">
+                  <strong>Chyba přihlášení</strong>
+                  <br />
                   {authError}
-                  <div className="mt-2 text-[10px] text-red-300 opacity-80">
-                    Tip: Pokud jste přidali doménu teprve teď, vyčkejte pár
-                    minut a zkuste to znovu.
-                  </div>
                 </div>
               )}
-
-              {/* Anonymní Login */}
               {!user && (
                 <button
-                  onClick={handleAnonymousLogin}
+                  onClick={() => handleAuth("anon")}
                   disabled={authLoading}
                   className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
                 >
-                  <Ghost size={16} /> Přihlásit se anonymně
+                  <Ghost size={16} /> Anonymní login
                 </button>
               )}
-
-              {/* Logout */}
               {user && (
                 <button
-                  onClick={handleLogout}
+                  onClick={() => handleAuth("logout")}
                   disabled={authLoading}
-                  className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+                  className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
                 >
                   {authLoading ? (
                     <Loader2 className="animate-spin" size={16} />
@@ -1266,8 +1159,6 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
               )}
             </div>
           </div>
-
-          {/* CATALOG INFO */}
           <div className="p-3 bg-slate-900 border border-slate-700 rounded-xl flex items-center gap-3">
             <div className="bg-blue-600/20 p-2 rounded-full text-blue-400">
               <Wand2 size={20} />
@@ -1283,7 +1174,6 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
               </p>
             </div>
           </div>
-
           <div className="space-y-2">
             <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               ID Deníku
@@ -1304,7 +1194,6 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
               </button>
             </div>
           </div>
-
           <div
             className={`p-4 rounded-xl border ${user ? "bg-blue-900/20 border-blue-500/20" : "bg-orange-900/10 border-orange-500/20"}`}
           >
@@ -1319,7 +1208,6 @@ const SettingsModal = ({ user, onClose, kits, projects, paints, onImport }) => {
                 : "Offline režim. Data jsou pouze v tomto prohlížeči."}
             </p>
           </div>
-
           <div className="border-t border-slate-800 pt-4">
             <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
               <Database size={18} className="text-orange-400" /> Správa dat
@@ -1373,10 +1261,7 @@ const ProjectDetailModal = ({
 }) => {
   const [data, setData] = useState({ accessories: [], ...project });
   const [activeTab, setActiveTab] = useState("info");
-
-  // Nové: Stav ukládání pro tlačítko
   const [isSaving, setIsSaving] = useState(false);
-
   const [showLinkKit, setShowLinkKit] = useState(false);
   const [selectedKitId, setSelectedKitId] = useState("");
   const [newAccessory, setNewAccessory] = useState({
@@ -1385,13 +1270,10 @@ const ProjectDetailModal = ({
     url: "",
   });
 
-  // Pouze modely patřící tomuto projektu
   const projectKits = useMemo(
     () => allKits.filter((k) => k.projectId === project.id),
     [allKits, project.id],
   );
-
-  // Pouze modely, které NEMAJÍ žádný projekt (orphans) = 1 model 1 project rule enforcement
   const availableKits = useMemo(
     () => allKits.filter((k) => !k.projectId),
     [allKits],
@@ -1408,15 +1290,12 @@ const ProjectDetailModal = ({
     });
     setNewAccessory({ name: "", status: "owned", url: "" });
   };
-
   const isFormValid = data.name && data.name.trim().length > 0;
-
-  // --- FIX: Wrapper funkce pro uložení a zavření ---
   const handleSaveWrapper = async () => {
     setIsSaving(true);
     try {
       await onSave(data);
-      onClose(); // Zavře okno po úspěšném uložení
+      onClose();
     } catch (e) {
       console.error("Chyba při ukládání:", e);
     } finally {
@@ -1460,7 +1339,6 @@ const ProjectDetailModal = ({
                 placeholder="Můj projekt"
                 labelColor="text-blue-400"
               />
-
               <FloatingSelect
                 label="Stav"
                 value={data.status}
@@ -1472,7 +1350,6 @@ const ProjectDetailModal = ({
                   { value: "hold", label: "⏸️ Pozastaveno" },
                 ]}
               />
-
               <FloatingTextarea
                 label="Popis"
                 value={data.description}
@@ -1481,7 +1358,6 @@ const ProjectDetailModal = ({
                 }
                 height="h-32"
               />
-
               <p className="text-[10px] text-blue-400/50 font-bold">
                 * tyto údaje jsou povinné
               </p>
@@ -1508,15 +1384,16 @@ const ProjectDetailModal = ({
                         )}
                         <span className="text-sm truncate">
                           {k.subject ? (
-                            <span className="font-bold mr-1">{k.subject}</span>
+                            <span className="font-bold mr-1">
+                              {safeRender(k.subject)}
+                            </span>
                           ) : null}
-                          {k.name}
+                          {safeRender(k.name)}
                         </span>
                         <span className="text-[10px] text-slate-500 shrink-0">
-                          {k.scale}
+                          {safeRender(k.scale)}
                         </span>
                       </div>
-                      {/* Zde nepotřebujeme potvrzení přes modal, protože je to jen odlinkování, ne destruktivní operace dat */}
                       <button
                         onClick={() => onUpdateKitLink(k.id, null)}
                         className="text-slate-600 hover:text-red-400 p-1"
@@ -1560,7 +1437,8 @@ const ProjectDetailModal = ({
                       <option value="">-- Vyber model ze skladu --</option>
                       {availableKits.map((k) => (
                         <option key={k.id} value={k.id}>
-                          {k.subject} {k.name} ({k.scale})
+                          {safeRender(k.subject)} {safeRender(k.name)} (
+                          {safeRender(k.scale)})
                         </option>
                       ))}
                     </select>
@@ -1673,11 +1551,6 @@ const ProjectDetailModal = ({
                       </button>
                     </div>
                   ))}
-                  {(!data.accessories || data.accessories.length === 0) && (
-                    <p className="text-xs text-slate-600 italic">
-                      Žádné doplňky projektu.
-                    </p>
-                  )}
                 </div>
               </div>
             </>
@@ -1710,8 +1583,9 @@ const KitDetailModal = ({
   projects,
   allPaints,
   onQuickCreatePaint,
+  initialTab = "info",
 }) => {
-  const [activeTab, setActiveTab] = useState("info");
+  const [activeTab, setActiveTab] = useState(initialTab);
   const [data, setData] = useState({
     ...kit,
     accessories: kit.accessories || [],
@@ -1728,17 +1602,13 @@ const KitDetailModal = ({
     status: "owned",
     url: "",
   });
-  const [customPaint, setCustomPaint] = useState(null);
-
   const [isSaving, setIsSaving] = useState(false);
-
-  // --- PAINT RACK STATE ---
   const [paintSearch, setPaintSearch] = useState("");
-  // Defaultně nevybrána žádná značka, aby uživatel musel vybrat (dle požadavku "Brand first")
   const [selectedBrand, setSelectedBrand] = useState("");
 
   const isScaleValid = (s) => !s || /^\d+\/\d+$/.test(s);
   const isBuildLocked = data.status !== "wip";
+  const isFormValid = data.brand && data.subject && data.scale;
 
   const addTodo = () => {
     if (newTodo.trim()) {
@@ -1770,7 +1640,6 @@ const KitDetailModal = ({
       attachments: data.attachments.filter((a) => a.id !== id),
     });
   };
-
   const addAccessory = () => {
     if (!newAccessory.name.trim()) return;
     setData({
@@ -1788,26 +1657,21 @@ const KitDetailModal = ({
       accessories: data.accessories.filter((a) => a.id !== id),
     });
   };
-
   const handleAddPaint = (paintId) => {
     setData((prev) => {
-      // Zabraň duplicitám
       if (prev.paints?.some((p) => p.id === paintId)) return prev;
-
       return {
         ...prev,
         paints: [...(prev.paints || []), { id: paintId, note: "" }],
       };
     });
   };
-
   const handleRemovePaint = (paintId) => {
     setData((prev) => ({
       ...prev,
       paints: prev.paints.filter((p) => p.id !== paintId),
     }));
   };
-
   const handleUpdatePaintNote = (paintId, note) => {
     setData((prev) => ({
       ...prev,
@@ -1815,60 +1679,35 @@ const KitDetailModal = ({
     }));
   };
 
-  // --- PAINT RACK LOGIC ---
   const rackPaints = useMemo(() => {
-    // Pokud není vybraná značka, vracíme prázdno (uživatel musí vybrat značku)
     if (!selectedBrand) return { inventory: [], catalog: [] };
-
-    // Normalizujeme hledaný výraz (odstraníme mezery, pomlčky, tečky)
     const searchNormalized = Normalizer.search(paintSearch);
-
-    // 1. SKLAD (Inventory) pro vybranou značku
     const inventory = allPaints.filter((p) => {
       const isAlreadyAdded = data.paints?.some((kp) => kp.id === p.id);
       const matchesBrand = p.brand === selectedBrand;
-      // Vyhledávání v normalizovaných datech
-      const codeNorm = Normalizer.search(p.code);
-      const nameNorm = Normalizer.search(p.name);
-
       const matchesSearch =
         !paintSearch ||
-        codeNorm.includes(searchNormalized) ||
-        nameNorm.includes(searchNormalized);
-
+        Normalizer.search(p.code).includes(searchNormalized) ||
+        Normalizer.search(p.name).includes(searchNormalized);
       return !isAlreadyAdded && matchesBrand && matchesSearch;
     });
-
-    // 2. KATALOG (Catalog) pro vybranou značku
     const catalog = Object.entries(MASTER_CATALOG).filter(([key, val]) => {
-      // Extrahuje značku z klíče katalogu
       let brandFromKey = "Jiné";
       if (key.startsWith("TAMIYA")) brandFromKey = "Tamiya";
       else if (key.startsWith("GUNZE")) brandFromKey = "Gunze";
       else if (key.startsWith("AKINTERACTIVE")) brandFromKey = "AK Interactive";
       else if (key.startsWith("VALLEJO")) brandFromKey = "Vallejo";
-
       const matchesBrand = brandFromKey === selectedBrand;
-
-      // Vyhledávání v normalizovaných datech
-      const codeNorm = Normalizer.search(val.displayCode);
-      const nameNorm = Normalizer.search(val.name);
-
       const matchesSearch =
         !paintSearch ||
-        codeNorm.includes(searchNormalized) ||
-        nameNorm.includes(searchNormalized);
-
-      // Kontrola existence ve skladu (abychom nenabízeli co už je v inventory sekci)
-      // Kontrolujeme pouze ID, protože to je normalizovaný identifikátor pro danou barvu
+        Normalizer.search(val.displayCode).includes(searchNormalized) ||
+        Normalizer.search(val.name).includes(searchNormalized);
       const inInventory = allPaints.some(
         (p) =>
           p.id === Normalizer.generateId(key.split("_")[0], val.displayCode),
       );
-
       return matchesBrand && matchesSearch && !inInventory;
     });
-
     return { inventory, catalog };
   }, [allPaints, data.paints, paintSearch, selectedBrand]);
 
@@ -1878,8 +1717,7 @@ const KitDetailModal = ({
     else if (key.startsWith("GUNZE")) brand = "Gunze";
     else if (key.startsWith("AKINTERACTIVE")) brand = "AK Interactive";
     else if (key.startsWith("VALLEJO")) brand = "Vallejo";
-
-    const newPaint = {
+    const newId = onQuickCreatePaint({
       brand,
       code: val.displayCode,
       name: val.name,
@@ -1887,34 +1725,28 @@ const KitDetailModal = ({
       finish: val.finish,
       hex: val.hex,
       status: "wanted",
-    };
-
-    const newId = onQuickCreatePaint(newPaint);
+    });
     handleAddPaint(newId);
   };
-
   const handleCustomCreate = () => {
-    // Fallback pro vytvoření, když nic nenajde
-    const code = paintSearch || "???";
-    const newPaint = {
+    const newId = onQuickCreatePaint({
       brand: selectedBrand,
-      code: code,
+      code: paintSearch || "???",
       name: "Nová barva",
       type: "Akryl",
       finish: "Matná",
       hex: "#cccccc",
       status: "wanted",
-    };
-    const newId = onQuickCreatePaint(newPaint);
+    });
     handleAddPaint(newId);
   };
-
-  const isFormValid = data.brand && data.subject && data.scale;
-
   const handleSaveWrapper = async () => {
     setIsSaving(true);
     try {
-      await onSave(data);
+      const validPaints = (data.paints || []).filter((pLink) =>
+        allPaints.some((ap) => ap.id === pLink.id),
+      );
+      await onSave({ ...data, paints: validPaints });
       onClose();
     } catch (e) {
       console.error("Chyba při ukládání:", e);
@@ -2073,13 +1905,8 @@ const KitDetailModal = ({
               </p>
             </div>
           )}
-
-          {/* --- ZÁLOŽKA BARVY (REGÁLOVÝ DESIGN) --- */}
           {activeTab === "paints" && (
             <div className="flex flex-col h-full relative">
-              {" "}
-              {/* Změna: relative pro positioning FAB */}
-              {/* 1. VÝBĚR ZNAČKY (Brand Selector) - Sticky Top */}
               <div className="bg-slate-950 border-b border-slate-800 p-3 shrink-0">
                 <label className="text-[10px] font-bold text-slate-500 uppercase block mb-2">
                   KROK 1: Vyber výrobce
@@ -2091,23 +1918,16 @@ const KitDetailModal = ({
                       onClick={() =>
                         setSelectedBrand(brand === selectedBrand ? "" : brand)
                       }
-                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap transition-all border ${
-                        selectedBrand === brand
-                          ? "bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-900/50 scale-105"
-                          : "bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-500 hover:text-slate-200"
-                      }`}
+                      className={`px-2.5 py-1 rounded-full text-[10px] font-bold whitespace-nowrap transition-all border ${selectedBrand === brand ? "bg-blue-600 text-white border-blue-500 shadow-lg shadow-blue-900/50 scale-105" : "bg-slate-800 text-slate-400 border-slate-700 hover:border-slate-500 hover:text-slate-200"}`}
                     >
                       {brand}
                     </button>
                   ))}
                 </div>
               </div>
-              {/* 2. OBSAH REGÁLU (Výsledky nebo Recept) */}
               <div className="flex-1 overflow-y-auto bg-slate-900 relative">
-                {/* POKUD JE VYBRANÁ ZNAČKA -> UKAZUJEME "REGÁL" S BARVAMI */}
                 {selectedBrand ? (
                   <div className="p-3">
-                    {/* Search Bar v kontextu značky */}
                     <div className="sticky top-0 z-10 bg-slate-900 pb-3">
                       <div className="relative">
                         <Search
@@ -2131,9 +1951,7 @@ const KitDetailModal = ({
                         )}
                       </div>
                     </div>
-
                     <div className="space-y-4">
-                      {/* Skladové zásoby */}
                       {rackPaints.inventory.length > 0 && (
                         <div>
                           <h4 className="text-[10px] font-bold text-green-500 uppercase mb-2 flex items-center gap-1 border-b border-slate-800 pb-1">
@@ -2168,8 +1986,6 @@ const KitDetailModal = ({
                           </div>
                         </div>
                       )}
-
-                      {/* Katalog */}
                       {rackPaints.catalog.length > 0 && (
                         <div>
                           <h4 className="text-[10px] font-bold text-purple-400 uppercase mb-2 flex items-center gap-1 border-b border-slate-800 pb-1">
@@ -2203,8 +2019,6 @@ const KitDetailModal = ({
                           </div>
                         </div>
                       )}
-
-                      {/* Empty State / Custom Create */}
                       {rackPaints.inventory.length === 0 &&
                         rackPaints.catalog.length === 0 && (
                           <div className="text-center py-8">
@@ -2222,7 +2036,6 @@ const KitDetailModal = ({
                     </div>
                   </div>
                 ) : (
-                  /* POKUD NENÍ VYBRÁNA ZNAČKA -> UKAZUJEME RECEPT (SEZNAM PŘIŘAZENÝCH) */
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
@@ -2230,18 +2043,26 @@ const KitDetailModal = ({
                         modelu ({data.paints?.length || 0})
                       </h4>
                     </div>
-
                     {data.paints && data.paints.length > 0 ? (
                       <div className="space-y-2 pb-20">
                         {data.paints.map((paintLink, idx) => {
-                          const fullPaint = allPaints.find(
+                          let fullPaint = allPaints.find(
                             (p) => p.id === paintLink.id,
                           );
-                          if (!fullPaint) return null;
+                          if (!fullPaint)
+                            fullPaint = {
+                              id: paintLink.id,
+                              brand: "Neznámý",
+                              code: "???",
+                              name: "Neznámá barva (Smazáno)",
+                              hex: "#333333",
+                              status: "scrap",
+                              isOrphan: true,
+                            };
                           return (
                             <div
                               key={`${paintLink.id}_${idx}`}
-                              className="bg-slate-800 p-2 rounded border border-slate-700 flex flex-col gap-2"
+                              className={`bg-slate-800 p-2 rounded border flex flex-col gap-2 ${fullPaint.isOrphan ? "border-red-500/50 opacity-80" : "border-slate-700"}`}
                             >
                               <div className="flex justify-between items-start">
                                 <div className="flex items-center gap-3 overflow-hidden">
@@ -2251,6 +2072,12 @@ const KitDetailModal = ({
                                   >
                                     {!fullPaint.hex && (
                                       <span className="text-[8px]">?</span>
+                                    )}
+                                    {fullPaint.isMix && (
+                                      <FlaskConical
+                                        size={12}
+                                        className="text-white opacity-50"
+                                      />
                                     )}
                                   </div>
                                   <div className="min-w-0">
@@ -2264,7 +2091,9 @@ const KitDetailModal = ({
                                         </span>
                                       )}
                                     </div>
-                                    <div className="text-xs text-slate-400 truncate">
+                                    <div
+                                      className={`text-xs truncate ${fullPaint.isOrphan ? "text-red-400 italic" : "text-slate-400"}`}
+                                    >
                                       {fullPaint.name}
                                     </div>
                                   </div>
@@ -2278,19 +2107,19 @@ const KitDetailModal = ({
                                   >
                                     <Trash2 size={16} />
                                   </button>
-                                  <span
-                                    className={`text-[9px] px-1.5 rounded font-bold uppercase ${
-                                      fullPaint.status === "in_stock"
-                                        ? "text-green-500"
-                                        : fullPaint.status === "low"
-                                          ? "text-orange-500"
-                                          : "text-red-500"
-                                    }`}
-                                  >
-                                    {fullPaint.status === "in_stock"
-                                      ? "OK"
-                                      : "Koupit"}
-                                  </span>
+                                  {!fullPaint.isOrphan ? (
+                                    <span
+                                      className={`text-[9px] px-1.5 rounded font-bold uppercase ${fullPaint.status === "in_stock" ? "text-green-500" : fullPaint.status === "low" ? "text-orange-500" : "text-red-500"}`}
+                                    >
+                                      {fullPaint.status === "in_stock"
+                                        ? "OK"
+                                        : "Koupit"}
+                                    </span>
+                                  ) : (
+                                    <span className="text-[9px] text-red-500 font-bold uppercase">
+                                      CHYBÍ
+                                    </span>
+                                  )}
                                 </div>
                               </div>
                               <input
@@ -2322,7 +2151,6 @@ const KitDetailModal = ({
                   </div>
                 )}
               </div>
-              {/* --- ZMĚNA: FLOATING ACTION BUTTON (FAB) MÍSTO SPODNÍ LIŠTY --- */}
               {selectedBrand && (
                 <button
                   onClick={() => setSelectedBrand("")}
@@ -2330,13 +2158,10 @@ const KitDetailModal = ({
                   title="Hotovo / Zpět k receptu"
                 >
                   <Check size={24} />
-                  {/* Volitelně: Pokud chcete vidět i počet, odkomentujte níže: */}
-                  {/* <span className="ml-2 text-sm">{data.paints?.length || 0}</span> */}
                 </button>
               )}
             </div>
           )}
-
           {activeTab === "parts" && (
             <div className="space-y-4 p-4">
               <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
@@ -2354,7 +2179,7 @@ const KitDetailModal = ({
                   />
                   <div className="flex gap-2">
                     <select
-                      className="bg-slate-800 border border-slate-600 rounded p-1.5 text-xs text-white"
+                      className="bg-slate-900 border border-slate-600 rounded p-1.5 text-xs text-white"
                       value={newAccessory.status}
                       onChange={(e) =>
                         setNewAccessory({
@@ -2427,11 +2252,6 @@ const KitDetailModal = ({
                       </button>
                     </div>
                   ))}
-                  {(!data.accessories || data.accessories.length === 0) && (
-                    <p className="text-xs text-slate-600 italic">
-                      Žádné doplňky.
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
@@ -2596,7 +2416,7 @@ const KitDetailModal = ({
                       placeholder="URL..."
                       value={newAttachment.url}
                       onChange={(e) =>
-                        setNewAccessory({
+                        setNewAttachment({
                           ...newAttachment,
                           url: e.target.value,
                         })
@@ -2649,7 +2469,7 @@ const KitDetailModal = ({
             </div>
           )}
         </div>
-        <div className="p-4 border-t border-slate-800 bg-slate-800/50 flex justify-end rounded-b-xl">
+        <div className="p-4 border-t border-slate-800 bg-slate-800/30 flex justify-end rounded-b-xl">
           <button
             onClick={() => isFormValid && handleSaveWrapper()}
             disabled={!isFormValid || isSaving}
@@ -2659,8 +2479,8 @@ const KitDetailModal = ({
               <Loader2 className="animate-spin" size={18} />
             ) : (
               <Save size={18} />
-            )}
-            {isSaving ? "Ukládám..." : "Uložit"}
+            )}{" "}
+            Uložit
           </button>
         </div>
       </div>
@@ -2668,7 +2488,7 @@ const KitDetailModal = ({
   );
 };
 
-// --- PAINT DETAIL MODAL ---
+// --- PAINT DETAIL MODAL (s Mix funkcí) ---
 const PaintDetailModal = ({
   paint,
   onClose,
@@ -2688,24 +2508,23 @@ const PaintDetailModal = ({
     thinner: "",
     ratioPaint: 60,
     ratioThinner: 40,
+    isMix: false,
+    mixParts: [],
     ...paint,
   });
-
-  // Nové: Stav ukládání
   const [isSaving, setIsSaving] = useState(false);
-
-  // Našeptávač state
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [duplicateError, setDuplicateError] = useState(null);
 
-  // Výpočet použití barvy
+  // Mix state
+  const [newMixPart, setNewMixPart] = useState({ paintId: "", ratio: 1 });
+
   const usage = useMemo(() => {
     if (!allKits) return [];
     return allKits.filter((k) => k.paints?.some((kp) => kp.id === paint.id));
   }, [allKits, paint.id]);
 
-  // Detekce duplicit
   useEffect(() => {
     if (data.brand && data.code && existingPaints) {
       const cleanBrand = data.brand.toLowerCase();
@@ -2724,9 +2543,8 @@ const PaintDetailModal = ({
     }
   }, [data.brand, data.code, existingPaints, paint.id]);
 
-  // Efekt pro Našeptávač
   useEffect(() => {
-    if (data.brand && data.code && !paint.id) {
+    if (!data.isMix && data.brand && data.code && !paint.id) {
       const searchBrand = data.brand.toUpperCase().replace(/\s+/g, "");
       const searchCode = data.code.toUpperCase().replace(/[\s\-\.]/g, "");
       const matches = Object.entries(MASTER_CATALOG).filter(
@@ -2738,7 +2556,7 @@ const PaintDetailModal = ({
       setSuggestions([]);
       setShowSuggestions(false);
     }
-  }, [data.brand, data.code, paint.id]);
+  }, [data.brand, data.code, paint.id, data.isMix]);
 
   const handleSelectSuggestion = ([key, val]) => {
     setData((prev) => ({
@@ -2751,9 +2569,8 @@ const PaintDetailModal = ({
     }));
     setShowSuggestions(false);
   };
-
-  const isFormValid = data.brand && data.code && data.name && !duplicateError;
-
+  const isFormValid =
+    data.name && (data.isMix || (data.brand && data.code)) && !duplicateError;
   const handleRatioChange = (type, value) => {
     if (value === "") {
       setData((d) => ({ ...d, ratioPaint: "", ratioThinner: "" }));
@@ -2766,13 +2583,11 @@ const PaintDetailModal = ({
       setData((d) => ({ ...d, ratioPaint: num, ratioThinner: 100 - num }));
     else setData((d) => ({ ...d, ratioThinner: num, ratioPaint: 100 - num }));
   };
-
-  // --- FIX: Wrapper funkce pro uložení a zavření ---
   const handleSaveWrapper = async () => {
     setIsSaving(true);
     try {
       await onSave(data);
-      onClose(); // Zavře okno po úspěšném uložení
+      onClose();
     } catch (e) {
       console.error("Chyba při ukládání:", e);
     } finally {
@@ -2780,79 +2595,129 @@ const PaintDetailModal = ({
     }
   };
 
+  // Mix logic
+  const addMixPart = () => {
+    if (!newMixPart.paintId || newMixPart.ratio <= 0) return;
+    const selectedPaint = existingPaints.find(
+      (p) => p.id === newMixPart.paintId,
+    );
+    if (!selectedPaint) return;
+    setData((prev) => ({
+      ...prev,
+      mixParts: [
+        ...(prev.mixParts || []),
+        {
+          ...newMixPart,
+          name: selectedPaint.name,
+          code: selectedPaint.code,
+          brand: selectedPaint.brand,
+        },
+      ],
+    }));
+    setNewMixPart({ paintId: "", ratio: 1 });
+  };
+
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-lg rounded-xl border border-slate-700 shadow-2xl flex flex-col max-h-[95vh]">
         <div className="p-4 border-b border-slate-800 bg-slate-800/50 flex justify-between items-center rounded-t-xl">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
-            <Palette size={20} className="text-blue-400" />
+            {data.isMix ? (
+              <FlaskConical size={20} className="text-purple-400" />
+            ) : (
+              <Palette size={20} className="text-blue-400" />
+            )}{" "}
             {paint.id ? "Upravit barvu" : "Nová barva"}
           </h3>
           <button onClick={onClose} className="text-slate-400 hover:text-white">
             <X size={24} />
           </button>
         </div>
-
         <div className="p-4 space-y-4 flex-1 overflow-y-auto bg-slate-900 relative">
           {duplicateError && (
             <div className="bg-red-500/10 border border-red-500/30 text-red-300 px-3 py-2 rounded-lg text-xs flex items-center gap-2 animate-pulse font-bold">
-              <Ban size={16} className="shrink-0 text-red-500" />
-              Nelze uložit duplikát: {duplicateError}
+              <Ban size={16} className="shrink-0 text-red-500" /> Nelze uložit
+              duplikát: {duplicateError}
             </div>
           )}
 
-          <div className="flex gap-3">
-            <div className="flex-1 relative">
-              <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 text-blue-400">
-                Značka *
-              </label>
-              <select
-                className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
-                value={data.brand}
-                onChange={(e) => setData({ ...data, brand: e.target.value })}
-              >
-                <option value="">-- Vyber --</option>
-                {BRANDS.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
+          <div
+            className="flex items-center gap-2 mb-2 p-2 bg-slate-800/50 rounded border border-slate-700 cursor-pointer"
+            onClick={() =>
+              setData((d) => ({
+                ...d,
+                isMix: !d.isMix,
+                brand: !d.isMix ? "Vlastní Mix" : "",
+                code: !d.isMix ? "MIX-" + Date.now().toString().slice(-4) : "",
+              }))
+            }
+          >
+            <div
+              className={`w-4 h-4 rounded border flex items-center justify-center ${data.isMix ? "bg-purple-500 border-purple-500" : "border-slate-500"}`}
+            >
+              {data.isMix && <Check size={12} className="text-white" />}
             </div>
-            <div className="flex-1 relative">
-              <FloatingInput
-                label="Kód *"
-                value={data.code}
-                onChange={(e) =>
-                  setData({ ...data, code: Normalizer.code(e.target.value) })
-                }
-                placeholder="XF-1"
-                labelColor="text-blue-400"
-              />
-              {showSuggestions && (
-                <div className="absolute top-full left-0 right-0 bg-slate-800 border border-slate-600 rounded-lg mt-1 z-50 shadow-xl max-h-40 overflow-y-auto">
-                  <div className="p-2 text-[10px] text-slate-400 font-bold uppercase border-b border-slate-700 bg-slate-900/50">
-                    Nalezeno v katalogu:
-                  </div>
-                  {suggestions.map(([key, val]) => (
-                    <div
-                      key={key}
-                      onClick={() => handleSelectSuggestion([key, val])}
-                      className="p-2 hover:bg-blue-600/20 hover:text-blue-300 cursor-pointer text-xs flex items-center gap-2 transition-colors border-b border-slate-700/50 last:border-0"
-                    >
-                      <Wand2 size={12} className="text-purple-400" />
-                      <span className="font-bold text-white">
-                        {val.displayCode}
-                      </span>
-                      <span className="text-slate-300 truncate">
-                        {val.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <span
+              className={`text-sm font-bold ${data.isMix ? "text-purple-400" : "text-slate-400"}`}
+            >
+              🧪 Vlastní Mix / Míchaná barva
+            </span>
           </div>
+
+          {!data.isMix && (
+            <div className="flex gap-3">
+              <div className="flex-1 relative">
+                <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 text-blue-400">
+                  Značka *
+                </label>
+                <select
+                  className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 transition-colors appearance-none cursor-pointer"
+                  value={data.brand}
+                  onChange={(e) => setData({ ...data, brand: e.target.value })}
+                >
+                  <option value="">-- Vyber --</option>
+                  {BRANDS.map((b) => (
+                    <option key={b} value={b}>
+                      {b}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="flex-1 relative">
+                <FloatingInput
+                  label="Kód *"
+                  value={data.code}
+                  onChange={(e) =>
+                    setData({ ...data, code: Normalizer.code(e.target.value) })
+                  }
+                  placeholder="XF-1"
+                  labelColor="text-blue-400"
+                />
+                {showSuggestions && (
+                  <div className="absolute top-full left-0 right-0 bg-slate-800 border border-slate-600 rounded-lg mt-1 z-50 shadow-xl max-h-40 overflow-y-auto">
+                    <div className="p-2 text-[10px] text-slate-400 font-bold uppercase border-b border-slate-700 bg-slate-900/50">
+                      Nalezeno v katalogu:
+                    </div>
+                    {suggestions.map(([key, val]) => (
+                      <div
+                        key={key}
+                        onClick={() => handleSelectSuggestion([key, val])}
+                        className="p-2 hover:bg-blue-600/20 hover:text-blue-300 cursor-pointer text-xs flex items-center gap-2 transition-colors border-b border-slate-700/50 last:border-0"
+                      >
+                        <Wand2 size={12} className="text-purple-400" />
+                        <span className="font-bold text-white">
+                          {val.displayCode}
+                        </span>
+                        <span className="text-slate-300 truncate">
+                          {val.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
           <FloatingInput
             label="Název / Odstín *"
@@ -2860,8 +2725,8 @@ const PaintDetailModal = ({
             onChange={(e) =>
               setData({ ...data, name: Normalizer.name(e.target.value) })
             }
-            placeholder="flat black"
-            labelColor="text-blue-400"
+            placeholder={data.isMix ? "Můj stínovací mix" : "flat black"}
+            labelColor={data.isMix ? "text-purple-400" : "text-blue-400"}
           />
 
           <div className="flex gap-3">
@@ -2905,15 +2770,93 @@ const PaintDetailModal = ({
             />
           </div>
 
-          <p className="text-[10px] text-blue-400/50 font-bold -mt-2 mb-2">
-            * tyto údaje jsou povinné (značka, kód, název)
-          </p>
+          {data.isMix && (
+            <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
+              <h4 className="text-xs font-bold text-purple-400 uppercase mb-2 flex items-center gap-2">
+                <FlaskConical size={14} /> Receptura (Ingredience)
+              </h4>
+              <div className="flex gap-2 mb-2">
+                <select
+                  className="flex-1 bg-slate-950 border border-slate-600 rounded text-xs text-white p-2"
+                  value={newMixPart.paintId}
+                  onChange={(e) =>
+                    setNewMixPart({ ...newMixPart, paintId: e.target.value })
+                  }
+                >
+                  <option value="">-- Vyber barvu ze skladu --</option>
+                  {existingPaints
+                    .filter((p) => p.status === "in_stock")
+                    .map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.brand} {p.code} {p.name}
+                      </option>
+                    ))}
+                </select>
+                <input
+                  type="number"
+                  min="1"
+                  className="w-16 bg-slate-950 border border-slate-600 rounded text-xs text-white p-2 text-center"
+                  placeholder="Díly"
+                  value={newMixPart.ratio}
+                  onChange={(e) =>
+                    setNewMixPart({
+                      ...newMixPart,
+                      ratio: parseInt(e.target.value) || 0,
+                    })
+                  }
+                />
+                <button
+                  onClick={addMixPart}
+                  disabled={!newMixPart.paintId}
+                  className="bg-purple-600 text-white p-2 rounded disabled:opacity-50"
+                >
+                  <Plus size={16} />
+                </button>
+              </div>
+              <div className="space-y-1">
+                {data.mixParts?.map((part, idx) => (
+                  <div
+                    key={idx}
+                    className="flex justify-between items-center bg-slate-900 p-2 rounded border border-slate-700 text-xs"
+                  >
+                    <span>
+                      <span className="font-bold text-purple-400">
+                        {part.ratio} dílů
+                      </span>{" "}
+                      - {part.brand} {part.code} {part.name}
+                    </span>
+                    <button
+                      onClick={() =>
+                        setData((prev) => ({
+                          ...prev,
+                          mixParts: prev.mixParts.filter((_, i) => i !== idx),
+                        }))
+                      }
+                      className="text-slate-500 hover:text-red-400"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                ))}
+                {(!data.mixParts || data.mixParts.length === 0) && (
+                  <p className="text-[10px] text-slate-500 italic text-center">
+                    Zatím žádné ingredience.
+                  </p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {!data.isMix && (
+            <p className="text-[10px] text-blue-400/50 font-bold -mt-2 mb-2">
+              * tyto údaje jsou povinné (značka, kód, název)
+            </p>
+          )}
 
           <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
             <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 flex items-center gap-2">
               <Droplets size={14} className="text-blue-400" /> Ředění
             </h4>
-
             <div className="flex gap-3 items-end">
               <FloatingInput
                 className="flex-[2]"
@@ -2922,7 +2865,6 @@ const PaintDetailModal = ({
                 onChange={(e) => setData({ ...data, thinner: e.target.value })}
                 placeholder="Např. Tamiya X-20A"
               />
-
               <div className="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded px-2 py-1 h-[42px]">
                 <div className="text-center">
                   <label className="text-[8px] text-slate-500 font-bold block">
@@ -2958,7 +2900,6 @@ const PaintDetailModal = ({
               </div>
             </div>
           </div>
-
           <div className="bg-slate-800 p-3 rounded-lg border border-slate-700">
             <label className="block text-[10px] font-bold text-slate-500 uppercase mb-2">
               Odstín (Preview)
@@ -2984,8 +2925,6 @@ const PaintDetailModal = ({
               </div>
             </div>
           </div>
-
-          {/* --- OPRAVENO: POUŽITÍ BARVY --- */}
           <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
             <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 flex items-center gap-2">
               <Box size={14} className="text-purple-400" /> Použití v modelech
@@ -3014,7 +2953,6 @@ const PaintDetailModal = ({
               </p>
             )}
           </div>
-
           <div className="pt-2">
             <FloatingTextarea
               label="Poznámky (např. chování v pistoli)"
@@ -3025,7 +2963,6 @@ const PaintDetailModal = ({
             />
           </div>
         </div>
-
         <div className="p-4 border-t border-slate-800 bg-slate-800/30 flex justify-end rounded-b-xl">
           <button
             onClick={() => isFormValid && handleSaveWrapper()}
@@ -3036,8 +2973,8 @@ const PaintDetailModal = ({
               <Loader2 className="animate-spin" size={18} />
             ) : (
               <Save size={18} />
-            )}
-            {isSaving ? "Ukládám..." : "Uložit"}
+            )}{" "}
+            Uložit
           </button>
         </div>
       </div>
@@ -3053,13 +2990,11 @@ export default function App() {
   const [view, setView] = useState("kits");
   const [kits, setKits] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [paints, setPaints] = useState([]); // --- NOVÉ: State pro barvy
+  const [paints, setPaints] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Custom Confirmation Modal State
   const [confirmModal, setConfirmModal] = useState({
     isOpen: false,
     title: "",
@@ -3067,36 +3002,29 @@ export default function App() {
     onConfirm: null,
     isDestructive: false,
   });
-
-  // Filtry
   const [showFilter, setShowFilter] = useState(false);
   const [activeFilters, setActiveFilters] = useState({
     scales: [],
     brands: [],
     kitStatuses: [],
     projectStatuses: [],
-    paintBrands: [], // --- NOVÉ
-    paintTypes: [], // --- NOVÉ
+    paintBrands: [],
+    paintTypes: [],
   });
-
   const [manualDataUid, setManualDataUid] = useState(null);
-
   const [activeKit, setActiveKit] = useState(null);
   const [isNewKit, setIsNewKit] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const [isNewProject, setIsNewProject] = useState(false);
-  const [activePaint, setActivePaint] = useState(null); // --- NOVÉ
-  const [isNewPaint, setIsNewPaint] = useState(false); // --- NOVÉ
-
+  const [activePaint, setActivePaint] = useState(null);
+  const [isNewPaint, setIsNewPaint] = useState(false);
   const activeUid = manualDataUid || user?.uid;
 
-  // --- FIREBASE SYNC ---
   useEffect(() => {
     if (!auth) {
       setLoading(false);
       return;
     }
-
     const unsubAuth = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (!currentUser) {
@@ -3106,7 +3034,6 @@ export default function App() {
       }
       if (currentUser) setLoading(false);
     });
-
     const initAuth = async () => {
       try {
         await auth.authStateReady();
@@ -3114,11 +3041,9 @@ export default function App() {
           if (
             typeof __initial_auth_token !== "undefined" &&
             __initial_auth_token
-          ) {
+          )
             await signInWithCustomToken(auth, __initial_auth_token);
-          } else {
-            await signInAnonymously(auth);
-          }
+          else await signInAnonymously(auth);
         }
       } catch (e) {
         console.error("Auth Error:", e);
@@ -3126,23 +3051,18 @@ export default function App() {
         setLoading(false);
       }
     };
-
     initAuth();
     return () => unsubAuth();
   }, []);
 
-  // --- DATA LOADING ---
   useEffect(() => {
     if (!user || !db || !activeUid) return;
-
     setLoading(true);
-
     const handleError = (err) => {
       setLoading(false);
       if (err.code !== "permission-denied")
         console.error("Snapshot error:", err);
     };
-
     const unsubKits = onSnapshot(
       collection(db, "artifacts", "model-diary", "users", activeUid, "kits"),
       (snap) => setKits(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
@@ -3168,7 +3088,6 @@ export default function App() {
       },
       handleError,
     );
-
     return () => {
       unsubKits();
       unsubProjs();
@@ -3176,7 +3095,6 @@ export default function App() {
     };
   }, [user, activeUid]);
 
-  // --- CONFIRMATION HELPER ---
   const requestConfirm = (title, message, onConfirm, isDestructive = false) => {
     setConfirmModal({
       isOpen: true,
@@ -3189,8 +3107,11 @@ export default function App() {
       isDestructive,
     });
   };
+  const handleOpenKitPaints = (kit) => {
+    setIsNewKit(false);
+    setActiveKit({ ...kit, initialTab: "paints" });
+  };
 
-  // --- SAVE LOGIC ---
   const handleSaveItem = async (
     collectionName,
     itemData,
@@ -3199,34 +3120,28 @@ export default function App() {
     list,
   ) => {
     const dataToSave = { ...itemData };
+    if (dataToSave.initialTab) delete dataToSave.initialTab;
     if (collectionName === "kits" && dataToSave.projectId)
       dataToSave.legacyProject = null;
-
-    // Generování ID pro barvy (BRAND_CODE)
     let customId = null;
     if (collectionName === "paints") {
       customId = Normalizer.generateId(dataToSave.brand, dataToSave.code);
-      if (customId) dataToSave.id = customId; // Vynutíme custom ID
+      if (customId) dataToSave.id = customId;
     }
-
     if (!db || !user) {
-      // Offline Mode
       const finalId = customId || dataToSave.id || Date.now().toString();
       if (isNew) {
-        if (collectionName === "paints" && list.some((i) => i.id === finalId)) {
+        if (collectionName === "paints" && list.some((i) => i.id === finalId))
           setList(
             list.map((i) =>
               i.id === finalId ? { ...dataToSave, id: finalId } : i,
             ),
           );
-        } else {
-          setList([...list, { ...dataToSave, id: finalId }]);
-        }
+        else setList([...list, { ...dataToSave, id: finalId }]);
       } else
         setList(list.map((i) => (i.id === dataToSave.id ? dataToSave : i)));
-      return finalId; // Return ID for immediate usage
+      return finalId;
     } else if (user && activeUid) {
-      // Online Mode
       const colRef = collection(
         db,
         "artifacts",
@@ -3235,7 +3150,6 @@ export default function App() {
         activeUid,
         collectionName,
       );
-
       if (collectionName === "paints" && customId) {
         await setDoc(
           doc(colRef, customId),
@@ -3261,45 +3175,34 @@ export default function App() {
   };
 
   const handleQuickCreatePaint = (newPaintData) => {
-    // Wrapper pro rychlé vytvoření barvy z modalu modelu
-    // Vrátí ID nové barvy
-    // Protože handleSaveItem je async, ale React update je optimistik, musíme si poradit
-    // V offline režimu to vrátí ID hned. V online taky (buď generované nebo ref.id)
-
-    // Poznámka: Zde voláme handleSaveItem bez čekání na await v UI, ale data se propíší
-    // Pro správnou funkčnost ID musíme ID vygenerovat předem pokud jde o barvu
-
     const id =
       Normalizer.generateId(newPaintData.brand, newPaintData.code) ||
       Date.now().toString();
     handleSaveItem("paints", { ...newPaintData, id }, true, setPaints, paints);
     return id;
   };
-
   const deleteItem = async (collectionName, id, list, setList) => {
-    const performDelete = async () => {
-      if (!db || !user) setList(list.filter((i) => i.id !== id));
-      else if (user && activeUid)
-        await deleteDoc(
-          doc(
-            db,
-            "artifacts",
-            "model-diary",
-            "users",
-            activeUid,
-            collectionName,
-            id,
-          ),
-        );
-      if (collectionName === "kits") setActiveKit(null);
-      else if (collectionName === "projects") setActiveProject(null);
-      else setActivePaint(null);
-    };
-
     requestConfirm(
       "Opravdu smazat?",
       "Tato akce je nevratná. Položka bude trvale odstraněna.",
-      performDelete,
+      async () => {
+        if (!db || !user) setList(list.filter((i) => i.id !== id));
+        else if (user && activeUid)
+          await deleteDoc(
+            doc(
+              db,
+              "artifacts",
+              "model-diary",
+              "users",
+              activeUid,
+              collectionName,
+              id,
+            ),
+          );
+        if (collectionName === "kits") setActiveKit(null);
+        else if (collectionName === "projects") setActiveProject(null);
+        else setActivePaint(null);
+      },
       true,
     );
   };
@@ -3314,15 +3217,12 @@ export default function App() {
           const data = JSON.parse(text);
           if (!data.kits && !data.projects && !data.paints)
             throw new Error("Neplatná struktura dat.");
-
           const batch = db ? writeBatch(db) : null;
           let count = 0;
-
           if (!user || !db) {
             alert("Pro import dat musíte být online a přihlášeni.");
             return;
           }
-
           data.kits?.forEach((kit) => {
             if (kit.id) {
               batch.set(
@@ -3376,7 +3276,6 @@ export default function App() {
             );
             count++;
           });
-
           if (count > 0) {
             await batch.commit();
             alert(`Obnoveno ${count} položek.`);
@@ -3392,7 +3291,6 @@ export default function App() {
 
   const shoppingList = useMemo(() => {
     const wishlistKits = kits.filter((k) => k.status === "wishlist");
-
     const kitAccessories = kits
       .filter((k) => k.status !== "finished")
       .flatMap((k) =>
@@ -3405,7 +3303,6 @@ export default function App() {
             parentType: "kit",
           })),
       );
-
     const projectAccessories = projects
       .filter((p) => p.status !== "finished")
       .flatMap((p) =>
@@ -3418,11 +3315,9 @@ export default function App() {
             parentType: "project",
           })),
       );
-
     const wishlistPaints = paints.filter(
       (p) => p.status === "wanted" || p.status === "low",
     );
-
     return {
       kits: wishlistKits,
       accessories: [...kitAccessories, ...projectAccessories],
@@ -3435,7 +3330,7 @@ export default function App() {
       "Označit jako koupené?",
       `Položka "${item.name || item.brand}" se přesune do skladu.`,
       async () => {
-        if (type === "kit") {
+        if (type === "kit")
           await handleSaveItem(
             "kits",
             { ...item, status: "new" },
@@ -3443,7 +3338,7 @@ export default function App() {
             setKits,
             kits,
           );
-        } else if (type === "paint") {
+        else if (type === "paint")
           await handleSaveItem(
             "paints",
             { ...item, status: "in_stock" },
@@ -3451,11 +3346,9 @@ export default function App() {
             setPaints,
             paints,
           );
-        }
       },
     );
   };
-
   const handleBuyAccessory = (acc) => {
     requestConfirm(
       "Koupeno?",
@@ -3507,7 +3400,6 @@ export default function App() {
       return { ...prev, [type]: next };
     });
   };
-
   const clearFilters = () =>
     setActiveFilters({
       scales: [],
@@ -3523,8 +3415,8 @@ export default function App() {
 
   const filteredKits = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase();
-    return kits.filter((k) => {
-      return (
+    return kits.filter(
+      (k) =>
         (k.name + k.brand + (k.subject || ""))
           .toLowerCase()
           .includes(lowerSearch) &&
@@ -3533,9 +3425,8 @@ export default function App() {
         (activeFilters.brands.length === 0 ||
           activeFilters.brands.includes(k.brand)) &&
         (activeFilters.kitStatuses.length === 0 ||
-          activeFilters.kitStatuses.includes(k.status))
-      );
-    });
+          activeFilters.kitStatuses.includes(k.status)),
+    );
   }, [kits, searchTerm, activeFilters]);
 
   const filteredProjects = useMemo(() => {
@@ -3550,15 +3441,14 @@ export default function App() {
 
   const filteredPaints = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase();
-    return paints.filter((p) => {
-      return (
+    return paints.filter(
+      (p) =>
         (p.name + p.code + p.brand).toLowerCase().includes(lowerSearch) &&
         (activeFilters.paintBrands.length === 0 ||
           activeFilters.paintBrands.includes(p.brand)) &&
         (activeFilters.paintTypes.length === 0 ||
-          activeFilters.paintTypes.includes(p.type))
-      );
-    });
+          activeFilters.paintTypes.includes(p.type)),
+    );
   }, [paints, searchTerm, activeFilters]);
 
   const groupedKits = useMemo(
@@ -3571,15 +3461,11 @@ export default function App() {
     }),
     [filteredKits],
   );
-
-  // --- NOVÉ: Grupování barev pro přehlednější zobrazení ---
   const groupedPaints = useMemo(
     () => ({
-      // "Mám" (Skladem + Dochází + Prázdné = barvy, které fyzicky vlastním, i když došly)
       inventory: filteredPaints.filter((p) =>
         ["in_stock", "low", "empty"].includes(p.status),
       ),
-      // "Koupit" (Chtěné)
       wishlist: filteredPaints.filter((p) => p.status === "wanted"),
     }),
     [filteredPaints],
@@ -3646,8 +3532,10 @@ export default function App() {
                       hex: "#999999",
                       notes: "",
                       thinner: "",
-                      ratioPaint: 60, // Default 60
-                      ratioThinner: 40, // Default 40
+                      ratioPaint: 60,
+                      ratioThinner: 40,
+                      isMix: false,
+                      mixParts: [],
                     });
                   } else {
                     alert(
@@ -3655,7 +3543,7 @@ export default function App() {
                     );
                   }
                 }}
-                className={`p-2 rounded-full shadow text-white hover:brightness-110 bg-blue-600`}
+                className="p-2 rounded-full shadow text-white hover:brightness-110 bg-blue-600"
               >
                 <Plus size={24} />
               </button>
@@ -3687,7 +3575,6 @@ export default function App() {
               <ShoppingCart size={16} /> Nákup
             </button>
           </div>
-
           <div className="flex gap-2 mb-3">
             <div className="relative flex-1">
               <Search
@@ -3709,18 +3596,11 @@ export default function App() {
             </div>
             <button
               onClick={() => view !== "shopping" && setShowFilter(!showFilter)}
-              className={`p-2 w-10 h-10 rounded-lg border flex items-center justify-center transition-opacity shrink-0 ${
-                view === "shopping"
-                  ? "opacity-0 pointer-events-none border-transparent bg-transparent"
-                  : showFilter || hasActiveFilters
-                    ? "bg-blue-600 border-blue-500 text-white"
-                    : "bg-slate-800 border-slate-700 text-slate-400"
-              }`}
+              className={`p-2 w-10 h-10 rounded-lg border flex items-center justify-center transition-opacity shrink-0 ${view === "shopping" ? "opacity-0 pointer-events-none border-transparent bg-transparent" : showFilter || hasActiveFilters ? "bg-blue-600 border-blue-500 text-white" : "bg-slate-800 border-slate-700 text-slate-400"}`}
             >
               <Filter size={20} />
             </button>
           </div>
-
           {/* FILTER PANEL */}
           {showFilter && view !== "shopping" && (
             <div className="bg-slate-900 border border-slate-700 rounded-lg p-3 mb-3 animate-in slide-in-from-top-2">
@@ -3737,7 +3617,6 @@ export default function App() {
                   </button>
                 )}
               </div>
-
               {view === "kits" ? (
                 <div className="space-y-3">
                   <div>
@@ -3840,7 +3719,6 @@ export default function App() {
               )}
             </div>
           )}
-
           <div className="flex justify-between px-1 text-[10px] text-slate-500">
             <div className="flex gap-1">
               <Cloud size={10} /> ID:{" "}
@@ -3877,7 +3755,7 @@ export default function App() {
                           <Trash2 size={12} />
                         ) : (
                           <ShoppingCart size={12} />
-                        )}
+                        )}{" "}
                         {key === "wip"
                           ? "Na stole"
                           : key === "new"
@@ -3901,7 +3779,8 @@ export default function App() {
                         projectName={
                           projects.find((p) => p.id === k.projectId)?.name
                         }
-                        allPaints={paints} // --- NOVÉ: Předání barev pro výpočet statusu
+                        allPaints={paints}
+                        onOpenPaints={handleOpenKitPaints}
                       />
                     ))}
                   </section>
@@ -3953,7 +3832,7 @@ export default function App() {
                             key={k.id}
                             className="text-sm text-slate-300 truncate"
                           >
-                            • {k.subject} {k.name}
+                            • {safeRender(k.subject)} {safeRender(k.name)}
                           </div>
                         ))
                     ) : (
@@ -3971,10 +3850,8 @@ export default function App() {
           </>
         )}
 
-        {/* --- NOVÉ: BARVY NYNÍ V SEKCÍCH (MÁM vs KOUPIT) --- */}
         {view === "paints" && (
           <div className="space-y-6">
-            {/* SKLADEM / HISTORIE */}
             {groupedPaints.inventory.length > 0 && (
               <section>
                 <div className="flex justify-between items-center mb-2">
@@ -4000,8 +3877,6 @@ export default function App() {
                 </div>
               </section>
             )}
-
-            {/* NÁKUPNÍ SEZNAM */}
             {groupedPaints.wishlist.length > 0 && (
               <section>
                 <div className="flex justify-between items-center mb-2">
@@ -4027,7 +3902,6 @@ export default function App() {
                 </div>
               </section>
             )}
-
             {filteredPaints.length === 0 && (
               <div className="text-center text-slate-500 py-10">
                 <Palette size={48} className="mx-auto mb-2 opacity-20" />
@@ -4050,7 +3924,6 @@ export default function App() {
                 do skladu (koupeno).
               </p>
             </div>
-
             {shoppingList.kits.length === 0 &&
               shoppingList.accessories.length === 0 &&
               shoppingList.paints.length === 0 && (
@@ -4059,7 +3932,6 @@ export default function App() {
                   <p>Váš nákupní seznam je prázdný.</p>
                 </div>
               )}
-
             {shoppingList.kits.length > 0 && (
               <div>
                 <h3 className="text-xs font-bold text-purple-400 uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -4078,11 +3950,11 @@ export default function App() {
                     }
                     onBuy={(item) => handleMarkAsBought(item, "kit")}
                     allPaints={paints}
+                    onOpenPaints={handleOpenKitPaints}
                   />
                 ))}
               </div>
             )}
-
             {shoppingList.paints.length > 0 && (
               <div>
                 <h3 className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -4103,7 +3975,6 @@ export default function App() {
                 </div>
               </div>
             )}
-
             {shoppingList.accessories.length > 0 && (
               <div>
                 <h3 className="text-xs font-bold text-orange-400 uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -4152,7 +4023,7 @@ export default function App() {
         isDestructive={confirmModal.isDestructive}
       />
 
-      {/* MODALS - ORDER MATTERS FOR STACKING */}
+      {/* MODALS */}
       {showSettings && (
         <SettingsModal
           user={user}
@@ -4210,6 +4081,7 @@ export default function App() {
           onClose={() => setActiveKit(null)}
           onSave={(d) => handleSaveItem("kits", d, isNewKit, setKits, kits)}
           onDelete={(id) => deleteItem("kits", id, kits, setKits)}
+          initialTab={activeKit.initialTab}
         />
       )}
       {activePaint && (
