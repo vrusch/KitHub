@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useState, useMemo } from "react";
 import {
   Package,
   Folder,
@@ -24,38 +18,10 @@ import {
   Paintbrush,
   Trash2,
 } from "lucide-react";
-import {
-  collection,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  serverTimestamp,
-  setDoc,
-  writeBatch,
-  getDocs,
-  query,
-  where,
-  getDoc,
-} from "firebase/firestore";
-import {
-  signInAnonymously,
-  signInWithCustomToken,
-  onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import brandsData from "./data/brands.json";
 import masterCatalog from "./data/catalog.json";
-import { auth, db } from "./config/firebase";
-import { Normalizer } from "./utils/normalizers";
 import { GoogleIcon, CzechFlag, AppLogo } from "./components/ui/Icons";
-import { safeRender } from "./utils/helpers";
-import {
-  FilterChip,
-} from "./components/ui/FormElements";
+import { FilterChip } from "./components/ui/FormElements";
 import ConfirmModal from "./components/ui/ConfirmModal";
 import KitCard from "./components/cards/KitCard";
 import PaintCard from "./components/cards/PaintCard";
@@ -65,12 +31,14 @@ import SettingsModal from "./components/modals/SettingsModal";
 import ProjectDetailModal from "./components/modals/ProjectDetailModal";
 import KitDetailModal from "./components/modals/KitDetailModal";
 import PaintDetailModal from "./components/modals/PaintDetailModal";
+import { useAuth } from "./hooks/useAuth";
+import { useInventory } from "./hooks/useInventory";
 
 // ==========================================
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.29.8-refactoring-phase 4, step 3";
+const APP_VERSION = "v2.29.9-refactoring-phase 5, step 1";
 
 const BRANDS = brandsData;
 const MASTER_CATALOG = masterCatalog;
@@ -85,11 +53,6 @@ const MASTER_CATALOG = masterCatalog;
 
 export default function App() {
   const [view, setView] = useState("kits");
-  const [kits, setKits] = useState([]);
-  const [projects, setProjects] = useState([]);
-  const [paints, setPaints] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [confirmModal, setConfirmModal] = useState({
@@ -108,103 +71,12 @@ export default function App() {
     paintBrands: [],
     paintTypes: [],
   });
-  const [manualDataUid, setManualDataUid] = useState(null);
   const [activeKit, setActiveKit] = useState(null);
   const [isNewKit, setIsNewKit] = useState(false);
   const [activeProject, setActiveProject] = useState(null);
   const [isNewProject, setIsNewProject] = useState(false);
   const [activePaint, setActivePaint] = useState(null);
   const [isNewPaint, setIsNewPaint] = useState(false);
-  const activeUid = manualDataUid || user?.uid;
-
-  // NOVÉ: Stav pro detekci online/offline
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
-
-  useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
-    window.addEventListener("online", handleOnline);
-    window.addEventListener("offline", handleOffline);
-    return () => {
-      window.removeEventListener("online", handleOnline);
-      window.removeEventListener("offline", handleOffline);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!auth) {
-      setLoading(false);
-      return;
-    }
-    const unsubAuth = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      if (!currentUser) {
-        setKits([]);
-        setProjects([]);
-        setPaints([]);
-      }
-      if (currentUser) setLoading(false);
-    });
-    const initAuth = async () => {
-      try {
-        await auth.authStateReady();
-        if (!auth.currentUser) {
-          if (
-            typeof __initial_auth_token !== "undefined" &&
-            __initial_auth_token
-          )
-            await signInWithCustomToken(auth, __initial_auth_token);
-          else await signInAnonymously(auth);
-        }
-      } catch (e) {
-        console.error("Auth Error:", e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    initAuth();
-    return () => unsubAuth();
-  }, []);
-
-  useEffect(() => {
-    if (!user || !db || !activeUid) return;
-    setLoading(true);
-    const handleError = (err) => {
-      setLoading(false);
-      if (err.code !== "permission-denied")
-        console.error("Snapshot error:", err);
-    };
-    const unsubKits = onSnapshot(
-      collection(db, "artifacts", "model-diary", "users", activeUid, "kits"),
-      (snap) => setKits(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
-      handleError,
-    );
-    const unsubProjs = onSnapshot(
-      collection(
-        db,
-        "artifacts",
-        "model-diary",
-        "users",
-        activeUid,
-        "projects",
-      ),
-      (snap) => setProjects(snap.docs.map((d) => ({ id: d.id, ...d.data() }))),
-      handleError,
-    );
-    const unsubPaints = onSnapshot(
-      collection(db, "artifacts", "model-diary", "users", activeUid, "paints"),
-      (snap) => {
-        setPaints(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
-        setLoading(false);
-      },
-      handleError,
-    );
-    return () => {
-      unsubKits();
-      unsubProjs();
-      unsubPaints();
-    };
-  }, [user, activeUid]);
 
   const requestConfirm = (title, message, onConfirm, isDestructive = false) => {
     setConfirmModal({
@@ -218,6 +90,21 @@ export default function App() {
       isDestructive,
     });
   };
+
+  const { user, loading, isOnline, activeUid, setManualDataUid } = useAuth();
+  const {
+    kits,
+    projects,
+    paints,
+    saveItem,
+    deleteItem,
+    markAsBought,
+    importData,
+    quickCreatePaint,
+    buyAccessory,
+  } = useInventory(user, activeUid, requestConfirm);
+
+  // --- HANDLERS ---
   const handleOpenKitPaints = (kit) => {
     setIsNewKit(false);
     setActiveKit({ ...kit, initialTab: "paints" });
@@ -232,183 +119,6 @@ export default function App() {
       setIsNewProject(false);
       setActiveProject(proj);
     }
-  };
-
-  const handleSaveItem = async (
-    collectionName,
-    itemData,
-    isNew,
-    setList,
-    list,
-  ) => {
-    const dataToSave = { ...itemData };
-    if (dataToSave.initialTab) delete dataToSave.initialTab;
-    if (collectionName === "kits" && dataToSave.projectId)
-      dataToSave.legacyProject = null;
-    let customId = null;
-    if (collectionName === "paints") {
-      customId = Normalizer.generateId(dataToSave.brand, dataToSave.code);
-      if (customId) dataToSave.id = customId;
-    }
-    if (!db || !user) {
-      const finalId = customId || dataToSave.id || Date.now().toString();
-      if (isNew) {
-        if (collectionName === "paints" && list.some((i) => i.id === finalId))
-          setList(
-            list.map((i) =>
-              i.id === finalId ? { ...dataToSave, id: finalId } : i,
-            ),
-          );
-        else setList([...list, { ...dataToSave, id: finalId }]);
-      } else
-        setList(list.map((i) => (i.id === dataToSave.id ? dataToSave : i)));
-      return finalId;
-    } else if (user && activeUid) {
-      const colRef = collection(
-        db,
-        "artifacts",
-        "model-diary",
-        "users",
-        activeUid,
-        collectionName,
-      );
-      if (collectionName === "paints" && customId) {
-        await setDoc(
-          doc(colRef, customId),
-          { ...dataToSave, createdAt: serverTimestamp() },
-          { merge: true },
-        );
-        return customId;
-      } else {
-        if (isNew) {
-          const { id, ...cleanData } = dataToSave;
-          const ref = await addDoc(colRef, {
-            ...cleanData,
-            createdAt: serverTimestamp(),
-          });
-          return ref.id;
-        } else {
-          const { id, ...cleanData } = dataToSave;
-          await updateDoc(doc(colRef, dataToSave.id), cleanData);
-          return dataToSave.id;
-        }
-      }
-    }
-  };
-
-  const handleQuickCreatePaint = (newPaintData) => {
-    const id =
-      Normalizer.generateId(newPaintData.brand, newPaintData.code) ||
-      Date.now().toString();
-    handleSaveItem("paints", { ...newPaintData, id }, true, setPaints, paints);
-    return id;
-  };
-  const deleteItem = async (collectionName, id, list, setList) => {
-    requestConfirm(
-      "Opravdu smazat?",
-      "Tato akce je nevratná. Položka bude trvale odstraněna.",
-      async () => {
-        if (!db || !user) setList(list.filter((i) => i.id !== id));
-        else if (user && activeUid)
-          await deleteDoc(
-            doc(
-              db,
-              "artifacts",
-              "model-diary",
-              "users",
-              activeUid,
-              collectionName,
-              id,
-            ),
-          );
-        if (collectionName === "kits") setActiveKit(null);
-        else if (collectionName === "projects") setActiveProject(null);
-        else setActivePaint(null);
-      },
-      true,
-    );
-  };
-
-  const handleImportRequest = (file) => {
-    requestConfirm(
-      "Import dat",
-      "Pozor! Import přepíše všechna data se stejným ID. Opravdu chcete pokračovat?",
-      async () => {
-        try {
-          const text = await file.text();
-          const data = JSON.parse(text);
-          if (!data.kits && !data.projects && !data.paints)
-            throw new Error("Neplatná struktura dat.");
-          const batch = db ? writeBatch(db) : null;
-          let count = 0;
-          if (!user || !db) {
-            alert("Pro import dat musíte být online a přihlášeni.");
-            return;
-          }
-          data.kits?.forEach((kit) => {
-            if (kit.id) {
-              batch.set(
-                doc(
-                  db,
-                  "artifacts",
-                  "model-diary",
-                  "users",
-                  user.uid,
-                  "kits",
-                  kit.id.toString(),
-                ),
-                kit,
-              );
-              count++;
-            }
-          });
-          data.projects?.forEach((proj) => {
-            if (proj.id) {
-              batch.set(
-                doc(
-                  db,
-                  "artifacts",
-                  "model-diary",
-                  "users",
-                  user.uid,
-                  "projects",
-                  proj.id.toString(),
-                ),
-                proj,
-              );
-              count++;
-            }
-          });
-          data.paints?.forEach((paint) => {
-            const id =
-              paint.id ||
-              Normalizer.generateId(paint.brand, paint.code) ||
-              Date.now().toString();
-            batch.set(
-              doc(
-                db,
-                "artifacts",
-                "model-diary",
-                "users",
-                user.uid,
-                "paints",
-                id,
-              ),
-              { ...paint, id },
-            );
-            count++;
-          });
-          if (count > 0) {
-            await batch.commit();
-            alert(`Obnoveno ${count} položek.`);
-            setShowSettings(false);
-          } else alert("Žádná data k importu.");
-        } catch (err) {
-          alert("Chyba importu: " + err.message);
-        }
-      },
-      true,
-    );
   };
 
   const shoppingList = useMemo(() => {
@@ -449,55 +159,6 @@ export default function App() {
       paints: wishlistPaints,
     };
   }, [kits, projects, paints]);
-
-  const handleMarkAsBought = (item, type) => {
-    requestConfirm(
-      "Označit jako koupené?",
-      `Položka "${item.name || item.brand}" se přesune do skladu.`,
-      async () => {
-        if (type === "kit")
-          await handleSaveItem(
-            "kits",
-            { ...item, status: "new" },
-            false,
-            setKits,
-            kits,
-          );
-        else if (type === "paint")
-          await handleSaveItem(
-            "paints",
-            { ...item, status: "in_stock" },
-            false,
-            setPaints,
-            paints,
-          );
-      },
-    );
-  };
-  const handleBuyAccessory = (acc) => {
-    requestConfirm(
-      "Koupeno?",
-      `Označit doplněk "${acc.name}" jako koupený?`,
-      async () => {
-        const collectionName = acc.parentType === "kit" ? "kits" : "projects";
-        const parentItem = (acc.parentType === "kit" ? kits : projects).find(
-          (i) => i.id === acc.parentId,
-        );
-        if (parentItem) {
-          const updatedAccessories = parentItem.accessories.map((a) =>
-            a.id === acc.id ? { ...a, status: "owned" } : a,
-          );
-          await handleSaveItem(
-            collectionName,
-            { ...parentItem, accessories: updatedAccessories },
-            false,
-            acc.parentType === "kit" ? setKits : setProjects,
-            acc.parentType === "kit" ? kits : projects,
-          );
-        }
-      },
-    );
-  };
 
   const availableScales = useMemo(
     () => [...new Set(kits.map((k) => k.scale).filter(Boolean))].sort(),
@@ -1040,7 +701,7 @@ export default function App() {
                     projectName={
                       projects.find((p) => p.id === k.projectId)?.name
                     }
-                    onBuy={(item) => handleMarkAsBought(item, "kit")}
+                    onBuy={(item) => markAsBought(item, "kit")}
                     allPaints={paints}
                     onOpenDetail={handleOpenKitDetail}
                   />
@@ -1061,7 +722,7 @@ export default function App() {
                         setIsNewPaint(false);
                         setActivePaint(p);
                       }}
-                      onBuy={(item) => handleMarkAsBought(item, "paint")}
+                      onBuy={(item) => markAsBought(item, "paint")}
                     />
                   ))}
                 </div>
@@ -1077,7 +738,7 @@ export default function App() {
                     <ShoppingAccessoryCard
                       key={`${acc.id}-${index}`}
                       accessory={acc}
-                      onBuy={handleBuyAccessory}
+                      onBuy={buyAccessory}
                     />
                   ))}
                 </div>
@@ -1105,7 +766,7 @@ export default function App() {
           kits={kits}
           projects={projects}
           paints={paints}
-          onImport={handleImportRequest}
+          onImport={importData}
           activeUid={activeUid}
           onSetManualId={setManualDataUid}
           appVersion={APP_VERSION}
@@ -1118,24 +779,12 @@ export default function App() {
           allKits={kits}
           onClose={() => setActiveProject(null)}
           onSave={(d) =>
-            handleSaveItem("projects", d, isNewProject, setProjects, projects)
+            saveItem("projects", d, isNewProject)
           }
           onUpdateKitLink={(kid, pid) =>
-            handleSaveItem(
-              "kits",
-              {
-                ...kits.find((k) => k.id === kid),
-                projectId: pid,
-                legacyProject: null,
-              },
-              false,
-              setKits,
-              kits,
-            )
+            saveItem("kits", { ...kits.find((k) => k.id === kid), projectId: pid, legacyProject: null }, false)
           }
-          onCreateWishlistKit={(d) =>
-            handleSaveItem("kits", d, true, setKits, kits)
-          }
+          onCreateWishlistKit={(d) => saveItem("kits", d, true)}
           onAddWishlistKit={() => {
             setIsNewKit(true);
             setActiveKit({
@@ -1155,10 +804,13 @@ export default function App() {
           kit={activeKit}
           projects={projects}
           allPaints={paints}
-          onQuickCreatePaint={handleQuickCreatePaint}
+          onQuickCreatePaint={quickCreatePaint}
           onClose={() => setActiveKit(null)}
-          onSave={(d) => handleSaveItem("kits", d, isNewKit, setKits, kits)}
-          onDelete={(id) => deleteItem("kits", id, kits, setKits)}
+          onSave={(d) => saveItem("kits", d, isNewKit)}
+          onDelete={(id) => {
+            deleteItem("kits", id);
+            setActiveKit(null);
+          }}
           initialTab={activeKit.initialTab}
         />
       )}
@@ -1168,10 +820,11 @@ export default function App() {
           existingPaints={paints}
           allKits={kits}
           onClose={() => setActivePaint(null)}
-          onSave={(d) =>
-            handleSaveItem("paints", d, isNewPaint, setPaints, paints)
-          }
-          onDelete={(id) => deleteItem("paints", id, paints, setPaints)}
+          onSave={(d) => saveItem("paints", d, isNewPaint)}
+          onDelete={(id) => {
+            deleteItem("paints", id);
+            setActivePaint(null);
+          }}
         />
       )}
     </div>
