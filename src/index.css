@@ -9,4 +9,5 @@ body {
 }
 html {
   scrollbar-gutter: stable;
+  overscroll-behavior-y: contain;
 }
