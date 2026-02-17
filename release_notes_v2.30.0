@@ -1,3 +1,8 @@
+# Release v2.30.0 (The "Clean Code" Update)
+**Datum:** 16. 2. 2026
+**Předchozí verze:** v2.29.6
+
+## 🚀 Shrnutí
 Tato verze přináší **kompletní architektonický přepis (refactoring)** celé aplikace. Cílem bylo odstranit technický dluh, rozbít monolitický kód a připravit aplikaci na snadnější vývoj nových funkcí.
 
 Z uživatelského hlediska zůstává funkčnost a vzhled beze změny (1:1 parita), ale aplikace je nyní stabilnější a připravená na škálování.

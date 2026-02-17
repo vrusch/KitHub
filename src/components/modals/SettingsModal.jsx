@@ -24,6 +24,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 
+const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
+
 const SettingsModal = ({
   user,
   onClose,
@@ -33,7 +35,6 @@ const SettingsModal = ({
   onImport,
   activeUid,
   onSetManualId,
-  appVersion,
   masterCatalog,
 }) => {
   const [copied, setCopied] = useState(false);
@@ -46,7 +47,7 @@ const SettingsModal = ({
   }, [activeUid]);
   const handleExport = () => {
     const data = {
-      version: appVersion,
+      version: APP_VERSION,
       exportedAt: new Date().toISOString(),
       kits,
       projects,
@@ -277,7 +278,7 @@ const SettingsModal = ({
           </div>
         </div>
         <div className="p-4 bg-slate-950 border-t border-slate-800 text-center">
-          <span className="text-xs text-slate-600">{appVersion}</span>
+          <span className="text-xs text-slate-600">{APP_VERSION}</span>
         </div>
       </div>
     </div>

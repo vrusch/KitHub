@@ -32,10 +32,12 @@ import AppHeader from "./components/layout/AppHeader";
 // 🔧 KONFIGURACE A KONSTANTY
 // ==========================================
 
-const APP_VERSION = "v2.29.9-refactoring-phase 6";
+//const APP_VERSION = "v2.29.9-refactoring-phase 6";
 
 const BRANDS = brandsData;
 const MASTER_CATALOG = masterCatalog;
+const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
+
 
 // ==========================================
 // 🧩 SUB-KOMPONENTY (UI Elements)
