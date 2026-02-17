@@ -55,6 +55,8 @@ export default function App() {
     message: "",
     onConfirm: null,
     isDestructive: false,
+    confirmText: "Ano",
+    showCancel: true,
   });
   const [activeKit, setActiveKit] = useState(null);
   const [isNewKit, setIsNewKit] = useState(false);
@@ -63,16 +65,18 @@ export default function App() {
   const [activePaint, setActivePaint] = useState(null);
   const [isNewPaint, setIsNewPaint] = useState(false);
 
-  const requestConfirm = (title, message, onConfirm, isDestructive = false) => {
+  const requestConfirm = (title, message, onConfirm, isDestructive = false, confirmText = "Ano", showCancel = true) => {
     setConfirmModal({
       isOpen: true,
       title,
       message,
       onConfirm: () => {
-        onConfirm();
+        if (onConfirm) onConfirm();
         setConfirmModal((prev) => ({ ...prev, isOpen: false }));
       },
       isDestructive,
+      confirmText,
+      showCancel,
     });
   };
 
@@ -117,7 +121,7 @@ export default function App() {
     );
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-20 overflow-y-scroll">
+    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans pb-20">
       {/* HEADER */}
       <AppHeader
         logic={logic}
@@ -130,6 +134,7 @@ export default function App() {
         setActivePaint={setActivePaint}
         activeUid={activeUid}
         isOnline={isOnline}
+        onShowAlert={(msg) => requestConfirm("Info", msg, null, false, "Rozumím", false)}
       />
 
       {/* CONTENT */}
@@ -371,6 +376,8 @@ export default function App() {
         onConfirm={confirmModal.onConfirm}
         onCancel={() => setConfirmModal((prev) => ({ ...prev, isOpen: false }))}
         isDestructive={confirmModal.isDestructive}
+        confirmText={confirmModal.confirmText}
+        showCancel={confirmModal.showCancel}
       />
 
       {/* MODALS */}

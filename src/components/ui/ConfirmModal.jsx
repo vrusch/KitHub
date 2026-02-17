@@ -11,6 +11,7 @@ const ConfirmModal = ({
   confirmText = "Ano",
   cancelText = "Ne",
   isDestructive = false,
+  showCancel = true,
 }) => {
   if (!isOpen) return null;
   return (
@@ -26,15 +27,17 @@ const ConfirmModal = ({
           <p className="text-sm text-slate-400">{safeRender(message)}</p>
         </div>
         <div className="flex border-t border-slate-800">
-          <button
-            onClick={onCancel}
-            className="flex-1 py-3 text-sm font-bold text-slate-400 hover:bg-slate-800 transition-colors"
-          >
-            {cancelText}
-          </button>
+          {showCancel && (
+            <button
+              onClick={onCancel}
+              className="flex-1 py-3 text-sm font-bold text-slate-400 hover:bg-slate-800 transition-colors"
+            >
+              {cancelText}
+            </button>
+          )}
           <button
             onClick={onConfirm}
-            className={`flex-1 py-3 text-sm font-bold border-l border-slate-800 transition-colors ${isDestructive ? "text-red-500 hover:bg-red-500/10" : "text-blue-500 hover:bg-blue-500/10"}`}
+            className={`flex-1 py-3 text-sm font-bold ${showCancel ? "border-l border-slate-800" : ""} transition-colors ${isDestructive ? "text-red-500 hover:bg-red-500/10" : "text-blue-500 hover:bg-blue-500/10"}`}
           >
             {confirmText}
           </button>

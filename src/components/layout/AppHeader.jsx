@@ -26,6 +26,7 @@ const AppHeader = ({
   setActivePaint,
   activeUid,
   isOnline,
+  onShowAlert,
 }) => {
   return (
     <div className="bg-slate-800 border-b border-slate-700 sticky top-0 z-10 shadow-md">
@@ -78,9 +79,7 @@ const AppHeader = ({
                     mixParts: [],
                   });
                 } else {
-                  alert(
-                    "Pro přidání položky přepněte na Sklad, Barvy nebo Projekty.",
-                  );
+                  onShowAlert("Pro přidání položky přepněte na Modely, Barvy nebo Projekty.");
                 }
               }}
               className="p-2 rounded-full shadow text-white hover:brightness-110 bg-blue-600"
