@@ -88,7 +88,7 @@ const KitCard = React.memo(
         onClick={() => onClick && onClick(kit)}
         className={`bg-slate-800 rounded-lg p-3 mb-2 shadow-sm hover:bg-slate-750 cursor-pointer transition-all border border-slate-700 border-l-4 ${st.border} relative group`}
       >
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-stretch">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="text-[10px] font-bold bg-slate-900 text-slate-400 px-1.5 py-0.5 rounded border border-slate-700 whitespace-nowrap">
@@ -137,7 +137,7 @@ const KitCard = React.memo(
             )}
           </div>
 
-          <div className="ml-2 flex flex-col items-end shrink-0 gap-1">
+          <div className="ml-2 flex flex-col items-end shrink-0 gap-1 justify-between">
             {onBuy ? (
               <button
                 onClick={(e) => {
