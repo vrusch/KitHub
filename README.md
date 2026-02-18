@@ -7,23 +7,29 @@ Z uživatelského hlediska zůstává funkčnost a vzhled beze změny (1:1 parit
 ## 🏗 Hlavní změny v architektuře
 
 ### 1. Rozbití Monolitu (`App.jsx`)
+
 - **Původní stav:** Jeden soubor `App.jsx` o velikosti **3300+ řádků**. Obsahoval konfiguraci, data, UI, logiku i modaly.
 - **Nový stav:** Hlavní soubor má nyní cca **445 řádků** a slouží pouze jako orchestrátor (layout a routing).
 - **Výsledek:** Zlepšení čitelnosti kódu o 85 % a zrychlení vývojového cyklu.
 
 ### 2. Zavedení Custom Hooks (Logic Layer)
+
 Veškerá aplikační logika byla vyčleněna do samostatných hooků:
+
 - `useAuth`: Správa přihlášení, uživatele a online/offline stavu.
 - `useInventory`: CRUD operace (Create, Read, Update, Delete) pro modely, barvy a projekty. Komunikace s Firebase.
 - `useAppLogic`: Filtrování, vyhledávání, řazení a výpočty statistik pro dashboard.
 
 ### 3. Modularizace UI Komponent
+
 Uživatelské rozhraní bylo rozděleno na atomické části:
+
 - **Karty:** `KitCard`, `PaintCard`, `ProjectCard`, `ShoppingAccessoryCard`.
 - **Modaly:** `KitDetailModal`, `PaintDetailModal`, `ProjectDetailModal`, `SettingsModal`.
 - **UI Prvky:** `FormElements` (Inputy, Selecty), `Icons`, `AppHeader`.
 
 ### 4. Správa Dat a Konfigurace
+
 - **Data:** Statická data (Katalog barev, Značky) přesunuta do JSON souborů v `src/data/`.
 - **Utils:** Pomocné funkce (`Normalizer`, `safeRender`) přesunuty do `src/utils/`.
 - **Config:** Inicializace Firebase přesunuta do `src/config/`.
@@ -31,6 +37,7 @@ Uživatelské rozhraní bylo rozděleno na atomické části:
 ---
 
 ## 📂 Nová struktura projektu
+
 ```text
 src/
 ├── components/
@@ -47,3 +54,4 @@ src/
 
 ## 📋 Changelog
 Všechny podstatné změny v tomto projektu naleznete v souboru [CHANGELOG.md](./CHANGELOG.md).
+```

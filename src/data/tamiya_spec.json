@@ -1,0 +1,30 @@
+{
+  "Akryl": {
+    "title": "Tamiya Acrylic Mini (X/XF)",
+    "description": "Akrylové barvy na bázi alkoholu. Velmi oblíbené pro svou univerzálnost a bezpečnost.",
+    "thinner": "Tamiya X-20A (akrylové) nebo Lacquer Thinner (pro airbrush).",
+    "bestFor": "Štětec i airbrush, základní nátěry.",
+    "safety": "Nízký zápach, nehořlavé."
+  },
+  "Lacquer": {
+    "title": "Tamiya Lacquer Paint (LP)",
+    "description": "Syntetické laky pro extrémně hladký a tvrdý povrch. Ideální pro auta a metalízy.",
+    "thinner": "Tamiya Lacquer Thinner (žluté nebo oranžové víčko).",
+    "bestFor": "Airbrush, vysoce lesklé povrchy.",
+    "safety": "Silný zápach, nutné větrání!"
+  },
+  "Enamel": {
+    "title": "Tamiya Enamel Paint (X/XF)",
+    "description": "Syntetické emailové barvy. Schnou pomalu, což umožňuje barvě se krásně slít.",
+    "thinner": "Tamiya X-20 Enamel Thinner.",
+    "bestFor": "Detaily štětcem, figurky, weathering (wash).",
+    "safety": "Hořlavina, střední zápach."
+  },
+  "Primer": {
+    "title": "Tamiya Surface Primer",
+    "description": "Základové barvy a tekuté tmely pro sjednocení povrchu a zajištění přilnavosti.",
+    "thinner": "Tamiya Lacquer Thinner.",
+    "bestFor": "První vrstva na plast nebo kov.",
+    "safety": "Silný zápach, pracujte v maskách."
+  }
+}

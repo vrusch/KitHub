@@ -1,0 +1,1185 @@
+{
+  "GUNZE_C1": {
+    "displayCode": "C-1",
+    "name": "White",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#ffffff"
+  },
+  "GUNZE_C2": {
+    "displayCode": "C-2",
+    "name": "Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "GUNZE_C3": {
+    "displayCode": "C-3",
+    "name": "Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#ff0000"
+  },
+  "GUNZE_C4": {
+    "displayCode": "C-4",
+    "name": "Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#ffff00"
+  },
+  "GUNZE_C5": {
+    "displayCode": "C-5",
+    "name": "Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#0000ff"
+  },
+  "GUNZE_C6": {
+    "displayCode": "C-6",
+    "name": "Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "GUNZE_C7": {
+    "displayCode": "C-7",
+    "name": "Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#8b4513"
+  },
+  "GUNZE_C8": {
+    "displayCode": "C-8",
+    "name": "Silver",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#c0c0c0"
+  },
+  "GUNZE_C9": {
+    "displayCode": "C-9",
+    "name": "Gold",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#ffd700"
+  },
+  "GUNZE_C10": {
+    "displayCode": "C-10",
+    "name": "Copper",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#b87333"
+  },
+  "GUNZE_C11": {
+    "displayCode": "C-11",
+    "name": "Light Gull Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#d3d3d3"
+  },
+  "GUNZE_C12": {
+    "displayCode": "C-12",
+    "name": "Olive Drab (1)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#6b8e23"
+  },
+  "GUNZE_C13": {
+    "displayCode": "C-13",
+    "name": "Neutral Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "GUNZE_C14": {
+    "displayCode": "C-14",
+    "name": "Navy Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#000080"
+  },
+  "GUNZE_C15": {
+    "displayCode": "C-15",
+    "name": "IJN Green (Nakajima)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#2F4F2F"
+  },
+  "GUNZE_C16": {
+    "displayCode": "C-16",
+    "name": "IJN Green (Mitsubishi)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C17": {
+    "displayCode": "C-17",
+    "name": "RLM71 Dark Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C18": {
+    "displayCode": "C-18",
+    "name": "RLM70 Black Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#2F4F2F"
+  },
+  "GUNZE_C19": {
+    "displayCode": "C-19",
+    "name": "Sandy Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F4A460"
+  },
+  "GUNZE_C20": {
+    "displayCode": "C-20",
+    "name": "Light Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#ADD8E6"
+  },
+  "GUNZE_C21": {
+    "displayCode": "C-21",
+    "name": "Middle Stone",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#d2b48c"
+  },
+  "GUNZE_C22": {
+    "displayCode": "C-22",
+    "name": "Dark Earth",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#556b2f"
+  },
+  "GUNZE_C23": {
+    "displayCode": "C-23",
+    "name": "Dark Green (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C25": {
+    "displayCode": "C-25",
+    "name": "Dark Seagray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#483D8B"
+  },
+  "GUNZE_C26": {
+    "displayCode": "C-26",
+    "name": "Duck Egg Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#E0FFFF"
+  },
+  "GUNZE_C27": {
+    "displayCode": "C-27",
+    "name": "Interior Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#ADFF2F"
+  },
+  "GUNZE_C28": {
+    "displayCode": "C-28",
+    "name": "Steel",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "GUNZE_C29": {
+    "displayCode": "C-29",
+    "name": "Hull Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#800000"
+  },
+  "GUNZE_C30": {
+    "displayCode": "C-30",
+    "name": "Flat Base",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_C31": {
+    "displayCode": "C-31",
+    "name": "Dark Gray (1)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#696969"
+  },
+  "GUNZE_C32": {
+    "displayCode": "C-32",
+    "name": "Dark Gray (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#464646"
+  },
+  "GUNZE_C33": {
+    "displayCode": "C-33",
+    "name": "Flat Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#1a1a1a"
+  },
+  "GUNZE_C34": {
+    "displayCode": "C-34",
+    "name": "Sky Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#87CEEB"
+  },
+  "GUNZE_C35": {
+    "displayCode": "C-35",
+    "name": "IJN Gray (Mitsubishi)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#C0C0C0"
+  },
+  "GUNZE_C36": {
+    "displayCode": "C-36",
+    "name": "RLM74 Gray Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#708090"
+  },
+  "GUNZE_C37": {
+    "displayCode": "C-37",
+    "name": "RLM75 Gray Violet",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#778899"
+  },
+  "GUNZE_C38": {
+    "displayCode": "C-38",
+    "name": "Olive Drab (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C39": {
+    "displayCode": "C-39",
+    "name": "Dark Yellow (Sand Yellow)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "GUNZE_C40": {
+    "displayCode": "C-40",
+    "name": "German Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#696969"
+  },
+  "GUNZE_C41": {
+    "displayCode": "C-41",
+    "name": "Red Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#A52A2A"
+  },
+  "GUNZE_C42": {
+    "displayCode": "C-42",
+    "name": "Mahogany",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#4E3629"
+  },
+  "GUNZE_C43": {
+    "displayCode": "C-43",
+    "name": "Wood Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#8B4513"
+  },
+  "GUNZE_C44": {
+    "displayCode": "C-44",
+    "name": "Tan (Deck Tan)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "GUNZE_C45": {
+    "displayCode": "C-45",
+    "name": "Sail Color",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#F5DEB3"
+  },
+  "GUNZE_C46": {
+    "displayCode": "C-46",
+    "name": "Clear",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_C47": {
+    "displayCode": "C-47",
+    "name": "Clear Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#8B0000"
+  },
+  "GUNZE_C48": {
+    "displayCode": "C-48",
+    "name": "Clear Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFFF00"
+  },
+  "GUNZE_C49": {
+    "displayCode": "C-49",
+    "name": "Clear Orange",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FF8C00"
+  },
+  "GUNZE_C50": {
+    "displayCode": "C-50",
+    "name": "Clear Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#00008B"
+  },
+  "GUNZE_C51": {
+    "displayCode": "C-51",
+    "name": "Flesh",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#FFE4C4"
+  },
+  "GUNZE_C52": {
+    "displayCode": "C-52",
+    "name": "Field Gray (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C54": {
+    "displayCode": "C-54",
+    "name": "Khaki Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C55": {
+    "displayCode": "C-55",
+    "name": "Khaki",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#F0E68C"
+  },
+  "GUNZE_C56": {
+    "displayCode": "C-56",
+    "name": "IJN Gray (Nakajima)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_C57": {
+    "displayCode": "C-57",
+    "name": "Metallic Blue Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#20B2AA"
+  },
+  "GUNZE_C58": {
+    "displayCode": "C-58",
+    "name": "Orange Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFD700"
+  },
+  "GUNZE_C59": {
+    "displayCode": "C-59",
+    "name": "Orange",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFA500"
+  },
+  "GUNZE_C60": {
+    "displayCode": "C-60",
+    "name": "RLM02 Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#808069"
+  },
+  "GUNZE_C61": {
+    "displayCode": "C-61",
+    "name": "Burnt Iron",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#4a3c31"
+  },
+  "GUNZE_C62": {
+    "displayCode": "C-62",
+    "name": "Flat White",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#f2f2f2"
+  },
+  "GUNZE_C63": {
+    "displayCode": "C-63",
+    "name": "Pink",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFC0CB"
+  },
+  "GUNZE_C64": {
+    "displayCode": "C-64",
+    "name": "Yellow Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#9ACD32"
+  },
+  "GUNZE_C65": {
+    "displayCode": "C-65",
+    "name": "Bright Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#00BFFF"
+  },
+  "GUNZE_C66": {
+    "displayCode": "C-66",
+    "name": "Bright Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#00FF00"
+  },
+  "GUNZE_C67": {
+    "displayCode": "C-67",
+    "name": "Purple",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#800080"
+  },
+  "GUNZE_C68": {
+    "displayCode": "C-68",
+    "name": "Red Madder",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#A52A2A"
+  },
+  "GUNZE_C69": {
+    "displayCode": "C-69",
+    "name": "Off White",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#F8F8FF"
+  },
+  "GUNZE_C70": {
+    "displayCode": "C-70",
+    "name": "Dark Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C71": {
+    "displayCode": "C-71",
+    "name": "Midnight Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#191970"
+  },
+  "GUNZE_C72": {
+    "displayCode": "C-72",
+    "name": "Intermediate Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#4169E1"
+  },
+  "GUNZE_C73": {
+    "displayCode": "C-73",
+    "name": "Aircraft Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C74": {
+    "displayCode": "C-74",
+    "name": "Air Superiority Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#87CEEB"
+  },
+  "GUNZE_C75": {
+    "displayCode": "C-75",
+    "name": "Metallic Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#8B0000"
+  },
+  "GUNZE_C76": {
+    "displayCode": "C-76",
+    "name": "Metallic Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#00008B"
+  },
+  "GUNZE_C77": {
+    "displayCode": "C-77",
+    "name": "Metallic Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#006400"
+  },
+  "GUNZE_C78": {
+    "displayCode": "C-78",
+    "name": "Metal Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#2F4F4F"
+  },
+  "GUNZE_C79": {
+    "displayCode": "C-79",
+    "name": "Shine Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FF0000"
+  },
+  "GUNZE_C80": {
+    "displayCode": "C-80",
+    "name": "Cobalt Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#0047AB"
+  },
+  "GUNZE_C81": {
+    "displayCode": "C-81",
+    "name": "Russet",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#80461B"
+  },
+  "GUNZE_C90": {
+    "displayCode": "C-90",
+    "name": "Shine Silver",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "GUNZE_C92": {
+    "displayCode": "C-92",
+    "name": "Semi-Gloss Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#262626"
+  },
+  "GUNZE_C97": {
+    "displayCode": "C-97",
+    "name": "Light Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C100": {
+    "displayCode": "C-100",
+    "name": "Maroon",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#800000"
+  },
+  "GUNZE_C101": {
+    "displayCode": "C-101",
+    "name": "Smoke Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#696969"
+  },
+  "GUNZE_C104": {
+    "displayCode": "C-104",
+    "name": "Gun Chrome",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_C107": {
+    "displayCode": "C-107",
+    "name": "Character White",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F8F8FF"
+  },
+  "GUNZE_C108": {
+    "displayCode": "C-108",
+    "name": "Character Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#DC143C"
+  },
+  "GUNZE_C109": {
+    "displayCode": "C-109",
+    "name": "Character Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#FFD700"
+  },
+  "GUNZE_C110": {
+    "displayCode": "C-110",
+    "name": "Character Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#0000CD"
+  },
+  "GUNZE_C111": {
+    "displayCode": "C-111",
+    "name": "Character Flesh (1)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#FFE4C4"
+  },
+  "GUNZE_C112": {
+    "displayCode": "C-112",
+    "name": "Character Flesh (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#FFDAB9"
+  },
+  "GUNZE_C113": {
+    "displayCode": "C-113",
+    "name": "RLM04 Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#FFD700"
+  },
+  "GUNZE_C114": {
+    "displayCode": "C-114",
+    "name": "RLM23 Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#DC143C"
+  },
+  "GUNZE_C115": {
+    "displayCode": "C-115",
+    "name": "RLM65 Light Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#87CEEB"
+  },
+  "GUNZE_C116": {
+    "displayCode": "C-116",
+    "name": "RLM66 Black Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#4F4F4F"
+  },
+  "GUNZE_C117": {
+    "displayCode": "C-117",
+    "name": "RLM76 Light Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#99AAB5"
+  },
+  "GUNZE_C118": {
+    "displayCode": "C-118",
+    "name": "RLM78 Light Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#B0E0E6"
+  },
+  "GUNZE_C119": {
+    "displayCode": "C-119",
+    "name": "RLM79 Sandy Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#DEB887"
+  },
+  "GUNZE_C120": {
+    "displayCode": "C-120",
+    "name": "RLM80 Olive Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C121": {
+    "displayCode": "C-121",
+    "name": "RLM81 Brown Violet",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#8B4513"
+  },
+  "GUNZE_C122": {
+    "displayCode": "C-122",
+    "name": "RLM82 Light Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#90EE90"
+  },
+  "GUNZE_C123": {
+    "displayCode": "C-123",
+    "name": "RLM83 Dark Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C124": {
+    "displayCode": "C-124",
+    "name": "Dark Green (Mitsubishi)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C125": {
+    "displayCode": "C-125",
+    "name": "Cowling Color",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#191970"
+  },
+  "GUNZE_C126": {
+    "displayCode": "C-126",
+    "name": "Cockpit Color (Mitsubishi)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C127": {
+    "displayCode": "C-127",
+    "name": "Cockpit Color (Nakajima)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F0E68C"
+  },
+  "GUNZE_C128": {
+    "displayCode": "C-128",
+    "name": "Gray Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#8FBC8F"
+  },
+  "GUNZE_C129": {
+    "displayCode": "C-129",
+    "name": "Dark Green (Nakajima)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C130": {
+    "displayCode": "C-130",
+    "name": "Kawasaki Dark Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C131": {
+    "displayCode": "C-131",
+    "name": "Propeller Color",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#A52A2A"
+  },
+  "GUNZE_C135": {
+    "displayCode": "C-135",
+    "name": "Russian Green (1)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C136": {
+    "displayCode": "C-136",
+    "name": "Russian Green (2)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#6B8E23"
+  },
+  "GUNZE_C137": {
+    "displayCode": "C-137",
+    "name": "Tire Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#202020"
+  },
+  "GUNZE_C138": {
+    "displayCode": "C-138",
+    "name": "Clear Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "GUNZE_C151": {
+    "displayCode": "C-151",
+    "name": "White Pearl",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Perleťová",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_C156": {
+    "displayCode": "C-156",
+    "name": "Super White",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "GUNZE_C157": {
+    "displayCode": "C-157",
+    "name": "Super Black",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "GUNZE_C158": {
+    "displayCode": "C-158",
+    "name": "Super Italian Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#C80000"
+  },
+  "GUNZE_C159": {
+    "displayCode": "C-159",
+    "name": "Super Silver",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Metalická",
+    "hex": "#E0E0E0"
+  },
+  "GUNZE_C171": {
+    "displayCode": "C-171",
+    "name": "Fluorescent Red",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#FF4500"
+  },
+  "GUNZE_C172": {
+    "displayCode": "C-172",
+    "name": "Fluorescent Yellow",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#FFFF00"
+  },
+  "GUNZE_C173": {
+    "displayCode": "C-173",
+    "name": "Fluorescent Orange",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#FFA500"
+  },
+  "GUNZE_C174": {
+    "displayCode": "C-174",
+    "name": "Pink",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#FFC0CB"
+  },
+  "GUNZE_C175": {
+    "displayCode": "C-175",
+    "name": "Fluorescent Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#00FF00"
+  },
+  "GUNZE_C181": {
+    "displayCode": "C-181",
+    "name": "Semi-Gloss Clear",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_C182": {
+    "displayCode": "C-182",
+    "name": "Flat Clear",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Matná",
+    "hex": "#F8F8FF"
+  },
+  "GUNZE_C183": {
+    "displayCode": "C-183",
+    "name": "Gray 183 (Super Clear Gray)",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#808080"
+  },
+  "GUNZE_C188": {
+    "displayCode": "C-188",
+    "name": "Flat Base Rough",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Aditivum",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_C189": {
+    "displayCode": "C-189",
+    "name": "Flat Base Smooth",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Aditivum",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_C301": {
+    "displayCode": "C-301",
+    "name": "Gray FS36081",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#4F4F4F"
+  },
+  "GUNZE_C302": {
+    "displayCode": "C-302",
+    "name": "Green FS34092",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C303": {
+    "displayCode": "C-303",
+    "name": "Green FS34102",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#228B22"
+  },
+  "GUNZE_C304": {
+    "displayCode": "C-304",
+    "name": "Olive Drab FS34087",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#556B2F"
+  },
+  "GUNZE_C305": {
+    "displayCode": "C-305",
+    "name": "Gray FS36118",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#708090"
+  },
+  "GUNZE_C306": {
+    "displayCode": "C-306",
+    "name": "Gray FS36270",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_C307": {
+    "displayCode": "C-307",
+    "name": "Gray FS36320",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#C0C0C0"
+  },
+  "GUNZE_C308": {
+    "displayCode": "C-308",
+    "name": "Gray FS36375",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_C309": {
+    "displayCode": "C-309",
+    "name": "Green FS34079",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C310": {
+    "displayCode": "C-310",
+    "name": "Brown FS30219",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#8B4513"
+  },
+  "GUNZE_C311": {
+    "displayCode": "C-311",
+    "name": "Gray FS36622",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#DCDCDC"
+  },
+  "GUNZE_C312": {
+    "displayCode": "C-312",
+    "name": "Green FS34227",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#90EE90"
+  },
+  "GUNZE_C313": {
+    "displayCode": "C-313",
+    "name": "Yellow FS33531",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F0E68C"
+  },
+  "GUNZE_C314": {
+    "displayCode": "C-314",
+    "name": "Blue FS35622",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#ADD8E6"
+  },
+  "GUNZE_C315": {
+    "displayCode": "C-315",
+    "name": "Gray FS16440",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C316": {
+    "displayCode": "C-316",
+    "name": "White FS17875",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#F8F8FF"
+  },
+  "GUNZE_C317": {
+    "displayCode": "C-317",
+    "name": "Gray FS36231",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#808080"
+  },
+  "GUNZE_C318": {
+    "displayCode": "C-318",
+    "name": "Radome",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F5DEB3"
+  },
+  "GUNZE_C319": {
+    "displayCode": "C-319",
+    "name": "Light Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#90EE90"
+  },
+  "GUNZE_C320": {
+    "displayCode": "C-320",
+    "name": "Dark Green",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C321": {
+    "displayCode": "C-321",
+    "name": "Light Brown",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D2B48C"
+  },
+  "GUNZE_C322": {
+    "displayCode": "C-322",
+    "name": "Phthalo Cyanine Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#000080"
+  },
+  "GUNZE_C323": {
+    "displayCode": "C-323",
+    "name": "Light Blue",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#87CEEB"
+  },
+  "GUNZE_C324": {
+    "displayCode": "C-324",
+    "name": "Light Gray",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C325": {
+    "displayCode": "C-325",
+    "name": "Gray FS26440",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C326": {
+    "displayCode": "C-326",
+    "name": "Blue FS15044",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#191970"
+  },
+  "GUNZE_C327": {
+    "displayCode": "C-327",
+    "name": "Red FS11136",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#DC143C"
+  },
+  "GUNZE_C328": {
+    "displayCode": "C-328",
+    "name": "Blue FS15050",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#0000CD"
+  },
+  "GUNZE_C329": {
+    "displayCode": "C-329",
+    "name": "Yellow FS13538",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#FFD700"
+  },
+  "GUNZE_C330": {
+    "displayCode": "C-330",
+    "name": "Dark Green BS381C/641",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  },
+  "GUNZE_C331": {
+    "displayCode": "C-331",
+    "name": "Dark Seagray BS381C/638",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#4F4F4F"
+  },
+  "GUNZE_C332": {
+    "displayCode": "C-332",
+    "name": "Light Aircraft Gray BS381C/627",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_C333": {
+    "displayCode": "C-333",
+    "name": "Extra Dark Seagray BS381C/640",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#696969"
+  },
+  "GUNZE_C334": {
+    "displayCode": "C-334",
+    "name": "Barley Gray BS4800/18B21",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_C335": {
+    "displayCode": "C-335",
+    "name": "Medium Seagray BS381C/637",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#808080"
+  },
+  "GUNZE_C336": {
+    "displayCode": "C-336",
+    "name": "Hemp BS4800/10B21",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#D2B48C"
+  },
+  "GUNZE_C337": {
+    "displayCode": "C-337",
+    "name": "Grayish Blue FS35237",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#778899"
+  },
+  "GUNZE_C338": {
+    "displayCode": "C-338",
+    "name": "Light Gray FS36495",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_C339": {
+    "displayCode": "C-339",
+    "name": "Engine Gray FS16081",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Lesklá",
+    "hex": "#2F4F4F"
+  },
+  "GUNZE_C340": {
+    "displayCode": "C-340",
+    "name": "Field Green FS34097",
+    "type": "Mr. Color (Lacquer)",
+    "finish": "Polomatná",
+    "hex": "#006400"
+  }
+}

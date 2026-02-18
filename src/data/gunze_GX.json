@@ -1,0 +1,198 @@
+{
+  "GUNZE_GX1": {
+    "displayCode": "GX-1",
+    "name": "Cool White",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "GUNZE_GX2": {
+    "displayCode": "GX-2",
+    "name": "Ueno Black",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "GUNZE_GX3": {
+    "displayCode": "GX-3",
+    "name": "Herman Red",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#DC143C"
+  },
+  "GUNZE_GX4": {
+    "displayCode": "GX-4",
+    "name": "Chiara Yellow",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#FFD700"
+  },
+  "GUNZE_GX5": {
+    "displayCode": "GX-5",
+    "name": "Susie Blue",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#0000CD"
+  },
+  "GUNZE_GX6": {
+    "displayCode": "GX-6",
+    "name": "Morray Green",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "GUNZE_GX100": {
+    "displayCode": "GX-100",
+    "name": "Super Clear III",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_GX101": {
+    "displayCode": "GX-101",
+    "name": "Flat Clear",
+    "type": "Mr. Color GX",
+    "finish": "Matná",
+    "hex": "#F8F8FF"
+  },
+  "GUNZE_GX112": {
+    "displayCode": "GX-112",
+    "name": "Super Clear III UV Cut",
+    "type": "Mr. Color GX",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_GX113": {
+    "displayCode": "GX-113",
+    "name": "Super Clear III Flat UV Cut",
+    "type": "Mr. Color GX",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_GX114": {
+    "displayCode": "GX-114",
+    "name": "Super Smooth Clear Flat",
+    "type": "Mr. Color GX",
+    "finish": "Matná (Sametová)",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_GX201": {
+    "displayCode": "GX-201",
+    "name": "Metal Black",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#2F4F4F"
+  },
+  "GUNZE_GX202": {
+    "displayCode": "GX-202",
+    "name": "Metal Red",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#8B0000"
+  },
+  "GUNZE_GX203": {
+    "displayCode": "GX-203",
+    "name": "Metal Yellow",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "GUNZE_GX204": {
+    "displayCode": "GX-204",
+    "name": "Metal Blue",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#00008B"
+  },
+  "GUNZE_GX205": {
+    "displayCode": "GX-205",
+    "name": "Metal Green",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#006400"
+  },
+  "GUNZE_GX206": {
+    "displayCode": "GX-206",
+    "name": "Metal Purple",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#800080"
+  },
+  "GUNZE_GX207": {
+    "displayCode": "GX-207",
+    "name": "Metal Violet",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#EE82EE"
+  },
+  "GUNZE_GX208": {
+    "displayCode": "GX-208",
+    "name": "Metal Dark Blue",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#191970"
+  },
+  "GUNZE_GX209": {
+    "displayCode": "GX-209",
+    "name": "Red Gold",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#B8860B"
+  },
+  "GUNZE_GX210": {
+    "displayCode": "GX-210",
+    "name": "Blue Gold",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#DAA520"
+  },
+  "GUNZE_GX211": {
+    "displayCode": "GX-211",
+    "name": "Metal Yellow Green",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#9ACD32"
+  },
+  "GUNZE_GX212": {
+    "displayCode": "GX-212",
+    "name": "Metal Peach",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#FFDAB9"
+  },
+  "GUNZE_GX213": {
+    "displayCode": "GX-213",
+    "name": "White Silver",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#E0E0E0"
+  },
+  "GUNZE_GX214": {
+    "displayCode": "GX-214",
+    "name": "Ice Silver",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_GX215": {
+    "displayCode": "GX-215",
+    "name": "Metal Copper",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "GUNZE_GX216": {
+    "displayCode": "GX-216",
+    "name": "Metal Dark Stainless",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "GUNZE_GX217": {
+    "displayCode": "GX-217",
+    "name": "Rough Gold",
+    "type": "Mr. Color GX",
+    "finish": "Metalická",
+    "hex": "#B8860B"
+  }
+}
