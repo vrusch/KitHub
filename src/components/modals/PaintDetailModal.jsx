@@ -28,6 +28,13 @@ import { Normalizer } from "../../utils/normalizers";
 import PaintAPI from "../../data/paints/PaintAPI";
 
 // Pomocné funkce pro míchání barev (Hex <-> RGB)
+/**
+ * Převede HEX kód barvy na RGB objekt.
+ * Používá se pro výpočet výsledné barvy při míchání.
+ *
+ * @param {string} hex - Hexadecimální řetězec (např. "#ff0000" nebo "#f00").
+ * @returns {{r: number, g: number, b: number} | null} Objekt s RGB složkami nebo null při chybě.
+ */
 const hexToRgb = (hex) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
@@ -39,10 +46,17 @@ const hexToRgb = (hex) => {
     : null;
 };
 
+/**
+ * Převede RGB složky zpět na HEX řetězec.
+ */
 const rgbToHex = (r, g, b) => {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
+/**
+ * Modální okno pro detail barvy (Editace) nebo vytvoření nové barvy.
+ * Řeší i míchání vlastních odstínů (Mix) a validaci vůči skladu.
+ */
 const PaintDetailModal = ({
   paint,
   onClose,
@@ -82,6 +96,7 @@ const PaintDetailModal = ({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [duplicateError, setDuplicateError] = useState(null);
   const [statusToast, setStatusToast] = useState(false);
+  const [suggestionSelected, setSuggestionSelected] = useState(false);
 
   // Stav pro přidávání do mixu
   const [newMixPart, setNewMixPart] = useState({ paintId: "", ratio: 1 });
@@ -89,6 +104,10 @@ const PaintDetailModal = ({
   // --- 2. LOGIKA (EFFECTS) ---
 
   // A) Načtení řad (pouze pokud měníme značku u nové barvy)
+  /**
+   * Načte dostupné produktové řady (Series) pro vybranou značku.
+   * Spouští se pouze při změně značky.
+   */
   useEffect(() => {
     if (data.brand) {
       const series = PaintAPI.getSeriesList(data.brand);
@@ -118,7 +137,13 @@ const PaintDetailModal = ({
   // D) NAŠEPTÁVAČ (Autocomplete)
   useEffect(() => {
     // Našeptáváme jen pro: Novou barvu, Není Mix, Máme značku, Píšeme kód
-    if (!data.isMix && data.brand && data.code && !isEditMode) {
+    if (
+      !data.isMix &&
+      data.brand &&
+      data.code &&
+      !isEditMode &&
+      !suggestionSelected
+    ) {
       const searchCode = data.code.toUpperCase().replace(/[\s\-\.]/g, "");
 
       // Zjistíme, kde hledat (konkrétní řada vs. celá značka)
@@ -145,7 +170,14 @@ const PaintDetailModal = ({
       setSuggestions([]);
       setShowSuggestions(false);
     }
-  }, [data.brand, data.code, selectedSeries, isEditMode, data.isMix]);
+  }, [
+    data.brand,
+    data.code,
+    selectedSeries,
+    isEditMode,
+    data.isMix,
+    suggestionSelected,
+  ]);
 
   // E) VALIDACE DUPLICIT (jen u nové barvy, abychom nepřidali to samé dvakrát)
   useEffect(() => {
@@ -194,6 +226,10 @@ const PaintDetailModal = ({
   }, [allKits, paint.id]);
 
   // H) AUTO-CALC MIX COLOR (Vypočítat barvu mixu)
+  /**
+   * Automaticky vypočítá výslednou barvu (HEX) mixu na základě ingrediencí.
+   * Používá vážený průměr RGB hodnot podle poměru (ratio).
+   */
   useEffect(() => {
     if (!data.isMix || !data.mixParts || data.mixParts.length === 0) return;
 
@@ -226,20 +262,23 @@ const PaintDetailModal = ({
         setData((prev) => ({ ...prev, hex: avgHex }));
       }
     }
-  }, [data.mixParts, data.isMix, existingPaints]);
+  }, [data.mixParts, data.isMix, existingPaints]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // --- 3. HANDLERS ---
 
   const handleSelectSuggestion = ([key, val]) => {
-    setData((prev) => ({
-      ...prev,
-      code: val.displayCode || prev.code,
+    const newData = {
+      ...data,
+      code: val.displayCode || data.code,
       name: val.name,
-      type: val.type, // Změna typu triggerne načtení specifikací (Info box)
+      type: val.type,
       finish: val.finish,
-      hex: val.hex || prev.hex,
-    }));
+      hex: val.hex || data.hex,
+    };
+
+    setData(newData);
     setShowSuggestions(false);
+    setSuggestionSelected(true);
   };
 
   const handleRatioChange = (type, value) => {
@@ -282,7 +321,6 @@ const PaintDetailModal = ({
 
     setData((prev) => ({
       ...prev,
-      status: selectedPaint.status !== "in_stock" ? "empty" : prev.status,
       mixParts: [
         ...(prev.mixParts || []),
         {
@@ -292,18 +330,23 @@ const PaintDetailModal = ({
           brand: selectedPaint.brand,
         },
       ],
+      status: selectedPaint.status !== "in_stock" ? "empty" : prev.status,
     }));
     setNewMixPart({ paintId: "", ratio: 1 });
   };
 
   const isFormValid =
-    data.name && (data.isMix || (data.brand && data.code)) && !duplicateError;
+    data.name &&
+    (data.isMix
+      ? data.mixParts && data.mixParts.length > 0
+      : data.brand && data.code) &&
+    !duplicateError;
 
   // --- 4. RENDER ---
 
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
-      <div className="bg-slate-900 w-full max-w-lg rounded-xl border border-slate-700 shadow-2xl flex flex-col max-h-[95vh] relative">
+      <div className="bg-slate-900 w-full max-w-lg rounded-xl border border-slate-700 shadow-2xl flex flex-col max-h-[95vh]">
         {/* HLAVIČKA */}
         <div className="p-4 border-b border-slate-800 bg-slate-800/50 flex justify-between items-center rounded-t-xl">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -318,6 +361,16 @@ const PaintDetailModal = ({
             <X size={24} />
           </button>
         </div>
+
+        {/* Toast Notifikace o změně statusu */}
+        {statusToast && (
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full shadow-xl border border-slate-600 flex items-center gap-2 z-50 animate-in slide-in-from-top-5 fade-in">
+            <Info size={16} className="text-blue-400" />
+            <span className="text-xs font-bold">
+              Status změněn na "Jen recept" (chybí barva).
+            </span>
+          </div>
+        )}
 
         {/* OBSAH */}
         <div className="p-4 space-y-4 flex-1 overflow-y-auto bg-slate-900 relative">
@@ -402,7 +455,7 @@ const PaintDetailModal = ({
                   <div className="flex gap-3">
                     <div className="flex-1 relative">
                       <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 text-blue-400">
-                        Výrobce/Značka
+                        Výrobce/Znaka
                       </label>
                       <select
                         className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 appearance-none cursor-pointer"
@@ -445,15 +498,16 @@ const PaintDetailModal = ({
                   <div className="relative">
                     <FloatingInput
                       label={
-                        selectedSeries ? `Kód (${selectedSeries}) *` : "Kód"
+                        selectedSeries ? `Kód (${selectedSeries}) *` : "Kód *"
                       }
                       value={data.code}
-                      onChange={(e) =>
+                      onChange={(e) => {
                         setData({
                           ...data,
                           code: Normalizer.code(e.target.value),
-                        })
-                      }
+                        });
+                        setSuggestionSelected(false);
+                      }}
                       placeholder="Zadejte kód (např. XF-1)..."
                       labelColor="text-blue-400"
                       disabled={!data.brand}
@@ -496,14 +550,13 @@ const PaintDetailModal = ({
           {/* --- SEKCE B: UŽIVATELSKÁ DATA --- */}
 
           <FloatingInput
-            label="Odstín"
+            label="Název / Odstín *"
             value={data.name}
             onChange={(e) =>
               setData({ ...data, name: Normalizer.name(e.target.value) })
             }
             placeholder={data.isMix ? "Můj stínovací mix" : "flat black"}
             labelColor={data.isMix ? "text-purple-400" : "text-blue-400"}
-            disabled={isEditMode}
           />
 
           <div className="flex gap-3">
@@ -520,7 +573,6 @@ const PaintDetailModal = ({
                 { value: "Pigment", label: "🏜️ Pigment" },
                 { value: "Primer", label: "🛡️ Primer" },
               ]}
-              disabled={isEditMode}
             />
             <FloatingSelect
               className="flex-1"
@@ -535,7 +587,6 @@ const PaintDetailModal = ({
                 { value: "Perleťová", label: "Perleťová" },
                 { value: "Transparentní", label: "Transparentní" },
               ]}
-              disabled={isEditMode}
             />
             <FloatingSelect
               className="flex-1"
@@ -561,28 +612,40 @@ const PaintDetailModal = ({
 
           {/* INFO BOX SPECIFIKACÍ */}
           {currentSpec && (
-            <div className="bg-blue-900/20 border border-blue-500/20 rounded-lg p-3 animate-in fade-in slide-in-from-top-1">
-              <h4 className="text-blue-300 text-xs font-bold mb-1 flex items-center gap-1">
-                <Info size={12} /> {currentSpec.title}
-              </h4>
-              <p className="text-slate-400 text-[11px] italic leading-tight mb-2">
-                {currentSpec.description}
-              </p>
-              <div className="flex flex-col gap-1">
+            <div className="bg-blue-950/30 border border-blue-500/20 rounded-xl p-4 animate-in fade-in slide-in-from-top-2">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="bg-blue-500/10 p-2 rounded-lg text-blue-400 shrink-0 border border-blue-500/10">
+                  <Info size={20} />
+                </div>
+                <div>
+                  <h4 className="text-blue-400 font-bold text-sm">
+                    {currentSpec.title}
+                  </h4>
+                  <p className="text-slate-400 text-xs italic mt-1 leading-relaxed">
+                    {currentSpec.description}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-3 border-t border-blue-500/10">
                 {currentSpec.bestFor && (
                   <div className="flex items-start gap-2">
-                    <Sparkles size={10} className="text-yellow-500 mt-0.5" />
-                    <span className="text-[10px] text-slate-300">
-                      <span className="font-bold text-slate-500">Použití:</span>{" "}
+                    <Sparkles size={14} className="text-amber-400 shrink-0" />
+                    <span className="text-[10px] text-slate-300 leading-tight">
+                      <strong className="text-slate-500 block mb-0.5">
+                        Použití
+                      </strong>
                       {currentSpec.bestFor}
                     </span>
                   </div>
                 )}
                 {currentSpec.safety && (
                   <div className="flex items-start gap-2">
-                    <ShieldAlert size={10} className="text-orange-500 mt-0.5" />
-                    <span className="text-[10px] text-slate-300">
-                      <span className="font-bold text-slate-500">Safety:</span>{" "}
+                    <ShieldAlert size={14} className="text-red-400 shrink-0" />
+                    <span className="text-[10px] text-slate-300 leading-tight">
+                      <strong className="text-slate-500 block mb-0.5">
+                        Bezpečnost
+                      </strong>
                       {currentSpec.safety}
                     </span>
                   </div>
@@ -615,7 +678,6 @@ const PaintDetailModal = ({
                 >
                   <option value="">-- Přidat barvu --</option>
                   {existingPaints
-                    /*.filter((p) => p.status === "in_stock") filtr vsechny barvy*/
                     .filter((p) => !p.isMix)
                     .map((p) => {
                       const icon =
@@ -706,80 +768,134 @@ const PaintDetailModal = ({
           )}
 
           {/* ŘEDĚNÍ */}
-          <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
+          <div className="bg-slate-800 p-4 rounded-xl border border-slate-700/50 space-y-4">
             <h4 className="text-xs font-bold text-slate-400 uppercase mb-2 flex items-center gap-2">
               <Droplets size={14} className="text-blue-400" /> Ředění
             </h4>
-            <div className="flex gap-3 items-end">
-              <FloatingInput
-                className="flex-[2]"
-                label="Doporučené ředidlo"
-                value={data.thinner || ""}
-                onChange={(e) => setData({ ...data, thinner: e.target.value })}
-                placeholder="Např. Tamiya X-20A"
-                disabled={isEditMode}
-              />
-              <div className="flex items-center gap-1 bg-slate-900 border border-slate-700 rounded px-2 py-1 h-[42px]">
-                <div className="text-center">
-                  <label className="text-[8px] text-slate-500 font-bold block">
+
+            <FloatingInput
+              className="w-full"
+              label="Doporučené ředidlo"
+              value={data.thinner || ""}
+              onChange={(e) => setData({ ...data, thinner: e.target.value })}
+              placeholder="Např. Tamiya X-20A"
+            />
+
+            {/* Visual Calculator Panel (Slider Redesign) */}
+            <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 shadow-inner">
+              {/* 1. Textová vizualizace */}
+              <div className="flex justify-between items-end mb-4 px-1">
+                <div className="text-left">
+                  <span className="text-[10px] font-bold text-amber-500 block tracking-wider mb-1">
                     BARVA
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    className="w-8 bg-transparent text-center text-sm font-bold text-white outline-none appearance-none"
-                    placeholder="60"
-                    value={data.ratioPaint}
-                    onChange={(e) => handleRatioChange("paint", e.target.value)}
-                  />
+                  </span>
+                  <span className="text-3xl font-bold text-white leading-none">
+                    {data.ratioPaint}
+                    <span className="text-sm text-slate-500 font-normal ml-1">
+                      %
+                    </span>
+                  </span>
                 </div>
-                <span className="text-slate-500 font-bold">:</span>
-                <div className="text-center">
-                  <label className="text-[8px] text-slate-500 font-bold block">
+
+                {/* Separator / Icon */}
+                <div className="pb-2 text-slate-700">
+                  <Droplets size={24} className="opacity-20" />
+                </div>
+
+                <div className="text-right">
+                  <span className="text-[10px] font-bold text-blue-500 block tracking-wider mb-1">
                     ŘEDIDLO
-                  </label>
-                  <input
-                    type="number"
-                    min="0"
-                    max="100"
-                    className="w-8 bg-transparent text-center text-sm font-bold text-white outline-none appearance-none"
-                    placeholder="40"
-                    value={data.ratioThinner}
-                    onChange={(e) =>
-                      handleRatioChange("thinner", e.target.value)
-                    }
-                  />
+                  </span>
+                  <span className="text-3xl font-bold text-white leading-none">
+                    {data.ratioThinner}
+                    <span className="text-sm text-slate-500 font-normal ml-1">
+                      %
+                    </span>
+                  </span>
                 </div>
+              </div>
+
+              {/* 2. Slider */}
+              <div className="relative h-8 mb-6 flex items-center">
+                {/* Track Background */}
+                <div className="absolute inset-x-0 h-3 rounded-full overflow-hidden flex">
+                  <div
+                    style={{ width: `${data.ratioPaint}%` }}
+                    className="bg-amber-500 h-full transition-all duration-100"
+                  />
+                  <div className="bg-blue-500 flex-1 h-full transition-all duration-100" />
+                </div>
+                {/* Input Range */}
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value={data.ratioPaint}
+                  onChange={(e) => handleRatioChange("paint", e.target.value)}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                {/* Custom Thumb (Visual only - follows position) */}
+                <div
+                  className="absolute h-6 w-6 bg-white rounded-full shadow-lg border-2 border-slate-900 pointer-events-none transition-all duration-100 flex items-center justify-center"
+                  style={{
+                    left: `calc(${data.ratioPaint}% - 12px)`,
+                  }}
+                >
+                  <div className="w-1.5 h-1.5 bg-slate-900 rounded-full" />
+                </div>
+              </div>
+
+              {/* 3. Presety */}
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { label: "1:2", val: 33, title: "Wash" },
+                  { label: "1:1", val: 50, title: "Standard" },
+                  { label: "2:1", val: 67, title: "Sytá" },
+                  { label: "3:1", val: 75, title: "Hustá" },
+                ].map((preset) => (
+                  <button
+                    key={preset.label}
+                    onClick={() => handleRatioChange("paint", preset.val)}
+                    className={`py-2 rounded-lg text-xs font-bold transition-all border flex flex-col items-center gap-1 ${
+                      Math.abs(data.ratioPaint - preset.val) < 3
+                        ? "bg-slate-800 text-white border-slate-600 shadow-sm"
+                        : "bg-transparent text-slate-500 border-slate-800 hover:bg-slate-900 hover:text-slate-300"
+                    }`}
+                  >
+                    <span>{preset.label}</span>
+                    <span className="text-[8px] font-normal opacity-70 uppercase tracking-wide">
+                      {preset.title}
+                    </span>
+                  </button>
+                ))}
               </div>
             </div>
           </div>
 
           {/* Color Preview */}
-          {!isEditMode && (
-            <div className="bg-slate-800 p-3 rounded-lg border border-slate-700">
-              <label className="block text-[10px] font-bold text-slate-500 uppercase mb-2">
-                Odstín (Preview)
-              </label>
-              <div className="flex items-center gap-4">
+          <div className="bg-slate-800 p-3 rounded-lg border border-slate-700">
+            <label className="block text-[10px] font-bold text-slate-500 uppercase mb-2">
+              Odstín (Preview)
+            </label>
+            <div className="flex items-center gap-4">
+              <input
+                type="color"
+                value={data.hex}
+                onChange={(e) => setData({ ...data, hex: e.target.value })}
+                className="w-12 h-12 rounded cursor-pointer border-none bg-transparent"
+              />
+              <div className="flex-1">
                 <input
-                  type="color"
+                  type="text"
                   value={data.hex}
                   onChange={(e) => setData({ ...data, hex: e.target.value })}
-                  className="w-12 h-12 rounded cursor-pointer border-none bg-transparent"
+                  className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm font-mono text-white uppercase outline-none focus:border-blue-500"
+                  placeholder="#000000"
                 />
-                <div className="flex-1">
-                  <input
-                    type="text"
-                    value={data.hex}
-                    onChange={(e) => setData({ ...data, hex: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-sm font-mono text-white uppercase outline-none focus:border-blue-500"
-                    placeholder="#000000"
-                  />
-                </div>
               </div>
             </div>
-          )}
+          </div>
 
           {/* POUŽITÍ V MODELECH */}
           <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
@@ -816,16 +932,6 @@ const PaintDetailModal = ({
             />
           </div>
         </div>
-
-        {/* Toast Notifikace o změně statusu (Přesunuto mimo scroll area) */}
-        {statusToast && (
-          <div className="absolute top-20 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full shadow-xl border border-slate-600 flex items-center gap-2 z-50 animate-in slide-in-from-top-5 fade-in">
-            <Info size={16} className="text-blue-400" />
-            <span className="text-xs font-bold">
-              Status změněn na "Jen recept" (chybí barva).
-            </span>
-          </div>
-        )}
 
         {/* FOOTER */}
         <div className="p-4 border-t border-slate-800 bg-slate-800/30 flex justify-end rounded-b-xl">
