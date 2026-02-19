@@ -603,7 +603,6 @@ const PaintDetailModal = ({
                   : [
                       { value: "in_stock", label: "✅ Skladem" },
                       { value: "low", label: "⚠️ Dochází" },
-                      { value: "empty", label: "❌ Prázdné" },
                       { value: "wanted", label: "🛒 Koupit" },
                     ]
               }

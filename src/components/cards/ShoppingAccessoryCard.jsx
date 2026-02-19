@@ -1,6 +1,13 @@
 import React from "react";
 import { ShoppingBag, ArrowRight } from "lucide-react";
 
+/**
+ * Jednoduchá karta pro doplněk v nákupním seznamu.
+ *
+ * @param {Object} props
+ * @param {Object} props.accessory - Data doplňku (název, parentName atd.).
+ * @param {Function} [props.onBuy] - Handler pro označení jako koupené (přesun do skladu).
+ */
 const ShoppingAccessoryCard = ({ accessory, onBuy }) => {
   return (
     <div className="bg-slate-800 p-3 rounded-lg border border-slate-700 flex justify-between items-center group">

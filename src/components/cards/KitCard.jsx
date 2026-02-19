@@ -13,6 +13,20 @@ import {
 } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
+/**
+ * Karta zobrazující model (Kit) v seznamu (Kitník, Na stole, Hotovo, Nákupní seznam).
+ * Zobrazuje stav stavby, chybějící barvy/doplňky a přílohy.
+ *
+ * @param {Object} props
+ * @param {Object} props.kit - Data modelu.
+ * @param {Function} [props.onClick] - Handler kliknutí na kartu.
+ * @param {string} [props.projectName] - Název projektu, ke kterému model patří.
+ * @param {Function} [props.onBuy] - Handler pro nákupní seznam.
+ * @param {Array} [props.allPaints] - Seznam všech barev (pro výpočet, zda máme barvy na model).
+ * @param {Function} [props.onOpenPaints] - Handler pro rychlé otevření barev modelu.
+ * @param {Function} [props.onOpenDetail] - Handler pro otevření konkrétní záložky detailu (paints, parts, files).
+ * @param {Function} [props.onOpenProject] - Handler pro proklik na detail projektu.
+ */
 const KitCard = React.memo(
   ({
     kit,

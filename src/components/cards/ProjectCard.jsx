@@ -2,6 +2,15 @@ import React from "react";
 import { Box } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
+/**
+ * Karta projektu sdružujícího více modelů.
+ * Zobrazuje název, status a seznam přiřazených modelů.
+ *
+ * @param {Object} props
+ * @param {Object} props.project - Data projektu.
+ * @param {Function} [props.onClick] - Handler kliknutí na kartu.
+ * @param {Array} props.kits - Seznam všech modelů (pro vyfiltrování těch, které patří do projektu).
+ */
 const ProjectCard = ({ project, onClick, kits }) => {
   const projectKits = kits.filter((k) => k.projectId === project.id);
 

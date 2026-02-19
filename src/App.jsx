@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Package,
   Folder,
@@ -12,6 +12,7 @@ import {
   Paintbrush,
   Trash2,
   Palette,
+  X,
 } from "lucide-react";
 import brandsData from "./data/brands.json";
 import masterCatalog from "./data/catalog.json";
@@ -67,6 +68,7 @@ export default function App() {
   const [isNewProject, setIsNewProject] = useState(false);
   const [activePaint, setActivePaint] = useState(null);
   const [isNewPaint, setIsNewPaint] = useState(false);
+  const [filterByPaintId, setFilterByPaintId] = useState(null);
 
   const requestConfirm = (
     title,
@@ -104,6 +106,29 @@ export default function App() {
   } = useInventory(user, activeUid, requestConfirm);
 
   const logic = useAppLogic(kits, projects, paints);
+
+  // Reset filtru při změně pohledu (pokud odejdu z kitů)
+  useEffect(() => {
+    if (logic.view !== "kits") {
+      setFilterByPaintId(null);
+    }
+  }, [logic.view]);
+
+  const handleShowPaintUsage = (paint) => {
+    const usedInKits = kits.filter((k) =>
+      k.paints?.some((p) => p.id === paint.id),
+    );
+    if (usedInKits.length === 1) {
+      // Pokud je jen jeden, rovnou otevřeme detail
+      setIsNewKit(false);
+      setActiveKit(usedInKits[0]);
+    } else if (usedInKits.length > 1) {
+      // Pokud jich je víc, přepneme na seznam a vyfiltrujem
+      setFilterByPaintId(paint.id);
+      if (logic.setView) logic.setView("kits");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   // --- HANDLERS ---
   const handleOpenKitPaints = (kit) => {
@@ -155,9 +180,41 @@ export default function App() {
       <div className="max-w-md mx-auto px-4 py-4 space-y-6">
         {logic.view === "kits" && (
           <>
-            {Object.entries(logic.groupedKits).map(
-              ([key, list]) =>
-                list.length > 0 && (
+            {filterByPaintId && (
+              <div className="bg-blue-900/20 border border-blue-500/30 p-3 rounded-lg mb-4 flex justify-between items-center animate-in fade-in slide-in-from-top-2">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-3 h-3 rounded-full border border-slate-600"
+                    style={{
+                      backgroundColor: paints.find(
+                        (p) => p.id === filterByPaintId,
+                      )?.hex,
+                    }}
+                  ></div>
+                  <span className="text-sm text-blue-200">
+                    Modely s barvou:{" "}
+                    <strong>
+                      {paints.find((p) => p.id === filterByPaintId)?.name}
+                    </strong>
+                  </span>
+                </div>
+                <button
+                  onClick={() => setFilterByPaintId(null)}
+                  className="text-slate-400 hover:text-white p-1"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            )}
+            {Object.entries(logic.groupedKits).map(([key, list]) => {
+              const filteredList = filterByPaintId
+                ? list.filter((k) =>
+                    k.paints?.some((p) => p.id === filterByPaintId),
+                  )
+                : list;
+
+              return (
+                filteredList.length > 0 && (
                   <section key={key}>
                     <div className="flex justify-between items-center mb-2">
                       <h2
@@ -183,10 +240,10 @@ export default function App() {
                               : key === "scrap"
                                 ? "Vrakoviště"
                                 : "Nákupní seznam"}{" "}
-                        ({list.length})
+                        ({filteredList.length})
                       </h2>
                     </div>
-                    {list.map((k) => (
+                    {filteredList.map((k) => (
                       <KitCard
                         key={k.id}
                         kit={k}
@@ -203,8 +260,9 @@ export default function App() {
                       />
                     ))}
                   </section>
-                ),
-            )}
+                )
+              );
+            })}
             {logic.filteredKits.length === 0 && (
               <div className="text-center text-slate-500 py-10">
                 <Package size={48} className="mx-auto mb-2 opacity-20" />
@@ -252,6 +310,9 @@ export default function App() {
                     <PaintCard
                       key={paint.id}
                       paint={paint}
+                      allKits={kits}
+                      allPaints={paints}
+                      onShowUsage={handleShowPaintUsage}
                       onClick={() => {
                         setIsNewPaint(false);
                         setActivePaint(paint);
@@ -275,6 +336,9 @@ export default function App() {
                     <PaintCard
                       key={paint.id}
                       paint={paint}
+                      allKits={kits}
+                      allPaints={paints}
+                      onShowUsage={handleShowPaintUsage}
                       onClick={() => {
                         setIsNewPaint(false);
                         setActivePaint(paint);
@@ -348,6 +412,8 @@ export default function App() {
                     <PaintCard
                       key={p.id}
                       paint={p}
+                      allKits={kits}
+                      allPaints={paints}
                       onClick={() => {
                         setIsNewPaint(false);
                         setActivePaint(p);
