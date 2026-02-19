@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.30.2] - 2026-02-19
+
+### Opraveno
+
+- **App:** Opravena kritická chyba `ReferenceError: Palette is not defined`, která způsobovala pád aplikace při zobrazení prázdného seznamu barev.
+
 ## [2.30.1] - 2026-02-18
 
 ### Přidáno
