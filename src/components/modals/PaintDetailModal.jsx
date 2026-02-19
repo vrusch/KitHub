@@ -342,7 +342,7 @@ const PaintDetailModal = ({
                   <div className="flex gap-3">
                     <div className="flex-1 relative">
                       <label className="absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 text-blue-400">
-                        Výrobce *
+                        Výrobce/Značka
                       </label>
                       <select
                         className="w-full bg-slate-950 text-sm font-bold text-white border border-slate-700 rounded px-3 py-2.5 outline-none focus:border-blue-500 appearance-none cursor-pointer"
@@ -385,7 +385,7 @@ const PaintDetailModal = ({
                   <div className="relative">
                     <FloatingInput
                       label={
-                        selectedSeries ? `Kód (${selectedSeries}) *` : "Kód *"
+                        selectedSeries ? `Kód (${selectedSeries}) *` : "Kód"
                       }
                       value={data.code}
                       onChange={(e) =>
@@ -436,7 +436,7 @@ const PaintDetailModal = ({
           {/* --- SEKCE B: UŽIVATELSKÁ DATA --- */}
 
           <FloatingInput
-            label="Název / Odstín *"
+            label="Odstín"
             value={data.name}
             onChange={(e) =>
               setData({ ...data, name: Normalizer.name(e.target.value) })
@@ -609,7 +609,7 @@ const PaintDetailModal = ({
             <div className="flex gap-3 items-end">
               <FloatingInput
                 className="flex-[2]"
-                label="Ředidlo"
+                label="Doporučené ředidlo"
                 value={data.thinner || ""}
                 onChange={(e) => setData({ ...data, thinner: e.target.value })}
                 placeholder="Např. Tamiya X-20A"
