@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.31.0] - 2026-02-19
+
+### Přidáno
+
+- **UI:** Implementován "App-like" layout s fixní hlavičkou a uzamčeným scrollováním (eliminuje "rubber-banding" efekt na mobilních zařízeních).
+- **Barvy:** Přidána možnost filtrovat modely podle použité barvy kliknutím na badge "Použito v modelech".
+- **Barvy:** Nová logika pro Mixy – karty nyní zobrazují dostupnost ingrediencí (Namíchat / Chybí složky / Jen recept).
+- **Barvy:** Vizuální kalkulátor ředění (Slider) a automatický výpočet výsledného odstínu mixu v detailu barvy.
+- **Dev:** Přidána JSDoc dokumentace pro hlavní komponenty (Karty, Modaly).
+
+### Změněno
+
+- **Barvy:** Sjednocení statusů – odstraněn status "Prázdné" (nyní se chová jako "Koupit").
+- **UI:** Redesign karet barev pro lepší čitelnost a sjednocení s kartami modelů.
+
 ## [2.30.2] - 2026-02-19
 
 ### Opraveno
