@@ -27,6 +27,22 @@ import { Normalizer } from "../../utils/normalizers";
 // Importujeme nové dynamické API
 import PaintAPI from "../../data/paints/PaintAPI";
 
+// Pomocné funkce pro míchání barev (Hex <-> RGB)
+const hexToRgb = (hex) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+};
+
+const rgbToHex = (r, g, b) => {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+};
+
 const PaintDetailModal = ({
   paint,
   onClose,
@@ -65,6 +81,7 @@ const PaintDetailModal = ({
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [duplicateError, setDuplicateError] = useState(null);
+  const [statusToast, setStatusToast] = useState(false);
 
   // Stav pro přidávání do mixu
   const [newMixPart, setNewMixPart] = useState({ paintId: "", ratio: 1 });
@@ -176,6 +193,41 @@ const PaintDetailModal = ({
     return allKits.filter((k) => k.paints?.some((kp) => kp.id === paint.id));
   }, [allKits, paint.id]);
 
+  // H) AUTO-CALC MIX COLOR (Vypočítat barvu mixu)
+  useEffect(() => {
+    if (!data.isMix || !data.mixParts || data.mixParts.length === 0) return;
+
+    let totalR = 0;
+    let totalG = 0;
+    let totalB = 0;
+    let totalWeight = 0;
+
+    data.mixParts.forEach((part) => {
+      const ingredient = existingPaints.find((p) => p.id === part.paintId);
+      if (ingredient && ingredient.hex) {
+        const rgb = hexToRgb(ingredient.hex);
+        if (rgb) {
+          const weight = Number(part.ratio) || 0;
+          totalR += rgb.r * weight;
+          totalG += rgb.g * weight;
+          totalB += rgb.b * weight;
+          totalWeight += weight;
+        }
+      }
+    });
+
+    if (totalWeight > 0) {
+      const avgHex = rgbToHex(
+        Math.round(totalR / totalWeight),
+        Math.round(totalG / totalWeight),
+        Math.round(totalB / totalWeight),
+      );
+      if (avgHex !== data.hex) {
+        setData((prev) => ({ ...prev, hex: avgHex }));
+      }
+    }
+  }, [data.mixParts, data.isMix, existingPaints]);
+
   // --- 3. HANDLERS ---
 
   const handleSelectSuggestion = ([key, val]) => {
@@ -222,8 +274,15 @@ const PaintDetailModal = ({
     );
     if (!selectedPaint) return;
 
+    // Pokud přidáváme barvu, která není skladem, a status ještě není "empty", zobrazíme toast
+    if (selectedPaint.status !== "in_stock" && data.status !== "empty") {
+      setStatusToast(true);
+      setTimeout(() => setStatusToast(false), 4000);
+    }
+
     setData((prev) => ({
       ...prev,
+      status: selectedPaint.status !== "in_stock" ? "empty" : prev.status,
       mixParts: [
         ...(prev.mixParts || []),
         {
@@ -244,7 +303,7 @@ const PaintDetailModal = ({
 
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
-      <div className="bg-slate-900 w-full max-w-lg rounded-xl border border-slate-700 shadow-2xl flex flex-col max-h-[95vh]">
+      <div className="bg-slate-900 w-full max-w-lg rounded-xl border border-slate-700 shadow-2xl flex flex-col max-h-[95vh] relative">
         {/* HLAVIČKA */}
         <div className="p-4 border-b border-slate-800 bg-slate-800/50 flex justify-between items-center rounded-t-xl">
           <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -320,6 +379,7 @@ const PaintDetailModal = ({
                         code: !d.isMix
                           ? "MIX-" + Date.now().toString().slice(-4)
                           : "",
+                        name: !d.isMix && !d.name ? "Nový Mix" : d.name,
                       }));
                     }
                   }}
@@ -535,7 +595,15 @@ const PaintDetailModal = ({
           {data.isMix && (
             <div className="bg-slate-800 p-3 rounded-xl border border-slate-700/50">
               <h4 className="text-xs font-bold text-purple-400 uppercase mb-2 flex items-center gap-2">
-                <FlaskConical size={14} /> Receptura
+                <FlaskConical size={14} /> Receptura{" "}
+                <span className="text-slate-500 normal-case ml-auto">
+                  (Celkem:{" "}
+                  {data.mixParts?.reduce(
+                    (acc, p) => acc + (Number(p.ratio) || 0),
+                    0,
+                  )}{" "}
+                  dílů)
+                </span>
               </h4>
               <div className="flex gap-2 mb-2">
                 <select
@@ -547,12 +615,23 @@ const PaintDetailModal = ({
                 >
                   <option value="">-- Přidat barvu --</option>
                   {existingPaints
-                    .filter((p) => p.status === "in_stock")
-                    .map((p) => (
-                      <option key={p.id} value={p.id}>
-                        {p.brand} {p.code} {p.name}
-                      </option>
-                    ))}
+                    /*.filter((p) => p.status === "in_stock") filtr vsechny barvy*/
+                    .filter((p) => !p.isMix)
+                    .map((p) => {
+                      const icon =
+                        p.status === "in_stock"
+                          ? "✅"
+                          : p.status === "low"
+                            ? "⚠️"
+                            : p.status === "wanted"
+                              ? "🛒"
+                              : "❌";
+                      return (
+                        <option key={p.id} value={p.id}>
+                          {icon} {p.brand} {p.code} {p.name}
+                        </option>
+                      );
+                    })}
                 </select>
                 <input
                   type="number"
@@ -576,30 +655,52 @@ const PaintDetailModal = ({
                 </button>
               </div>
               <div className="space-y-1">
-                {data.mixParts?.map((part, idx) => (
-                  <div
-                    key={idx}
-                    className="flex justify-between items-center bg-slate-900 p-2 rounded border border-slate-700 text-xs"
-                  >
-                    <span>
-                      <span className="font-bold text-purple-400">
-                        {part.ratio} dílů
-                      </span>{" "}
-                      - {part.brand} {part.code} {part.name}
-                    </span>
-                    <button
-                      onClick={() =>
-                        setData((prev) => ({
-                          ...prev,
-                          mixParts: prev.mixParts.filter((_, i) => i !== idx),
-                        }))
-                      }
-                      className="text-slate-500 hover:text-red-400"
+                {data.mixParts?.map((part, idx) => {
+                  const partPaint = existingPaints.find(
+                    (p) => p.id === part.paintId,
+                  );
+                  const isMissing =
+                    partPaint && partPaint.status !== "in_stock";
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`flex justify-between items-center bg-slate-900 p-2 rounded border text-xs ${
+                        isMissing ? "border-red-500/30" : "border-slate-700"
+                      }`}
                     >
-                      <Trash2 size={14} />
-                    </button>
-                  </div>
-                ))}
+                      <span className="flex items-center gap-1 flex-wrap">
+                        <span className="font-bold text-purple-400">
+                          {part.ratio} dílů
+                        </span>{" "}
+                        <span className="text-slate-600">-</span>
+                        <span
+                          className={
+                            isMissing ? "text-red-400" : "text-slate-300"
+                          }
+                        >
+                          {part.brand} {part.code} {part.name}
+                        </span>
+                        {isMissing && (
+                          <span className="text-[9px] font-bold text-red-500 bg-red-500/10 px-1 rounded uppercase ml-1">
+                            Chybí
+                          </span>
+                        )}
+                      </span>
+                      <button
+                        onClick={() =>
+                          setData((prev) => ({
+                            ...prev,
+                            mixParts: prev.mixParts.filter((_, i) => i !== idx),
+                          }))
+                        }
+                        className="text-slate-500 hover:text-red-400"
+                      >
+                        <Trash2 size={14} />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -715,6 +816,16 @@ const PaintDetailModal = ({
             />
           </div>
         </div>
+
+        {/* Toast Notifikace o změně statusu (Přesunuto mimo scroll area) */}
+        {statusToast && (
+          <div className="absolute top-20 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-full shadow-xl border border-slate-600 flex items-center gap-2 z-50 animate-in slide-in-from-top-5 fade-in">
+            <Info size={16} className="text-blue-400" />
+            <span className="text-xs font-bold">
+              Status změněn na "Jen recept" (chybí barva).
+            </span>
+          </div>
+        )}
 
         {/* FOOTER */}
         <div className="p-4 border-t border-slate-800 bg-slate-800/30 flex justify-end rounded-b-xl">
