@@ -34,6 +34,7 @@ const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
  * @param {string} props.activeUid - ID aktuálního skladu/uživatele.
  * @param {Function} props.onSetManualId - Handler pro ruční nastavení ID skladu.
  * @param {Object} props.masterCatalog - Data hlavního katalogu barev (pro info).
+ * @param {Function} [props.onCheckUpdates] - Handler pro manuální kontrolu aktualizací.
  * @returns {JSX.Element}
  */
 const SettingsModal = ({
@@ -42,6 +43,7 @@ const SettingsModal = ({
   activeUid,
   onSetManualId,
   masterCatalog,
+  onCheckUpdates,
 }) => {
   const [copied, setCopied] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
@@ -200,6 +202,27 @@ const SettingsModal = ({
             </p>
           </div>
 
+          {/* SEKCE: APLIKACE */}
+          <div className="bg-slate-800 rounded-xl p-4 border border-slate-700">
+            <h3 className="text-xs font-bold text-slate-500 uppercase mb-3 flex items-center gap-2">
+              <RefreshCw size={14} /> Aplikace
+            </h3>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm text-slate-300">Verze</span>
+              <span className="text-sm font-mono text-blue-400">
+                {APP_VERSION}
+              </span>
+            </div>
+            {onCheckUpdates && (
+              <button
+                onClick={onCheckUpdates}
+                className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors"
+              >
+                <RefreshCw size={16} /> Zkontrolovat aktualizace
+              </button>
+            )}
+          </div>
+
           {/* SEKCE: PŘEDVOLBY (Placeholder pro budoucí funkcionalitu) */}
           <div className="border-t border-slate-800 pt-4 opacity-50 pointer-events-none grayscale">
             <h4 className="text-sm font-bold text-slate-300 mb-4 flex items-center gap-2">
@@ -220,14 +243,6 @@ const SettingsModal = ({
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="p-4 bg-slate-950 border-t border-slate-800 text-center">
-          <span className="text-xs font-bold text-blue-500">
-            Verze: {APP_VERSION}
-          </span>
-          <div className="text-[10px] text-slate-700 mt-1">
-            Katalog obsahuje {Object.keys(masterCatalog || {}).length} barev
           </div>
         </div>
       </div>

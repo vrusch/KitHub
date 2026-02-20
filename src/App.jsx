@@ -7,16 +7,17 @@ import {
   ShoppingCart,
   Box,
   Layers,
-  Loader2,
   ShoppingBag,
   Paintbrush,
   Trash2,
   Palette,
   X,
 } from "lucide-react";
+import { useRegisterSW } from "virtual:pwa-register/react";
 import brandsData from "./data/brands.json";
 import masterCatalog from "./data/catalog.json";
 import ConfirmModal from "./components/ui/ConfirmModal";
+import { AppLogo } from "./components/ui/Icons";
 import KitCard from "./components/cards/KitCard";
 import PaintCard from "./components/cards/PaintCard";
 import ProjectCard from "./components/cards/ProjectCard";
@@ -121,6 +122,58 @@ export default function App() {
 
   const logic = useAppLogic(kits, projects, paints);
 
+  // PWA Update Logic: Detekce nové verze a výzva k aktualizaci
+  const {
+    needRefresh: [needRefresh, setNeedRefresh],
+    updateServiceWorker,
+  } = useRegisterSW({
+    onRegisterError(error) {
+      console.error("SW registration error", error);
+    },
+  });
+
+  useEffect(() => {
+    if (needRefresh) {
+      requestConfirm(
+        "Aktualizace k dispozici",
+        "Byla nalezena nová verze aplikace. Chcete ji načíst nyní?",
+        () => updateServiceWorker(true),
+        false,
+        "Aktualizovat",
+      );
+    }
+  }, [needRefresh]);
+
+  const handleManualUpdateCheck = async () => {
+    if (needRefresh) {
+      updateServiceWorker(true);
+      return;
+    }
+    if ("serviceWorker" in navigator) {
+      const reg = await navigator.serviceWorker.getRegistration();
+      if (reg) {
+        reg.update();
+        requestConfirm(
+          "Kontrola aktualizací",
+          "Probíhá kontrola nové verze na pozadí. Pokud bude nalezena, aplikace vás vyzve k obnovení.",
+          null,
+          false,
+          "Rozumím",
+          false,
+        );
+      } else {
+        requestConfirm(
+          "Info",
+          "Aktualizace nejsou v tomto režimu dostupné (SW nenalezen).",
+          null,
+          false,
+          "Rozumím",
+          false,
+        );
+      }
+    }
+  };
+
   // Reset filtru při změně pohledu (pokud odejdu z kitů)
   useEffect(() => {
     if (logic.view !== "kits") {
@@ -163,9 +216,20 @@ export default function App() {
 
   if (loading)
     return (
-      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-slate-400">
-        <Loader2 size={48} className="animate-spin mb-4 text-blue-500" />
-        <p>Načítám...</p>
+      <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center">
+        <style>{`
+          @keyframes progress { 0% { width: 0%; } 100% { width: 90%; } }
+          .animate-progress { animation: progress 2s ease-out forwards; }
+        `}</style>
+        <div className="mb-8 animate-in zoom-in duration-500">
+          <AppLogo className="h-24 w-auto drop-shadow-2xl" />
+        </div>
+        <div className="w-48 h-1 bg-slate-800 rounded-full overflow-hidden mb-4">
+          <div className="h-full bg-blue-500 animate-progress"></div>
+        </div>
+        <p className="text-slate-500 text-xs font-bold uppercase tracking-widest animate-pulse">
+          Načítám KitHub...
+        </p>
       </div>
     );
 
@@ -487,6 +551,7 @@ export default function App() {
           onSetManualId={setManualDataUid}
           appVersion={APP_VERSION}
           masterCatalog={MASTER_CATALOG}
+          onCheckUpdates={handleManualUpdateCheck}
         />
       )}
       {showLanguageModal && (
