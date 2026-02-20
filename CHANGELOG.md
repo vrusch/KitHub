@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.31.1] - 2026-02-20
+
+### Vývoj
+
+- **Dokumentace:** Kompletní doplnění JSDoc komentářů napříč celou aplikací (komponenty, hooky, utils, API) pro lepší čitelnost a údržbu kódu.
+- **Dev:** Zlepšení typové kontroly a nápovědy v IDE díky detailním definicím props a návratových hodnot.
+
 ## [2.31.0] - 2026-02-19
 
 ### Přidáno

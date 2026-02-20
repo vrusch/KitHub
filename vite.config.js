@@ -9,30 +9,30 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       // Tyto soubory by měly být v /public složce
-      includeAssets: ["favicon.png", "apple-touch-icon.png"],
+      includeAssets: ["favicon.png", "apple-touch-icon.png", "robots.txt"],
       manifest: {
-        name: "KitHub - Professional Tool",
+        name: "KitHub - Modelářský Deník",
         short_name: "KitHub",
-        description: "Professional tool for developers and modelers",
+        description: "Osobní modelářský deník a sklad",
         // Barva okolí aplikace (v Androidu záhlaví prohlížeče)
-        theme_color: "#0d1117",
+        theme_color: "#0f172a",
         // Barva pozadí při startu aplikace
-        background_color: "#0d1117",
+        background_color: "#020617",
         display: "standalone",
         orientation: "portrait",
         icons: [
           {
-            src: "icon-192.png",
+            src: "/icon-192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "icon-512.png",
+            src: "/icon-512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "icon-512.png",
+            src: "/icon-512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
