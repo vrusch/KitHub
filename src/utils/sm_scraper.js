@@ -4,7 +4,7 @@
  * - Anti-429 protection (dvojitá proxy)
  * - Kompletní Marketplace (automaticky stahuje "Show all offers")
  * - Inteligentní parsování Značení (HTML obalené v <div> se zachovanými styly)
- * - Získání základních dat a návodů (PDF)
+ * - Získání základních dat a návodů (PDF) včetně detekce, zda jde o přesný návod.
  */
 
 // --- POMOCNÉ FUNKCE ---
@@ -98,6 +98,7 @@ export async function scrapeScalemates(urlToScrape) {
     year: "",
     ean: "",
     instructionUrl: "",
+    instructionIsExact: true, // Příznak, zda je to přesný návod
     markingsHTML: "",
     marketplace: [],
     url: urlToScrape,
@@ -147,7 +148,16 @@ export async function scrapeScalemates(urlToScrape) {
     // 1. Návody / Instructions
     if (text.includes("instructions") || text.includes("návody")) {
       let node = h3.nextElementSibling;
+      let isExact = true; // Výchozí předpoklad je přesný návod
+
       while (node && node.tagName !== "H3") {
+        // Detekce náhradního návodu
+        if (
+          node.innerText.includes("We don't have the exact instruction sheets")
+        ) {
+          isExact = false;
+        }
+
         const downloadLink = node.querySelector("a");
         if (
           downloadLink &&
@@ -159,7 +169,8 @@ export async function scrapeScalemates(urlToScrape) {
             if (!pdfUrl.startsWith("http"))
               pdfUrl = "https://www.scalemates.com" + pdfUrl;
             data.instructionUrl = pdfUrl;
-            break;
+            data.instructionIsExact = isExact; // Uložíme zjištěný stav
+            break; // Máme návod, můžeme jít na další sekci
           }
         }
         node = node.nextElementSibling;
@@ -182,7 +193,7 @@ export async function scrapeScalemates(urlToScrape) {
       let node = h3.nextElementSibling;
       let nodesToProcess = [];
 
-      // Nasbíráme vše do konce sekce
+      // Nasbíráme vše do konce sekce (nebo do oddělovače line)
       while (
         node &&
         node.tagName !== "H3" &&
@@ -207,7 +218,7 @@ export async function scrapeScalemates(urlToScrape) {
           ? nodesToProcess.slice(0, lastUlIndex + 1)
           : nodesToProcess;
 
-      // Slepíme HTML a obalíme to do DIVu podle tvého návrhu
+      // Slepíme HTML a obalíme to do DIVu pro bezpečné vložení
       let capturedHTML = '<div class="scalemates-markings">';
       finalNodes.forEach((n) => {
         if (n.outerHTML) {
@@ -216,7 +227,7 @@ export async function scrapeScalemates(urlToScrape) {
             .replace(/src="\//g, 'src="https://www.scalemates.com/');
         }
       });
-      capturedHTML += "</div>"; // Uzavření obalovacího divu
+      capturedHTML += "</div>";
 
       data.markingsHTML = capturedHTML;
     }

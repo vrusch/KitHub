@@ -10,6 +10,7 @@ import {
   Paperclip,
   History,
   ShoppingBag,
+  Trash2,
 } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
@@ -22,6 +23,7 @@ import { safeRender } from "../../utils/helpers";
  * @param {Function} [props.onClick] - Handler kliknutí na kartu.
  * @param {string} [props.projectName] - Název projektu, ke kterému model patří.
  * @param {Function} [props.onBuy] - Handler pro nákupní seznam.
+ * @param {Function} [props.onDelete] - Handler pro smazání modelu (zobrazí se jen u wishlistu).
  * @param {Array} [props.allPaints] - Seznam všech barev (pro výpočet, zda máme barvy na model).
  * @param {Function} [props.onOpenPaints] - Handler pro rychlé otevření barev modelu.
  * @param {Function} [props.onOpenDetail] - Handler pro otevření konkrétní záložky detailu (paints, parts, files).
@@ -34,6 +36,7 @@ const KitCard = React.memo(
     onClick,
     projectName,
     onBuy,
+    onDelete,
     allPaints,
     onOpenPaints,
     onOpenDetail,
@@ -178,7 +181,21 @@ const KitCard = React.memo(
                     </div>
                   </div>
                 ) : (
-                  st.icon
+                  <div className="flex flex-col items-end gap-1">
+                    {st.icon}
+                    {kit.status === "wishlist" && onDelete && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onDelete(kit.id);
+                        }}
+                        className="text-slate-600 hover:text-red-500 p-1 rounded hover:bg-red-500/10 transition-colors"
+                        title="Odstranit ze seznamu"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    )}
+                  </div>
                 )}
               </>
             )}

@@ -274,6 +274,7 @@ export default function App() {
                           allPaints={paints}
                           onOpenDetail={handleOpenKitDetail}
                           onOpenProject={handleOpenProjectDetail}
+                          onDelete={(id) => deleteItem("kits", id)}
                         />
                       ))}
                     </section>
