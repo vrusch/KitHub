@@ -23,6 +23,7 @@ import {
   Droplets,
   Package,
   Wand2,
+  Download,
 } from "lucide-react";
 import {
   FloatingInput,
@@ -33,6 +34,7 @@ import { Normalizer } from "../../utils/normalizers";
 import { safeRender } from "../../utils/helpers";
 import MASTER_CATALOG from "../../data/catalog.json";
 import BRANDS from "../../data/brands.json";
+import { scrapeScalemates } from "../../utils/sm_scraper";
 
 /**
  * Modální okno pro detail modelu (Editace) nebo vytvoření nového modelu.
@@ -77,6 +79,7 @@ const KitDetailModal = ({
   const [isSaving, setIsSaving] = useState(false);
   const [paintSearch, setPaintSearch] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
+  const [isScraping, setIsScraping] = useState(false);
 
   const isScaleValid = (s) => !s || /^\d+\/\d+$/.test(s);
   const isBuildLocked = data.status !== "wip";
@@ -233,6 +236,44 @@ const KitDetailModal = ({
     }
   };
 
+  const handleScrape = async () => {
+    if (!data.scalematesUrl) return;
+    setIsScraping(true);
+    try {
+      const scraped = await scrapeScalemates(data.scalematesUrl);
+      if (scraped) {
+        setData((prev) => ({
+          ...prev,
+          brand: Normalizer.brand(scraped.brand) || prev.brand,
+          catNum: Normalizer.code(scraped.catNo) || prev.catNum,
+          scale: scraped.scale || prev.scale,
+          subject: Normalizer.brand(scraped.title) || prev.subject,
+          // Pokud existuje návod a ještě ho nemáme, přidáme ho
+          attachments:
+            scraped.instructionUrl &&
+            !prev.attachments?.some((a) => a.url === scraped.instructionUrl)
+              ? [
+                  ...(prev.attachments || []),
+                  {
+                    id: Date.now(),
+                    name: "Návod (Scalemates)",
+                    url: scraped.instructionUrl,
+                    type: "manual",
+                  },
+                ]
+              : prev.attachments,
+        }));
+      }
+    } catch (error) {
+      console.error("Scraping error:", error);
+      alert(
+        "Nepodařilo se stáhnout data. Zkontrolujte URL nebo to zkuste později.",
+      );
+    } finally {
+      setIsScraping(false);
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in">
       <div className="bg-slate-900 w-full max-w-2xl rounded-xl border border-slate-700 flex flex-col h-[90vh] shadow-2xl">
@@ -333,6 +374,71 @@ const KitDetailModal = ({
         >
           {activeTab === "info" && (
             <div className="space-y-4 p-4">
+              {/* SCALEMATES INTEGRATION (Copy & Paste Workflow) */}
+              <div className="bg-slate-800 p-3 rounded-xl border border-slate-700">
+                <div className="flex items-center justify-between mb-2">
+                  <h4 className="text-xs font-bold text-slate-400 uppercase flex items-center gap-2">
+                    <img
+                      src="https://www.scalemates.com/favicon.ico"
+                      alt="SM"
+                      className="w-3 h-3 opacity-50 grayscale"
+                    />
+                    Scalemates Integrace
+                  </h4>
+                  {data.scalematesUrl && (
+                    <a
+                      href={data.scalematesUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[10px] text-blue-400 hover:underline flex items-center gap-1"
+                    >
+                      Otevřít <ExternalLink size={10} />
+                    </a>
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    className="flex-1 bg-slate-900 border border-slate-600 rounded p-2 text-xs text-white placeholder-slate-600 focus:border-blue-500 outline-none transition-colors"
+                    placeholder="Vložte URL kitu ze Scalemates..."
+                    value={data.scalematesUrl || ""}
+                    onChange={(e) =>
+                      setData({ ...data, scalematesUrl: e.target.value })
+                    }
+                  />
+                  <button
+                    onClick={() => {
+                      const query = data.catNum
+                        ? `${data.brand} ${data.catNum}`
+                        : `${data.brand} ${data.subject} ${data.scale}`;
+                      window.open(
+                        `https://www.scalemates.com/search.php?q=${encodeURIComponent(query)}`,
+                        "_blank",
+                      );
+                    }}
+                    className="bg-slate-700 hover:bg-slate-600 text-slate-300 p-2 rounded border border-slate-600 transition-colors"
+                    title="Najít na Scalemates (otevře nové okno)"
+                  >
+                    <Search size={16} />
+                  </button>
+                  <button
+                    onClick={handleScrape}
+                    disabled={!data.scalematesUrl || isScraping}
+                    className={`p-2 rounded border flex items-center gap-2 transition-all ${
+                      data.scalematesUrl
+                        ? "bg-blue-600 text-white border-blue-500 hover:bg-blue-500 shadow-lg shadow-blue-900/20"
+                        : "bg-slate-800 text-slate-600 border-slate-700 cursor-not-allowed"
+                    }`}
+                    title="Načíst data (Scraper)"
+                  >
+                    {isScraping ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <Download size={16} />
+                    )}
+                  </button>
+                </div>
+              </div>
+
               <div>
                 <label className="block text-xs text-slate-500 mb-1">
                   Status
@@ -956,54 +1062,6 @@ const KitDetailModal = ({
           )}
           {activeTab === "files" && (
             <div className="space-y-6 p-4">
-              <div className="bg-slate-800 p-4 rounded-xl border border-slate-700">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-sm font-bold text-slate-300">
-                    Scalemates
-                  </h4>
-                  <img
-                    src="https://www.scalemates.com/favicon.ico"
-                    alt="SM"
-                    className="w-4 h-4 opacity-50"
-                  />
-                </div>
-                <div className="flex gap-2 mb-2">
-                  <button
-                    onClick={() => {
-                      // Scalemates hledá nejlépe podle "Značka Kat.číslo"
-                      // Pokud chybí kat. číslo, zkusíme "Značka Předloha" (Název rušíme/ignorujeme)
-                      const query = data.catNum
-                        ? `${data.brand} ${data.catNum}`
-                        : `${data.brand} ${data.subject} ${data.scale}`;
-                      window.open(
-                        `https://www.scalemates.com/search.php?q=${encodeURIComponent(query)}`,
-                        "_blank",
-                      );
-                    }}
-                    className="bg-blue-600/20 text-blue-400 hover:bg-blue-600/30 text-xs px-3 py-2 rounded border border-blue-500/30 flex items-center gap-2 whitespace-nowrap"
-                  >
-                    <Search size={14} /> Najít kit
-                  </button>
-                  <input
-                    className="flex-1 bg-slate-900 border border-slate-600 rounded px-2 text-xs text-white"
-                    placeholder="URL..."
-                    value={data.scalematesUrl || ""}
-                    onChange={(e) =>
-                      setData({ ...data, scalematesUrl: e.target.value })
-                    }
-                  />
-                </div>
-                {data.scalematesUrl && (
-                  <a
-                    href={data.scalematesUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="block text-center bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs py-2 rounded transition-colors"
-                  >
-                    Otevřít stránku kitu
-                  </a>
-                )}
-              </div>
               <div>
                 <h4 className="text-sm font-bold text-slate-300 mb-3 flex items-center gap-2">
                   <Paperclip size={16} /> Knihovna odkazů
