@@ -11,6 +11,7 @@ import {
   History,
   ShoppingBag,
   Trash2,
+  Hammer,
 } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
@@ -100,6 +101,23 @@ const KitCard = React.memo(
       (kit.scalematesUrl ? 1 : 0) + (kit.attachments?.length || 0) > 0;
     const filesCount =
       (kit.scalematesUrl ? 1 : 0) + (kit.attachments?.length || 0);
+
+    const isReadyToBuild = useMemo(() => {
+      if (["finished", "scrap", "wishlist"].includes(kit.status)) return false;
+
+      const paints = kit.paints || [];
+      const accessories = kit.accessories || [];
+
+      if (paints.length === 0 && accessories.length === 0) return false;
+
+      const accessoriesReady = accessories.every((a) => a.status === "owned");
+      const paintsReady = paints.every((p) => {
+        const stock = allPaints?.find((ap) => ap.id === p.id);
+        return stock && ["in_stock", "low"].includes(stock.status);
+      });
+
+      return accessoriesReady && paintsReady;
+    }, [kit, allPaints]);
 
     return (
       <div
@@ -200,6 +218,17 @@ const KitCard = React.memo(
               </>
             )}
             <div className="flex items-center gap-2 mt-1">
+              {/* Ready to Build Badge */}
+              {isReadyToBuild && (
+                <div
+                  className="flex items-center gap-1 text-xs font-bold rounded px-1.5 py-0.5 border bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                  title="Připraveno ke stavbě (Máte všechny barvy a doplňky)"
+                >
+                  <Hammer size={12} />
+                  <span className="hidden sm:inline">Ready</span>
+                </div>
+              )}
+
               {/* Paints Badge */}
               {hasPaintsAssigned &&
                 kit.status !== "finished" &&

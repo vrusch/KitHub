@@ -30,6 +30,7 @@ export const useAppLogic = (kits, projects, paints) => {
     projectStatuses: [],
     paintBrands: [],
     paintTypes: [],
+    readyToBuild: false,
   });
 
   const shoppingList = useMemo(() => {
@@ -89,6 +90,9 @@ export const useAppLogic = (kits, projects, paints) => {
 
   const toggleFilter = (type, value) => {
     setActiveFilters((prev) => {
+      if (type === "readyToBuild") {
+        return { ...prev, readyToBuild: !prev.readyToBuild };
+      }
       const current = prev[type];
       const next = current.includes(value)
         ? current.filter((i) => i !== value)
@@ -104,15 +108,17 @@ export const useAppLogic = (kits, projects, paints) => {
       projectStatuses: [],
       paintBrands: [],
       paintTypes: [],
+      readyToBuild: false,
     });
-  const hasActiveFilters = Object.values(activeFilters).some(
-    (arr) => arr.length > 0,
-  );
+  const hasActiveFilters = Object.entries(activeFilters).some(([key, val]) => {
+    if (key === "readyToBuild") return val === true;
+    return Array.isArray(val) && val.length > 0;
+  });
 
   const filteredKits = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase();
-    return kits.filter(
-      (k) =>
+    return kits.filter((k) => {
+      const basicMatch =
         (k.name + k.brand + (k.subject || ""))
           .toLowerCase()
           .includes(lowerSearch) &&
@@ -121,9 +127,36 @@ export const useAppLogic = (kits, projects, paints) => {
         (activeFilters.brands.length === 0 ||
           activeFilters.brands.includes(k.brand)) &&
         (activeFilters.kitStatuses.length === 0 ||
-          activeFilters.kitStatuses.includes(k.status)),
-    );
-  }, [kits, searchTerm, activeFilters]);
+          activeFilters.kitStatuses.includes(k.status));
+
+      if (!basicMatch) return false;
+
+      if (activeFilters.readyToBuild) {
+        const accessories = k.accessories || [];
+        const paints = k.paints || [];
+
+        // Pokud model nemá definované žádné barvy ani doplňky, nepovažujeme ho za "Ready"
+        // (eliminujeme tím nově přidané, nevyplněné modely)
+        if (accessories.length === 0 && paints.length === 0) return false;
+
+        const accessoriesReady = accessories.every(
+          (acc) => acc.status === "owned",
+        );
+        if (!accessoriesReady) return false;
+
+        const paintsReady = paints.every((kitPaint) => {
+          const inventoryPaint = paints.find((p) => p.id === kitPaint.id);
+          return (
+            inventoryPaint &&
+            ["in_stock", "low"].includes(inventoryPaint.status)
+          );
+        });
+        if (!paintsReady) return false;
+      }
+
+      return true;
+    });
+  }, [kits, paints, searchTerm, activeFilters]);
 
   const filteredProjects = useMemo(() => {
     const lowerSearch = searchTerm.toLowerCase();

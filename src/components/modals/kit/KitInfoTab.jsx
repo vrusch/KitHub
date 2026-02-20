@@ -136,6 +136,14 @@ const KitInfoTab = ({ data, setData, projects }) => {
 
   return (
     <div className="space-y-4 p-4">
+      <style>{`
+        .scalemates-content ul { list-style: disc; padding-left: 1.2rem; margin: 0.5rem 0; }
+        .scalemates-content li { margin-bottom: 0.25rem; }
+        .scalemates-content a { color: #60a5fa; }
+        .scalemates-content a:hover { text-decoration: underline; }
+        .scalemates-content img { display: inline; vertical-align: middle; margin-right: 4px; max-height: 14px; }
+        .scalemates-content b, .scalemates-content strong { color: #e2e8f0; }
+      `}</style>
       {/* HLAVIČKA: OBRÁZEK A ZÁKLADNÍ DATA */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="w-full sm:w-32 shrink-0">
@@ -152,12 +160,12 @@ const KitInfoTab = ({ data, setData, projects }) => {
           )}
         </div>
         <div className="flex-1 space-y-3">
-          <div className="grid grid-cols-2 sm:flex gap-3">
-            <div className="col-span-2 sm:flex-1 relative">
+          <div className="grid grid-cols-3 sm:flex gap-3">
+            <div className="col-span-3 sm:flex-1 relative">
               <FloatingInput
                 className="w-full"
                 label="Výrobce *"
-                value={data.brand}
+                value={data.brand || ""}
                 onChange={handleBrandChange}
                 onFocus={(e) => {
                   if (e.target.value) handleBrandChange(e);
@@ -195,7 +203,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
               <FloatingInput
                 className="w-full"
                 label="Měřítko *"
-                value={data.scale}
+                value={data.scale || ""}
                 onChange={(e) => setData({ ...data, scale: e.target.value })}
                 onFocus={(e) =>
                   !data.scale && setData({ ...data, scale: "1/" })
@@ -226,7 +234,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
             <FloatingInput
               className="col-span-1 sm:w-24"
               label="Kat. č."
-              value={data.catNum}
+              value={data.catNum || ""}
               onChange={(e) =>
                 setData({ ...data, catNum: Normalizer.code(e.target.value) })
               }
@@ -244,9 +252,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
             className="w-full"
             label="Název *"
             value={data.subject || ""}
-            onChange={(e) =>
-              setData({ ...data, subject: Normalizer.brand(e.target.value) })
-            }
+            onChange={(e) => setData({ ...data, subject: e.target.value })}
             placeholder="TF-104G"
             labelColor="text-blue-400"
           />
@@ -433,7 +439,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
       <div>
         <FloatingTextarea
           label="Poznámky"
-          value={data.notes}
+          value={data.notes || ""}
           onChange={(e) => setData({ ...data, notes: e.target.value })}
           height="h-32"
         />

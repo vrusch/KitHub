@@ -30,8 +30,8 @@ const ConfirmModal = ({
 }) => {
   if (!isOpen) return null;
   return (
-    <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
-      <div className="bg-slate-900 border border-slate-700 rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95">
+    <div className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200">
+      <div className="bg-slate-900 border border-slate-700 rounded-xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-4 duration-300">
         <div className="p-4 text-center">
           <div
             className={`mx-auto w-12 h-12 rounded-full flex items-center justify-center mb-3 ${isDestructive ? "bg-red-500/20 text-red-500" : "bg-blue-500/20 text-blue-500"}`}

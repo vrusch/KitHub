@@ -13,6 +13,7 @@ import {
   Paintbrush,
   Wifi,
   WifiOff,
+  Hammer,
 } from "lucide-react";
 import {
   AppLogo,
@@ -192,6 +193,22 @@ const AppHeader = ({
             </div>
             {logic.view === "kits" ? (
               <div className="space-y-3">
+                <div>
+                  <span className="text-[10px] text-slate-600 font-bold block mb-1">
+                    Speciální
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    <FilterChip
+                      label={
+                        <span className="flex items-center gap-1">
+                          <Hammer size={12} /> Ready to Build
+                        </span>
+                      }
+                      active={logic.activeFilters.readyToBuild}
+                      onClick={() => logic.toggleFilter("readyToBuild")}
+                    />
+                  </div>
+                </div>
                 <div>
                   <span className="text-[10px] text-slate-600 font-bold block mb-1">
                     Stav modelu
