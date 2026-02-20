@@ -71,6 +71,10 @@ for (const path in modules) {
 
 // --- 2. DEFINICE ZNAČEK A ŘAD ---
 
+/**
+ * Mapa všech dostupných značek (Brand ID -> Brand Name).
+ * @type {Object.<string, string>}
+ */
 export const BRANDS = Array.from(brandsSet).reduce((acc, brand) => {
   acc[brand.toUpperCase()] = brand;
   return acc;
@@ -94,7 +98,11 @@ for (const brand of brandsSet) {
  * 1. ZÍSKÁNÍ BAREV (Různé úrovně detailu)
  */
 
-// Vrátí úplně všechno (pro globální hledání napříč aplikací)
+/**
+ * Vrátí kompletní katalog všech barev napříč všemi značkami a řadami.
+ * Slouží pro globální vyhledávání.
+ * @returns {Object} Mapa všech barev {id: data}.
+ */
 export const getMasterCatalog = () => {
   let allPaints = {};
   for (const brand in catalogs) {
@@ -105,7 +113,11 @@ export const getMasterCatalog = () => {
   return allPaints;
 };
 
-// Vrátí všechny barvy dané značky (pro filtry ve skladě)
+/**
+ * Vrátí všechny barvy dané značky (sloučené ze všech jejích řad).
+ * @param {string} brandId - ID značky (např. "gunze", "tamiya").
+ * @returns {Object} Mapa barev dané značky.
+ */
 export const getBrandPaints = (brandId) => {
   const brandCatalogs = catalogs[brandId];
   if (!brandCatalogs) return {};
@@ -116,7 +128,13 @@ export const getBrandPaints = (brandId) => {
   );
 };
 
-// Vrátí barvy KONKRÉTNÍ ŘADY (Pro Modal: Nová Barva)
+/**
+ * Vrátí barvy konkrétní řady dané značky.
+ * Pokud řada neexistuje, vrátí všechny barvy značky jako fallback.
+ * @param {string} brandId - ID značky.
+ * @param {string} seriesId - ID řady (např. "C", "H", "LP").
+ * @returns {Object} Mapa barev.
+ */
 export const getSpecificSeries = (brandId, seriesId) => {
   const brandCatalogs = catalogs[brandId];
   if (!brandCatalogs) return {};
@@ -133,7 +151,11 @@ export const getSpecificSeries = (brandId, seriesId) => {
  * 2. ZÍSKÁNÍ STRUKTURY (Pro Select Boxy)
  */
 
-// Vrátí seznam dostupných řad pro danou značku
+/**
+ * Vrátí seznam dostupných řad pro danou značku.
+ * @param {string} brandId - ID značky.
+ * @returns {Array<{id: string, name: string}>} Seznam řad.
+ */
 export const getSeriesList = (brandId) => {
   return SERIES_MAP[brandId] || [];
 };
@@ -142,10 +164,19 @@ export const getSeriesList = (brandId) => {
  * 3. SPECIFIKACE A INFO
  */
 
+/**
+ * Vrátí technické specifikace pro danou značku (typy barev, ředidla, bezpečnost).
+ * @param {string} brandId - ID značky.
+ * @returns {Object} Specifikace.
+ */
 export const getSpecs = (brandId) => {
   return specs[brandId] || {};
 };
 
+/**
+ * Vrátí seznam všech podporovaných výrobců barev.
+ * @returns {Array<{id: string, name: string}>} Seznam výrobců.
+ */
 export const getManufacturers = () => {
   return Array.from(brandsSet).map((id) => ({
     id,

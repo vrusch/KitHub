@@ -1,5 +1,10 @@
 import React from "react";
 
+/**
+ * Ikona Google G (pro tlačítko přihlášení).
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy.
+ */
 export const GoogleIcon = ({ className }) => (
   <svg
     className={className}
@@ -25,6 +30,11 @@ export const GoogleIcon = ({ className }) => (
   </svg>
 );
 
+/**
+ * Vlajka České republiky.
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy.
+ */
 export const CzechFlag = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +47,11 @@ export const CzechFlag = ({ className }) => (
   </svg>
 );
 
+/**
+ * Kombinovaná vlajka USA/UK pro angličtinu.
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy.
+ */
 export const USUKFlag = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -57,6 +72,11 @@ export const USUKFlag = ({ className }) => (
   </svg>
 );
 
+/**
+ * Vlajka Španělska.
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy.
+ */
 export const SpanishFlag = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +88,11 @@ export const SpanishFlag = ({ className }) => (
   </svg>
 );
 
+/**
+ * Vlajka Německa.
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy.
+ */
 export const GermanFlag = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +105,11 @@ export const GermanFlag = ({ className }) => (
   </svg>
 );
 
+/**
+ * Hlavní logo aplikace KitHub.
+ * @param {Object} props
+ * @param {string} [props.className] - CSS třídy (default: "h-8").
+ */
 export const AppLogo = ({ className = "h-8" }) => (
   <svg
     className={className}

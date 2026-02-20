@@ -23,6 +23,27 @@ import {
 } from "../ui/Icons";
 import { FilterChip } from "../ui/FormElements";
 
+/**
+ * Hlavní hlavička aplikace.
+ * Obsahuje logo, navigaci mezi pohledy (Kits, Projects, Paints, Shopping),
+ * vyhledávání, filtrování a globální akce (nastavení, přidání položky).
+ *
+ * @param {Object} props
+ * @param {Object} props.logic - Objekt s aplikační logikou (view, setView, searchTerm, setSearchTerm, atd.).
+ * @param {Function} props.setShowSettings - Setter pro zobrazení modalu nastavení.
+ * @param {Function} props.setIsNewKit - Setter pro indikaci nového modelu.
+ * @param {Function} props.setActiveKit - Setter pro nastavení aktivního modelu (pro editaci/nový).
+ * @param {Function} props.setIsNewProject - Setter pro indikaci nového projektu.
+ * @param {Function} props.setActiveProject - Setter pro nastavení aktivního projektu.
+ * @param {Function} props.setIsNewPaint - Setter pro indikaci nové barvy.
+ * @param {Function} props.setActivePaint - Setter pro nastavení aktivní barvy.
+ * @param {string} [props.activeUid] - ID aktuálně přihlášeného uživatele (pro zobrazení).
+ * @param {boolean} props.isOnline - Indikátor online/offline stavu.
+ * @param {Function} props.onShowAlert - Funkce pro zobrazení globálního alertu/toastu.
+ * @param {string} props.language - Kód aktuálního jazyka (en, cs, es, de).
+ * @param {Function} props.setShowLanguageModal - Setter pro zobrazení modalu výběru jazyka.
+ * @returns {JSX.Element}
+ */
 const AppHeader = ({
   logic,
   setShowSettings,

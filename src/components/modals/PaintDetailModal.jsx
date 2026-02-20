@@ -48,6 +48,11 @@ const hexToRgb = (hex) => {
 
 /**
  * Převede RGB složky zpět na HEX řetězec.
+ *
+ * @param {number} r - Červená složka (0-255).
+ * @param {number} g - Zelená složka (0-255).
+ * @param {number} b - Modrá složka (0-255).
+ * @returns {string} Hexadecimální řetězec (např. "#ff0000").
  */
 const rgbToHex = (r, g, b) => {
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
@@ -56,6 +61,20 @@ const rgbToHex = (r, g, b) => {
 /**
  * Modální okno pro detail barvy (Editace) nebo vytvoření nové barvy.
  * Řeší i míchání vlastních odstínů (Mix) a validaci vůči skladu.
+ *
+ * @param {Object} props
+ * @param {Object} props.paint - Data editované barvy (nebo prázdný objekt pro novou).
+ * @param {string} [props.paint.id] - ID barvy (pokud existuje, jde o editaci).
+ * @param {string} [props.paint.brand] - Výrobce barvy.
+ * @param {string} [props.paint.code] - Kód barvy.
+ * @param {string} [props.paint.name] - Název barvy.
+ * @param {boolean} [props.paint.isMix] - Zda jde o míchanou barvu.
+ * @param {Array} [props.paint.mixParts] - Složení mixu (pokud isMix=true).
+ * @param {Function} props.onClose - Handler pro zavření modalu.
+ * @param {Function} props.onSave - Handler pro uložení barvy (create/update).
+ * @param {Array<Object>} props.existingPaints - Seznam existujících barev (pro validaci duplicit a výběr do mixu).
+ * @param {Array<Object>} [props.allKits] - Seznam modelů (pro zobrazení použití barvy).
+ * @returns {JSX.Element}
  */
 const PaintDetailModal = ({
   paint,

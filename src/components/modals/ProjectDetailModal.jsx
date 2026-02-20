@@ -21,6 +21,19 @@ import {
 } from "../ui/FormElements";
 import { safeRender } from "../../utils/helpers";
 
+/**
+ * Modální okno pro detail projektu (Editace) nebo vytvoření nového projektu.
+ * Umožňuje správu modelů v projektu a doplňků.
+ *
+ * @param {Object} props
+ * @param {Object} props.project - Data projektu.
+ * @param {Function} props.onClose - Handler pro zavření modalu.
+ * @param {Function} props.onSave - Handler pro uložení projektu.
+ * @param {Array} props.allKits - Seznam všech modelů (pro výběr do projektu).
+ * @param {Function} props.onUpdateKitLink - Handler pro propojení/odpojení modelu od projektu.
+ * @param {Function} props.onAddWishlistKit - Handler pro přidání modelu do nákupního seznamu.
+ * @returns {JSX.Element}
+ */
 const ProjectDetailModal = ({
   project,
   onClose,

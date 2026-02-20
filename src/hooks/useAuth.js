@@ -6,6 +6,18 @@ import {
   signInWithCustomToken,
 } from "firebase/auth";
 
+/**
+ * Hook pro správu autentizace a stavu připojení.
+ * Sleduje stav přihlášení uživatele (Firebase Auth) a online/offline stav prohlížeče.
+ * Umožňuje také manuální nastavení ID skladu (pro prohlížení cizích dat).
+ *
+ * @returns {Object} Objekt s auth stavy.
+ * @returns {Object|null} return.user - Aktuální Firebase uživatel.
+ * @returns {boolean} return.loading - Zda se načítá stav přihlášení.
+ * @returns {boolean} return.isOnline - Zda je prohlížeč online.
+ * @returns {string|null} return.activeUid - ID aktuálně zobrazeného skladu (buď přihlášený uživatel nebo manuálně nastavené ID).
+ * @returns {Function} return.setManualDataUid - Funkce pro manuální změnu ID skladu.
+ */
 export const useAuth = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

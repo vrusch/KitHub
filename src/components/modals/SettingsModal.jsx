@@ -26,6 +26,22 @@ import {
 
 const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
 
+/**
+ * Modální okno nastavení aplikace.
+ * Umožňuje správu cloudu (přihlášení/odhlášení), export/import dat a změnu ID skladu.
+ *
+ * @param {Object} props
+ * @param {Object} props.user - Objekt aktuálně přihlášeného uživatele (Firebase User).
+ * @param {Function} props.onClose - Handler pro zavření modalu.
+ * @param {Array} props.kits - Data modelů pro export.
+ * @param {Array} props.projects - Data projektů pro export.
+ * @param {Array} props.paints - Data barev pro export.
+ * @param {Function} props.onImport - Handler pro import dat ze souboru.
+ * @param {string} props.activeUid - ID aktuálního skladu/uživatele.
+ * @param {Function} props.onSetManualId - Handler pro ruční nastavení ID skladu.
+ * @param {Object} props.masterCatalog - Data hlavního katalogu barev (pro info).
+ * @returns {JSX.Element}
+ */
 const SettingsModal = ({
   user,
   onClose,

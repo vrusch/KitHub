@@ -5,8 +5,11 @@ import { ShoppingBag, ArrowRight } from "lucide-react";
  * Jednoduchá karta pro doplněk v nákupním seznamu.
  *
  * @param {Object} props
- * @param {Object} props.accessory - Data doplňku (název, parentName atd.).
+ * @param {Object} props.accessory - Data doplňku.
+ * @param {string} props.accessory.name - Název doplňku.
+ * @param {string} props.accessory.parentName - Název modelu/projektu, ke kterému doplněk patří.
  * @param {Function} [props.onBuy] - Handler pro označení jako koupené (přesun do skladu).
+ * @returns {JSX.Element}
  */
 const ShoppingAccessoryCard = ({ accessory, onBuy }) => {
   return (

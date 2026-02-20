@@ -9,6 +9,15 @@ const languages = [
   { code: "de", name: "Deutsch", Flag: GermanFlag },
 ];
 
+/**
+ * Modální okno pro výběr jazyka aplikace.
+ *
+ * @param {Object} props
+ * @param {string} props.activeLanguage - Kód aktuálně vybraného jazyka (cs, en, es, de).
+ * @param {Function} props.onSelectLanguage - Handler pro změnu jazyka.
+ * @param {Function} props.onClose - Handler pro zavření modalu.
+ * @returns {JSX.Element}
+ */
 const LanguageModal = ({ activeLanguage, onSelectLanguage, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">

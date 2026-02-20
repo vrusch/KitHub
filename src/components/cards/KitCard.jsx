@@ -26,6 +26,7 @@ import { safeRender } from "../../utils/helpers";
  * @param {Function} [props.onOpenPaints] - Handler pro rychlé otevření barev modelu.
  * @param {Function} [props.onOpenDetail] - Handler pro otevření konkrétní záložky detailu (paints, parts, files).
  * @param {Function} [props.onOpenProject] - Handler pro proklik na detail projektu.
+ * @returns {JSX.Element}
  */
 const KitCard = React.memo(
   ({

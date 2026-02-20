@@ -21,6 +21,7 @@ import { safeRender } from "../../utils/helpers";
  * @param {Array} [props.allPaints] - Seznam všech barev (pro výpočet dostupnosti ingrediencí u mixů).
  * @param {Array} [props.allKits] - Seznam všech modelů (pro výpočet použití barvy).
  * @param {Function} [props.onShowUsage] - Handler pro zobrazení filtru modelů používajících tuto barvu.
+ * @returns {JSX.Element}
  */
 const PaintCard = React.memo(
   ({ paint, onClick, onDelete, onBuy, allPaints, allKits, onShowUsage }) => {

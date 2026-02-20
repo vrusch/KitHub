@@ -1,5 +1,24 @@
 import { useState, useMemo } from "react";
 
+/**
+ * Hlavní prezentační logika aplikace.
+ * Řeší filtrování, vyhledávání a přípravu dat pro různé pohledy (Kits, Projects, Paints, Shopping).
+ *
+ * @param {Array} kits - Seznam všech modelů.
+ * @param {Array} projects - Seznam všech projektů.
+ * @param {Array} paints - Seznam všech barev.
+ * @returns {Object} Objekt obsahující stavy UI a vyfiltrovaná data.
+ * @returns {string} return.view - Aktuální pohled (kits, projects, paints, shopping).
+ * @returns {Function} return.setView - Funkce pro změnu pohledu.
+ * @returns {string} return.searchTerm - Hledaný výraz.
+ * @returns {Object} return.activeFilters - Aktivní filtry.
+ * @returns {Object} return.shoppingList - Data pro nákupní seznam (kits, accessories, paints).
+ * @returns {Array} return.filteredKits - Vyfiltrovaný seznam modelů.
+ * @returns {Array} return.filteredProjects - Vyfiltrovaný seznam projektů.
+ * @returns {Array} return.filteredPaints - Vyfiltrovaný seznam barev.
+ * @returns {Object} return.groupedKits - Modely seskupené podle statusu (wip, new, atd.).
+ * @returns {Object} return.groupedPaints - Barvy seskupené (inventory, wishlist).
+ */
 export const useAppLogic = (kits, projects, paints) => {
   const [view, setView] = useState("kits");
   const [searchTerm, setSearchTerm] = useState("");

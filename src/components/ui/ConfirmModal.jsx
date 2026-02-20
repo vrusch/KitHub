@@ -2,6 +2,21 @@ import React from "react";
 import { AlertTriangle, Wand2 } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
+/**
+ * Univerzální modální okno pro potvrzení akce (např. smazání, odhlášení).
+ *
+ * @param {Object} props
+ * @param {boolean} props.isOpen - Zda je modal otevřený.
+ * @param {string} props.title - Titulek modalu.
+ * @param {string} props.message - Zpráva/otázka pro uživatele.
+ * @param {Function} props.onConfirm - Handler pro potvrzení akce.
+ * @param {Function} props.onCancel - Handler pro zrušení akce.
+ * @param {string} [props.confirmText] - Text potvrzovacího tlačítka (default: "Ano").
+ * @param {string} [props.cancelText] - Text zrušovacího tlačítka (default: "Ne").
+ * @param {boolean} [props.isDestructive] - Zda jde o destruktivní akci (červené tlačítko).
+ * @param {boolean} [props.showCancel] - Zda zobrazit tlačítko zrušit (default: true).
+ * @returns {JSX.Element|null}
+ */
 const ConfirmModal = ({
   isOpen,
   title,

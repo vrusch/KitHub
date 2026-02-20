@@ -8,8 +8,13 @@ import { safeRender } from "../../utils/helpers";
  *
  * @param {Object} props
  * @param {Object} props.project - Data projektu.
+ * @param {string} props.project.id - Unikátní ID projektu.
+ * @param {string} props.project.name - Název projektu.
+ * @param {string} props.project.status - Stav projektu (active, finished, atd.).
+ * @param {string} [props.project.description] - Popis projektu.
  * @param {Function} [props.onClick] - Handler kliknutí na kartu.
- * @param {Array} props.kits - Seznam všech modelů (pro vyfiltrování těch, které patří do projektu).
+ * @param {Array<Object>} props.kits - Seznam všech modelů (pro vyfiltrování těch, které patří do projektu).
+ * @returns {JSX.Element}
  */
 const ProjectCard = ({ project, onClick, kits }) => {
   const projectKits = kits.filter((k) => k.projectId === project.id);

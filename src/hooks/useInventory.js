@@ -13,6 +13,24 @@ import {
 import { db } from "../config/firebase";
 import { Normalizer } from "../utils/normalizers";
 
+/**
+ * Hook pro správu datové vrstvy (Firestore).
+ * Zajišťuje načítání dat v reálném čase (listeners) a CRUD operace.
+ *
+ * @param {Object} user - Aktuální uživatel (pro ověření práv k zápisu).
+ * @param {string} activeUid - ID uživatele/skladu, se kterým se pracuje.
+ * @param {Function} requestConfirm - Funkce pro vyvolání potvrzovacího modalu.
+ * @returns {Object} Data a funkce pro manipulaci s nimi.
+ * @returns {Array} return.kits - Seznam modelů.
+ * @returns {Array} return.projects - Seznam projektů.
+ * @returns {Array} return.paints - Seznam barev.
+ * @returns {Function} return.saveItem - Funkce pro vytvoření nebo aktualizaci položky.
+ * @returns {Function} return.deleteItem - Funkce pro smazání položky.
+ * @returns {Function} return.markAsBought - Funkce pro přesun z nákupního seznamu do skladu.
+ * @returns {Function} return.importData - Funkce pro import dat ze souboru.
+ * @returns {Function} return.quickCreatePaint - Funkce pro rychlé vytvoření barvy (např. z katalogu).
+ * @returns {Function} return.buyAccessory - Funkce pro označení doplňku jako koupeného.
+ */
 export const useInventory = (user, activeUid, requestConfirm) => {
   const [kits, setKits] = useState([]);
   const [projects, setProjects] = useState([]);

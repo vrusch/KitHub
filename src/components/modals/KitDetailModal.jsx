@@ -34,6 +34,20 @@ import { safeRender } from "../../utils/helpers";
 import MASTER_CATALOG from "../../data/catalog.json";
 import BRANDS from "../../data/brands.json";
 
+/**
+ * Modální okno pro detail modelu (Editace) nebo vytvoření nového modelu.
+ * Obsahuje záložky: Info, Barvy, Doplňky, Stavba, Přílohy.
+ *
+ * @param {Object} props
+ * @param {Object} props.kit - Data modelu.
+ * @param {Function} props.onClose - Handler pro zavření modalu.
+ * @param {Function} props.onSave - Handler pro uložení modelu.
+ * @param {Array} props.projects - Seznam projektů (pro přiřazení modelu).
+ * @param {Array} props.allPaints - Seznam všech barev (pro výběr barev k modelu).
+ * @param {Function} props.onQuickCreatePaint - Handler pro rychlé vytvoření chybějící barvy.
+ * @param {string} [props.initialTab] - Počáteční aktivní záložka (default: "info").
+ * @returns {JSX.Element}
+ */
 const KitDetailModal = ({
   kit,
   onClose,

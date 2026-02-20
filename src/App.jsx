@@ -49,6 +49,20 @@ const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
 // 🚀 HLAVNÍ APLIKACE (App)
 // ==========================================
 
+/**
+ * Hlavní komponenta aplikace.
+ *
+ * Slouží jako kořenový prvek pro správu stavu UI (modaly, aktivní položky) a propojení
+ * datové vrstvy (useInventory) s prezentační logikou (useAppLogic).
+ *
+ * Zajišťuje:
+ * - Inicializaci autentizace (useAuth).
+ * - Načítání dat z Firestore (useInventory).
+ * - Směrování pohledů (Kits, Projects, Paints, Shopping).
+ * - Zobrazení globálních modalů (Detail, Settings, Confirm).
+ *
+ * @returns {JSX.Element} Kořenový element aplikace.
+ */
 export default function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [showLanguageModal, setShowLanguageModal] = useState(false);

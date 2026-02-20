@@ -1,5 +1,18 @@
 import React from "react";
 
+/**
+ * Vstupní pole s plovoucím popiskem (Floating Label).
+ *
+ * @param {Object} props
+ * @param {string} props.label - Text popisku.
+ * @param {string|number} props.value - Hodnota vstupu.
+ * @param {Function} props.onChange - Handler změny hodnoty.
+ * @param {string} [props.placeholder] - Placeholder text.
+ * @param {string} [props.className] - CSS třídy pro obalový element.
+ * @param {string} [props.classNameInput] - CSS třídy pro input element.
+ * @param {string} [props.labelColor] - CSS třída pro barvu popisku (default: "text-slate-500").
+ * @returns {JSX.Element}
+ */
 export const FloatingInput = ({
   label,
   value,
@@ -26,6 +39,18 @@ export const FloatingInput = ({
   </div>
 );
 
+/**
+ * Textová oblast s plovoucím popiskem.
+ *
+ * @param {Object} props
+ * @param {string} props.label - Text popisku.
+ * @param {string} props.value - Hodnota textu.
+ * @param {Function} props.onChange - Handler změny hodnoty.
+ * @param {string} [props.className] - CSS třídy pro obalový element.
+ * @param {string} [props.labelColor] - CSS třída pro barvu popisku.
+ * @param {string} [props.height] - CSS třída pro výšku (default: "h-24").
+ * @returns {JSX.Element}
+ */
 export const FloatingTextarea = ({
   label,
   value,
@@ -50,6 +75,18 @@ export const FloatingTextarea = ({
   </div>
 );
 
+/**
+ * Výběrové pole (Select) s plovoucím popiskem.
+ *
+ * @param {Object} props
+ * @param {string} props.label - Text popisku.
+ * @param {string|number} props.value - Vybraná hodnota.
+ * @param {Function} props.onChange - Handler změny hodnoty.
+ * @param {Array<{value: string|number, label: string}>} props.options - Možnosti výběru.
+ * @param {string} [props.className] - CSS třídy pro obalový element.
+ * @param {string} [props.labelColor] - CSS třída pro barvu popisku.
+ * @returns {JSX.Element}
+ */
 export const FloatingSelect = ({
   label,
   value,
@@ -80,6 +117,15 @@ export const FloatingSelect = ({
   </div>
 );
 
+/**
+ * Čip pro filtrování seznamu.
+ *
+ * @param {Object} props
+ * @param {string} props.label - Text čipu.
+ * @param {boolean} props.active - Zda je filtr aktivní (změní barvu na modrou).
+ * @param {Function} props.onClick - Handler kliknutí.
+ * @returns {JSX.Element}
+ */
 export const FilterChip = ({ label, active, onClick }) => (
   <button
     onClick={onClick}
