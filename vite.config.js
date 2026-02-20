@@ -1,16 +1,50 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import packageJson from "./package.json"; // Importujeme package.json
+import { VitePWA } from "vite-plugin-pwa";
+import packageJson from "./package.json";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: "autoUpdate",
+      // Tyto soubory by měly být v /public složce
+      includeAssets: ["favicon.png", "apple-touch-icon.png"],
+      manifest: {
+        name: "KitHub - Professional Tool",
+        short_name: "KitHub",
+        description: "Professional tool for developers and modelers",
+        // Barva okolí aplikace (v Androidu záhlaví prohlížeče)
+        theme_color: "#0d1117",
+        // Barva pozadí při startu aplikace
+        background_color: "#0d1117",
+        display: "standalone",
+        orientation: "portrait",
+        icons: [
+          {
+            src: "icon-192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "icon-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "any maskable",
+          },
+        ],
+      },
+    }),
+  ],
   define: {
-    // Tady "vstříkneme" verzi do aplikace jako globální proměnnou
-    // Musíme použít JSON.stringify, aby se do kódu vložila jako řetězec "2.30.0"
-    'import.meta.env.PACKAGE_VERSION': JSON.stringify(packageJson.version)
+    "import.meta.env.PACKAGE_VERSION": JSON.stringify(packageJson.version),
   },
   build: {
-    chunkSizeWarningLimit: 1000, // Zvedne limit varování na 1000 kB (1 MB)
+    chunkSizeWarningLimit: 1000,
   },
 });
