@@ -32,9 +32,9 @@ const PaintCard = React.memo(
         case "low":
           return "border-l-orange-500";
         case "wanted":
-          return "border-l-purple-500";
+          return "border-l-purple-500 border-dashed";
         case "empty":
-          return "border-l-purple-500"; // Empty se nyní tváří jako Wanted (Koupit)
+          return "border-l-purple-500 border-dashed"; // Empty se nyní tváří jako Wanted (Koupit)
         default:
           return "border-l-slate-700";
       }

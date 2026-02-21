@@ -130,7 +130,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
   };
 
   const selectBrand = (brand) => {
-    setData({ ...data, brand });
+    setData((prev) => ({ ...prev, brand }));
     setShowBrandSuggestions(false);
   };
 
@@ -185,7 +185,10 @@ const KitInfoTab = ({ data, setData, projects }) => {
                   {brandSuggestions.map((brand) => (
                     <div
                       key={brand}
-                      onClick={() => selectBrand(brand)}
+                      onMouseDown={(e) => {
+                        e.preventDefault();
+                        selectBrand(brand);
+                      }}
                       className="p-2 hover:bg-blue-600/20 hover:text-blue-300 cursor-pointer text-xs text-slate-300 border-b border-slate-700/50 last:border-0 transition-colors"
                     >
                       {brand}
@@ -224,6 +227,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
                       : ""
                 }
                 list="common-scales"
+                autoComplete="off"
               />
               {isUnknownScale && (
                 <div className="absolute top-full left-0 mt-1 text-[10px] text-yellow-500 font-bold animate-in fade-in z-10 pointer-events-none whitespace-nowrap">
@@ -239,6 +243,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
                 setData({ ...data, catNum: Normalizer.code(e.target.value) })
               }
               placeholder="48000"
+              autoComplete="off"
             />
             <FloatingInput
               className="col-span-1 sm:w-20"
@@ -246,6 +251,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
               value={data.year || ""}
               onChange={(e) => setData({ ...data, year: e.target.value })}
               placeholder="2024"
+              autoComplete="off"
             />
           </div>
           <FloatingInput
@@ -255,6 +261,7 @@ const KitInfoTab = ({ data, setData, projects }) => {
             onChange={(e) => setData({ ...data, subject: e.target.value })}
             placeholder="TF-104G"
             labelColor="text-blue-400"
+            autoComplete="off"
           />
           <p className="text-[10px] text-blue-400/60 font-bold leading-tight">
             * Povinné údaje. Bez vyplnění Výrobce, Měřítka a Názvu nebude

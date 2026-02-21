@@ -366,6 +366,7 @@ export default function App() {
                       setActiveProject(p);
                     }}
                     kits={kits}
+                    onKitClick={(k) => handleOpenKitDetail(k)}
                   />
                 ))
               ) : (
