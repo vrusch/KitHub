@@ -85,7 +85,7 @@ const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
           brand: Normalizer.brand(scraped.brand) || prev.brand,
           catNum: Normalizer.code(scraped.catNo) || prev.catNum,
           scale: scraped.scale ? scraped.scale.replace(":", "/") : prev.scale,
-          subject: Normalizer.brand(scraped.title) || prev.subject,
+          subject: scraped.title || prev.subject,
           image: scraped.imageSrc || prev.image,
           year: scraped.year || prev.year,
           ean: scraped.ean || prev.ean,
@@ -93,10 +93,12 @@ const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
             ? scraped.markingsHTML || prev.markings
             : prev.markings,
           marketplace: scraped.marketplace || prev.marketplace,
-          notes: !scraped.instructionIsExact
-            ? (prev.notes ? prev.notes + "\n\n" : "") +
-              "⚠️ POZOR: Stažený návod není přesně pro tuto krabici (Scalemates nenašel přesnou shodu)."
-            : prev.notes,
+          notes:
+            !scraped.instructionIsExact &&
+            (!prev.notes || !prev.notes.includes("Stažený návod není přesně"))
+              ? (prev.notes ? prev.notes + "\n\n" : "") +
+                "⚠️ POZOR: Stažený návod není přesně pro tuto krabici (Scalemates nenašel přesnou shodu)."
+              : prev.notes,
           attachments:
             scraped.instructionUrl &&
             !prev.attachments?.some((a) => a.url === scraped.instructionUrl)

@@ -10,25 +10,77 @@
 // --- POMOCNÉ FUNKCE ---
 
 async function fetchWithProxy(targetUrl) {
-  // ZDE JE ZMĚNA: Použití tvé vlastní Vercel Proxy
-  const myProxyUrl = `https://mates-proxy.vercel.app/api/scrape?url=${encodeURIComponent(targetUrl)}`;
+  const encodedUrl = encodeURIComponent(targetUrl);
 
-  const response = await fetch(myProxyUrl);
-
-  if (response.status === 403 || response.status === 401) {
-    throw new Error(
-      "Access Denied. Scalemates blokuje přístup. Zkuste to později nebo zadejte ručně.",
+  // Pomocná funkce pro detekci blokace (Akamai/Cloudflare)
+  const isBlocked = (text) => {
+    if (!text) return true;
+    const lowerText = text.toLowerCase();
+    return (
+      lowerText.includes("errors.edgesuite.net") ||
+      lowerText.includes("access denied") ||
+      lowerText.includes("cloudflare")
     );
+  };
+
+  // 1. Pokus: Tvoje Vercel Proxy (nejlepší pro obcházení mobilních sítí)
+  try {
+    const myProxyUrl = `https://mates-proxy.vercel.app/api/scrape?url=${encodedUrl}`;
+    const response = await fetch(myProxyUrl);
+    if (response.ok) {
+      const text = await response.text();
+      // Zkontrolujeme, zda nám Vercel nevrátil chybové HTML od Akamai
+      if (!isBlocked(text) && !text.includes('{"error"')) {
+        return text;
+      }
+    }
+  } catch (e) {
+    console.warn("Vercel proxy selhala");
   }
 
-  if (!response.ok) {
-    throw new Error(
-      `Chyba při stahování přes vlastní proxy: ${response.status}`,
+  // 2. Pokus: AllOrigins (velmi spolehlivá veřejná proxy)
+  try {
+    const response = await fetch(
+      `https://api.allorigins.win/get?url=${encodedUrl}`,
     );
+    if (response.ok) {
+      const json = await response.json();
+      if (json.contents && !isBlocked(json.contents)) {
+        return json.contents;
+      }
+    }
+  } catch (e) {
+    console.warn("AllOrigins selhala");
   }
 
-  // Tvoje Vercel API vrací rovnou čisté HTML
-  return await response.text();
+  // 3. Pokus: CodeTabs (alternativní bezplatná proxy)
+  try {
+    const response = await fetch(
+      `https://api.codetabs.com/v1/proxy?quest=${encodedUrl}`,
+    );
+    if (response.ok) {
+      const text = await response.text();
+      if (!isBlocked(text)) return text;
+    }
+  } catch (e) {
+    console.warn("CodeTabs selhala");
+  }
+
+  // 4. Pokus: Corsproxy.io (záložní možnost)
+  try {
+    const response = await fetch(`https://corsproxy.io/?${encodedUrl}`);
+    if (response.ok) {
+      const text = await response.text();
+      if (!isBlocked(text)) return text;
+    }
+  } catch (e) {
+    console.warn("Corsproxy selhala");
+  }
+
+  // Pokud selže úplně všechno
+  throw new Error(
+    "Access Denied. Scalemates blokuje přístup. Zkuste to později nebo zadejte data ručně.",
+  );
 }
 
 function extractOffers(doc) {
