@@ -20,7 +20,6 @@ import {
   Moon,
   Sun,
   EyeOff,
-  Coins,
   Zap,
   Droplets,
   RotateCcw,
@@ -28,6 +27,12 @@ import {
   Search,
   ChevronDown,
   ChevronUp,
+  Package,
+  Folder,
+  ShoppingCart,
+  Euro,
+  DollarSign,
+  Coins,
 } from "lucide-react";
 import { GoogleIcon } from "../ui/Icons";
 import { auth } from "../../config/firebase";
@@ -41,10 +46,10 @@ import {
 const APP_VERSION = import.meta.env.PACKAGE_VERSION || "Dev";
 
 const AccordionItem = ({ title, icon: Icon, isOpen, onToggle, children }) => (
-  <div className="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden transition-all">
+  <div className="bg-slate-800 rounded-xl border border-slate-700 transition-all">
     <button
       onClick={onToggle}
-      className="w-full p-4 flex items-center justify-between bg-slate-800 hover:bg-slate-700 transition-colors"
+      className={`w-full p-4 flex items-center justify-between bg-slate-800 hover:bg-slate-700 transition-colors ${isOpen ? "rounded-t-xl" : "rounded-xl"}`}
     >
       <div className="flex items-center gap-2 font-bold text-slate-300 text-xs uppercase">
         <Icon size={16} className="text-blue-400" /> {title}
@@ -56,12 +61,91 @@ const AccordionItem = ({ title, icon: Icon, isOpen, onToggle, children }) => (
       )}
     </button>
     {isOpen && (
-      <div className="p-4 border-t border-slate-700 bg-slate-900/30 space-y-4 animate-in slide-in-from-top-2">
+      <div className="p-4 border-t border-slate-700 bg-slate-900/30 space-y-4 animate-in slide-in-from-top-2 rounded-b-xl">
         {children}
       </div>
     )}
   </div>
 );
+
+const CustomDropdown = ({
+  label,
+  value,
+  options,
+  onChange,
+  icon: LabelIcon,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selected = options.find((o) => o.value === value);
+
+  return (
+    <div
+      className="bg-slate-800 p-3 rounded-lg border border-slate-700"
+      ref={dropdownRef}
+    >
+      <div className="relative">
+        <label className="block text-[10px] font-bold text-slate-500 uppercase mb-1 flex items-center gap-2">
+          {LabelIcon && <LabelIcon size={12} />} {label}
+        </label>
+        <div className="relative">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-full bg-transparent border-b border-slate-600 text-white text-sm py-2 pr-8 outline-none focus:border-blue-500 transition-colors flex items-center gap-2 text-left"
+          >
+            {selected?.icon && (
+              <selected.icon size={16} className="text-blue-400" />
+            )}
+            <span>{selected?.label}</span>
+            <ChevronDown
+              size={16}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 text-slate-500 transition-transform ${isOpen ? "rotate-180" : ""}`}
+            />
+          </button>
+
+          {isOpen && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-50 overflow-hidden animate-in fade-in zoom-in-95">
+              {options.map((opt) => (
+                <button
+                  key={opt.value}
+                  onClick={() => {
+                    onChange(opt.value);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full flex items-center gap-2 p-2 text-sm hover:bg-slate-800 transition-colors ${value === opt.value ? "bg-blue-600/10 text-blue-400" : "text-slate-300"}`}
+                >
+                  {opt.icon && (
+                    <opt.icon
+                      size={16}
+                      className={
+                        value === opt.value ? "text-blue-400" : "text-slate-500"
+                      }
+                    />
+                  )}
+                  <span>{opt.label}</span>
+                  {value === opt.value && (
+                    <Check size={14} className="ml-auto" />
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /**
  * Modální okno nastavení aplikace.
@@ -191,7 +275,78 @@ const SettingsModal = ({
           </button>
         </div>
         <div className="p-6 space-y-6 flex-1 overflow-y-auto">
-          {/* 1. ID SKLADU (Vždy viditelné) */}
+          {/* 1. ÚČET A SYNCHRONIZACE (Přesunuto nahoru) */}
+          <AccordionItem
+            title="Účet a Synchronizace"
+            icon={Cloud}
+            isOpen={openSection === "account"}
+            onToggle={() => toggleSection("account")}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <div
+                className={`p-2 rounded-full ${!user ? "bg-slate-700 text-slate-400" : user.isAnonymous ? "bg-orange-500/20 text-orange-400" : "bg-green-500/20 text-green-400"}`}
+              >
+                {user ? <User size={20} /> : <WifiOff size={20} />}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-slate-500 font-bold uppercase flex items-center gap-1">
+                  {user?.providerData?.[0]?.providerId === "google.com" ? (
+                    <>
+                      Přihlášen přes <GoogleIcon className="w-3 h-3" /> jako
+                    </>
+                  ) : (
+                    "Přihlášen jako"
+                  )}
+                </p>
+                <p className="text-sm text-white font-medium truncate">
+                  {getDisplayName()}
+                </p>
+              </div>
+            </div>
+            <div className="space-y-2">
+              {(!user || user.isAnonymous) && (
+                <button
+                  onClick={() => handleAuth("google")}
+                  disabled={authLoading}
+                  className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
+                >
+                  <GoogleIcon className="w-4 h-4" /> Přihlásit se přes Google
+                </button>
+              )}
+              {authError && (
+                <div className="bg-red-900/30 border border-red-500/30 text-red-200 p-3 rounded text-xs break-words">
+                  <strong>Chyba přihlášení</strong>
+                  <br />
+                  {authError}
+                </div>
+              )}
+              {!user && (
+                <button
+                  onClick={() => handleAuth("anon")}
+                  disabled={authLoading}
+                  className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
+                >
+                  <Ghost size={16} /> Anonymní login
+                </button>
+              )}
+              {user && (
+                <button
+                  onClick={() => handleAuth("logout")}
+                  disabled={authLoading}
+                  className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
+                >
+                  {authLoading ? (
+                    <Loader2 className="animate-spin" size={16} />
+                  ) : (
+                    <LogOut size={16} />
+                  )}{" "}
+                  Odhlásit se
+                </button>
+              )}
+            </div>
+          </AccordionItem>
+
+          {/* 2. ID SKLADU */}
           <div className="space-y-2">
             <label className="text-xs font-bold text-slate-500 uppercase tracking-wider">
               ID Deníku / Skladu
@@ -230,173 +385,165 @@ const SettingsModal = ({
             </p>
           </div>
 
-          {/* 2. ACCORDION SECTIONS */}
+          {/* 3. OSTATNÍ SEKCE */}
           <div className="space-y-3">
-            {/* A) ÚČET */}
-            <AccordionItem
-              title="Účet a Synchronizace"
-              icon={Cloud}
-              isOpen={openSection === "account"}
-              onToggle={() => toggleSection("account")}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div
-                  className={`p-2 rounded-full ${!user ? "bg-slate-700 text-slate-400" : user.isAnonymous ? "bg-orange-500/20 text-orange-400" : "bg-green-500/20 text-green-400"}`}
-                >
-                  {user ? <User size={20} /> : <WifiOff size={20} />}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-slate-500 font-bold uppercase flex items-center gap-1">
-                    {user?.providerData?.[0]?.providerId === "google.com" ? (
-                      <>
-                        Přihlášen přes <GoogleIcon className="w-3 h-3" /> jako
-                      </>
-                    ) : (
-                      "Přihlášen jako"
-                    )}
-                  </p>
-                  <p className="text-sm text-white font-medium truncate">
-                    {getDisplayName()}
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-2">
-                {(!user || user.isAnonymous) && (
-                  <button
-                    onClick={() => handleAuth("google")}
-                    disabled={authLoading}
-                    className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
-                  >
-                    <GoogleIcon className="w-4 h-4" /> Přihlásit se přes Google
-                  </button>
-                )}
-                {authError && (
-                  <div className="bg-red-900/30 border border-red-500/30 text-red-200 p-3 rounded text-xs break-words">
-                    <strong>Chyba přihlášení</strong>
-                    <br />
-                    {authError}
-                  </div>
-                )}
-                {!user && (
-                  <button
-                    onClick={() => handleAuth("anon")}
-                    disabled={authLoading}
-                    className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
-                  >
-                    <Ghost size={16} /> Anonymní login
-                  </button>
-                )}
-                {user && (
-                  <button
-                    onClick={() => handleAuth("logout")}
-                    disabled={authLoading}
-                    className="w-full bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2"
-                  >
-                    {authLoading ? (
-                      <Loader2 className="animate-spin" size={16} />
-                    ) : (
-                      <LogOut size={16} />
-                    )}{" "}
-                    Odhlásit se
-                  </button>
-                )}
-              </div>
-            </AccordionItem>
-
-            {/* B) VZHLED A CHOVÁNÍ */}
+            {/* A) VZHLED A CHOVÁNÍ */}
             <AccordionItem
               title="Vzhled a Chování"
               icon={Palette}
               isOpen={openSection === "appearance"}
               onToggle={() => toggleSection("appearance")}
             >
-              {/* TÉMA */}
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300 flex items-center gap-2">
-                  {preferences.theme === "dark" ? (
-                    <Moon size={16} />
-                  ) : (
-                    <Sun size={16} />
-                  )}
-                  Režim aplikace
-                </span>
-                <div className="flex bg-slate-950 rounded-lg p-1 border border-slate-800">
+              {/* 1. VIZUÁL */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider ml-1">
+                  Vizuál
+                </h4>
+                {/* TÉMA */}
+                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <span className="text-sm text-slate-300 flex items-center gap-2">
+                    {preferences.theme === "dark" ? (
+                      <Moon size={16} />
+                    ) : (
+                      <Sun size={16} />
+                    )}
+                    Režim aplikace
+                  </span>
+                  <div className="flex bg-slate-950 rounded-lg p-1 border border-slate-800">
+                    <button
+                      onClick={() =>
+                        onUpdatePreferences((p) => ({ ...p, theme: "dark" }))
+                      }
+                      className={`px-3 py-1 rounded text-xs font-bold transition-colors ${preferences.theme === "dark" ? "bg-slate-700 text-white" : "text-slate-500 hover:text-slate-300"}`}
+                    >
+                      Tmavý
+                    </button>
+                    <button
+                      onClick={() =>
+                        onUpdatePreferences((p) => ({ ...p, theme: "light" }))
+                      }
+                      className={`px-3 py-1 rounded text-xs font-bold transition-colors ${preferences.theme === "light" ? "bg-slate-200 text-slate-900" : "text-slate-500 hover:text-slate-300"}`}
+                    >
+                      Světlý
+                    </button>
+                  </div>
+                </div>
+
+                {/* KOMPAKTNÍ ZOBRAZENÍ */}
+                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <span className="text-sm text-slate-300 flex items-center gap-2">
+                    <Layout size={16} /> Kompaktní zobrazení
+                  </span>
                   <button
-                    onClick={() =>
-                      onUpdatePreferences((p) => ({ ...p, theme: "dark" }))
-                    }
-                    className={`px-3 py-1 rounded text-xs font-bold transition-colors ${preferences.theme === "dark" ? "bg-slate-700 text-white" : "text-slate-500 hover:text-slate-300"}`}
+                    onClick={() => togglePref("compactMode")}
+                    className={`w-10 h-5 rounded-full relative transition-colors ${preferences.compactMode ? "bg-blue-600" : "bg-slate-700"}`}
                   >
-                    Tmavý
+                    <div
+                      className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.compactMode ? "left-5.5" : "left-0.5"}`}
+                    ></div>
                   </button>
+                </div>
+
+                {/* ANIMACE */}
+                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <span className="text-sm text-slate-300 flex items-center gap-2">
+                    <Zap size={16} /> Povolit animace
+                  </span>
                   <button
-                    onClick={() =>
-                      onUpdatePreferences((p) => ({ ...p, theme: "light" }))
-                    }
-                    className={`px-3 py-1 rounded text-xs font-bold transition-colors ${preferences.theme === "light" ? "bg-slate-200 text-slate-900" : "text-slate-500 hover:text-slate-300"}`}
+                    onClick={() => togglePref("animations")}
+                    className={`w-10 h-5 rounded-full relative transition-colors ${preferences.animations ? "bg-blue-600" : "bg-slate-700"}`}
                   >
-                    Světlý
+                    <div
+                      className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.animations ? "left-5.5" : "left-0.5"}`}
+                    ></div>
                   </button>
                 </div>
               </div>
 
-              {/* VÝCHOZÍ POHLED */}
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300 flex items-center gap-2">
-                  <Monitor size={16} /> Výchozí pohled
-                </span>
-                <select
-                  value={preferences.defaultView || "kits"}
-                  onChange={(e) =>
-                    onUpdatePreferences((p) => ({
-                      ...p,
-                      defaultView: e.target.value,
-                    }))
-                  }
-                  className="bg-slate-950 border border-slate-600 text-white text-xs rounded px-2 py-1 outline-none focus:border-blue-500"
-                >
-                  <option value="kits">📦 Modely</option>
-                  <option value="projects">📂 Projekty</option>
-                  <option value="paints">🎨 Barvy</option>
-                  <option value="shopping">🛒 Nákup</option>
-                </select>
-              </div>
-
-              {/* KOMPAKTNÍ ZOBRAZENÍ */}
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300 flex items-center gap-2">
-                  <Layout size={16} /> Kompaktní zobrazení
-                </span>
-                <button
-                  onClick={() => togglePref("compactMode")}
-                  className={`w-10 h-5 rounded-full relative transition-colors ${preferences.compactMode ? "bg-blue-600" : "bg-slate-700"}`}
-                >
-                  <div
-                    className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.compactMode ? "left-5.5" : "left-0.5"}`}
-                  ></div>
-                </button>
-              </div>
-
-              {/* ANIMACE */}
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300 flex items-center gap-2">
-                  <Zap size={16} /> Povolit animace
-                </span>
-                <button
-                  onClick={() => togglePref("animations")}
-                  className={`w-10 h-5 rounded-full relative transition-colors ${preferences.animations ? "bg-blue-600" : "bg-slate-700"}`}
-                >
-                  <div
-                    className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.animations ? "left-5.5" : "left-0.5"}`}
-                  ></div>
-                </button>
-              </div>
-
-              {/* VÝCHOZÍ FILTRY */}
-              <div className="pt-2 border-t border-slate-700/50">
-                <h4 className="text-xs font-bold text-slate-500 mb-2 flex items-center gap-2">
-                  <EyeOff size={14} /> Výchozí filtry
+              {/* 2. VÝCHOZÍ HODNOTY */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider ml-1">
+                  Výchozí hodnoty
                 </h4>
+                {/* VÝCHOZÍ POHLED */}
+                <CustomDropdown
+                  label="Výchozí pohled"
+                  icon={Monitor}
+                  value={preferences.defaultView || "kits"}
+                  onChange={(val) =>
+                    onUpdatePreferences((p) => ({ ...p, defaultView: val }))
+                  }
+                  options={[
+                    { value: "kits", label: "Modely", icon: Package },
+                    { value: "projects", label: "Projekty", icon: Folder },
+                    { value: "paints", label: "Barvy", icon: Palette },
+                    { value: "shopping", label: "Nákup", icon: ShoppingCart },
+                  ]}
+                />
+
+                {/* PREFEROVANÁ MĚNA */}
+                <CustomDropdown
+                  label="Preferovaná měna"
+                  value={preferences.currency || "CZK"}
+                  onChange={(val) =>
+                    onUpdatePreferences((p) => ({ ...p, currency: val }))
+                  }
+                  options={[
+                    { value: "CZK", label: "CZK (Kč)", icon: Coins },
+                    { value: "EUR", label: "EUR (€)", icon: Euro },
+                    { value: "USD", label: "USD ($)", icon: DollarSign },
+                  ]}
+                />
+              </div>
+
+              {/* 3. CHOVÁNÍ A INTEGRACE */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider ml-1">
+                  Chování a Integrace
+                </h4>
+                {/* AUTOMATICKY UKLÁDAT POMĚRY */}
+                <div>
+                  <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                    <span className="text-sm text-slate-300 flex items-center gap-2">
+                      <Droplets size={16} /> Automaticky ukládat poměry
+                    </span>
+                    <button
+                      onClick={() => togglePref("autoSaveRatios")}
+                      className={`w-10 h-5 rounded-full relative transition-colors ${preferences.autoSaveRatios ? "bg-blue-600" : "bg-slate-700"}`}
+                    >
+                      <div
+                        className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.autoSaveRatios ? "left-5.5" : "left-0.5"}`}
+                      ></div>
+                    </button>
+                  </div>
+                  <p className="text-[10px] text-slate-500 px-1 mt-1">
+                    Aplikace si zapamatuje poslední použitý poměr ředění pro
+                    každou značku a typ barvy.
+                  </p>
+                </div>
+
+                {/* VYPNOUT SCALEMATES */}
+                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
+                  <span className="text-sm text-slate-300 flex items-center gap-2">
+                    <Search size={16} /> Vypnout Scalemates
+                  </span>
+                  <button
+                    onClick={() => togglePref("disableScalemates")}
+                    className={`w-10 h-5 rounded-full relative transition-colors ${preferences.disableScalemates ? "bg-blue-600" : "bg-slate-700"}`}
+                  >
+                    <div
+                      className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.disableScalemates ? "left-5.5" : "left-0.5"}`}
+                    ></div>
+                  </button>
+                </div>
+              </div>
+
+              {/* 4. FILTRY */}
+              <div className="space-y-2">
+                <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider ml-1">
+                  Filtry
+                </h4>
+                {/* VÝCHOZÍ FILTRY */}
                 <div className="space-y-2">
                   {[
                     {
@@ -429,9 +576,21 @@ const SettingsModal = ({
                   ))}
                 </div>
               </div>
+
+              {/* 5. RESET (Dole) */}
+              {onResetPreferences && (
+                <div className="pt-4 border-t border-slate-700/50">
+                  <button
+                    onClick={handleResetClick}
+                    className="w-full bg-red-900/20 hover:bg-red-900/40 border border-red-500/30 text-red-400 py-2 rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <RotateCcw size={14} /> Obnovit výchozí nastavení
+                  </button>
+                </div>
+              )}
             </AccordionItem>
 
-            {/* C) DATA A INTEGRACE */}
+            {/* B) DATA A INTEGRACE */}
             <AccordionItem
               title="Data a Integrace"
               icon={FileJson}
@@ -465,93 +624,22 @@ const SettingsModal = ({
                 Stáhněte si zálohu svých dat ve formátu JSON nebo obnovte data
                 ze souboru.
               </p>
-
-              {/* BARVY */}
-              <div className="pt-2 border-t border-slate-700/50">
-                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                  <span className="text-sm text-slate-300 flex items-center gap-2">
-                    <Droplets size={16} /> Automaticky ukládat poměry
-                  </span>
-                  <button
-                    onClick={() => togglePref("autoSaveRatios")}
-                    className={`w-10 h-5 rounded-full relative transition-colors ${preferences.autoSaveRatios ? "bg-blue-600" : "bg-slate-700"}`}
-                  >
-                    <div
-                      className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.autoSaveRatios ? "left-5.5" : "left-0.5"}`}
-                    ></div>
-                  </button>
-                </div>
-                <p className="text-[10px] text-slate-500 px-1">
-                  Aplikace si zapamatuje poslední použitý poměr ředění pro
-                  každou značku a typ barvy.
-                </p>
-              </div>
-
-              {/* INTEGRACE */}
-              <div className="pt-2 border-t border-slate-700/50">
-                <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                  <span className="text-sm text-slate-300 flex items-center gap-2">
-                    <Search size={16} /> Vypnout Scalemates
-                  </span>
-                  <button
-                    onClick={() => togglePref("disableScalemates")}
-                    className={`w-10 h-5 rounded-full relative transition-colors ${preferences.disableScalemates ? "bg-blue-600" : "bg-slate-700"}`}
-                  >
-                    <div
-                      className={`w-4 h-4 bg-white rounded-full absolute top-0.5 transition-all ${preferences.disableScalemates ? "left-5.5" : "left-0.5"}`}
-                    ></div>
-                  </button>
-                </div>
-              </div>
             </AccordionItem>
+          </div>
+        </div>
 
-            {/* D) SYSTÉM A OSTATNÍ */}
-            <AccordionItem
-              title="Systém a Ostatní"
-              icon={Coins}
-              isOpen={openSection === "system"}
-              onToggle={() => toggleSection("system")}
+        {/* FOOTER */}
+        <div className="p-4 border-t border-slate-700 bg-slate-800/50 flex flex-col items-center gap-2">
+          {onCheckUpdates && (
+            <button
+              onClick={onCheckUpdates}
+              className="text-xs text-blue-400 hover:text-blue-300 flex items-center gap-2 transition-colors"
             >
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300">Verze aplikace</span>
-                <span className="text-sm font-mono text-blue-400">
-                  {APP_VERSION}
-                </span>
-              </div>
-              {onCheckUpdates && (
-                <button
-                  onClick={onCheckUpdates}
-                  className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 py-2 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-colors"
-                >
-                  <RefreshCw size={16} /> Zkontrolovat aktualizace
-                </button>
-              )}
-              <div className="flex items-center justify-between bg-slate-800 p-3 rounded-lg border border-slate-700">
-                <span className="text-sm text-slate-300">Preferovaná měna</span>
-                <select
-                  value={preferences.currency || "CZK"}
-                  onChange={(e) =>
-                    onUpdatePreferences((p) => ({
-                      ...p,
-                      currency: e.target.value,
-                    }))
-                  }
-                  className="bg-slate-950 border border-slate-600 text-white text-xs rounded px-2 py-1 outline-none focus:border-blue-500"
-                >
-                  <option value="CZK">CZK (Kč)</option>
-                  <option value="EUR">EUR (€)</option>
-                  <option value="USD">USD ($)</option>
-                </select>
-              </div>
-              {onResetPreferences && (
-                <button
-                  onClick={handleResetClick}
-                  className="w-full mt-4 bg-red-900/20 hover:bg-red-900/40 border border-red-500/30 text-red-400 py-2 rounded-lg font-bold text-xs flex items-center justify-center gap-2 transition-colors"
-                >
-                  <RotateCcw size={14} /> Obnovit výchozí nastavení
-                </button>
-              )}
-            </AccordionItem>
+              <RefreshCw size={14} /> Zkontrolovat aktualizace
+            </button>
+          )}
+          <div className="text-[10px] text-slate-500 font-mono">
+            v{APP_VERSION}
           </div>
         </div>
       </div>

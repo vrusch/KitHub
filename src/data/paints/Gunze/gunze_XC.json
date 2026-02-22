@@ -1,0 +1,58 @@
+{
+  "GUNZE_XC01": {
+    "displayCode": "XC-01",
+    "name": "Diamond Silver",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#E5E4E2"
+  },
+  "GUNZE_XC02": {
+    "displayCode": "XC-02",
+    "name": "Topaz Gold",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#FFC87C"
+  },
+  "GUNZE_XC03": {
+    "displayCode": "XC-03",
+    "name": "Ruby Red",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#E0115F"
+  },
+  "GUNZE_XC04": {
+    "displayCode": "XC-04",
+    "name": "Amethyst Purple",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#9966CC"
+  },
+  "GUNZE_XC05": {
+    "displayCode": "XC-05",
+    "name": "Sapphire Blue",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#0F52BA"
+  },
+  "GUNZE_XC06": {
+    "displayCode": "XC-06",
+    "name": "Tourmaline Green",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#2E8B57"
+  },
+  "GUNZE_XC07": {
+    "displayCode": "XC-07",
+    "name": "Turquoise Green",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#40E0D0"
+  },
+  "GUNZE_XC08": {
+    "displayCode": "XC-08",
+    "name": "Moonstone Pearl",
+    "type": "Mr. Crystal Color (XC)",
+    "finish": "Perleťová",
+    "hex": "#F4F6F0"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "GUNZE_T101": {
+    "displayCode": "T-101",
+    "name": "Mr. Color Thinner (50ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T102": {
+    "displayCode": "T-102",
+    "name": "Mr. Color Thinner (110ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T103": {
+    "displayCode": "T-103",
+    "name": "Mr. Color Thinner (250ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T104": {
+    "displayCode": "T-104",
+    "name": "Mr. Color Thinner (400ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T106": {
+    "displayCode": "T-106",
+    "name": "Mr. Color Leveling Thinner (110ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T108": {
+    "displayCode": "T-108",
+    "name": "Mr. Color Leveling Thinner (400ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T110": {
+    "displayCode": "T-110",
+    "name": "Aqueous Hobby Color Thinner (110ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T111": {
+    "displayCode": "T-111",
+    "name": "Aqueous Hobby Color Thinner (400ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T117": {
+    "displayCode": "T-117",
+    "name": "Mr. Rapid Thinner (400ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T116": {
+    "displayCode": "T-116",
+    "name": "Acrysion Thinner (250ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_MS231": {
+    "displayCode": "MS-231",
+    "name": "Mr. Mark Softer",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_MS232": {
+    "displayCode": "MS-232",
+    "name": "Mr. Mark Setter",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_MS241": {
+    "displayCode": "MS-241",
+    "name": "Mr. Mark Softer NEO",
+    "type": "Chemie (Obtisky)",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_MS242": {
+    "displayCode": "MS-242",
+    "name": "Mr. Mark Setter NEO",
+    "type": "Chemie (Obtisky)",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_T114": {
+    "displayCode": "T-114",
+    "name": "Mr. Retarder Mild",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  }
+}

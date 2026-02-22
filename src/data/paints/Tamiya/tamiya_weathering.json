@@ -1,0 +1,156 @@
+{
+  "TAMIYA_87131": {
+    "displayCode": "87131",
+    "name": "Panel Line Accent Color (Black)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "TAMIYA_87132": {
+    "displayCode": "87132",
+    "name": "Panel Line Accent Color (Brown)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#4B3621"
+  },
+  "TAMIYA_87133": {
+    "displayCode": "87133",
+    "name": "Panel Line Accent Color (Grey)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "TAMIYA_87140": {
+    "displayCode": "87140",
+    "name": "Panel Line Accent Color (Dark Brown)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#3E2723"
+  },
+  "TAMIYA_87189": {
+    "displayCode": "87189",
+    "name": "Panel Line Accent Color (Light Grey)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#A9A9A9"
+  },
+  "TAMIYA_87199": {
+    "displayCode": "87199",
+    "name": "Panel Line Accent Color (Dark Grey)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#434749"
+  },
+  "TAMIYA_87201": {
+    "displayCode": "87201",
+    "name": "Panel Line Accent Color (Dark Orange-Brown)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#A52A2A"
+  },
+  "TAMIYA_87209": {
+    "displayCode": "87209",
+    "name": "Panel Line Accent Color (Deep Brown)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#2B1B17"
+  },
+  "TAMIYA_87211": {
+    "displayCode": "87211",
+    "name": "Panel Line Accent Color (Pink-Brown)",
+    "type": "Weathering",
+    "finish": "Matná",
+    "hex": "#9E7B74"
+  },
+  "TAMIYA_87079": {
+    "displayCode": "87079",
+    "name": "Weathering Master A Set (Sand/Mud/Light Sand)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#C2B280"
+  },
+  "TAMIYA_87080": {
+    "displayCode": "87080",
+    "name": "Weathering Master B Set (Snow/Soot/Rust)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#B7410E"
+  },
+  "TAMIYA_87085": {
+    "displayCode": "87085",
+    "name": "Weathering Master C Set (Orange Rust/Gun Metal/Silver)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#71797E"
+  },
+  "TAMIYA_87088": {
+    "displayCode": "87088",
+    "name": "Weathering Master D Set (Burnt Blue/Burnt Red/Oil Stain)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#4B0082"
+  },
+  "TAMIYA_87098": {
+    "displayCode": "87098",
+    "name": "Weathering Master E Set (Yellow/Grey/Green)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_87123": {
+    "displayCode": "87123",
+    "name": "Weathering Master F Set (Titanium/Light Blue/Copper)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_87126": {
+    "displayCode": "87126",
+    "name": "Weathering Master G Set (Figurky - Pale/Flesh/Peach)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#FAD5A5"
+  },
+  "TAMIYA_87127": {
+    "displayCode": "87127",
+    "name": "Weathering Master H Set (Figurky - Pale/Orange/Brown)",
+    "type": "Weathering",
+    "finish": "Matná (Pigment)",
+    "hex": "#E6BE8A"
+  },
+  "TAMIYA_87081": {
+    "displayCode": "87081",
+    "name": "Weathering Stick (Mud)",
+    "type": "Weathering",
+    "finish": "Matná (Pasta)",
+    "hex": "#634E34"
+  },
+  "TAMIYA_87086": {
+    "displayCode": "87086",
+    "name": "Weathering Stick (Snow)",
+    "type": "Weathering",
+    "finish": "Matná (Pasta)",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_87087": {
+    "displayCode": "87087",
+    "name": "Weathering Stick (Sand)",
+    "type": "Weathering",
+    "finish": "Matná (Pasta)",
+    "hex": "#D2B48C"
+  },
+  "TAMIYA_87091": {
+    "displayCode": "87091",
+    "name": "Weathering Stick (Light Mud)",
+    "type": "Weathering",
+    "finish": "Matná (Pasta)",
+    "hex": "#A99B82"
+  },
+  "TAMIYA_87108": {
+    "displayCode": "87108",
+    "name": "Weathering Stick (Withered Grass)",
+    "type": "Weathering",
+    "finish": "Matná (Pasta)",
+    "hex": "#8B8D7D"
+  }
+}

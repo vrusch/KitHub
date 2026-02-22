@@ -1,0 +1,135 @@
+{
+  "GUNZE_SF283": {
+    "displayCode": "SF-283",
+    "name": "Mr. Surfacer 500",
+    "type": "Primer",
+    "finish": "Matná (Hrubá)",
+    "hex": "#808080"
+  },
+  "GUNZE_SF284": {
+    "displayCode": "SF-284",
+    "name": "Mr. Surfacer 1000",
+    "type": "Primer",
+    "finish": "Matná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_SF285": {
+    "displayCode": "SF-285",
+    "name": "Mr. Surfacer 1200",
+    "type": "Primer",
+    "finish": "Matná (Jemná)",
+    "hex": "#B0B0B0"
+  },
+  "GUNZE_SF287": {
+    "displayCode": "SF-287",
+    "name": "Mr. Primer Surfacer 1000",
+    "type": "Primer",
+    "finish": "Matná",
+    "hex": "#8C92AC"
+  },
+  "GUNZE_SF288": {
+    "displayCode": "SF-288",
+    "name": "Mr. Finishing Surfacer 1500 Black",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#101010"
+  },
+  "GUNZE_SF289": {
+    "displayCode": "SF-289",
+    "name": "Mr. Finishing Surfacer 1500 Gray",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#708090"
+  },
+  "GUNZE_SF290": {
+    "displayCode": "SF-290",
+    "name": "Mr. Mahogany Surfacer 1000",
+    "type": "Primer",
+    "finish": "Matná",
+    "hex": "#4E3629"
+  },
+  "GUNZE_SF291": {
+    "displayCode": "SF-291",
+    "name": "Mr. Finishing Surfacer 1500 White",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_SF292": {
+    "displayCode": "SF-292",
+    "name": "Mr. Finishing Surfacer 1500 Pink",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#FFC0CB"
+  },
+  "GUNZE_MP242": {
+    "displayCode": "MP-242",
+    "name": "Mr. Metal Primer",
+    "type": "Primer",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_B504": {
+    "displayCode": "B-504",
+    "name": "Mr. Metal Primer (Spray)",
+    "type": "Primer",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "GUNZE_B505": {
+    "displayCode": "B-505",
+    "name": "Mr. Surfacer 1000 (Spray)",
+    "type": "Primer",
+    "finish": "Matná",
+    "hex": "#A9A9A9"
+  },
+  "GUNZE_B506": {
+    "displayCode": "B-506",
+    "name": "Mr. Surfacer 500 (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Hrubá)",
+    "hex": "#808080"
+  },
+  "GUNZE_B515": {
+    "displayCode": "B-515",
+    "name": "Mr. Surfacer 1200 (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Jemná)",
+    "hex": "#B0B0B0"
+  },
+  "GUNZE_B518": {
+    "displayCode": "B-518",
+    "name": "Mr. Base White 1000 (Spray)",
+    "type": "Primer",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_B526": {
+    "displayCode": "B-526",
+    "name": "Mr. Finishing Surfacer 1500 Black (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#101010"
+  },
+  "GUNZE_B527": {
+    "displayCode": "B-527",
+    "name": "Mr. Finishing Surfacer 1500 Gray (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#708090"
+  },
+  "GUNZE_B529": {
+    "displayCode": "B-529",
+    "name": "Mr. Finishing Surfacer 1500 White (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_B530": {
+    "displayCode": "B-530",
+    "name": "Mr. Finishing Surfacer 1500 Pink (Spray)",
+    "type": "Primer",
+    "finish": "Matná (Extra Jemná)",
+    "hex": "#FFC0CB"
+  }
+}

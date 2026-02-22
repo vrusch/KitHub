@@ -1,0 +1,58 @@
+{
+  "AK_11239": {
+    "displayCode": "AK11239",
+    "name": "Ultra Matte Varnish",
+    "type": "Lak (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_11240": {
+    "displayCode": "AK11240",
+    "name": "Matte Varnish",
+    "type": "Lak (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_11241": {
+    "displayCode": "AK11241",
+    "name": "Satin Varnish",
+    "type": "Lak (3rd Gen)",
+    "finish": "Polomatná",
+    "hex": "#F8F8FF"
+  },
+  "AK_11242": {
+    "displayCode": "AK11242",
+    "name": "Gloss Varnish",
+    "type": "Lak (3rd Gen)",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "AK_11251": {
+    "displayCode": "AK11251",
+    "name": "Polyurethane Gloss Varnish",
+    "type": "Lak (PU 3rd Gen)",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "AK_11252": {
+    "displayCode": "AK11252",
+    "name": "Polyurethane Satin Varnish",
+    "type": "Lak (PU 3rd Gen)",
+    "finish": "Polomatná",
+    "hex": "#F8F8FF"
+  },
+  "AK_11253": {
+    "displayCode": "AK11253",
+    "name": "Polyurethane Matte Varnish",
+    "type": "Lak (PU 3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_11254": {
+    "displayCode": "AK11254",
+    "name": "Polyurethane Ultra Matte Varnish",
+    "type": "Lak (PU 3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  }
+}

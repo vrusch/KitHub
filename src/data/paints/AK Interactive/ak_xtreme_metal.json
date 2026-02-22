@@ -1,0 +1,156 @@
+{
+  "AK_471": {
+    "displayCode": "AK471",
+    "name": "Black Base",
+    "type": "Xtreme Metal",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "AK_472": {
+    "displayCode": "AK472",
+    "name": "Super Chrome",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#E8E9EB"
+  },
+  "AK_473": {
+    "displayCode": "AK473",
+    "name": "Copper",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "AK_474": {
+    "displayCode": "AK474",
+    "name": "Bronze",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#CD7F32"
+  },
+  "AK_475": {
+    "displayCode": "AK475",
+    "name": "Brass",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#B5A642"
+  },
+  "AK_476": {
+    "displayCode": "AK476",
+    "name": "Steel",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#71797E"
+  },
+  "AK_477": {
+    "displayCode": "AK477",
+    "name": "Chrome",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#DCDCDC"
+  },
+  "AK_478": {
+    "displayCode": "AK478",
+    "name": "White Aluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#F0F8FF"
+  },
+  "AK_479": {
+    "displayCode": "AK479",
+    "name": "Aluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#D3D3D3"
+  },
+  "AK_480": {
+    "displayCode": "AK480",
+    "name": "Dark Aluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#A9A9A9"
+  },
+  "AK_481": {
+    "displayCode": "AK481",
+    "name": "Polished Aluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#E0E0E0"
+  },
+  "AK_482": {
+    "displayCode": "AK482",
+    "name": "Duraluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "AK_483": {
+    "displayCode": "AK483",
+    "name": "Gun Metal",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#2A3439"
+  },
+  "AK_484": {
+    "displayCode": "AK484",
+    "name": "Burnt Metal",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#4A3C31"
+  },
+  "AK_485": {
+    "displayCode": "AK485",
+    "name": "Pale Brass",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#C5B358"
+  },
+  "AK_486": {
+    "displayCode": "AK486",
+    "name": "Gold",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "AK_487": {
+    "displayCode": "AK487",
+    "name": "Matte Aluminium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#B0B5B9"
+  },
+  "AK_488": {
+    "displayCode": "AK488",
+    "name": "Matte Black",
+    "type": "Xtreme Metal",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_669": {
+    "displayCode": "AK669",
+    "name": "Titanium",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#878681"
+  },
+  "AK_670": {
+    "displayCode": "AK670",
+    "name": "Stainless Steel",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#E0E5E5"
+  },
+  "AK_671": {
+    "displayCode": "AK671",
+    "name": "Metallic Smoke",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#5A5E63"
+  },
+  "AK_672": {
+    "displayCode": "AK672",
+    "name": "Pale Burnt Metal",
+    "type": "Xtreme Metal",
+    "finish": "Metalická",
+    "hex": "#6B5A4E"
+  }
+}

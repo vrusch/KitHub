@@ -2,470 +2,624 @@
   "TAMIYA_LP1": {
     "displayCode": "LP-1",
     "name": "Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#000000"
   },
   "TAMIYA_LP2": {
     "displayCode": "LP-2",
     "name": "White",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
-    "hex": "#ffffff"
+    "hex": "#FFFFFF"
   },
   "TAMIYA_LP3": {
     "displayCode": "LP-3",
     "name": "Flat Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#1a1a1a"
+    "hex": "#1A1A1A"
   },
   "TAMIYA_LP4": {
     "displayCode": "LP-4",
     "name": "Flat White",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#f2f2f2"
+    "hex": "#F2F2F2"
   },
   "TAMIYA_LP5": {
     "displayCode": "LP-5",
     "name": "Semi Gloss Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Polomatná",
-    "hex": "#0d0d0d"
+    "hex": "#0D0D0D"
   },
   "TAMIYA_LP6": {
     "displayCode": "LP-6",
     "name": "Pure Blue",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#0047AB"
   },
   "TAMIYA_LP7": {
     "displayCode": "LP-7",
     "name": "Pure Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#D40000"
   },
   "TAMIYA_LP8": {
     "displayCode": "LP-8",
     "name": "Pure Yellow",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FFCC00"
   },
   "TAMIYA_LP9": {
     "displayCode": "LP-9",
     "name": "Clear",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#F0F8FF"
   },
   "TAMIYA_LP11": {
     "displayCode": "LP-11",
     "name": "Silver",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#C0C0C0"
   },
   "TAMIYA_LP16": {
     "displayCode": "LP-16",
     "name": "Wooden Deck Tan",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#C19A6B"
   },
   "TAMIYA_LP17": {
     "displayCode": "LP-17",
     "name": "Linoleum Deck Brown",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#5D4037"
   },
   "TAMIYA_LP18": {
     "displayCode": "LP-18",
     "name": "Dull Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#8B0000"
   },
   "TAMIYA_LP19": {
     "displayCode": "LP-19",
     "name": "Gun Metal",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#2a2a2a"
   },
   "TAMIYA_LP20": {
     "displayCode": "LP-20",
     "name": "Light Gun Metal",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#4a4a4a"
   },
   "TAMIYA_LP21": {
     "displayCode": "LP-21",
     "name": "Italian Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#C80000"
   },
   "TAMIYA_LP22": {
     "displayCode": "LP-22",
     "name": "Flat Base",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#F5F5F5"
   },
   "TAMIYA_LP23": {
     "displayCode": "LP-23",
     "name": "Flat Clear",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#F0F8FF"
   },
   "TAMIYA_LP24": {
     "displayCode": "LP-24",
     "name": "Semi-Gloss Clear",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Polomatná",
     "hex": "#F0F8FF"
   },
   "TAMIYA_LP25": {
     "displayCode": "LP-25",
     "name": "Brown (JGSDF)",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#594030"
   },
   "TAMIYA_LP26": {
     "displayCode": "LP-26",
     "name": "Dark Green (JGSDF)",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#304030"
   },
   "TAMIYA_LP27": {
     "displayCode": "LP-27",
     "name": "German Gray",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#696969"
   },
   "TAMIYA_LP28": {
     "displayCode": "LP-28",
     "name": "Olive Drab",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#6b8e23"
   },
   "TAMIYA_LP29": {
     "displayCode": "LP-29",
     "name": "Olive Drab 2",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#556B2F"
+    "hex": "#555D42"
   },
   "TAMIYA_LP30": {
     "displayCode": "LP-30",
     "name": "Light Sand",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#EEDC82"
   },
   "TAMIYA_LP31": {
     "displayCode": "LP-31",
     "name": "Dark Green 2",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#006400"
   },
   "TAMIYA_LP32": {
     "displayCode": "LP-32",
     "name": "Light Gray (IJN)",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#D3D3D3"
   },
   "TAMIYA_LP33": {
     "displayCode": "LP-33",
     "name": "Gray (IJN Sasebo)",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#708090"
   },
   "TAMIYA_LP34": {
     "displayCode": "LP-34",
     "name": "Light Gray",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#DCDCDC"
   },
   "TAMIYA_LP35": {
     "displayCode": "LP-35",
     "name": "Insignia White",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Polomatná",
     "hex": "#F8F8FF"
   },
   "TAMIYA_LP36": {
     "displayCode": "LP-36",
     "name": "Dark Ghost Gray",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#778899"
   },
   "TAMIYA_LP37": {
     "displayCode": "LP-37",
     "name": "Light Ghost Gray",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#B0C4DE"
   },
   "TAMIYA_LP38": {
     "displayCode": "LP-38",
     "name": "Flat Aluminum",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#D3D3D3"
   },
   "TAMIYA_LP39": {
     "displayCode": "LP-39",
     "name": "Racing White",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FDF5E6"
   },
   "TAMIYA_LP40": {
     "displayCode": "LP-40",
     "name": "Metallic Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#2F4F4F"
   },
   "TAMIYA_LP41": {
     "displayCode": "LP-41",
     "name": "Mica Blue",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Perleťová",
     "hex": "#1E90FF"
   },
   "TAMIYA_LP42": {
     "displayCode": "LP-42",
     "name": "Mica Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Perleťová",
     "hex": "#DC143C"
   },
   "TAMIYA_LP43": {
     "displayCode": "LP-43",
     "name": "Pearl White",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Perleťová",
     "hex": "#F5F5F5"
   },
   "TAMIYA_LP44": {
     "displayCode": "LP-44",
     "name": "Metallic Orange",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#FF8C00"
   },
   "TAMIYA_LP45": {
     "displayCode": "LP-45",
     "name": "Racing Blue",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#0000CD"
   },
   "TAMIYA_LP46": {
     "displayCode": "LP-46",
     "name": "Pure Metallic Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#B22222"
   },
   "TAMIYA_LP47": {
     "displayCode": "LP-47",
     "name": "Pearl Blue",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Perleťová",
     "hex": "#4169E1"
   },
   "TAMIYA_LP48": {
     "displayCode": "LP-48",
     "name": "Sparkling Silver",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#E0E0E0"
   },
   "TAMIYA_LP49": {
     "displayCode": "LP-49",
     "name": "Pearl Clear",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Perleťová",
     "hex": "#F0F8FF"
   },
   "TAMIYA_LP50": {
     "displayCode": "LP-50",
     "name": "Bright Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FF0000"
   },
   "TAMIYA_LP51": {
     "displayCode": "LP-51",
     "name": "Pure Orange",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FF4500"
   },
   "TAMIYA_LP52": {
     "displayCode": "LP-52",
     "name": "Clear Red",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#8B0000"
   },
   "TAMIYA_LP53": {
     "displayCode": "LP-53",
     "name": "Clear Orange",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FF8C00"
   },
   "TAMIYA_LP54": {
     "displayCode": "LP-54",
     "name": "Dark Iron",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#363636"
   },
   "TAMIYA_LP55": {
     "displayCode": "LP-55",
     "name": "Dark Yellow 2",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#BDB76B"
   },
   "TAMIYA_LP56": {
     "displayCode": "LP-56",
     "name": "Dark Green 2",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#006400"
   },
   "TAMIYA_LP57": {
     "displayCode": "LP-57",
     "name": "Red Brown 2",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#8B4513"
   },
   "TAMIYA_LP58": {
     "displayCode": "LP-58",
     "name": "NATO Green",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#556B2F"
+    "hex": "#424E38"
   },
   "TAMIYA_LP59": {
     "displayCode": "LP-59",
     "name": "NATO Brown",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#8B4513"
+    "hex": "#4E312D"
   },
   "TAMIYA_LP60": {
     "displayCode": "LP-60",
     "name": "NATO Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
-    "hex": "#2F4F4F"
+    "hex": "#27292B"
   },
   "TAMIYA_LP61": {
     "displayCode": "LP-61",
     "name": "Metallic Gray",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#708090"
   },
   "TAMIYA_LP62": {
     "displayCode": "LP-62",
     "name": "Titanium Gold",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#DAA520"
   },
   "TAMIYA_LP63": {
     "displayCode": "LP-63",
     "name": "Titanium Silver",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#C0C0C0"
   },
   "TAMIYA_LP64": {
     "displayCode": "LP-64",
     "name": "Mica Silver",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#C0C0C0"
   },
   "TAMIYA_LP65": {
     "displayCode": "LP-65",
     "name": "Rubber Black",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#1C1C1C"
   },
   "TAMIYA_LP66": {
     "displayCode": "LP-66",
     "name": "Flat Flesh",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Matná",
     "hex": "#FFE4C4"
   },
   "TAMIYA_LP67": {
     "displayCode": "LP-67",
     "name": "Smoke",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#333333"
   },
   "TAMIYA_LP68": {
     "displayCode": "LP-68",
     "name": "Clear Blue",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#00008B"
   },
   "TAMIYA_LP69": {
     "displayCode": "LP-69",
     "name": "Clear Yellow",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Lesklá",
     "hex": "#FFFF00"
   },
   "TAMIYA_LP70": {
     "displayCode": "LP-70",
     "name": "Gloss Aluminum",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#DCDCDC"
   },
   "TAMIYA_LP71": {
     "displayCode": "LP-71",
     "name": "Champagne Gold",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#F7E7CE"
   },
   "TAMIYA_LP72": {
     "displayCode": "LP-72",
     "name": "Mica Silver",
-    "type": "Lacquer",
+    "type": "lacquer",
     "finish": "Metalická",
     "hex": "#D3D3D3"
+  },
+  "TAMIYA_LP73": {
+    "displayCode": "LP-73",
+    "name": "Khaki (German)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#C3B091"
+  },
+  "TAMIYA_LP74": {
+    "displayCode": "LP-74",
+    "name": "Flat Earth",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "TAMIYA_LP75": {
+    "displayCode": "LP-75",
+    "name": "Buff",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#F0E68C"
+  },
+  "TAMIYA_LP76": {
+    "displayCode": "LP-76",
+    "name": "Yellow Brown (DAK)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "TAMIYA_LP77": {
+    "displayCode": "LP-77",
+    "name": "Light Brown (DAK)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#C2A882"
+  },
+  "TAMIYA_LP78": {
+    "displayCode": "LP-78",
+    "name": "Flat Red",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#CD5C5C"
+  },
+  "TAMIYA_LP79": {
+    "displayCode": "LP-79",
+    "name": "Flat Blue",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#4169E1"
+  },
+  "TAMIYA_LP80": {
+    "displayCode": "LP-80",
+    "name": "Light Blue (IJN)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "TAMIYA_LP81": {
+    "displayCode": "LP-81",
+    "name": "IJN Gray (Kure Arsenal)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "TAMIYA_LP82": {
+    "displayCode": "LP-82",
+    "name": "IJN Gray (Sasebo Arsenal)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#5A6570"
+  },
+  "TAMIYA_LP83": {
+    "displayCode": "LP-83",
+    "name": "IJN Gray (Yokosuka Arsenal)",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#69727B"
+  },
+  "TAMIYA_LP84": {
+    "displayCode": "LP-84",
+    "name": "Dark Sea Gray",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_LP85": {
+    "displayCode": "LP-85",
+    "name": "Neutral Gray",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "TAMIYA_LP86": {
+    "displayCode": "LP-86",
+    "name": "Sky",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#B5CBB7"
+  },
+  "TAMIYA_LP87": {
+    "displayCode": "LP-87",
+    "name": "Ocean Gray",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_LP88": {
+    "displayCode": "LP-88",
+    "name": "Medium Sea Gray",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_LP89": {
+    "displayCode": "LP-89",
+    "name": "RAF Dark Green",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "TAMIYA_LP90": {
+    "displayCode": "LP-90",
+    "name": "RAF Dark Earth",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "TAMIYA_LP91": {
+    "displayCode": "LP-91",
+    "name": "RAF Azure Blue",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#4D7399"
+  },
+  "TAMIYA_LP92": {
+    "displayCode": "LP-92",
+    "name": "RAF Middle Stone",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "TAMIYA_LP93": {
+    "displayCode": "LP-93",
+    "name": "IJA Gray Green",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#A4A89A"
+  },
+  "TAMIYA_LP94": {
+    "displayCode": "LP-94",
+    "name": "IJA Dark Green",
+    "type": "lacquer",
+    "finish": "Matná",
+    "hex": "#3A4A36"
   }
 }

@@ -1,0 +1,72 @@
+{
+  "AK_459": {
+    "displayCode": "AK459",
+    "name": "Iron",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#434B4D"
+  },
+  "AK_460": {
+    "displayCode": "AK460",
+    "name": "Brass",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#B5A642"
+  },
+  "AK_461": {
+    "displayCode": "AK461",
+    "name": "Gun Metal",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#2A3439"
+  },
+  "AK_462": {
+    "displayCode": "AK462",
+    "name": "Copper",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#B87333"
+  },
+  "AK_463": {
+    "displayCode": "AK463",
+    "name": "Dark Aluminium",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#A9A9A9"
+  },
+  "AK_464": {
+    "displayCode": "AK464",
+    "name": "Aluminium",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#D3D3D3"
+  },
+  "AK_465": {
+    "displayCode": "AK465",
+    "name": "Silver",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#C0C0C0"
+  },
+  "AK_466": {
+    "displayCode": "AK466",
+    "name": "Gold",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#FFD700"
+  },
+  "AK_467": {
+    "displayCode": "AK467",
+    "name": "Steel",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#71797E"
+  },
+  "AK_468": {
+    "displayCode": "AK468",
+    "name": "Old Bronze",
+    "type": "True Metal (Wax)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#CD7F32"
+  }
+}

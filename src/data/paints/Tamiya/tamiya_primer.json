@@ -1,0 +1,79 @@
+{
+  "TAMIYA_87075": {
+    "displayCode": "87075",
+    "name": "Liquid Surface Primer (Gray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#A9A9A9"
+  },
+  "TAMIYA_87096": {
+    "displayCode": "87096",
+    "name": "Liquid Surface Primer (White)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_87024": {
+    "displayCode": "87024",
+    "name": "Surface Primer (Gray - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#A9A9A9"
+  },
+  "TAMIYA_87042": {
+    "displayCode": "87042",
+    "name": "Surface Primer (White - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_87044": {
+    "displayCode": "87044",
+    "name": "Fine Surface Primer (White - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_87064": {
+    "displayCode": "87064",
+    "name": "Fine Surface Primer (Light Gray - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_87146": {
+    "displayCode": "87146",
+    "name": "Fine Surface Primer (Pink - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_87160": {
+    "displayCode": "87160",
+    "name": "Surface Primer (Oxide Red - Spray)",
+    "type": "primer",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_87061": {
+    "displayCode": "87061",
+    "name": "Metal Primer (Spray)",
+    "type": "primer",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87204": {
+    "displayCode": "87204",
+    "name": "Metal Primer (Liquid)",
+    "type": "primer",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87152": {
+    "displayCode": "87152",
+    "name": "Nylon/PP Primer (Spray)",
+    "type": "primer",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  }
+}

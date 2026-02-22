@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Folder,
   X,
@@ -13,14 +13,106 @@ import {
   Trash2,
   Loader2,
   Save,
+  Calendar,
+  Zap,
+  CheckCircle2,
+  PauseCircle,
+  ChevronDown,
 } from "lucide-react";
-import {
-  FloatingInput,
-  FloatingSelect,
-  FloatingTextarea,
-} from "../ui/FormElements";
+import { FloatingInput, FloatingTextarea } from "../ui/FormElements";
 import { safeRender } from "../../utils/helpers";
 import ConfirmModal from "../ui/ConfirmModal";
+
+const CustomSelect = ({
+  label,
+  value,
+  onChange,
+  options,
+  className = "",
+  placeholder = "Vyberte...",
+  labelColor = "text-slate-500",
+  disabled = false,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedOption = options.find((o) => o.value === value);
+
+  return (
+    <div className={`relative ${className}`} ref={containerRef}>
+      {label && (
+        <label
+          className={`absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 ${labelColor}`}
+        >
+          {label}
+        </label>
+      )}
+      <button
+        type="button"
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        disabled={disabled}
+        className={`w-full bg-slate-950 border border-slate-700 rounded px-3 py-2.5 text-sm text-left flex items-center justify-between focus:border-blue-500 transition-colors outline-none h-[42px] ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+      >
+        <div
+          className={`flex items-center gap-2 truncate ${selectedOption ? "text-white" : "text-slate-500"}`}
+        >
+          {selectedOption?.icon && (
+            <selectedOption.icon size={14} className={labelColor} />
+          )}
+          {selectedOption ? selectedOption.label : placeholder}
+        </div>
+        <ChevronDown
+          size={16}
+          className={`text-slate-500 transition-transform shrink-0 ml-2 ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {isOpen && !disabled && (
+        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-50 max-h-60 overflow-y-auto">
+          {options.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => {
+                onChange(opt.value);
+                setIsOpen(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-sm hover:bg-slate-800 transition-colors flex items-center justify-between ${value === opt.value ? "bg-blue-600/10 text-blue-400" : "text-slate-300"}`}
+            >
+              <div className="flex items-center gap-2 truncate">
+                {opt.icon && (
+                  <opt.icon
+                    size={14}
+                    className={
+                      value === opt.value ? "text-blue-400" : "text-slate-500"
+                    }
+                  />
+                )}
+                <span>{opt.label}</span>
+              </div>
+              {value === opt.value && (
+                <Check size={14} className="shrink-0 ml-2" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 /**
  * Modální okno pro detail projektu (Editace) nebo vytvoření nového projektu.
@@ -188,15 +280,19 @@ const ProjectDetailModal = ({
                   placeholder="Můj projekt"
                   labelColor="text-blue-400"
                 />
-                <FloatingSelect
+                <CustomSelect
                   label="Stav"
                   value={data.status}
-                  onChange={(e) => setData({ ...data, status: e.target.value })}
+                  onChange={(val) => setData({ ...data, status: val })}
                   options={[
-                    { value: "planned", label: "📅 Plánováno" },
-                    { value: "active", label: "🔥 Aktivní" },
-                    { value: "finished", label: "✅ Dokončeno" },
-                    { value: "hold", label: "⏸️ Pozastaveno" },
+                    { value: "planned", label: "Plánováno", icon: Calendar },
+                    { value: "active", label: "Aktivní", icon: Zap },
+                    {
+                      value: "finished",
+                      label: "Dokončeno",
+                      icon: CheckCircle2,
+                    },
+                    { value: "hold", label: "Pozastaveno", icon: PauseCircle },
                   ]}
                 />
                 <FloatingTextarea
@@ -279,19 +375,18 @@ const ProjectDetailModal = ({
                         Zobrazují se pouze modely, které nejsou v jiném
                         projektu.
                       </div>
-                      <select
-                        className="w-full bg-slate-800 text-white text-xs p-2 rounded mb-2 border border-slate-600"
+                      <CustomSelect
+                        className="mb-2"
                         value={selectedKitId}
-                        onChange={(e) => setSelectedKitId(e.target.value)}
-                      >
-                        <option value="">-- Vyber model ze skladu --</option>
-                        {availableKits.map((k) => (
-                          <option key={k.id} value={k.id}>
-                            {safeRender(k.subject)} {safeRender(k.name)} (
-                            {safeRender(k.scale)})
-                          </option>
-                        ))}
-                      </select>
+                        onChange={(val) => setSelectedKitId(val)}
+                        placeholder="-- Vyber model ze skladu --"
+                        options={availableKits.map((k) => ({
+                          value: k.id,
+                          label: `${safeRender(k.subject)} ${safeRender(k.name)} (${safeRender(k.scale)})`,
+                          icon: Box,
+                        }))}
+                      />
+
                       <button
                         onClick={() => {
                           onUpdateKitLink(selectedKitId, project.id);
@@ -323,19 +418,21 @@ const ProjectDetailModal = ({
                       }
                     />
                     <div className="flex gap-2">
-                      <select
-                        className="bg-slate-900 border border-slate-600 rounded p-1.5 text-xs text-white"
+                      <CustomSelect
+                        className="w-32"
                         value={newAccessory.status}
-                        onChange={(e) =>
-                          setNewAccessory({
-                            ...newAccessory,
-                            status: e.target.value,
-                          })
+                        onChange={(val) =>
+                          setNewAccessory({ ...newAccessory, status: val })
                         }
-                      >
-                        <option value="owned">Mám</option>
-                        <option value="wanted">Koupit</option>
-                      </select>
+                        options={[
+                          { value: "owned", label: "Mám", icon: Check },
+                          {
+                            value: "wanted",
+                            label: "Koupit",
+                            icon: ShoppingCart,
+                          },
+                        ]}
+                      />
                       <input
                         className="flex-1 bg-slate-900 border border-slate-600 rounded p-1.5 text-xs text-white"
                         placeholder="URL obchodu..."

@@ -1,0 +1,359 @@
+{
+  "AK_11332": {
+    "displayCode": "AK11332",
+    "name": "US Army Olive Drab",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "AK_11333": {
+    "displayCode": "AK11333",
+    "name": "US Army Sand Yellow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "AK_11334": {
+    "displayCode": "AK11334",
+    "name": "US Army Forest Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_11340": {
+    "displayCode": "AK11340",
+    "name": "Russian Green 4BO",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4B5338"
+  },
+  "AK_11341": {
+    "displayCode": "AK11341",
+    "name": "Russian Green 6K",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3E4437"
+  },
+  "AK_11342": {
+    "displayCode": "AK11342",
+    "name": "Russian Earth Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_11343": {
+    "displayCode": "AK11343",
+    "name": "Russian Sand Yellow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "AK_11344": {
+    "displayCode": "AK11344",
+    "name": "German Dunkelgelb 1943",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "AK_11345": {
+    "displayCode": "AK11345",
+    "name": "German Dunkelgelb 1944",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#9E713E"
+  },
+  "AK_11346": {
+    "displayCode": "AK11346",
+    "name": "German Olivgrün",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "AK_11347": {
+    "displayCode": "AK11347",
+    "name": "German Rotbraun",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#592E2B"
+  },
+  "AK_11348": {
+    "displayCode": "AK11348",
+    "name": "German Panzergrau",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3E4347"
+  },
+  "AK_11349": {
+    "displayCode": "AK11349",
+    "name": "German Dunkelgelb Initial",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B0A68B"
+  },
+  "AK_11350": {
+    "displayCode": "AK11350",
+    "name": "German Schokoladenbraun",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A3326"
+  },
+  "AK_11351": {
+    "displayCode": "AK11351",
+    "name": "German Gelbbraun",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A68A59"
+  },
+  "AK_11352": {
+    "displayCode": "AK11352",
+    "name": "IDF Sand Grey 73",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#9C927A"
+  },
+  "AK_11353": {
+    "displayCode": "AK11353",
+    "name": "IDF Sinai Grey 82",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8A8D86"
+  },
+  "AK_11354": {
+    "displayCode": "AK11354",
+    "name": "IDF Modern Sand Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B3B099"
+  },
+  "AK_11355": {
+    "displayCode": "AK11355",
+    "name": "British SCC 2 Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#69503B"
+  },
+  "AK_11356": {
+    "displayCode": "AK11356",
+    "name": "British SCC 15 Olive Drab",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4F5943"
+  },
+  "AK_11357": {
+    "displayCode": "AK11357",
+    "name": "British Light Mud",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#9E9682"
+  },
+  "AK_11358": {
+    "displayCode": "AK11358",
+    "name": "British Portland Stone",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#BDB395"
+  },
+  "AK_11359": {
+    "displayCode": "AK11359",
+    "name": "British Silver Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#969B9E"
+  },
+  "AK_11360": {
+    "displayCode": "AK11360",
+    "name": "British Slate",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#666B66"
+  },
+  "AK_11361": {
+    "displayCode": "AK11361",
+    "name": "Caunter Light Stone",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#C9BD9C"
+  },
+  "AK_11362": {
+    "displayCode": "AK11362",
+    "name": "French Olive Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#505D47"
+  },
+  "AK_11363": {
+    "displayCode": "AK11363",
+    "name": "French Ochre",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B38C4A"
+  },
+  "AK_11364": {
+    "displayCode": "AK11364",
+    "name": "French Earth Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6E4D36"
+  },
+  "AK_11365": {
+    "displayCode": "AK11365",
+    "name": "French Light Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#768A61"
+  },
+  "AK_11366": {
+    "displayCode": "AK11366",
+    "name": "Japanese Parched Grass",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A89A6A"
+  },
+  "AK_11367": {
+    "displayCode": "AK11367",
+    "name": "Japanese Olive Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4C5938"
+  },
+  "AK_11368": {
+    "displayCode": "AK11368",
+    "name": "Japanese Earth Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5C4033"
+  },
+  "AK_11369": {
+    "displayCode": "AK11369",
+    "name": "Modern US Desert Sand",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "AK_11370": {
+    "displayCode": "AK11370",
+    "name": "NATO Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#424E38"
+  },
+  "AK_11371": {
+    "displayCode": "AK11371",
+    "name": "NATO Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4E312D"
+  },
+  "AK_11372": {
+    "displayCode": "AK11372",
+    "name": "NATO Black",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#27292B"
+  },
+  "AK_11373": {
+    "displayCode": "AK11373",
+    "name": "Russian Modern Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#455440"
+  },
+  "AK_11374": {
+    "displayCode": "AK11374",
+    "name": "Russian Grey Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5E695D"
+  },
+  "AK_11375": {
+    "displayCode": "AK11375",
+    "name": "Iraqi Sand",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#C2A882"
+  },
+  "AK_11376": {
+    "displayCode": "AK11376",
+    "name": "Dunkelgelb Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B3A575"
+  },
+  "AK_11377": {
+    "displayCode": "AK11377",
+    "name": "Dunkelgelb High",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#CFC091"
+  },
+  "AK_11378": {
+    "displayCode": "AK11378",
+    "name": "Dunkelgelb Shine",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#E0D5AF"
+  },
+  "AK_11379": {
+    "displayCode": "AK11379",
+    "name": "Olivgrün Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#45542B"
+  },
+  "AK_11380": {
+    "displayCode": "AK11380",
+    "name": "Olivgrün High",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5A6B3D"
+  },
+  "AK_11381": {
+    "displayCode": "AK11381",
+    "name": "Olivgrün Shine",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#728551"
+  },
+  "AK_11382": {
+    "displayCode": "AK11382",
+    "name": "Rotbraun Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#542D2A"
+  },
+  "AK_11383": {
+    "displayCode": "AK11383",
+    "name": "Rotbraun High",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6E3E3A"
+  },
+  "AK_11384": {
+    "displayCode": "AK11384",
+    "name": "Rotbraun Shine",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8A544F"
+  },
+  "AK_11385": {
+    "displayCode": "AK11385",
+    "name": "Panzergrau Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#35393D"
+  },
+  "AK_11386": {
+    "displayCode": "AK11386",
+    "name": "Panzergrau High",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A5057"
+  },
+  "AK_11387": {
+    "displayCode": "AK11387",
+    "name": "Panzergrau Shine",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#626B73"
+  }
+}

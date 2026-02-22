@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
   Box,
   ExternalLink,
@@ -12,6 +12,13 @@ import {
   Copy,
   Plus,
   Trash2,
+  AlertTriangle,
+  Package,
+  Hammer,
+  Trophy,
+  ShoppingCart,
+  Skull,
+  Folder,
 } from "lucide-react";
 import { FloatingInput, FloatingTextarea } from "../../ui/FormElements";
 import { Normalizer } from "../../../utils/normalizers";
@@ -35,6 +42,97 @@ const COMMON_SCALES = [
   "1/350",
   "1/700",
 ];
+
+const CustomSelect = ({
+  label,
+  value,
+  onChange,
+  options,
+  className = "",
+  placeholder = "Vyberte...",
+  labelColor = "text-slate-500",
+  disabled = false,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const selectedOption = options.find((o) => o.value === value);
+
+  return (
+    <div className={`relative ${className}`} ref={containerRef}>
+      {label && (
+        <label
+          className={`absolute -top-2 left-2 px-1 bg-slate-900 text-[10px] font-bold z-10 ${labelColor}`}
+        >
+          {label}
+        </label>
+      )}
+      <button
+        type="button"
+        onClick={() => !disabled && setIsOpen(!isOpen)}
+        disabled={disabled}
+        className={`w-full bg-slate-950 border border-slate-700 rounded px-3 py-2.5 text-sm text-left flex items-center justify-between focus:border-blue-500 transition-colors outline-none h-[42px] ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"}`}
+      >
+        <div
+          className={`flex items-center gap-2 truncate ${selectedOption ? "text-white" : "text-slate-500"}`}
+        >
+          {selectedOption?.icon && (
+            <selectedOption.icon size={14} className={labelColor} />
+          )}
+          {selectedOption ? selectedOption.label : placeholder}
+        </div>
+        <ChevronDown
+          size={16}
+          className={`text-slate-500 transition-transform shrink-0 ml-2 ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {isOpen && !disabled && (
+        <div className="absolute top-full left-0 right-0 mt-1 bg-slate-900 border border-slate-700 rounded-lg shadow-xl z-50 max-h-60 overflow-y-auto">
+          {options.map((opt) => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => {
+                onChange(opt.value);
+                setIsOpen(false);
+              }}
+              className={`w-full text-left px-3 py-2 text-sm hover:bg-slate-800 transition-colors flex items-center justify-between ${value === opt.value ? "bg-blue-600/10 text-blue-400" : "text-slate-300"}`}
+            >
+              <div className="flex items-center gap-2 truncate">
+                {opt.icon && (
+                  <opt.icon
+                    size={14}
+                    className={
+                      value === opt.value ? "text-blue-400" : "text-slate-500"
+                    }
+                  />
+                )}
+                <span>{opt.label}</span>
+              </div>
+              {value === opt.value && (
+                <Check size={14} className="shrink-0 ml-2" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
   const [isScraping, setIsScraping] = useState(false);
@@ -331,8 +429,8 @@ const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
                 </div>
               )}
               {isUnknownBrand && !showBrandSuggestions && (
-                <div className="absolute top-full left-0 mt-1 text-[10px] text-yellow-500 font-bold animate-in fade-in z-10 pointer-events-none">
-                  ⚠️ Neznámý výrobce
+                <div className="absolute top-full left-0 mt-1 text-[10px] text-yellow-500 font-bold animate-in fade-in z-10 pointer-events-none flex items-center gap-1">
+                  <AlertTriangle size={10} /> Neznámý výrobce
                 </div>
               )}
             </div>
@@ -406,8 +504,8 @@ const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
                 </div>
               )}
               {isUnknownScale && (
-                <div className="absolute top-full left-0 mt-1 text-[10px] text-yellow-500 font-bold animate-in fade-in z-10 pointer-events-none whitespace-nowrap">
-                  ⚠️ Atypické
+                <div className="absolute top-full left-0 mt-1 text-[10px] text-yellow-500 font-bold animate-in fade-in z-10 pointer-events-none whitespace-nowrap flex items-center gap-1">
+                  <AlertTriangle size={10} /> Atypické
                 </div>
               )}
             </div>
@@ -550,35 +648,31 @@ const KitInfoTab = ({ data, setData, projects, allKits, preferences }) => {
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-slate-500 mb-1">Status</label>
-          <select
+          <CustomSelect
+            label="Status"
             value={data.status}
-            onChange={(e) => setData({ ...data, status: e.target.value })}
-            className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-sm text-white outline-none"
-          >
-            <option value="new">📦 Skladem</option>
-            <option value="wip">🚧 Rozestavěno</option>
-            <option value="finished">🏆 Hotovo</option>
-            <option value="wishlist">🛒 Chci koupit</option>
-            <option value="scrap">♻️ Vrakoviště</option>
-          </select>
+            onChange={(val) => setData({ ...data, status: val })}
+            options={[
+              { value: "new", label: "Skladem", icon: Package },
+              { value: "wip", label: "Rozestavěno", icon: Hammer },
+              { value: "finished", label: "Hotovo", icon: Trophy },
+              { value: "wishlist", label: "Chci koupit", icon: ShoppingCart },
+              { value: "scrap", label: "Vrakoviště", icon: Skull },
+            ]}
+          />
         </div>
         <div>
-          <label className="block text-xs text-slate-500 mb-1">Projekt</label>
-          <select
+          <CustomSelect
+            label="Projekt"
             value={data.projectId || ""}
-            onChange={(e) =>
-              setData({ ...data, projectId: e.target.value || null })
-            }
-            className="w-full bg-slate-800 border border-slate-700 rounded p-2 text-sm text-white outline-none"
-          >
-            <option value="">-- Žádný --</option>
-            {projects.map((p) => (
-              <option key={p.id} value={p.id}>
-                {p.name}
-              </option>
-            ))}
-          </select>
+            onChange={(val) => setData({ ...data, projectId: val || null })}
+            placeholder="-- Žádný --"
+            options={projects.map((p) => ({
+              value: p.id,
+              label: p.name,
+              icon: Folder,
+            }))}
+          />
         </div>
       </div>
 

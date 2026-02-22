@@ -1,0 +1,744 @@
+{
+  "TAMIYA_X1": {
+    "displayCode": "X-1",
+    "name": "Black",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "TAMIYA_X2": {
+    "displayCode": "X-2",
+    "name": "White",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_X3": {
+    "displayCode": "X-3",
+    "name": "Royal Blue",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#002366"
+  },
+  "TAMIYA_X4": {
+    "displayCode": "X-4",
+    "name": "Blue",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_X5": {
+    "displayCode": "X-5",
+    "name": "Green",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "TAMIYA_X6": {
+    "displayCode": "X-6",
+    "name": "Orange",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#FFA500"
+  },
+  "TAMIYA_X7": {
+    "displayCode": "X-7",
+    "name": "Red",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_X8": {
+    "displayCode": "X-8",
+    "name": "Lemon Yellow",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#FFF700"
+  },
+  "TAMIYA_X9": {
+    "displayCode": "X-9",
+    "name": "Brown",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#A52A2A"
+  },
+  "TAMIYA_X10": {
+    "displayCode": "X-10",
+    "name": "Gun Metal",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#2A2A2A"
+  },
+  "TAMIYA_X11": {
+    "displayCode": "X-11",
+    "name": "Chrome Silver",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_X12": {
+    "displayCode": "X-12",
+    "name": "Gold Leaf",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_X13": {
+    "displayCode": "X-13",
+    "name": "Metallic Blue",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#4682B4"
+  },
+  "TAMIYA_X14": {
+    "displayCode": "X-14",
+    "name": "Sky Blue",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#87CEEB"
+  },
+  "TAMIYA_X15": {
+    "displayCode": "X-15",
+    "name": "Light Green",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_X16": {
+    "displayCode": "X-16",
+    "name": "Purple",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#800080"
+  },
+  "TAMIYA_X17": {
+    "displayCode": "X-17",
+    "name": "Pink",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_X18": {
+    "displayCode": "X-18",
+    "name": "Semi Gloss Black",
+    "type": "akryl",
+    "finish": "Polomatná",
+    "hex": "#0D0D0D"
+  },
+  "TAMIYA_X19": {
+    "displayCode": "X-19",
+    "name": "Smoke",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#333333"
+  },
+  "TAMIYA_X21": {
+    "displayCode": "X-21",
+    "name": "Flat Base",
+    "type": "akryl",
+    "finish": "Aditivum",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_X22": {
+    "displayCode": "X-22",
+    "name": "Clear",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_X23": {
+    "displayCode": "X-23",
+    "name": "Clear Blue",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_X24": {
+    "displayCode": "X-24",
+    "name": "Clear Yellow",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_X25": {
+    "displayCode": "X-25",
+    "name": "Clear Green",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#008000"
+  },
+  "TAMIYA_X26": {
+    "displayCode": "X-26",
+    "name": "Clear Orange",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_X27": {
+    "displayCode": "X-27",
+    "name": "Clear Red",
+    "type": "akryl",
+    "finish": "Transparentní",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_X28": {
+    "displayCode": "X-28",
+    "name": "Park Green",
+    "type": "akryl",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "TAMIYA_X31": {
+    "displayCode": "X-31",
+    "name": "Titanium Gold",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#DAA520"
+  },
+  "TAMIYA_X32": {
+    "displayCode": "X-32",
+    "name": "Titanium Silver",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_X33": {
+    "displayCode": "X-33",
+    "name": "Bronze",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#CD7F32"
+  },
+  "TAMIYA_X34": {
+    "displayCode": "X-34",
+    "name": "Metallic Brown",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_X35": {
+    "displayCode": "X-35",
+    "name": "Semi Gloss Clear",
+    "type": "akryl",
+    "finish": "Polomatná",
+    "hex": "#F8F8FF"
+  },
+  "TAMIYA_XF1": {
+    "displayCode": "XF-1",
+    "name": "Flat Black",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "TAMIYA_XF2": {
+    "displayCode": "XF-2",
+    "name": "Flat White",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#F2F2F2"
+  },
+  "TAMIYA_XF3": {
+    "displayCode": "XF-3",
+    "name": "Flat Yellow",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#E6E600"
+  },
+  "TAMIYA_XF4": {
+    "displayCode": "XF-4",
+    "name": "Yellow Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#9ACD32"
+  },
+  "TAMIYA_XF5": {
+    "displayCode": "XF-5",
+    "name": "Flat Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#228B22"
+  },
+  "TAMIYA_XF6": {
+    "displayCode": "XF-6",
+    "name": "Copper",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "TAMIYA_XF7": {
+    "displayCode": "XF-7",
+    "name": "Flat Red",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#CD5C5C"
+  },
+  "TAMIYA_XF8": {
+    "displayCode": "XF-8",
+    "name": "Flat Blue",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4169E1"
+  },
+  "TAMIYA_XF9": {
+    "displayCode": "XF-9",
+    "name": "Hull Red",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#800000"
+  },
+  "TAMIYA_XF10": {
+    "displayCode": "XF-10",
+    "name": "Flat Brown",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_XF11": {
+    "displayCode": "XF-11",
+    "name": "J.N. Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_XF12": {
+    "displayCode": "XF-12",
+    "name": "J.N. Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#A2AAB0"
+  },
+  "TAMIYA_XF13": {
+    "displayCode": "XF-13",
+    "name": "J.A. Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "TAMIYA_XF14": {
+    "displayCode": "XF-14",
+    "name": "J.A. Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#9BA4AB"
+  },
+  "TAMIYA_XF15": {
+    "displayCode": "XF-15",
+    "name": "Flat Flesh",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#FFE4C4"
+  },
+  "TAMIYA_XF16": {
+    "displayCode": "XF-16",
+    "name": "Flat Aluminum",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_XF17": {
+    "displayCode": "XF-17",
+    "name": "Sea Blue",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#1B263B"
+  },
+  "TAMIYA_XF18": {
+    "displayCode": "XF-18",
+    "name": "Medium Blue",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#476A8A"
+  },
+  "TAMIYA_XF19": {
+    "displayCode": "XF-19",
+    "name": "Sky Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "TAMIYA_XF20": {
+    "displayCode": "XF-20",
+    "name": "Medium Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_XF21": {
+    "displayCode": "XF-21",
+    "name": "Sky",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#B5CBB7"
+  },
+  "TAMIYA_XF22": {
+    "displayCode": "XF-22",
+    "name": "RLM Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#8B8D7D"
+  },
+  "TAMIYA_XF23": {
+    "displayCode": "XF-23",
+    "name": "Light Blue",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "TAMIYA_XF24": {
+    "displayCode": "XF-24",
+    "name": "Dark Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4F5D66"
+  },
+  "TAMIYA_XF25": {
+    "displayCode": "XF-25",
+    "name": "Light Sea Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#76797A"
+  },
+  "TAMIYA_XF26": {
+    "displayCode": "XF-26",
+    "name": "Deep Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_XF27": {
+    "displayCode": "XF-27",
+    "name": "Black Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#2F352E"
+  },
+  "TAMIYA_XF28": {
+    "displayCode": "XF-28",
+    "name": "Dark Copper",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "TAMIYA_XF49": {
+    "displayCode": "XF-49",
+    "name": "Khaki",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#C3B091"
+  },
+  "TAMIYA_XF50": {
+    "displayCode": "XF-50",
+    "name": "Field Blue",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4A6B8C"
+  },
+  "TAMIYA_XF51": {
+    "displayCode": "XF-51",
+    "name": "Khaki Drab",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6C541E"
+  },
+  "TAMIYA_XF52": {
+    "displayCode": "XF-52",
+    "name": "Flat Earth",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "TAMIYA_XF53": {
+    "displayCode": "XF-53",
+    "name": "Neutral Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "TAMIYA_XF54": {
+    "displayCode": "XF-54",
+    "name": "Dark Sea Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_XF55": {
+    "displayCode": "XF-55",
+    "name": "Deck Tan",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "TAMIYA_XF56": {
+    "displayCode": "XF-56",
+    "name": "Metallic Grey",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "TAMIYA_XF57": {
+    "displayCode": "XF-57",
+    "name": "Buff",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#F0E68C"
+  },
+  "TAMIYA_XF58": {
+    "displayCode": "XF-58",
+    "name": "Olive Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "TAMIYA_XF59": {
+    "displayCode": "XF-59",
+    "name": "Desert Yellow",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_XF60": {
+    "displayCode": "XF-60",
+    "name": "Dark Yellow",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#BBB57E"
+  },
+  "TAMIYA_XF61": {
+    "displayCode": "XF-61",
+    "name": "Dark Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_XF62": {
+    "displayCode": "XF-62",
+    "name": "Olive Drab",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6B8E23"
+  },
+  "TAMIYA_XF63": {
+    "displayCode": "XF-63",
+    "name": "German Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#696969"
+  },
+  "TAMIYA_XF64": {
+    "displayCode": "XF-64",
+    "name": "Red Brown",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#A0522D"
+  },
+  "TAMIYA_XF65": {
+    "displayCode": "XF-65",
+    "name": "Field Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_XF66": {
+    "displayCode": "XF-66",
+    "name": "Light Grey",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_XF67": {
+    "displayCode": "XF-67",
+    "name": "NATO Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#424E38"
+  },
+  "TAMIYA_XF68": {
+    "displayCode": "XF-68",
+    "name": "NATO Brown",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4E312D"
+  },
+  "TAMIYA_XF69": {
+    "displayCode": "XF-69",
+    "name": "NATO Black",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#27292B"
+  },
+  "TAMIYA_XF70": {
+    "displayCode": "XF-70",
+    "name": "Dark Green 2 (IJN)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#354A32"
+  },
+  "TAMIYA_XF71": {
+    "displayCode": "XF-71",
+    "name": "Cockpit Green (IJN)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "TAMIYA_XF72": {
+    "displayCode": "XF-72",
+    "name": "Brown (JGSDF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#594030"
+  },
+  "TAMIYA_XF73": {
+    "displayCode": "XF-73",
+    "name": "Dark Green (JGSDF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#304030"
+  },
+  "TAMIYA_XF74": {
+    "displayCode": "XF-74",
+    "name": "OD (JGSDF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_XF75": {
+    "displayCode": "XF-75",
+    "name": "IJN Gray (Kure)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "TAMIYA_XF76": {
+    "displayCode": "XF-76",
+    "name": "IJN Gray (Sasebo)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#5A6570"
+  },
+  "TAMIYA_XF77": {
+    "displayCode": "XF-77",
+    "name": "IJN Gray (Maizuru)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6A7580"
+  },
+  "TAMIYA_XF78": {
+    "displayCode": "XF-78",
+    "name": "Wooden Deck Tan",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#C19A6B"
+  },
+  "TAMIYA_XF79": {
+    "displayCode": "XF-79",
+    "name": "Linoleum Deck Brown",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#5D4037"
+  },
+  "TAMIYA_XF80": {
+    "displayCode": "XF-80",
+    "name": "Royal Light Gray",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#DCDCDC"
+  },
+  "TAMIYA_XF81": {
+    "displayCode": "XF-81",
+    "name": "Dark Green 2 (RAF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "TAMIYA_XF82": {
+    "displayCode": "XF-82",
+    "name": "Ocean Gray 2 (RAF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_XF83": {
+    "displayCode": "XF-83",
+    "name": "Medium Sea Gray 2 (RAF)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_XF84": {
+    "displayCode": "XF-84",
+    "name": "Dark Iron",
+    "type": "akryl",
+    "finish": "Metalická",
+    "hex": "#363636"
+  },
+  "TAMIYA_XF85": {
+    "displayCode": "XF-85",
+    "name": "Rubber Black",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#1C1C1C"
+  },
+  "TAMIYA_XF86": {
+    "displayCode": "XF-86",
+    "name": "Flat Clear",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_XF87": {
+    "displayCode": "XF-87",
+    "name": "IJN Gray (Yokosuka)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#69727B"
+  },
+  "TAMIYA_XF88": {
+    "displayCode": "XF-88",
+    "name": "Dark Yellow 2",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#BDB76B"
+  },
+  "TAMIYA_XF89": {
+    "displayCode": "XF-89",
+    "name": "Dark Green 2",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_XF90": {
+    "displayCode": "XF-90",
+    "name": "Red Brown 2",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_XF91": {
+    "displayCode": "XF-91",
+    "name": "IJN Gray (Yokosuka 2)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#6B7681"
+  },
+  "TAMIYA_XF92": {
+    "displayCode": "XF-92",
+    "name": "Yellow-Brown (DAK 1941)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "TAMIYA_XF93": {
+    "displayCode": "XF-93",
+    "name": "Light Brown (DAK 1942)",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#C2A882"
+  },
+  "TAMIYA_XF94": {
+    "displayCode": "XF-94",
+    "name": "IJA Dark Green",
+    "type": "akryl",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  }
+}

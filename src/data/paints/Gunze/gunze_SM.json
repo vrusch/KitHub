@@ -1,0 +1,65 @@
+{
+  "GUNZE_SM201": {
+    "displayCode": "SM201",
+    "name": "Super Fine Silver 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#E0E0E0"
+  },
+  "GUNZE_SM202": {
+    "displayCode": "SM202",
+    "name": "Super Gold 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "GUNZE_SM203": {
+    "displayCode": "SM203",
+    "name": "Super Iron 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#4A4A4A"
+  },
+  "GUNZE_SM204": {
+    "displayCode": "SM204",
+    "name": "Super Stainless 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "GUNZE_SM205": {
+    "displayCode": "SM205",
+    "name": "Super Titanium 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#878681"
+  },
+  "GUNZE_SM206": {
+    "displayCode": "SM206",
+    "name": "Super Chrome Silver 2",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#DCDCDC"
+  },
+  "GUNZE_SM207": {
+    "displayCode": "SM207",
+    "name": "Super Rich Gold",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#DAA520"
+  },
+  "GUNZE_SM208": {
+    "displayCode": "SM208",
+    "name": "Super Duralumin",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#B0B5B9"
+  },
+  "GUNZE_SM209": {
+    "displayCode": "SM209",
+    "name": "Super Copper",
+    "type": "Super Metallic 2 (SM)",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  }
+}

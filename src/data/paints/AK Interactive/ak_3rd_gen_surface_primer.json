@@ -1,0 +1,51 @@
+{
+  "AK_11243": {
+    "displayCode": "AK11243",
+    "name": "White Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_11244": {
+    "displayCode": "AK11244",
+    "name": "Grey Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "AK_11245": {
+    "displayCode": "AK11245",
+    "name": "Black Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_11246": {
+    "displayCode": "AK11246",
+    "name": "Red Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8B0000"
+  },
+  "AK_11247": {
+    "displayCode": "AK11247",
+    "name": "Desert Sand Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "AK_11248": {
+    "displayCode": "AK11248",
+    "name": "Olive Drab Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "AK_11249": {
+    "displayCode": "AK11249",
+    "name": "Dark Grey Primer",
+    "type": "Primer (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4B5563"
+  }
+}

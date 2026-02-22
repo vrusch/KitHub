@@ -1,0 +1,23 @@
+{
+  "GUNZE_NW1": {
+    "displayCode": "NW-1",
+    "name": "Acrysion Wash Black",
+    "type": "Acrysion Wash (NW)",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "GUNZE_NW2": {
+    "displayCode": "NW-2",
+    "name": "Acrysion Wash Brown",
+    "type": "Acrysion Wash (NW)",
+    "finish": "Matná",
+    "hex": "#3E2723"
+  },
+  "GUNZE_NW3": {
+    "displayCode": "NW-3",
+    "name": "Acrysion Wash Gray",
+    "type": "Acrysion Wash (NW)",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  }
+}

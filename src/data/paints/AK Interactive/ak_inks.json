@@ -1,0 +1,51 @@
+{
+  "AK_11221": {
+    "displayCode": "AK11221",
+    "name": "Yellow Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#FFD700"
+  },
+  "AK_11222": {
+    "displayCode": "AK11222",
+    "name": "Red Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#FF0000"
+  },
+  "AK_11223": {
+    "displayCode": "AK11223",
+    "name": "Violet Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#8A2BE2"
+  },
+  "AK_11224": {
+    "displayCode": "AK11224",
+    "name": "Blue Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#0000FF"
+  },
+  "AK_11225": {
+    "displayCode": "AK11225",
+    "name": "Green Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#008000"
+  },
+  "AK_11226": {
+    "displayCode": "AK11226",
+    "name": "Brown Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#A52A2A"
+  },
+  "AK_11227": {
+    "displayCode": "AK11227",
+    "name": "Black Ink",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Transparentní",
+    "hex": "#000000"
+  }
+}

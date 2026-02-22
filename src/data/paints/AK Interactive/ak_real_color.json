@@ -1,0 +1,1353 @@
+{
+  "AK_RC001": {
+    "displayCode": "RC001",
+    "name": "White",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#FFFFFF"
+  },
+  "AK_RC002": {
+    "displayCode": "RC002",
+    "name": "Black",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#000000"
+  },
+  "AK_RC003": {
+    "displayCode": "RC003",
+    "name": "Yellow",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#FFD700"
+  },
+  "AK_RC004": {
+    "displayCode": "RC004",
+    "name": "Orange",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#FFA500"
+  },
+  "AK_RC005": {
+    "displayCode": "RC005",
+    "name": "Red",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#FF0000"
+  },
+  "AK_RC006": {
+    "displayCode": "RC006",
+    "name": "Blue",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#0000FF"
+  },
+  "AK_RC007": {
+    "displayCode": "RC007",
+    "name": "Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#008000"
+  },
+  "AK_RC008": {
+    "displayCode": "RC008",
+    "name": "Silver",
+    "type": "Real Colors",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "AK_RC009": {
+    "displayCode": "RC009",
+    "name": "Gun Metal",
+    "type": "Real Colors",
+    "finish": "Metalická",
+    "hex": "#2A3439"
+  },
+  "AK_RC010": {
+    "displayCode": "RC010",
+    "name": "Gold",
+    "type": "Real Colors",
+    "finish": "Metalická",
+    "hex": "#D4AF37"
+  },
+  "AK_RC011": {
+    "displayCode": "RC011",
+    "name": "Copper",
+    "type": "Real Colors",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "AK_RC012": {
+    "displayCode": "RC012",
+    "name": "Clear",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "AK_RC013": {
+    "displayCode": "RC013",
+    "name": "Clear Red",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#8B0000"
+  },
+  "AK_RC014": {
+    "displayCode": "RC014",
+    "name": "Clear Blue",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#00008B"
+  },
+  "AK_RC015": {
+    "displayCode": "RC015",
+    "name": "Clear Yellow",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#FFFF00"
+  },
+  "AK_RC016": {
+    "displayCode": "RC016",
+    "name": "Clear Green",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#006400"
+  },
+  "AK_RC017": {
+    "displayCode": "RC017",
+    "name": "Clear Orange",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#FF8C00"
+  },
+  "AK_RC020": {
+    "displayCode": "RC020",
+    "name": "Washable White",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_RC021": {
+    "displayCode": "RC021",
+    "name": "Washable Sand",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "AK_RC022": {
+    "displayCode": "RC022",
+    "name": "Washable Black",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_RC023": {
+    "displayCode": "RC023",
+    "name": "Olive Drab (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#555D42"
+  },
+  "AK_RC024": {
+    "displayCode": "RC024",
+    "name": "Faded Olive Drab",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "AK_RC025": {
+    "displayCode": "RC025",
+    "name": "Dark Olive Drab",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E4437"
+  },
+  "AK_RC026": {
+    "displayCode": "RC026",
+    "name": "US Marine Corps Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "AK_RC027": {
+    "displayCode": "RC027",
+    "name": "Forest Green (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_RC028": {
+    "displayCode": "RC028",
+    "name": "Earth Brown (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_RC029": {
+    "displayCode": "RC029",
+    "name": "Sand (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "AK_RC030": {
+    "displayCode": "RC030",
+    "name": "Field Drab (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C541E"
+  },
+  "AK_RC031": {
+    "displayCode": "RC031",
+    "name": "Light Mud (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A89B82"
+  },
+  "AK_RC032": {
+    "displayCode": "RC032",
+    "name": "Medium Green (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A7C59"
+  },
+  "AK_RC033": {
+    "displayCode": "RC033",
+    "name": "Khaki Green No. 3",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#7A7B69"
+  },
+  "AK_RC034": {
+    "displayCode": "RC034",
+    "name": "SCC 1A Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#543A2E"
+  },
+  "AK_RC040": {
+    "displayCode": "RC040",
+    "name": "SCC 2 Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#69503B"
+  },
+  "AK_RC041": {
+    "displayCode": "RC041",
+    "name": "SCC 15 Olive Drab",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4F5943"
+  },
+  "AK_RC042": {
+    "displayCode": "RC042",
+    "name": "Light Stone No. 61",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C9BD9C"
+  },
+  "AK_RC043": {
+    "displayCode": "RC043",
+    "name": "Portland Stone No. 64",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#BDB395"
+  },
+  "AK_RC044": {
+    "displayCode": "RC044",
+    "name": "Silver Grey No. 28",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#969B9E"
+  },
+  "AK_RC045": {
+    "displayCode": "RC045",
+    "name": "Slate No. 34",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#666B66"
+  },
+  "AK_RC046": {
+    "displayCode": "RC046",
+    "name": "Desert Pink",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D3A194"
+  },
+  "AK_RC047": {
+    "displayCode": "RC047",
+    "name": "Light Mud (British)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B5A78E"
+  },
+  "AK_RC048": {
+    "displayCode": "RC048",
+    "name": "Blue Black",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1C2331"
+  },
+  "AK_RC050": {
+    "displayCode": "RC050",
+    "name": "Panzergrau (RAL 7021)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E4347"
+  },
+  "AK_RC051": {
+    "displayCode": "RC051",
+    "name": "Faded Panzergrau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#50585E"
+  },
+  "AK_RC052": {
+    "displayCode": "RC052",
+    "name": "Schokoladenbraun (RAL 8027)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A3326"
+  },
+  "AK_RC053": {
+    "displayCode": "RC053",
+    "name": "Dunkelbraun (RAL 7017)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E2723"
+  },
+  "AK_RC054": {
+    "displayCode": "RC054",
+    "name": "Rotbraun 1944 (RAL 8017)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#592E2B"
+  },
+  "AK_RC055": {
+    "displayCode": "RC055",
+    "name": "Rotbraun 1945",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6B3E2E"
+  },
+  "AK_RC056": {
+    "displayCode": "RC056",
+    "name": "Dunkelgelb (Initial)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B0A68B"
+  },
+  "AK_RC057": {
+    "displayCode": "RC057",
+    "name": "Dunkelgelb 1944",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "AK_RC058": {
+    "displayCode": "RC058",
+    "name": "Dunkelgelb 1945",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9E713E"
+  },
+  "AK_RC059": {
+    "displayCode": "RC059",
+    "name": "Gelbbraun (RAL 8000 DAK)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A68A59"
+  },
+  "AK_RC060": {
+    "displayCode": "RC060",
+    "name": "Olivgrün 1943 (RAL 6003)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "AK_RC061": {
+    "displayCode": "RC061",
+    "name": "Olivgrün 1944 (RAL 6003)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "AK_RC062": {
+    "displayCode": "RC062",
+    "name": "Resedagrün 1945 (RAL 6011)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6E9C54"
+  },
+  "AK_RC063": {
+    "displayCode": "RC063",
+    "name": "Cremeweiss (Interior)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#F4F1D6"
+  },
+  "AK_RC064": {
+    "displayCode": "RC064",
+    "name": "Erdgelb (RAL 8002 DAK)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9E7B54"
+  },
+  "AK_RC065": {
+    "displayCode": "RC065",
+    "name": "Graugrün (RAL 7008 DAK)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "AK_RC066": {
+    "displayCode": "RC066",
+    "name": "Braun (RAL 8020 DAK)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A6B4E"
+  },
+  "AK_RC067": {
+    "displayCode": "RC067",
+    "name": "Red Primer (RAL 8012)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8B0000"
+  },
+  "AK_RC068": {
+    "displayCode": "RC068",
+    "name": "Signalbraun (RAL 8002)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#7B4F3A"
+  },
+  "AK_RC070": {
+    "displayCode": "RC070",
+    "name": "4BO Russian Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4B5338"
+  },
+  "AK_RC071": {
+    "displayCode": "RC071",
+    "name": "Faded 4BO",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#687654"
+  },
+  "AK_RC072": {
+    "displayCode": "RC072",
+    "name": "Dark 4BO",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E4437"
+  },
+  "AK_RC073": {
+    "displayCode": "RC073",
+    "name": "6K Russian Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_RC074": {
+    "displayCode": "RC074",
+    "name": "7K Russian Sand",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D3B892"
+  },
+  "AK_RC075": {
+    "displayCode": "RC075",
+    "name": "NATO Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#424E38"
+  },
+  "AK_RC076": {
+    "displayCode": "RC076",
+    "name": "NATO Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4E312D"
+  },
+  "AK_RC077": {
+    "displayCode": "RC077",
+    "name": "NATO Black",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#27292B"
+  },
+  "AK_RC078": {
+    "displayCode": "RC078",
+    "name": "CARC Tan (Modern US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "AK_RC079": {
+    "displayCode": "RC079",
+    "name": "Desert Sand (Modern US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "AK_RC080": {
+    "displayCode": "RC080",
+    "name": "Sinai Grey 82 (IDF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A8D86"
+  },
+  "AK_RC081": {
+    "displayCode": "RC081",
+    "name": "Sand Grey 73 (IDF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9C927A"
+  },
+  "AK_RC082": {
+    "displayCode": "RC082",
+    "name": "Modern Sand Grey (IDF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B3B099"
+  },
+  "AK_RC085": {
+    "displayCode": "RC085",
+    "name": "French Army Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#505D47"
+  },
+  "AK_RC086": {
+    "displayCode": "RC086",
+    "name": "French Army Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6E4D36"
+  },
+  "AK_RC087": {
+    "displayCode": "RC087",
+    "name": "French Vert Armée",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#45543A"
+  },
+  "AK_RC090": {
+    "displayCode": "RC090",
+    "name": "JGSDF Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#304030"
+  },
+  "AK_RC091": {
+    "displayCode": "RC091",
+    "name": "JGSDF Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#594030"
+  },
+  "AK_RC095": {
+    "displayCode": "RC095",
+    "name": "Modern Russian Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#455440"
+  },
+  "AK_RC096": {
+    "displayCode": "RC096",
+    "name": "Modern Russian Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5E695D"
+  },
+  "AK_RC097": {
+    "displayCode": "RC097",
+    "name": "Modern Russian Yellow",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C2A882"
+  },
+  "AK_RC101": {
+    "displayCode": "RC101",
+    "name": "WW1 British Khaki Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#555A42"
+  },
+  "AK_RC102": {
+    "displayCode": "RC102",
+    "name": "WW1 French Art. Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4E5C4A"
+  },
+  "AK_RC103": {
+    "displayCode": "RC103",
+    "name": "WW1 German Feldgrau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "AK_RC104": {
+    "displayCode": "RC104",
+    "name": "Iraqi Sand",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C7B493"
+  },
+  "AK_RC105": {
+    "displayCode": "RC105",
+    "name": "Syrian Sand",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C1A470"
+  },
+  "AK_RC106": {
+    "displayCode": "RC106",
+    "name": "IDF Sand Grey 73 (1973)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A8A08C"
+  },
+  "AK_RC110": {
+    "displayCode": "RC110",
+    "name": "Australian Light Stone",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C4B89D"
+  },
+  "AK_RC111": {
+    "displayCode": "RC111",
+    "name": "Canadian Desert Mud",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9E8B72"
+  },
+  "AK_RC114": {
+    "displayCode": "RC114",
+    "name": "Swedish Army Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "AK_RC201": {
+    "displayCode": "RC201",
+    "name": "RLM 02 Grau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8B8D7D"
+  },
+  "AK_RC202": {
+    "displayCode": "RC202",
+    "name": "RLM 04 Gelb",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#FFD700"
+  },
+  "AK_RC203": {
+    "displayCode": "RC203",
+    "name": "RLM 21 Weiss",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_RC204": {
+    "displayCode": "RC204",
+    "name": "RLM 22 Schwarz",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_RC205": {
+    "displayCode": "RC205",
+    "name": "RLM 23 Rot",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C22127"
+  },
+  "AK_RC206": {
+    "displayCode": "RC206",
+    "name": "RLM 24 Blau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1D4E89"
+  },
+  "AK_RC207": {
+    "displayCode": "RC207",
+    "name": "RLM 25 Hellgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5C7A54"
+  },
+  "AK_RC208": {
+    "displayCode": "RC208",
+    "name": "RLM 26 Braun",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#694A38"
+  },
+  "AK_RC209": {
+    "displayCode": "RC209",
+    "name": "RLM 27 Gelb",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#E3C02B"
+  },
+  "AK_RC210": {
+    "displayCode": "RC210",
+    "name": "RLM 65 Hellblau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "AK_RC211": {
+    "displayCode": "RC211",
+    "name": "RLM 66 Schwarzgrau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3C3F42"
+  },
+  "AK_RC212": {
+    "displayCode": "RC212",
+    "name": "RLM 70 Schwarzgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#2F352E"
+  },
+  "AK_RC213": {
+    "displayCode": "RC213",
+    "name": "RLM 71 Dunkelgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E4437"
+  },
+  "AK_RC214": {
+    "displayCode": "RC214",
+    "name": "RLM 74 Graugrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "AK_RC215": {
+    "displayCode": "RC215",
+    "name": "RLM 75 Grauviolett",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#7A7B69"
+  },
+  "AK_RC216": {
+    "displayCode": "RC216",
+    "name": "RLM 76 Hellblau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B5C1C8"
+  },
+  "AK_RC217": {
+    "displayCode": "RC217",
+    "name": "RLM 78 Hellblau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C92AF"
+  },
+  "AK_RC218": {
+    "displayCode": "RC218",
+    "name": "RLM 79 Sandgelb",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "AK_RC219": {
+    "displayCode": "RC219",
+    "name": "RLM 80 Olivgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "AK_RC220": {
+    "displayCode": "RC220",
+    "name": "RLM 81 Braunviolett",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5D5348"
+  },
+  "AK_RC221": {
+    "displayCode": "RC221",
+    "name": "RLM 82 Lichtgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6E9C54"
+  },
+  "AK_RC222": {
+    "displayCode": "RC222",
+    "name": "RLM 83 Dunkelgrün",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_RC223": {
+    "displayCode": "RC223",
+    "name": "RLM 84 Hellblau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9EBEC9"
+  },
+  "AK_RC224": {
+    "displayCode": "RC224",
+    "name": "RLM 84 Graublau",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A9BA8"
+  },
+  "AK_RC225": {
+    "displayCode": "RC225",
+    "name": "Interior Green (USAAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "AK_RC226": {
+    "displayCode": "RC226",
+    "name": "Zinc Chromate Yellow",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D1C152"
+  },
+  "AK_RC227": {
+    "displayCode": "RC227",
+    "name": "Zinc Chromate Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#7C8C53"
+  },
+  "AK_RC228": {
+    "displayCode": "RC228",
+    "name": "Olive Drab 41 (USAAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "AK_RC229": {
+    "displayCode": "RC229",
+    "name": "Neutral Grey 43 (USAAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "AK_RC230": {
+    "displayCode": "RC230",
+    "name": "Medium Green 42 (USAAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A7C59"
+  },
+  "AK_RC231": {
+    "displayCode": "RC231",
+    "name": "Insignia White (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#F2F4F3"
+  },
+  "AK_RC232": {
+    "displayCode": "RC232",
+    "name": "Insignia Red (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A3202E"
+  },
+  "AK_RC233": {
+    "displayCode": "RC233",
+    "name": "Insignia Blue (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1C2A43"
+  },
+  "AK_RC234": {
+    "displayCode": "RC234",
+    "name": "Insignia Yellow (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#E8BA24"
+  },
+  "AK_RC235": {
+    "displayCode": "RC235",
+    "name": "Sea Blue (USN)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#1B263B"
+  },
+  "AK_RC236": {
+    "displayCode": "RC236",
+    "name": "Intermediate Blue (USN)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#476A8A"
+  },
+  "AK_RC237": {
+    "displayCode": "RC237",
+    "name": "Dark Gull Grey (USN)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#76797A"
+  },
+  "AK_RC238": {
+    "displayCode": "RC238",
+    "name": "Light Gull Grey (USN)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B5B8B1"
+  },
+  "AK_RC239": {
+    "displayCode": "RC239",
+    "name": "Gloss Sea Blue (USN)",
+    "type": "Real Colors",
+    "finish": "Lesklá",
+    "hex": "#0A1F33"
+  },
+  "AK_RC240": {
+    "displayCode": "RC240",
+    "name": "Engine Grey (USN)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#42494E"
+  },
+  "AK_RC250": {
+    "displayCode": "RC250",
+    "name": "Dark Ghost Grey (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#778899"
+  },
+  "AK_RC251": {
+    "displayCode": "RC251",
+    "name": "Light Ghost Grey (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "AK_RC252": {
+    "displayCode": "RC252",
+    "name": "Gunship Grey (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "AK_RC253": {
+    "displayCode": "RC253",
+    "name": "Aggressor Grey (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A9BA8"
+  },
+  "AK_RC254": {
+    "displayCode": "RC254",
+    "name": "Aggressor Blue (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5A7C9D"
+  },
+  "AK_RC255": {
+    "displayCode": "RC255",
+    "name": "Have Glass Grey (US)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6D7275"
+  },
+  "AK_RC256": {
+    "displayCode": "RC256",
+    "name": "USAF Tan",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D3B892"
+  },
+  "AK_RC257": {
+    "displayCode": "RC257",
+    "name": "USAF Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "AK_RC258": {
+    "displayCode": "RC258",
+    "name": "USAF Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A6B3C"
+  },
+  "AK_RC260": {
+    "displayCode": "RC260",
+    "name": "RLM 72 (Seaplanes)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3F4F42"
+  },
+  "AK_RC261": {
+    "displayCode": "RC261",
+    "name": "RLM 73 (Seaplanes)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5C4A"
+  },
+  "AK_RC262": {
+    "displayCode": "RC262",
+    "name": "RLM 61 (Pre-War)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#544634"
+  },
+  "AK_RC263": {
+    "displayCode": "RC263",
+    "name": "RLM 62 (Pre-War)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A5B42"
+  },
+  "AK_RC264": {
+    "displayCode": "RC264",
+    "name": "RLM 63 (Pre-War)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6E7A6B"
+  },
+  "AK_RC265": {
+    "displayCode": "RC265",
+    "name": "Verde Mimetico (Regia Aeronautica)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5D42"
+  },
+  "AK_RC266": {
+    "displayCode": "RC266",
+    "name": "Bruno Mimetico (Regia Aeronautica)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6B4226"
+  },
+  "AK_RC267": {
+    "displayCode": "RC267",
+    "name": "Giallo Mimetico (Regia Aeronautica)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#D3B878"
+  },
+  "AK_RC268": {
+    "displayCode": "RC268",
+    "name": "Grigio Azzurro (Regia Aeronautica)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A2B3C1"
+  },
+  "AK_RC269": {
+    "displayCode": "RC269",
+    "name": "Nocciola Chiaro (Regia Aeronautica)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A98B6F"
+  },
+  "AK_RC280": {
+    "displayCode": "RC280",
+    "name": "Dark Green (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "AK_RC281": {
+    "displayCode": "RC281",
+    "name": "Dark Earth (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_RC282": {
+    "displayCode": "RC282",
+    "name": "Sky (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B5CBB7"
+  },
+  "AK_RC283": {
+    "displayCode": "RC283",
+    "name": "Ocean Grey (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "AK_RC284": {
+    "displayCode": "RC284",
+    "name": "Medium Sea Grey (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "AK_RC285": {
+    "displayCode": "RC285",
+    "name": "Middle Stone (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "AK_RC286": {
+    "displayCode": "RC286",
+    "name": "Azure Blue (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D7399"
+  },
+  "AK_RC287": {
+    "displayCode": "RC287",
+    "name": "Interior Grey Green (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#73876B"
+  },
+  "AK_RC288": {
+    "displayCode": "RC288",
+    "name": "Night (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#212529"
+  },
+  "AK_RC289": {
+    "displayCode": "RC289",
+    "name": "PRU Blue (RAF)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A6B8C"
+  },
+  "AK_RC290": {
+    "displayCode": "RC290",
+    "name": "Coastal Command Sky",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C4CFC0"
+  },
+  "AK_RC291": {
+    "displayCode": "RC291",
+    "name": "RAF Barley Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#9BA4AB"
+  },
+  "AK_RC292": {
+    "displayCode": "RC292",
+    "name": "RAF Light Aircraft Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#C0C5C9"
+  },
+  "AK_RC300": {
+    "displayCode": "RC300",
+    "name": "Extra Dark Sea Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4F5D66"
+  },
+  "AK_RC301": {
+    "displayCode": "RC301",
+    "name": "Dark Slate Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "AK_RC302": {
+    "displayCode": "RC302",
+    "name": "Light Slate Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#768270"
+  },
+  "AK_RC310": {
+    "displayCode": "RC310",
+    "name": "AMT-4 Camo Green (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4B5338"
+  },
+  "AK_RC311": {
+    "displayCode": "RC311",
+    "name": "AMT-7 Light Blue (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#7DA1C4"
+  },
+  "AK_RC312": {
+    "displayCode": "RC312",
+    "name": "AMT-11 Blue Grey (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C7A89"
+  },
+  "AK_RC313": {
+    "displayCode": "RC313",
+    "name": "AMT-12 Dark Grey (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3E4347"
+  },
+  "AK_RC314": {
+    "displayCode": "RC314",
+    "name": "A-14 Interior Grey (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "AK_RC315": {
+    "displayCode": "RC315",
+    "name": "A-28m Light Blue (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8CAEC4"
+  },
+  "AK_RC316": {
+    "displayCode": "RC316",
+    "name": "A-21m Light Brown (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A28362"
+  },
+  "AK_RC317": {
+    "displayCode": "RC317",
+    "name": "AII Zashchitnyi (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4D5B3A"
+  },
+  "AK_RC318": {
+    "displayCode": "RC318",
+    "name": "AII Goluboi (VVS)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8FA9C1"
+  },
+  "AK_RC320": {
+    "displayCode": "RC320",
+    "name": "IJN Dark Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_RC321": {
+    "displayCode": "RC321",
+    "name": "IJN Ame-iro (Grey Green)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A4A89A"
+  },
+  "AK_RC322": {
+    "displayCode": "RC322",
+    "name": "IJA Dark Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "AK_RC323": {
+    "displayCode": "RC323",
+    "name": "IJA Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#A2AAB0"
+  },
+  "AK_RC324": {
+    "displayCode": "RC324",
+    "name": "Aotake (Clear Blue-Green)",
+    "type": "Real Colors",
+    "finish": "Metalická",
+    "hex": "#008B8B"
+  },
+  "AK_RC325": {
+    "displayCode": "RC325",
+    "name": "IJN Q1 Hai-iro (Grey)",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B1B5B8"
+  },
+  "AK_RC326": {
+    "displayCode": "RC326",
+    "name": "IJA Nakajima Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#2A3A2C"
+  },
+  "AK_RC327": {
+    "displayCode": "RC327",
+    "name": "IJA Kawasaki Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#3C4C3A"
+  },
+  "AK_RC328": {
+    "displayCode": "RC328",
+    "name": "IJA Mitsubishi Green",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#354A32"
+  },
+  "AK_RC329": {
+    "displayCode": "RC329",
+    "name": "IJA Earth Brown",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#6C4B25"
+  },
+  "AK_RC340": {
+    "displayCode": "RC340",
+    "name": "Modern Flanker Light Blue",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#AEC6CF"
+  },
+  "AK_RC341": {
+    "displayCode": "RC341",
+    "name": "Modern Flanker Blue",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5A768A"
+  },
+  "AK_RC342": {
+    "displayCode": "RC342",
+    "name": "Modern Flanker Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A9BA8"
+  },
+  "AK_RC343": {
+    "displayCode": "RC343",
+    "name": "Modern Russian Aircraft Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#95A5A6"
+  },
+  "AK_RC344": {
+    "displayCode": "RC344",
+    "name": "Modern Russian Aircraft Blue",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#4A6B8C"
+  },
+  "AK_RC345": {
+    "displayCode": "RC345",
+    "name": "Mirage 2000 Blue",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5A768A"
+  },
+  "AK_RC346": {
+    "displayCode": "RC346",
+    "name": "Mirage 2000 Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#8A9BA8"
+  },
+  "AK_RC347": {
+    "displayCode": "RC347",
+    "name": "NATO Light Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "AK_RC348": {
+    "displayCode": "RC348",
+    "name": "NATO Dark Grey",
+    "type": "Real Colors",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  }
+}

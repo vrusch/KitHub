@@ -1,0 +1,1409 @@
+{
+  "TAMIYA_TS1": {
+    "displayCode": "TS-1",
+    "name": "Red Brown",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#592E2B"
+  },
+  "TAMIYA_TS2": {
+    "displayCode": "TS-2",
+    "name": "Dark Green",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_TS3": {
+    "displayCode": "TS-3",
+    "name": "Dark Yellow",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A48F56"
+  },
+  "TAMIYA_TS4": {
+    "displayCode": "TS-4",
+    "name": "German Grey",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#3E4347"
+  },
+  "TAMIYA_TS5": {
+    "displayCode": "TS-5",
+    "name": "Olive Drab",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_TS6": {
+    "displayCode": "TS-6",
+    "name": "Matt Black",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "TAMIYA_TS7": {
+    "displayCode": "TS-7",
+    "name": "Racing White",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FDF5E6"
+  },
+  "TAMIYA_TS8": {
+    "displayCode": "TS-8",
+    "name": "Italian Red",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#C80000"
+  },
+  "TAMIYA_TS9": {
+    "displayCode": "TS-9",
+    "name": "British Green",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#004225"
+  },
+  "TAMIYA_TS10": {
+    "displayCode": "TS-10",
+    "name": "French Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#0072BB"
+  },
+  "TAMIYA_TS11": {
+    "displayCode": "TS-11",
+    "name": "Maroon",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#800000"
+  },
+  "TAMIYA_TS12": {
+    "displayCode": "TS-12",
+    "name": "Orange",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FFA500"
+  },
+  "TAMIYA_TS13": {
+    "displayCode": "TS-13",
+    "name": "Clear",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_TS14": {
+    "displayCode": "TS-14",
+    "name": "Black",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "TAMIYA_TS15": {
+    "displayCode": "TS-15",
+    "name": "Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_TS16": {
+    "displayCode": "TS-16",
+    "name": "Yellow",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_TS17": {
+    "displayCode": "TS-17",
+    "name": "Gloss Aluminum",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_TS18": {
+    "displayCode": "TS-18",
+    "name": "Metallic Red",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#B22222"
+  },
+  "TAMIYA_TS19": {
+    "displayCode": "TS-19",
+    "name": "Metallic Blue",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#0000CD"
+  },
+  "TAMIYA_TS20": {
+    "displayCode": "TS-20",
+    "name": "Metallic Green",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#006400"
+  },
+  "TAMIYA_TS21": {
+    "displayCode": "TS-21",
+    "name": "Gold",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_TS22": {
+    "displayCode": "TS-22",
+    "name": "Light Green",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_TS23": {
+    "displayCode": "TS-23",
+    "name": "Light Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#ADD8E6"
+  },
+  "TAMIYA_TS24": {
+    "displayCode": "TS-24",
+    "name": "Purple",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#800080"
+  },
+  "TAMIYA_TS25": {
+    "displayCode": "TS-25",
+    "name": "Pink",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_TS26": {
+    "displayCode": "TS-26",
+    "name": "Pure White",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_TS27": {
+    "displayCode": "TS-27",
+    "name": "Matt White",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#F2F2F2"
+  },
+  "TAMIYA_TS28": {
+    "displayCode": "TS-28",
+    "name": "Olive Drab 2",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#555D42"
+  },
+  "TAMIYA_TS29": {
+    "displayCode": "TS-29",
+    "name": "Semi Gloss Black",
+    "type": "spray",
+    "finish": "Polomatná",
+    "hex": "#0D0D0D"
+  },
+  "TAMIYA_TS30": {
+    "displayCode": "TS-30",
+    "name": "Silver Leaf",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_TS31": {
+    "displayCode": "TS-31",
+    "name": "Bright Orange",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_TS32": {
+    "displayCode": "TS-32",
+    "name": "Haze Grey",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#808E95"
+  },
+  "TAMIYA_TS33": {
+    "displayCode": "TS-33",
+    "name": "Dull Red",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#8B0000"
+  },
+  "TAMIYA_TS34": {
+    "displayCode": "TS-34",
+    "name": "Camel Yellow",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#F2BB66"
+  },
+  "TAMIYA_TS35": {
+    "displayCode": "TS-35",
+    "name": "Park Green",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "TAMIYA_TS36": {
+    "displayCode": "TS-36",
+    "name": "Fluorescent Red",
+    "type": "spray",
+    "finish": "Fluorescenční",
+    "hex": "#FF2400"
+  },
+  "TAMIYA_TS37": {
+    "displayCode": "TS-37",
+    "name": "Lavender",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#E6E6FA"
+  },
+  "TAMIYA_TS38": {
+    "displayCode": "TS-38",
+    "name": "Gun Metal",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#2A2A2A"
+  },
+  "TAMIYA_TS39": {
+    "displayCode": "TS-39",
+    "name": "Mica Red",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#DC143C"
+  },
+  "TAMIYA_TS40": {
+    "displayCode": "TS-40",
+    "name": "Metallic Black",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#2F4F4F"
+  },
+  "TAMIYA_TS41": {
+    "displayCode": "TS-41",
+    "name": "Coral Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#00FFFF"
+  },
+  "TAMIYA_TS42": {
+    "displayCode": "TS-42",
+    "name": "Light Gun Metal",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#4A4A4A"
+  },
+  "TAMIYA_TS43": {
+    "displayCode": "TS-43",
+    "name": "Racing Green",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#006400"
+  },
+  "TAMIYA_TS44": {
+    "displayCode": "TS-44",
+    "name": "Brilliant Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#0000CD"
+  },
+  "TAMIYA_TS45": {
+    "displayCode": "TS-45",
+    "name": "Pearl White",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_TS46": {
+    "displayCode": "TS-46",
+    "name": "Light Sand",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_TS47": {
+    "displayCode": "TS-47",
+    "name": "Chrome Yellow",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_TS48": {
+    "displayCode": "TS-48",
+    "name": "Gunship Grey",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_TS49": {
+    "displayCode": "TS-49",
+    "name": "Bright Red",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_TS50": {
+    "displayCode": "TS-50",
+    "name": "Mica Blue",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#00008B"
+  },
+  "TAMIYA_TS51": {
+    "displayCode": "TS-51",
+    "name": "Racing Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#1E90FF"
+  },
+  "TAMIYA_TS52": {
+    "displayCode": "TS-52",
+    "name": "Candy Lime Green",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#32CD32"
+  },
+  "TAMIYA_TS53": {
+    "displayCode": "TS-53",
+    "name": "Deep Metallic Blue",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#000080"
+  },
+  "TAMIYA_TS54": {
+    "displayCode": "TS-54",
+    "name": "Light Blue",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#87CEFA"
+  },
+  "TAMIYA_TS55": {
+    "displayCode": "TS-55",
+    "name": "Dark Blue",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#191970"
+  },
+  "TAMIYA_TS56": {
+    "displayCode": "TS-56",
+    "name": "Brilliant Orange",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_TS57": {
+    "displayCode": "TS-57",
+    "name": "Blue Violet",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#8A2BE2"
+  },
+  "TAMIYA_TS58": {
+    "displayCode": "TS-58",
+    "name": "Pearl Light Blue",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#ADD8E6"
+  },
+  "TAMIYA_TS59": {
+    "displayCode": "TS-59",
+    "name": "Pearl Light Green",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_TS60": {
+    "displayCode": "TS-60",
+    "name": "Pearl Green",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#006400"
+  },
+  "TAMIYA_TS61": {
+    "displayCode": "TS-61",
+    "name": "NATO Green",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#424E38"
+  },
+  "TAMIYA_TS62": {
+    "displayCode": "TS-62",
+    "name": "NATO Brown",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4E312D"
+  },
+  "TAMIYA_TS63": {
+    "displayCode": "TS-63",
+    "name": "NATO Black",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#27292B"
+  },
+  "TAMIYA_TS64": {
+    "displayCode": "TS-64",
+    "name": "Dark Mica Blue",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#00008B"
+  },
+  "TAMIYA_TS65": {
+    "displayCode": "TS-65",
+    "name": "Pearl Clear",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_TS66": {
+    "displayCode": "TS-66",
+    "name": "IJN Gray (Kure)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "TAMIYA_TS67": {
+    "displayCode": "TS-67",
+    "name": "IJN Gray (Sasebo)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5A6570"
+  },
+  "TAMIYA_TS68": {
+    "displayCode": "TS-68",
+    "name": "Wooden Deck Tan",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#C19A6B"
+  },
+  "TAMIYA_TS69": {
+    "displayCode": "TS-69",
+    "name": "Linoleum Deck Brown",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5D4037"
+  },
+  "TAMIYA_TS70": {
+    "displayCode": "TS-70",
+    "name": "OD (JGSDF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_TS71": {
+    "displayCode": "TS-71",
+    "name": "Smoke",
+    "type": "spray",
+    "finish": "Transparentní",
+    "hex": "#333333"
+  },
+  "TAMIYA_TS72": {
+    "displayCode": "TS-72",
+    "name": "Clear Blue",
+    "type": "spray",
+    "finish": "Transparentní",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_TS73": {
+    "displayCode": "TS-73",
+    "name": "Clear Orange",
+    "type": "spray",
+    "finish": "Transparentní",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_TS74": {
+    "displayCode": "TS-74",
+    "name": "Clear Red",
+    "type": "spray",
+    "finish": "Transparentní",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_TS75": {
+    "displayCode": "TS-75",
+    "name": "Champagne Gold",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#F7E7CE"
+  },
+  "TAMIYA_TS76": {
+    "displayCode": "TS-76",
+    "name": "Mica Silver",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_TS77": {
+    "displayCode": "TS-77",
+    "name": "Flat Flesh",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#FFE4C4"
+  },
+  "TAMIYA_TS78": {
+    "displayCode": "TS-78",
+    "name": "Field Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_TS79": {
+    "displayCode": "TS-79",
+    "name": "Semi Gloss Clear",
+    "type": "spray",
+    "finish": "Polomatná",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_TS80": {
+    "displayCode": "TS-80",
+    "name": "Flat Clear",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#F8F8FF"
+  },
+  "TAMIYA_TS81": {
+    "displayCode": "TS-81",
+    "name": "Royal Light Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#DCDCDC"
+  },
+  "TAMIYA_TS82": {
+    "displayCode": "TS-82",
+    "name": "Rubber Black",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#1C1C1C"
+  },
+  "TAMIYA_TS83": {
+    "displayCode": "TS-83",
+    "name": "Metallic Silver",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#E0E0E0"
+  },
+  "TAMIYA_TS84": {
+    "displayCode": "TS-84",
+    "name": "Metallic Gold",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_TS85": {
+    "displayCode": "TS-85",
+    "name": "Bright Orange",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF4500"
+  },
+  "TAMIYA_TS86": {
+    "displayCode": "TS-86",
+    "name": "Pure Red",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_TS87": {
+    "displayCode": "TS-87",
+    "name": "Titanium Gold",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#DAA520"
+  },
+  "TAMIYA_TS88": {
+    "displayCode": "TS-88",
+    "name": "Titanium Silver",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_TS89": {
+    "displayCode": "TS-89",
+    "name": "Pearl Blue",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#4169E1"
+  },
+  "TAMIYA_TS90": {
+    "displayCode": "TS-90",
+    "name": "Brown (JGSDF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#594030"
+  },
+  "TAMIYA_TS91": {
+    "displayCode": "TS-91",
+    "name": "Dark Green (JGSDF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#304030"
+  },
+  "TAMIYA_TS92": {
+    "displayCode": "TS-92",
+    "name": "Orange Metallic",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_TS93": {
+    "displayCode": "TS-93",
+    "name": "Pure Blue",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_TS94": {
+    "displayCode": "TS-94",
+    "name": "Metallic Gray",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "TAMIYA_TS95": {
+    "displayCode": "TS-95",
+    "name": "Pure Metallic Red",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#B22222"
+  },
+  "TAMIYA_TS96": {
+    "displayCode": "TS-96",
+    "name": "Fluorescent Orange",
+    "type": "spray",
+    "finish": "Fluorescenční",
+    "hex": "#FF4F00"
+  },
+  "TAMIYA_TS97": {
+    "displayCode": "TS-97",
+    "name": "Pearl Yellow",
+    "type": "spray",
+    "finish": "Perleťová",
+    "hex": "#FFFFE0"
+  },
+  "TAMIYA_TS98": {
+    "displayCode": "TS-98",
+    "name": "Pure Orange",
+    "type": "spray",
+    "finish": "Lesklá",
+    "hex": "#FF4500"
+  },
+  "TAMIYA_TS99": {
+    "displayCode": "TS-99",
+    "name": "Dull Red",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#8B0000"
+  },
+  "TAMIYA_TS100": {
+    "displayCode": "TS-100",
+    "name": "Semi-Gloss Bright Gun Metal",
+    "type": "spray",
+    "finish": "Polomatná",
+    "hex": "#2A2A2A"
+  },
+  "TAMIYA_TS101": {
+    "displayCode": "TS-101",
+    "name": "Base White",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_TS102": {
+    "displayCode": "TS-102",
+    "name": "Army Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "TAMIYA_TS110": {
+    "displayCode": "TS-110",
+    "name": "RAF Azure Blue",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4D7399"
+  },
+  "TAMIYA_TS111": {
+    "displayCode": "TS-111",
+    "name": "RAF Middle Stone",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "TAMIYA_TS112": {
+    "displayCode": "TS-112",
+    "name": "RAF Dark Earth",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "TAMIYA_TS113": {
+    "displayCode": "TS-113",
+    "name": "RAF Ocean Gray 2",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_TS114": {
+    "displayCode": "TS-114",
+    "name": "RAF Dark Green 2",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "TAMIYA_AS1": {
+    "displayCode": "AS-1",
+    "name": "Dark Green (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "TAMIYA_AS2": {
+    "displayCode": "AS-2",
+    "name": "Light Gray (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#B0B5B9"
+  },
+  "TAMIYA_AS3": {
+    "displayCode": "AS-3",
+    "name": "Gray Green (Luftwaffe)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "TAMIYA_AS4": {
+    "displayCode": "AS-4",
+    "name": "Gray Violet (Luftwaffe)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#7A7B69"
+  },
+  "TAMIYA_AS5": {
+    "displayCode": "AS-5",
+    "name": "Light Blue (Luftwaffe)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "TAMIYA_AS6": {
+    "displayCode": "AS-6",
+    "name": "Olive Drab (USAAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_AS7": {
+    "displayCode": "AS-7",
+    "name": "Neutral Gray (USAAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "TAMIYA_AS8": {
+    "displayCode": "AS-8",
+    "name": "Navy Blue (US Navy)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#1B263B"
+  },
+  "TAMIYA_AS9": {
+    "displayCode": "AS-9",
+    "name": "Dark Blue (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#191970"
+  },
+  "TAMIYA_AS10": {
+    "displayCode": "AS-10",
+    "name": "Ocean Gray (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_AS11": {
+    "displayCode": "AS-11",
+    "name": "Medium Sea Gray (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_AS12": {
+    "displayCode": "AS-12",
+    "name": "Bare Metal Silver",
+    "type": "spray",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_AS13": {
+    "displayCode": "AS-13",
+    "name": "Green (IJN)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_AS14": {
+    "displayCode": "AS-14",
+    "name": "Gray Green (IJN)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A4A89A"
+  },
+  "TAMIYA_AS15": {
+    "displayCode": "AS-15",
+    "name": "Tan (USAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "TAMIYA_AS16": {
+    "displayCode": "AS-16",
+    "name": "Light Gray (USAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_AS17": {
+    "displayCode": "AS-17",
+    "name": "Dark Green (IJA)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "TAMIYA_AS18": {
+    "displayCode": "AS-18",
+    "name": "Light Gray (IJA)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A2AAB0"
+  },
+  "TAMIYA_AS19": {
+    "displayCode": "AS-19",
+    "name": "Intermediate Blue (US Navy)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#476A8A"
+  },
+  "TAMIYA_AS20": {
+    "displayCode": "AS-20",
+    "name": "Insignia White (US Navy)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#F2F4F3"
+  },
+  "TAMIYA_AS21": {
+    "displayCode": "AS-21",
+    "name": "Dark Green 2 (IJN)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#354A32"
+  },
+  "TAMIYA_AS22": {
+    "displayCode": "AS-22",
+    "name": "Dark Earth (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "TAMIYA_AS23": {
+    "displayCode": "AS-23",
+    "name": "Light Green (German)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#6E9C54"
+  },
+  "TAMIYA_AS24": {
+    "displayCode": "AS-24",
+    "name": "Dark Green (German)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_AS25": {
+    "displayCode": "AS-25",
+    "name": "Dark Ghost Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#778899"
+  },
+  "TAMIYA_AS26": {
+    "displayCode": "AS-26",
+    "name": "Light Ghost Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "TAMIYA_AS27": {
+    "displayCode": "AS-27",
+    "name": "Gunship Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_AS28": {
+    "displayCode": "AS-28",
+    "name": "Medium Gray",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_AS29": {
+    "displayCode": "AS-29",
+    "name": "Gray Green (IJN Nakajima)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#A4A89A"
+  },
+  "TAMIYA_AS30": {
+    "displayCode": "AS-30",
+    "name": "Dark Green (IJN Nakajima)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_AS31": {
+    "displayCode": "AS-31",
+    "name": "Ocean Gray 2 (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_AS32": {
+    "displayCode": "AS-32",
+    "name": "Medium Sea Gray 2 (RAF)",
+    "type": "spray",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_PS1": {
+    "displayCode": "PS-1",
+    "name": "White",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_PS2": {
+    "displayCode": "PS-2",
+    "name": "Red",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_PS3": {
+    "displayCode": "PS-3",
+    "name": "Light Blue",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#ADD8E6"
+  },
+  "TAMIYA_PS4": {
+    "displayCode": "PS-4",
+    "name": "Blue",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_PS5": {
+    "displayCode": "PS-5",
+    "name": "Black",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#000000"
+  },
+  "TAMIYA_PS6": {
+    "displayCode": "PS-6",
+    "name": "Yellow",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_PS7": {
+    "displayCode": "PS-7",
+    "name": "Orange",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FFA500"
+  },
+  "TAMIYA_PS8": {
+    "displayCode": "PS-8",
+    "name": "Light Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_PS9": {
+    "displayCode": "PS-9",
+    "name": "Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#008000"
+  },
+  "TAMIYA_PS10": {
+    "displayCode": "PS-10",
+    "name": "Purple",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#800080"
+  },
+  "TAMIYA_PS11": {
+    "displayCode": "PS-11",
+    "name": "Pink",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_PS12": {
+    "displayCode": "PS-12",
+    "name": "Silver",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_PS13": {
+    "displayCode": "PS-13",
+    "name": "Gold",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_PS14": {
+    "displayCode": "PS-14",
+    "name": "Copper",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#B87333"
+  },
+  "TAMIYA_PS15": {
+    "displayCode": "PS-15",
+    "name": "Metallic Red",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#8B0000"
+  },
+  "TAMIYA_PS16": {
+    "displayCode": "PS-16",
+    "name": "Metallic Blue",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#00008B"
+  },
+  "TAMIYA_PS17": {
+    "displayCode": "PS-17",
+    "name": "Metallic Green",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#006400"
+  },
+  "TAMIYA_PS18": {
+    "displayCode": "PS-18",
+    "name": "Metallic Purple",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#4B0082"
+  },
+  "TAMIYA_PS19": {
+    "displayCode": "PS-19",
+    "name": "Camel Yellow",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#F2BB66"
+  },
+  "TAMIYA_PS20": {
+    "displayCode": "PS-20",
+    "name": "Fluorescent Red",
+    "type": "spray",
+    "finish": "Fluorescenční (RC)",
+    "hex": "#FF2400"
+  },
+  "TAMIYA_PS21": {
+    "displayCode": "PS-21",
+    "name": "Park Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#008000"
+  },
+  "TAMIYA_PS22": {
+    "displayCode": "PS-22",
+    "name": "Racing Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#004225"
+  },
+  "TAMIYA_PS23": {
+    "displayCode": "PS-23",
+    "name": "Gun Metal",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#2A2A2A"
+  },
+  "TAMIYA_PS24": {
+    "displayCode": "PS-24",
+    "name": "Fluorescent Orange",
+    "type": "spray",
+    "finish": "Fluorescenční (RC)",
+    "hex": "#FF4F00"
+  },
+  "TAMIYA_PS25": {
+    "displayCode": "PS-25",
+    "name": "Bright Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#00FF00"
+  },
+  "TAMIYA_PS27": {
+    "displayCode": "PS-27",
+    "name": "Fluorescent Yellow",
+    "type": "spray",
+    "finish": "Fluorescenční (RC)",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_PS28": {
+    "displayCode": "PS-28",
+    "name": "Fluorescent Green",
+    "type": "spray",
+    "finish": "Fluorescenční (RC)",
+    "hex": "#66FF00"
+  },
+  "TAMIYA_PS29": {
+    "displayCode": "PS-29",
+    "name": "Fluorescent Pink",
+    "type": "spray",
+    "finish": "Fluorescenční (RC)",
+    "hex": "#FF66CC"
+  },
+  "TAMIYA_PS30": {
+    "displayCode": "PS-30",
+    "name": "Brilliant Blue",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#0000CD"
+  },
+  "TAMIYA_PS31": {
+    "displayCode": "PS-31",
+    "name": "Smoke",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#333333"
+  },
+  "TAMIYA_PS32": {
+    "displayCode": "PS-32",
+    "name": "Corsa Grey",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_PS33": {
+    "displayCode": "PS-33",
+    "name": "Cherry Red",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#A3202E"
+  },
+  "TAMIYA_PS34": {
+    "displayCode": "PS-34",
+    "name": "Bright Red",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_PS35": {
+    "displayCode": "PS-35",
+    "name": "Blue Violet",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#8A2BE2"
+  },
+  "TAMIYA_PS36": {
+    "displayCode": "PS-36",
+    "name": "Translucent Silver",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#E0E0E0"
+  },
+  "TAMIYA_PS37": {
+    "displayCode": "PS-37",
+    "name": "Translucent Red",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_PS38": {
+    "displayCode": "PS-38",
+    "name": "Translucent Blue",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_PS39": {
+    "displayCode": "PS-39",
+    "name": "Translucent Light Blue",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#ADD8E6"
+  },
+  "TAMIYA_PS40": {
+    "displayCode": "PS-40",
+    "name": "Translucent Pink",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_PS41": {
+    "displayCode": "PS-41",
+    "name": "Bright Silver",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#E0E0E0"
+  },
+  "TAMIYA_PS42": {
+    "displayCode": "PS-42",
+    "name": "Translucent Orange",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#FFA500"
+  },
+  "TAMIYA_PS43": {
+    "displayCode": "PS-43",
+    "name": "Translucent Yellow",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_PS44": {
+    "displayCode": "PS-44",
+    "name": "Translucent Green",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#008000"
+  },
+  "TAMIYA_PS45": {
+    "displayCode": "PS-45",
+    "name": "Translucent Purple",
+    "type": "spray",
+    "finish": "Transparentní (RC)",
+    "hex": "#800080"
+  },
+  "TAMIYA_PS46": {
+    "displayCode": "PS-46",
+    "name": "Iridescent Purple/Green",
+    "type": "spray",
+    "finish": "Měňavá (RC)",
+    "hex": "#4B0082"
+  },
+  "TAMIYA_PS47": {
+    "displayCode": "PS-47",
+    "name": "Iridescent Pink/Gold",
+    "type": "spray",
+    "finish": "Měňavá (RC)",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_PS48": {
+    "displayCode": "PS-48",
+    "name": "Semi-Gloss Silver",
+    "type": "spray",
+    "finish": "Polomatná (RC)",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_PS49": {
+    "displayCode": "PS-49",
+    "name": "Sky Blue Anodized",
+    "type": "spray",
+    "finish": "Matná (RC)",
+    "hex": "#87CEEB"
+  },
+  "TAMIYA_PS50": {
+    "displayCode": "PS-50",
+    "name": "Sparkling Pink Anodized",
+    "type": "spray",
+    "finish": "Matná (RC)",
+    "hex": "#FF69B4"
+  },
+  "TAMIYA_PS51": {
+    "displayCode": "PS-51",
+    "name": "Purple Alumite",
+    "type": "spray",
+    "finish": "Matná (RC)",
+    "hex": "#800080"
+  },
+  "TAMIYA_PS52": {
+    "displayCode": "PS-52",
+    "name": "Champagne Gold",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#F7E7CE"
+  },
+  "TAMIYA_PS53": {
+    "displayCode": "PS-53",
+    "name": "Lame Flake",
+    "type": "spray",
+    "finish": "Třpytivá (RC)",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_PS54": {
+    "displayCode": "PS-54",
+    "name": "Cobalt Green",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#3D9140"
+  },
+  "TAMIYA_PS55": {
+    "displayCode": "PS-55",
+    "name": "Flat Clear",
+    "type": "spray",
+    "finish": "Matná (RC)",
+    "hex": "#F8F8FF"
+  },
+  "TAMIYA_PS56": {
+    "displayCode": "PS-56",
+    "name": "Mustard Yellow",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#E1AD01"
+  },
+  "TAMIYA_PS57": {
+    "displayCode": "PS-57",
+    "name": "Pearl White",
+    "type": "spray",
+    "finish": "Perleťová (RC)",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_PS58": {
+    "displayCode": "PS-58",
+    "name": "Pearl Blue",
+    "type": "spray",
+    "finish": "Perleťová (RC)",
+    "hex": "#4169E1"
+  },
+  "TAMIYA_PS59": {
+    "displayCode": "PS-59",
+    "name": "Dark Metallic Blue",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#00008B"
+  },
+  "TAMIYA_PS60": {
+    "displayCode": "PS-60",
+    "name": "Bright Mica Red",
+    "type": "spray",
+    "finish": "Perleťová (RC)",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_PS61": {
+    "displayCode": "PS-61",
+    "name": "Metallic Orange",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_PS62": {
+    "displayCode": "PS-62",
+    "name": "Pure Orange",
+    "type": "spray",
+    "finish": "Lesklá (RC)",
+    "hex": "#FF4500"
+  },
+  "TAMIYA_PS63": {
+    "displayCode": "PS-63",
+    "name": "Bright Gun Metal",
+    "type": "spray",
+    "finish": "Metalická (RC)",
+    "hex": "#2A2A2A"
+  }
+}

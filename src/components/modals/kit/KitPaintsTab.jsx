@@ -176,21 +176,22 @@ const KitPaintsTab = ({ data, setData, allPaints, onQuickCreatePaint }) => {
   return (
     <div className="p-4 h-full flex flex-col space-y-4">
       {/* OMNIBOX SEARCH */}
-      <div className="relative z-20">
+      <div className="relative z-20 mt-2">
         <div className="relative">
           <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-            <Search className="text-slate-500" size={16} />
+            <Search className="text-slate-500" size={20} />
           </div>
           <input
             type="text"
-            className="w-full bg-slate-950 border border-blue-500/30 rounded-xl py-3 pl-10 pr-4 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-lg"
+            className="w-full bg-slate-950 border border-blue-500/50 rounded-xl py-4 pl-10 pr-4 text-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 shadow-xl"
             placeholder="Přidat barvu (např. XF-1)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            autoComplete="off"
           />
           {isSearching && (
             <div className="absolute inset-y-0 right-3 flex items-center">
-              <Loader2 className="animate-spin text-blue-500" size={16} />
+              <Loader2 className="animate-spin text-blue-500" size={20} />
             </div>
           )}
         </div>

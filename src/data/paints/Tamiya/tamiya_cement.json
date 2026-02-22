@@ -1,0 +1,93 @@
+{
+  "TAMIYA_87003": {
+    "displayCode": "87003",
+    "name": "Cement (40ml)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87012": {
+    "displayCode": "87012",
+    "name": "Cement (20ml)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87038": {
+    "displayCode": "87038",
+    "name": "Extra Thin Cement",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87182": {
+    "displayCode": "87182",
+    "name": "Extra Thin Cement (Quick-Setting)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87113": {
+    "displayCode": "87113",
+    "name": "Limonene Cement",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#FFFFE0"
+  },
+  "TAMIYA_87134": {
+    "displayCode": "87134",
+    "name": "Limonene Cement (Extra Thin)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#FFFFE0"
+  },
+  "TAMIYA_87026": {
+    "displayCode": "87026",
+    "name": "ABS Cement",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87101": {
+    "displayCode": "87101",
+    "name": "Craft Bond (White Glue)",
+    "type": "cement",
+    "finish": "Bílá",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_87129": {
+    "displayCode": "87129",
+    "name": "Craft Bond (Transparent)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87139": {
+    "displayCode": "87139",
+    "name": "CA Cement (Strong)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87180": {
+    "displayCode": "87180",
+    "name": "CA Cement (Easy Sanding)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87188": {
+    "displayCode": "87188",
+    "name": "CA Cement (Gel Type)",
+    "type": "cement",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87137": {
+    "displayCode": "87137",
+    "name": "CA Cement (Accelerator)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  }
+}

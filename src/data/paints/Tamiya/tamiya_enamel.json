@@ -1,0 +1,730 @@
+{
+  "TAMIYA_E_X1": {
+    "displayCode": "X-1",
+    "name": "Black",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#000000"
+  },
+  "TAMIYA_E_X2": {
+    "displayCode": "X-2",
+    "name": "White",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_E_X3": {
+    "displayCode": "X-3",
+    "name": "Royal Blue",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#002366"
+  },
+  "TAMIYA_E_X4": {
+    "displayCode": "X-4",
+    "name": "Blue",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_E_X5": {
+    "displayCode": "X-5",
+    "name": "Green",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "TAMIYA_E_X6": {
+    "displayCode": "X-6",
+    "name": "Orange",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#FFA500"
+  },
+  "TAMIYA_E_X7": {
+    "displayCode": "X-7",
+    "name": "Red",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_E_X8": {
+    "displayCode": "X-8",
+    "name": "Lemon Yellow",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#FFF700"
+  },
+  "TAMIYA_E_X9": {
+    "displayCode": "X-9",
+    "name": "Brown",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#A52A2A"
+  },
+  "TAMIYA_E_X10": {
+    "displayCode": "X-10",
+    "name": "Gun Metal",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#2A2A2A"
+  },
+  "TAMIYA_E_X11": {
+    "displayCode": "X-11",
+    "name": "Chrome Silver",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_E_X12": {
+    "displayCode": "X-12",
+    "name": "Gold Leaf",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "TAMIYA_E_X13": {
+    "displayCode": "X-13",
+    "name": "Metallic Blue",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#4682B4"
+  },
+  "TAMIYA_E_X14": {
+    "displayCode": "X-14",
+    "name": "Sky Blue",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#87CEEB"
+  },
+  "TAMIYA_E_X15": {
+    "displayCode": "X-15",
+    "name": "Light Green",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_E_X16": {
+    "displayCode": "X-16",
+    "name": "Purple",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#800080"
+  },
+  "TAMIYA_E_X17": {
+    "displayCode": "X-17",
+    "name": "Pink",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#FFC0CB"
+  },
+  "TAMIYA_E_X18": {
+    "displayCode": "X-18",
+    "name": "Semi Gloss Black",
+    "type": "enamel",
+    "finish": "Polomatná",
+    "hex": "#0D0D0D"
+  },
+  "TAMIYA_E_X19": {
+    "displayCode": "X-19",
+    "name": "Smoke",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#333333"
+  },
+  "TAMIYA_E_X20": {
+    "displayCode": "X-20",
+    "name": "Thinner",
+    "type": "enamel",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_E_X21": {
+    "displayCode": "X-21",
+    "name": "Flat Base",
+    "type": "enamel",
+    "finish": "Aditivum",
+    "hex": "#F5F5F5"
+  },
+  "TAMIYA_E_X22": {
+    "displayCode": "X-22",
+    "name": "Clear",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_E_X23": {
+    "displayCode": "X-23",
+    "name": "Clear Blue",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#0000FF"
+  },
+  "TAMIYA_E_X24": {
+    "displayCode": "X-24",
+    "name": "Clear Yellow",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#FFFF00"
+  },
+  "TAMIYA_E_X25": {
+    "displayCode": "X-25",
+    "name": "Clear Green",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#008000"
+  },
+  "TAMIYA_E_X26": {
+    "displayCode": "X-26",
+    "name": "Clear Orange",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#FF8C00"
+  },
+  "TAMIYA_E_X27": {
+    "displayCode": "X-27",
+    "name": "Clear Red",
+    "type": "enamel",
+    "finish": "Transparentní",
+    "hex": "#FF0000"
+  },
+  "TAMIYA_E_X28": {
+    "displayCode": "X-28",
+    "name": "Park Green",
+    "type": "enamel",
+    "finish": "Lesklá",
+    "hex": "#008000"
+  },
+  "TAMIYA_E_X31": {
+    "displayCode": "X-31",
+    "name": "Titanium Gold",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#DAA520"
+  },
+  "TAMIYA_E_X32": {
+    "displayCode": "X-32",
+    "name": "Titanium Silver",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "TAMIYA_E_X33": {
+    "displayCode": "X-33",
+    "name": "Bronze",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#CD7F32"
+  },
+  "TAMIYA_E_X34": {
+    "displayCode": "X-34",
+    "name": "Metallic Brown",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_E_XF1": {
+    "displayCode": "XF-1",
+    "name": "Flat Black",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "TAMIYA_E_XF2": {
+    "displayCode": "XF-2",
+    "name": "Flat White",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#F2F2F2"
+  },
+  "TAMIYA_E_XF3": {
+    "displayCode": "XF-3",
+    "name": "Flat Yellow",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#E6E600"
+  },
+  "TAMIYA_E_XF4": {
+    "displayCode": "XF-4",
+    "name": "Yellow Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#9ACD32"
+  },
+  "TAMIYA_E_XF5": {
+    "displayCode": "XF-5",
+    "name": "Flat Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#228B22"
+  },
+  "TAMIYA_E_XF6": {
+    "displayCode": "XF-6",
+    "name": "Copper",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "TAMIYA_E_XF7": {
+    "displayCode": "XF-7",
+    "name": "Flat Red",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#CD5C5C"
+  },
+  "TAMIYA_E_XF8": {
+    "displayCode": "XF-8",
+    "name": "Flat Blue",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4169E1"
+  },
+  "TAMIYA_E_XF9": {
+    "displayCode": "XF-9",
+    "name": "Hull Red",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#800000"
+  },
+  "TAMIYA_E_XF10": {
+    "displayCode": "XF-10",
+    "name": "Flat Brown",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_E_XF11": {
+    "displayCode": "XF-11",
+    "name": "J.N. Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "TAMIYA_E_XF12": {
+    "displayCode": "XF-12",
+    "name": "J.N. Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#A2AAB0"
+  },
+  "TAMIYA_E_XF13": {
+    "displayCode": "XF-13",
+    "name": "J.A. Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "TAMIYA_E_XF14": {
+    "displayCode": "XF-14",
+    "name": "J.A. Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#9BA4AB"
+  },
+  "TAMIYA_E_XF15": {
+    "displayCode": "XF-15",
+    "name": "Flat Flesh",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#FFE4C4"
+  },
+  "TAMIYA_E_XF16": {
+    "displayCode": "XF-16",
+    "name": "Flat Aluminum",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_E_XF17": {
+    "displayCode": "XF-17",
+    "name": "Sea Blue",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#1B263B"
+  },
+  "TAMIYA_E_XF18": {
+    "displayCode": "XF-18",
+    "name": "Medium Blue",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#476A8A"
+  },
+  "TAMIYA_E_XF19": {
+    "displayCode": "XF-19",
+    "name": "Sky Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "TAMIYA_E_XF20": {
+    "displayCode": "XF-20",
+    "name": "Medium Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_E_XF21": {
+    "displayCode": "XF-21",
+    "name": "Sky",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#B5CBB7"
+  },
+  "TAMIYA_E_XF22": {
+    "displayCode": "XF-22",
+    "name": "RLM Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#8B8D7D"
+  },
+  "TAMIYA_E_XF23": {
+    "displayCode": "XF-23",
+    "name": "Light Blue",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "TAMIYA_E_XF24": {
+    "displayCode": "XF-24",
+    "name": "Dark Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4F5D66"
+  },
+  "TAMIYA_E_XF25": {
+    "displayCode": "XF-25",
+    "name": "Light Sea Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#76797A"
+  },
+  "TAMIYA_E_XF26": {
+    "displayCode": "XF-26",
+    "name": "Deep Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_E_XF27": {
+    "displayCode": "XF-27",
+    "name": "Black Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#2F352E"
+  },
+  "TAMIYA_E_XF28": {
+    "displayCode": "XF-28",
+    "name": "Dark Copper",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "TAMIYA_E_XF49": {
+    "displayCode": "XF-49",
+    "name": "Khaki",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#C3B091"
+  },
+  "TAMIYA_E_XF50": {
+    "displayCode": "XF-50",
+    "name": "Field Blue",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4A6B8C"
+  },
+  "TAMIYA_E_XF51": {
+    "displayCode": "XF-51",
+    "name": "Khaki Drab",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6C541E"
+  },
+  "TAMIYA_E_XF52": {
+    "displayCode": "XF-52",
+    "name": "Flat Earth",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "TAMIYA_E_XF53": {
+    "displayCode": "XF-53",
+    "name": "Neutral Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "TAMIYA_E_XF54": {
+    "displayCode": "XF-54",
+    "name": "Dark Sea Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_E_XF55": {
+    "displayCode": "XF-55",
+    "name": "Deck Tan",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "TAMIYA_E_XF56": {
+    "displayCode": "XF-56",
+    "name": "Metallic Grey",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "TAMIYA_E_XF57": {
+    "displayCode": "XF-57",
+    "name": "Buff",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#F0E68C"
+  },
+  "TAMIYA_E_XF58": {
+    "displayCode": "XF-58",
+    "name": "Olive Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "TAMIYA_E_XF59": {
+    "displayCode": "XF-59",
+    "name": "Desert Yellow",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_E_XF60": {
+    "displayCode": "XF-60",
+    "name": "Dark Yellow",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#BBB57E"
+  },
+  "TAMIYA_E_XF61": {
+    "displayCode": "XF-61",
+    "name": "Dark Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_E_XF62": {
+    "displayCode": "XF-62",
+    "name": "Olive Drab",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6B8E23"
+  },
+  "TAMIYA_E_XF63": {
+    "displayCode": "XF-63",
+    "name": "German Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#696969"
+  },
+  "TAMIYA_E_XF64": {
+    "displayCode": "XF-64",
+    "name": "Red Brown",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#A0522D"
+  },
+  "TAMIYA_E_XF65": {
+    "displayCode": "XF-65",
+    "name": "Field Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_E_XF66": {
+    "displayCode": "XF-66",
+    "name": "Light Grey",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#D3D3D3"
+  },
+  "TAMIYA_E_XF67": {
+    "displayCode": "XF-67",
+    "name": "NATO Green",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#424E38"
+  },
+  "TAMIYA_E_XF68": {
+    "displayCode": "XF-68",
+    "name": "NATO Brown",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4E312D"
+  },
+  "TAMIYA_E_XF69": {
+    "displayCode": "XF-69",
+    "name": "NATO Black",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#27292B"
+  },
+  "TAMIYA_E_XF70": {
+    "displayCode": "XF-70",
+    "name": "Dark Green 2 (IJN)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#354A32"
+  },
+  "TAMIYA_E_XF71": {
+    "displayCode": "XF-71",
+    "name": "Cockpit Green (IJN)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "TAMIYA_E_XF72": {
+    "displayCode": "XF-72",
+    "name": "Brown (JGSDF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#594030"
+  },
+  "TAMIYA_E_XF73": {
+    "displayCode": "XF-73",
+    "name": "Dark Green (JGSDF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#304030"
+  },
+  "TAMIYA_E_XF74": {
+    "displayCode": "XF-74",
+    "name": "OD (JGSDF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "TAMIYA_E_XF75": {
+    "displayCode": "XF-75",
+    "name": "IJN Gray (Kure)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "TAMIYA_E_XF76": {
+    "displayCode": "XF-76",
+    "name": "IJN Gray (Sasebo)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#5A6570"
+  },
+  "TAMIYA_E_XF77": {
+    "displayCode": "XF-77",
+    "name": "IJN Gray (Maizuru)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6A7580"
+  },
+  "TAMIYA_E_XF78": {
+    "displayCode": "XF-78",
+    "name": "Wooden Deck Tan",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#C19A6B"
+  },
+  "TAMIYA_E_XF79": {
+    "displayCode": "XF-79",
+    "name": "Linoleum Deck Brown",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#5D4037"
+  },
+  "TAMIYA_E_XF80": {
+    "displayCode": "XF-80",
+    "name": "Royal Light Gray",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#DCDCDC"
+  },
+  "TAMIYA_E_XF81": {
+    "displayCode": "XF-81",
+    "name": "Dark Green 2 (RAF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "TAMIYA_E_XF82": {
+    "displayCode": "XF-82",
+    "name": "Ocean Gray 2 (RAF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "TAMIYA_E_XF83": {
+    "displayCode": "XF-83",
+    "name": "Medium Sea Gray 2 (RAF)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "TAMIYA_E_XF84": {
+    "displayCode": "XF-84",
+    "name": "Dark Iron",
+    "type": "enamel",
+    "finish": "Metalická",
+    "hex": "#363636"
+  },
+  "TAMIYA_E_XF85": {
+    "displayCode": "XF-85",
+    "name": "Rubber Black",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#1C1C1C"
+  },
+  "TAMIYA_E_XF87": {
+    "displayCode": "XF-87",
+    "name": "IJN Gray (Yokosuka)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#69727B"
+  },
+  "TAMIYA_E_XF88": {
+    "displayCode": "XF-88",
+    "name": "Dark Yellow 2",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#BDB76B"
+  },
+  "TAMIYA_E_XF89": {
+    "displayCode": "XF-89",
+    "name": "Dark Green 2",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#006400"
+  },
+  "TAMIYA_E_XF90": {
+    "displayCode": "XF-90",
+    "name": "Red Brown 2",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "TAMIYA_E_XF91": {
+    "displayCode": "XF-91",
+    "name": "IJN Gray (Yokosuka 2)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#6B7681"
+  },
+  "TAMIYA_E_XF92": {
+    "displayCode": "XF-92",
+    "name": "Yellow-Brown (DAK 1941)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "TAMIYA_E_XF93": {
+    "displayCode": "XF-93",
+    "name": "Light Brown (DAK 1942)",
+    "type": "enamel",
+    "finish": "Matná",
+    "hex": "#C2A882"
+  }
+}

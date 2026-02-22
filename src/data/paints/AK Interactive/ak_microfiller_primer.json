@@ -1,0 +1,72 @@
+{
+  "AK_742": {
+    "displayCode": "AK742",
+    "name": "Grey Microfiller & Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "AK_757": {
+    "displayCode": "AK757",
+    "name": "Grey Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "AK_758": {
+    "displayCode": "AK758",
+    "name": "Black Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_759": {
+    "displayCode": "AK759",
+    "name": "White Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#F2F2F2"
+  },
+  "AK_745": {
+    "displayCode": "AK745",
+    "name": "Desert Sand Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "AK_746": {
+    "displayCode": "AK746",
+    "name": "Red Brown Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#8B4513"
+  },
+  "AK_747": {
+    "displayCode": "AK747",
+    "name": "Olive Drab Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#556B2F"
+  },
+  "AK_748": {
+    "displayCode": "AK748",
+    "name": "Russian Green Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "AK_749": {
+    "displayCode": "AK749",
+    "name": "Pink Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Matná",
+    "hex": "#FFC0CB"
+  },
+  "AK_752": {
+    "displayCode": "AK752",
+    "name": "Gloss Black Primer",
+    "type": "Microfiller & Primer",
+    "finish": "Lesklá",
+    "hex": "#0D0D0D"
+  }
+}

@@ -28,6 +28,15 @@ const DISPLAY_NAMES = {
   gunze: "Gunze (Mr. Hobby)",
   tamiya: "Tamiya",
   vallejo: "Vallejo",
+  ak: "AK Interactive",
+  ammo: "AMMO by MIG",
+  revell: "Revell",
+  humbrol: "Humbrol",
+  citadel: "Citadel (GW)",
+  army_painter: "The Army Painter",
+  hataka: "Hataka Hobby",
+  italeri: "Italeri",
+  fs: "Federal Standard 595",
 };
 
 // Mapování pro hezčí názvy řad (zachování původního UX)
@@ -51,6 +60,37 @@ const SERIES_NAMES = {
   real_colors: "Real Colors (RC)",
   "3rd_gen": "3rd Gen Acrylics",
   xtreme_metal: "Xtreme Metal",
+  true_metal: "True Metal (Wax)",
+  microfiller_primer: "Microfiller & Primer",
+  surface_primer: "Surface Primer (Acrylic)",
+  varnishes: "Varnishes & Gauzy",
+  inks: "Acrylic Inks",
+  // AMMO by MIG
+  mig_acrylic: "Acrylic Color",
+  mig_wash: "Enamel Wash",
+  mig_filter: "Enamel Filter",
+  mig_pigment: "Pigment",
+  // Revell
+  revell_aqua: "Aqua Color",
+  revell_email: "Email Color",
+  revell_spray: "Spray Color",
+  // Humbrol
+  humbrol_acrylic: "Acrylic",
+  humbrol_enamel: "Enamel",
+  // Citadel
+  citadel_base: "Base",
+  citadel_layer: "Layer",
+  citadel_contrast: "Contrast",
+  citadel_shade: "Shade",
+  citadel_technical: "Technical",
+  // Army Painter
+  warpaints: "Warpaints",
+  speedpaint: "Speedpaint",
+  fanatic: "Warpaints Fanatic",
+  // Hataka
+  hataka_blue: "Blue Line (Štětec)",
+  hataka_red: "Red Line (Airbrush)",
+  hataka_orange: "Orange Line (Lacquer)",
 };
 
 for (const path in modules) {

@@ -47,7 +47,7 @@ const KitBuildTab = ({ data, setData }) => {
           onChange={(e) =>
             setData({ ...data, progress: Number(e.target.value) })
           }
-          className="w-full cursor-pointer"
+          className="w-full cursor-pointer accent-blue-600"
         />
       </div>
 

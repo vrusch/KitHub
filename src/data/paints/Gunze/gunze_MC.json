@@ -1,0 +1,65 @@
+{
+  "GUNZE_MC211": {
+    "displayCode": "MC-211",
+    "name": "Chrome Silver",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#C0C0C0"
+  },
+  "GUNZE_MC212": {
+    "displayCode": "MC-212",
+    "name": "Iron",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#434B4D"
+  },
+  "GUNZE_MC213": {
+    "displayCode": "MC-213",
+    "name": "Stainless",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#E0E0E0"
+  },
+  "GUNZE_MC214": {
+    "displayCode": "MC-214",
+    "name": "Dark Iron",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#2F2F2F"
+  },
+  "GUNZE_MC215": {
+    "displayCode": "MC-215",
+    "name": "Copper",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#B87333"
+  },
+  "GUNZE_MC216": {
+    "displayCode": "MC-216",
+    "name": "Bronze",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#CD7F32"
+  },
+  "GUNZE_MC217": {
+    "displayCode": "MC-217",
+    "name": "Gold",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#FFD700"
+  },
+  "GUNZE_MC218": {
+    "displayCode": "MC-218",
+    "name": "Aluminum",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#D3D3D3"
+  },
+  "GUNZE_MC219": {
+    "displayCode": "MC-219",
+    "name": "Brass",
+    "type": "Mr. Metal Color (MC)",
+    "finish": "Metalická (Leštitelná)",
+    "hex": "#B5A642"
+  }
+}

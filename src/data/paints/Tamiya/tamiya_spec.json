@@ -1,34 +1,83 @@
 {
-  "acrylic": {
+  "akryl": {
     "title": "Tamiya Acrylic Mini (X/XF)",
-    "codes": ["X", "XF"],
-    "description": "Akrylové barvy na bázi alkoholu. Velmi oblíbené pro svou univerzálnost. Ředitelné vodou (před zaschnutím).",
-    "thinner": "Tamiya X-20A (akrylové) nebo Tamiya Lacquer Thinner (pro hladší povrch).",
-    "bestFor": "Štětec i airbrush, základní nátěry.",
-    "safety": "Hořlavé (obsahuje alkohol), nízký zápach."
+    "codes": ["X", "XF", "acrylic"],
+    "description": "Akrylové barvy na bázi alkoholu. Velmi oblíbené pro svou univerzálnost a bezpečnost.",
+    "proTip": "Tamiya akrylky jsou jako hodný pes – odpustí ti spoustu chyb. Naředěné Tamiya Lacquer Thinnerem se stříkají tak sametově, že si budeš připadat jako profík. Štětcem to s nimi na velké plochy ale radši nezkoušej, schnou moc rychle a dělají kocoury.",
+    "thinner": "Tamiya X-20A (akrylové) nebo Lacquer Thinner (pro airbrush).",
+    "bestFor": "Airbrush (základní nátěry, technika, letadla).",
+    "safety": "Nízký zápach, nehořlavé."
   },
   "lacquer": {
     "title": "Tamiya Lacquer Paint (LP)",
-    "codes": ["LP"],
-    "description": "Syntetické laky pro extrémně hladký a tvrdý povrch. Rychle schnou. Ideální pro auta a metalízy.",
-    "thinner": "Tamiya Lacquer Thinner (žluté nebo oranžové víčko).",
-    "bestFor": "Airbrush, vysoce lesklé povrchy.",
-    "safety": "Silný zápach, vysoce hořlavé, nutné větrání!"
+    "codes": ["LP", "lp"],
+    "description": "Syntetické laky pro extrémně hladký a tvrdý povrch. Ideální pro auta a metalízy.",
+    "proTip": "Tohle je čistý hardcore pro leštiče aut a detailisty. Smrdí to sice jako v pekle, ale ten povrch je tvrdý jako sklo a po přeleštění se leskne neskutečně. Zkrátka nutnost pro profi finiš.",
+    "thinner": "Tamiya Lacquer Thinner (žluté nebo oranžové víčko - Retarder).",
+    "bestFor": "Airbrush, vysoce lesklé povrchy, civilní auta, motorky.",
+    "safety": "Silný zápach, nutné pořádné větrání a maska!"
   },
   "enamel": {
     "title": "Tamiya Enamel Paint (X/XF)",
-    "codes": ["X", "XF"],
-    "description": "Syntetické emailové barvy. Schnou pomalu, což eliminuje tahy štětcem. Skvělé pro wash.",
-    "thinner": "Tamiya X-20 Enamel Thinner.",
-    "bestFor": "Detaily štětcem, figurky, weathering (wash).",
+    "codes": ["enamel"],
+    "description": "Syntetické emailové barvy. Schnou pomalu, což umožňuje barvě se krásně slít.",
+    "proTip": "Pomalé schnutí je tady tvůj nejlepší kámoš. Absolutně ideální na washe, drybrushing (stírání na sucho) a malování detailů figurek. Jen bacha, enamelové ředidlo umí udělat z plastu křehkou sušenku!",
+    "thinner": "Tamiya X-20 Enamel Thinner (modré víčko).",
+    "bestFor": "Detaily štětcem, figurky, weathering (wash, zapouštění).",
     "safety": "Hořlavina, střední zápach."
+  },
+  "spray": {
+    "title": "Tamiya Spray (TS/AS/PS)",
+    "codes": ["TS", "AS", "PS", "spray"],
+    "description": "Kvalitní barvy ve spreji. TS pro běžný plast, AS pro letadla, PS (polykarbonát) pro RC modely.",
+    "proTip": "Spreje od Tamiye jsou doslova blbuvzdorné – mají perfektní trysku, která neprská. Jen pozor na PS spreje, ty do našeho kitníku nepatří, ty jsou pro RCčkáře a mají úplně jinou chemii!",
+    "thinner": "Neředí se (ve spreji). Na čištění použít Lacquer Thinner.",
+    "bestFor": "Rychlé stříkání karoserií a velkých ploch bez airbrush pistole.",
+    "safety": "Extrémně hořlavé, silný aerosol – stříkat jen venku nebo v boxu."
   },
   "primer": {
     "title": "Tamiya Surface Primer",
-    "codes": ["Liquid Surface Primer"],
+    "codes": ["primer", "870", "872"],
     "description": "Základové barvy a tekuté tmely pro sjednocení povrchu a zajištění přilnavosti.",
+    "proTip": "Tekutý Surface Primer ve skleničce ukáže každý škrábanec, který jsi odflákl při broušení. A sprejové primery? Ty drží na plastu i leptech jako přibité.",
     "thinner": "Tamiya Lacquer Thinner.",
-    "bestFor": "První vrstva na plast nebo kov.",
-    "safety": "Silný zápach, hořlavé, pracujte v maskách."
+    "bestFor": "První vrstva na plast, tmel, nebo kov (lepty).",
+    "safety": "Silný zápach rozpouštědel, pracujte v dobře větraném prostoru."
+  },
+  "weathering": {
+    "title": "Panel Line & Weathering",
+    "codes": ["weathering", "871", "870"],
+    "description": "Speciální enamelové washe a pigmentové paletky (Weathering Master) pro patinu.",
+    "proTip": "Panel Line wash se štětečkem ve víčku je svatý grál. Zateče do spáry rychlostí blesku. Jen si model předtím dobře zaleskni akrylovým lakem, jinak ti tenhle wash rozežere podkladovou barvu.",
+    "thinner": "Tamiya X-20 Enamel Thinner (na stírání).",
+    "bestFor": "Zvýraznění paneláže, stékance, prach a rez.",
+    "safety": "Při washech střední zápach, hořlavé."
+  },
+  "cement": {
+    "title": "Tamiya Cements (Lepidla)",
+    "codes": ["cement", "870", "871"],
+    "description": "Široká škála lepidel na plasty. Od hustých po extrémně vzlínavá.",
+    "proTip": "Zelené víčko (Extra Thin) je tekutá magie. Přiložíš díly nasucho, přejedeš štětečkem po spoji a chemie plast doslova svaří dohromady. Kdo nezkusil, nepochopí.",
+    "thinner": "-",
+    "bestFor": "Lepení plastových modelů (PS, ABS).",
+    "safety": "Prchavé a hořlavé. Pozor na výpary."
+  },
+  "putty": {
+    "title": "Tamiya Putty (Tmely)",
+    "codes": ["putty", "870", "871"],
+    "description": "Základní jednosložkové tmely, epoxidové 'plastelíny' a polyesterové tmely.",
+    "proTip": "Základní šedý tmel v tubě (Basic Putty) se při schnutí trochu propadá, takže ho dávej ve více tenkých vrstvách. Nebo ho trochu nařeď Lacquer ředidlem a máš super tekutý tmel na mikrospáry.",
+    "thinner": "Lacquer Thinner (na vyhlazení a ředění Basic Putty).",
+    "bestFor": "Zatmelování mezer, modelování tvarů (Epoxy).",
+    "safety": "Obsahuje rozpouštědla, nevdechovat prach při broušení."
+  },
+  "chemistry": {
+    "title": "Tamiya Chemie a Ředidla",
+    "codes": ["chemistry", "aux", "X-20", "870", "871"],
+    "description": "Ředidla, zpomalovače schnutí (Retardery) a vodičky na obtisky (Mark Fit).",
+    "proTip": "Lacquer Thinner se žlutým víčkem je univerzální lék. Naředíš s ním LP řadu, akrylové X/XF barvy (do airbrushe) a dokonce s ním vyčistíš i pistoli, o které sis myslel, že je navždy ucpaná.",
+    "thinner": "-",
+    "bestFor": "Ředění, čištění a usazování obtisků.",
+    "safety": "Vysoce hořlavé, toxické, skladovat mimo dosah dětí."
   }
 }

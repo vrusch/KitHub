@@ -1,0 +1,401 @@
+{
+  "AK_11801": {
+    "displayCode": "AK11801",
+    "name": "RLM 02 RLM Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8B8D7D"
+  },
+  "AK_11802": {
+    "displayCode": "AK11802",
+    "name": "RLM 65 Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A2C3D4"
+  },
+  "AK_11803": {
+    "displayCode": "AK11803",
+    "name": "RLM 66 Black Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3C3F42"
+  },
+  "AK_11804": {
+    "displayCode": "AK11804",
+    "name": "RLM 70 Black Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#2F352E"
+  },
+  "AK_11805": {
+    "displayCode": "AK11805",
+    "name": "RLM 71 Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3E4437"
+  },
+  "AK_11806": {
+    "displayCode": "AK11806",
+    "name": "RLM 74 Dark Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "AK_11807": {
+    "displayCode": "AK11807",
+    "name": "RLM 75 Grey Violet",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7A7B69"
+  },
+  "AK_11808": {
+    "displayCode": "AK11808",
+    "name": "RLM 76 Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5C1C8"
+  },
+  "AK_11809": {
+    "displayCode": "AK11809",
+    "name": "RLM 78 Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6C92AF"
+  },
+  "AK_11810": {
+    "displayCode": "AK11810",
+    "name": "RLM 79 Sand Yellow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5955C"
+  },
+  "AK_11811": {
+    "displayCode": "AK11811",
+    "name": "RLM 80 Olive Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A5D23"
+  },
+  "AK_11812": {
+    "displayCode": "AK11812",
+    "name": "RLM 81 Brown Violet",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5D5348"
+  },
+  "AK_11813": {
+    "displayCode": "AK11813",
+    "name": "RLM 82 Light Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6E9C54"
+  },
+  "AK_11814": {
+    "displayCode": "AK11814",
+    "name": "RLM 83 Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_11815": {
+    "displayCode": "AK11815",
+    "name": "RLM 84 Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#9EBEC9"
+  },
+  "AK_11816": {
+    "displayCode": "AK11816",
+    "name": "RLM 04 Yellow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FFD700"
+  },
+  "AK_11817": {
+    "displayCode": "AK11817",
+    "name": "RLM 23 Red",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#C22127"
+  },
+  "AK_11818": {
+    "displayCode": "AK11818",
+    "name": "RLM 22 Black",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_11819": {
+    "displayCode": "AK11819",
+    "name": "RLM 21 White",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "AK_11820": {
+    "displayCode": "AK11820",
+    "name": "RAF Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3D4133"
+  },
+  "AK_11821": {
+    "displayCode": "AK11821",
+    "name": "RAF Dark Earth",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_11822": {
+    "displayCode": "AK11822",
+    "name": "RAF Sky",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5CBB7"
+  },
+  "AK_11823": {
+    "displayCode": "AK11823",
+    "name": "RAF Ocean Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "AK_11824": {
+    "displayCode": "AK11824",
+    "name": "RAF Medium Sea Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#848E99"
+  },
+  "AK_11825": {
+    "displayCode": "AK11825",
+    "name": "RAF Azure Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4D7399"
+  },
+  "AK_11826": {
+    "displayCode": "AK11826",
+    "name": "RAF Middle Stone",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A89F6A"
+  },
+  "AK_11827": {
+    "displayCode": "AK11827",
+    "name": "RAF Interior Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#73876B"
+  },
+  "AK_11828": {
+    "displayCode": "AK11828",
+    "name": "RAF Night",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#212529"
+  },
+  "AK_11829": {
+    "displayCode": "AK11829",
+    "name": "RAF PRU Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A6B8C"
+  },
+  "AK_11830": {
+    "displayCode": "AK11830",
+    "name": "USAAF Olive Drab 41",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4D5D53"
+  },
+  "AK_11831": {
+    "displayCode": "AK11831",
+    "name": "USAAF Neutral Grey 43",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6E7172"
+  },
+  "AK_11832": {
+    "displayCode": "AK11832",
+    "name": "USAAF Interior Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "AK_11833": {
+    "displayCode": "AK11833",
+    "name": "US Yellow Zinc Chromate",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#D1C152"
+  },
+  "AK_11834": {
+    "displayCode": "AK11834",
+    "name": "US Green Zinc Chromate",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7C8C53"
+  },
+  "AK_11835": {
+    "displayCode": "AK11835",
+    "name": "US Navy Sea Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#1B263B"
+  },
+  "AK_11836": {
+    "displayCode": "AK11836",
+    "name": "US Navy Intermediate Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#476A8A"
+  },
+  "AK_11837": {
+    "displayCode": "AK11837",
+    "name": "US Navy Light Gull Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B5B8B1"
+  },
+  "AK_11838": {
+    "displayCode": "AK11838",
+    "name": "US Navy Dark Gull Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#76797A"
+  },
+  "AK_11839": {
+    "displayCode": "AK11839",
+    "name": "US Navy Insignia White",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#F2F4F3"
+  },
+  "AK_11840": {
+    "displayCode": "AK11840",
+    "name": "US Insignia Red",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A3202E"
+  },
+  "AK_11841": {
+    "displayCode": "AK11841",
+    "name": "US Insignia Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#1C2A43"
+  },
+  "AK_11842": {
+    "displayCode": "AK11842",
+    "name": "Soviet AMT-4 Camo Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4B5338"
+  },
+  "AK_11843": {
+    "displayCode": "AK11843",
+    "name": "Soviet AMT-7 Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7DA1C4"
+  },
+  "AK_11844": {
+    "displayCode": "AK11844",
+    "name": "Soviet AMT-11 Blue Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6C7A89"
+  },
+  "AK_11845": {
+    "displayCode": "AK11845",
+    "name": "Soviet AMT-12 Dark Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3E4347"
+  },
+  "AK_11846": {
+    "displayCode": "AK11846",
+    "name": "Soviet A-14 Interior Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#708090"
+  },
+  "AK_11847": {
+    "displayCode": "AK11847",
+    "name": "IJN Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#2E4733"
+  },
+  "AK_11848": {
+    "displayCode": "AK11848",
+    "name": "IJN Grey Green (Amei-ro)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A4A89A"
+  },
+  "AK_11849": {
+    "displayCode": "AK11849",
+    "name": "IJA Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3A4A36"
+  },
+  "AK_11850": {
+    "displayCode": "AK11850",
+    "name": "IJA Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A2AAB0"
+  },
+  "AK_11851": {
+    "displayCode": "AK11851",
+    "name": "Aotake",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#008B8B"
+  },
+  "AK_11852": {
+    "displayCode": "AK11852",
+    "name": "Modern US Ghost Grey Light",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B0C4DE"
+  },
+  "AK_11853": {
+    "displayCode": "AK11853",
+    "name": "Modern US Ghost Grey Dark",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#778899"
+  },
+  "AK_11854": {
+    "displayCode": "AK11854",
+    "name": "Modern US Gunship Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5E6466"
+  },
+  "AK_11855": {
+    "displayCode": "AK11855",
+    "name": "Modern Flanker Light Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#AEC6CF"
+  },
+  "AK_11856": {
+    "displayCode": "AK11856",
+    "name": "Modern Flanker Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5A768A"
+  },
+  "AK_11857": {
+    "displayCode": "AK11857",
+    "name": "Modern Flanker Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8A9BA8"
+  }
+}

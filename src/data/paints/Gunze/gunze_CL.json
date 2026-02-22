@@ -1,0 +1,79 @@
+{
+  "GUNZE_CL01": {
+    "displayCode": "CL-01",
+    "name": "White Peach",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#FFE5B4"
+  },
+  "GUNZE_CL02": {
+    "displayCode": "CL-02",
+    "name": "Cocoa Milk",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#D2B48C"
+  },
+  "GUNZE_CL03": {
+    "displayCode": "CL-03",
+    "name": "Clear Pale Red",
+    "type": "Lascivus (CL)",
+    "finish": "Lesklá",
+    "hex": "#FFB6C1"
+  },
+  "GUNZE_CL04": {
+    "displayCode": "CL-04",
+    "name": "Clear Peach",
+    "type": "Lascivus (CL)",
+    "finish": "Lesklá",
+    "hex": "#FFDAB9"
+  },
+  "GUNZE_CL05": {
+    "displayCode": "CL-05",
+    "name": "Clear Pale Brown",
+    "type": "Lascivus (CL)",
+    "finish": "Lesklá",
+    "hex": "#DEB887"
+  },
+  "GUNZE_CL06": {
+    "displayCode": "CL-06",
+    "name": "Clear White",
+    "type": "Lascivus (CL)",
+    "finish": "Lesklá",
+    "hex": "#FFFFFF"
+  },
+  "GUNZE_CL101": {
+    "displayCode": "CL-101",
+    "name": "Blonde",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#FAF0BE"
+  },
+  "GUNZE_CL102": {
+    "displayCode": "CL-102",
+    "name": "Chestnut",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#954535"
+  },
+  "GUNZE_CL103": {
+    "displayCode": "CL-103",
+    "name": "Reddish Brown",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#8B3128"
+  },
+  "GUNZE_CL104": {
+    "displayCode": "CL-104",
+    "name": "Pink Purple",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#B02080"
+  },
+  "GUNZE_CL105": {
+    "displayCode": "CL-105",
+    "name": "Silver Lilac",
+    "type": "Lascivus (CL)",
+    "finish": "Polomatná",
+    "hex": "#C8A2C8"
+  }
+}

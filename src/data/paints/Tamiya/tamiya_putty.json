@@ -1,0 +1,65 @@
+{
+  "TAMIYA_87005": {
+    "displayCode": "87005",
+    "name": "Basic Putty (Grey)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "TAMIYA_87095": {
+    "displayCode": "87095",
+    "name": "Basic Putty (White)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFFF"
+  },
+  "TAMIYA_87027": {
+    "displayCode": "87027",
+    "name": "Polyester Putty (40g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFE0"
+  },
+  "TAMIYA_87097": {
+    "displayCode": "87097",
+    "name": "Polyester Putty (120g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFE0"
+  },
+  "TAMIYA_87051": {
+    "displayCode": "87051",
+    "name": "Epoxy Putty (Quick Type - 25g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_87053": {
+    "displayCode": "87053",
+    "name": "Epoxy Putty (Quick Type - 100g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#EEDC82"
+  },
+  "TAMIYA_87052": {
+    "displayCode": "87052",
+    "name": "Epoxy Putty (Smooth Surface - 25g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_87143": {
+    "displayCode": "87143",
+    "name": "Epoxy Putty (Smooth Surface - 100g)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#90EE90"
+  },
+  "TAMIYA_87076": {
+    "displayCode": "87076",
+    "name": "Light-Curing Putty (UV)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFF00"
+  }
+}

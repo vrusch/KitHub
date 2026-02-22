@@ -6,6 +6,9 @@ import {
   ShoppingBag,
   Trash2,
   Box,
+  Package,
+  AlertTriangle,
+  ShoppingCart,
 } from "lucide-react";
 import { safeRender } from "../../utils/helpers";
 
@@ -138,16 +141,21 @@ const PaintCard = React.memo(
                         {mixStatusText}
                       </>
                     ) : paint.status === "in_stock" ? (
-                      paint.isMix ? (
-                        "Mám namícháno"
-                      ) : (
-                        "Skladem"
-                      )
+                      <>
+                        <Package size={14} />
+                        {paint.isMix ? "Mám namícháno" : "Skladem"}
+                      </>
                     ) : paint.status === "low" ? (
-                      "Dochází"
+                      <>
+                        <AlertTriangle size={14} />
+                        Dochází
+                      </>
                     ) : paint.status === "wanted" ||
                       paint.status === "empty" ? (
-                      "Koupit"
+                      <>
+                        <ShoppingCart size={14} />
+                        Koupit
+                      </>
                     ) : (
                       "?"
                     )}

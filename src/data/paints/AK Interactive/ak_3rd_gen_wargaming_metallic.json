@@ -1,0 +1,212 @@
+{
+  "AK_11201": {
+    "displayCode": "AK11201",
+    "name": "Metallic Grey",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#708090"
+  },
+  "AK_11202": {
+    "displayCode": "AK11202",
+    "name": "Metallic Black",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#2F4F4F"
+  },
+  "AK_11203": {
+    "displayCode": "AK11203",
+    "name": "Metallic Red",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#8B0000"
+  },
+  "AK_11204": {
+    "displayCode": "AK11204",
+    "name": "Metallic Orange",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#CC5500"
+  },
+  "AK_11205": {
+    "displayCode": "AK11205",
+    "name": "Metallic Gold",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#FFD700"
+  },
+  "AK_11206": {
+    "displayCode": "AK11206",
+    "name": "Metallic Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#006400"
+  },
+  "AK_11207": {
+    "displayCode": "AK11207",
+    "name": "Metallic Blue",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#00008B"
+  },
+  "AK_11208": {
+    "displayCode": "AK11208",
+    "name": "Metallic Violet",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#4B0082"
+  },
+  "AK_11209": {
+    "displayCode": "AK11209",
+    "name": "Silver",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#C0C0C0"
+  },
+  "AK_11210": {
+    "displayCode": "AK11210",
+    "name": "Natural Steel",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#71797E"
+  },
+  "AK_11211": {
+    "displayCode": "AK11211",
+    "name": "Oily Steel",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#5A6369"
+  },
+  "AK_11212": {
+    "displayCode": "AK11212",
+    "name": "Gun Metal",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#2A3439"
+  },
+  "AK_11213": {
+    "displayCode": "AK11213",
+    "name": "Brass",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#B5A642"
+  },
+  "AK_11214": {
+    "displayCode": "AK11214",
+    "name": "Bronze",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#CD7F32"
+  },
+  "AK_11215": {
+    "displayCode": "AK11215",
+    "name": "Copper",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#B87333"
+  },
+  "AK_11216": {
+    "displayCode": "AK11216",
+    "name": "Dark Aluminium",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#A9A9A9"
+  },
+  "AK_11217": {
+    "displayCode": "AK11217",
+    "name": "Rusty Gold",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#996515"
+  },
+  "AK_11218": {
+    "displayCode": "AK11218",
+    "name": "Rusty Brass",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#8A6327"
+  },
+  "AK_11219": {
+    "displayCode": "AK11219",
+    "name": "Antique Gold",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#C5B358"
+  },
+  "AK_11220": {
+    "displayCode": "AK11220",
+    "name": "Tarnished Brass",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Metalická",
+    "hex": "#807D5D"
+  },
+  "AK_11085": {
+    "displayCode": "AK11085",
+    "name": "Lumi Red (Fluor)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FF2400"
+  },
+  "AK_11086": {
+    "displayCode": "AK11086",
+    "name": "Lumi Orange (Fluor)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FF4F00"
+  },
+  "AK_11087": {
+    "displayCode": "AK11087",
+    "name": "Lumi Yellow (Fluor)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FFFF00"
+  },
+  "AK_11046": {
+    "displayCode": "AK11046",
+    "name": "Acid Green (Fluor)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#B0BF1A"
+  },
+  "AK_11065": {
+    "displayCode": "AK11065",
+    "name": "Intense Rose",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FF007F"
+  },
+  "AK_11066": {
+    "displayCode": "AK11066",
+    "name": "Intense Magenta",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FF00FF"
+  },
+  "AK_11072": {
+    "displayCode": "AK11072",
+    "name": "Intense Ultramarine",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#120A8F"
+  },
+  "AK_11075": {
+    "displayCode": "AK11075",
+    "name": "Intense Emerald Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#50C878"
+  },
+  "AK_11076": {
+    "displayCode": "AK11076",
+    "name": "Intense Bright Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#66FF00"
+  },
+  "AK_11164": {
+    "displayCode": "AK11164",
+    "name": "Lumi Blue (Fluor)",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#00BFFF"
+  }
+}

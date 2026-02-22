@@ -1,7 +1,7 @@
 {
   "3rd_gen": {
     "title": "AK 3rd Gen Acrylics",
-    "codes": ["AK110", "AK111"],
+    "codes": ["3rd_gen", "AK11"],
     "description": "Nová generace akrylových barev na vodní bázi. Výborné krytí a náchylnost k samonivelaci (neslévá detaily).",
     "thinner": "Voda / AK 3rd Gen Thinner (AK11500).",
     "bestFor": "Vynikající na štětec (figurky, detaily), ale velmi dobře použitelné i do airbrushe.",
@@ -9,7 +9,7 @@
   },
   "real_colors": {
     "title": "AK Real Colors (RC)",
-    "codes": ["RC"],
+    "codes": ["real_colors", "RC"],
     "description": "Vysoce přesné lacquer (akrylo-lakové) barvy. Vytvářejí extrémně hladký, tvrdý povrch a rychle schnou.",
     "thinner": "AK Real Colors High Compatibility Thinner / Gunze Levelling Thinner.",
     "bestFor": "Airbrush, přesné historické a vojenské kamufláže (letadla, technika).",
@@ -17,7 +17,7 @@
   },
   "xtreme_metal": {
     "title": "AK Xtreme Metal",
-    "codes": ["AK47", "AK48"],
+    "codes": ["xtreme_metal", "AK47", "AK48"],
     "description": "Prémiové metalické barvy s neuvěřitelným leskem a vysokou odolností proti maskovacím páskám.",
     "thinner": "AK Xtreme Metal Thinner.",
     "bestFor": "Airbrush (kovové povrchy letadel, trysky motorů).",
@@ -25,7 +25,7 @@
   },
   "true_metal": {
     "title": "AK True Metal (Wax)",
-    "codes": ["AK0"],
+    "codes": ["true_metal", "AK0"],
     "description": "Metalická barva na bázi vosku. Nanáší se a následně leští k dosažení realistického kovu.",
     "thinner": "Neředí se (případně white spirit pro začištění).",
     "bestFor": "Nanášení štětcem, prstem nebo vatovou tyčinkou na detaily.",
@@ -33,7 +33,7 @@
   },
   "microfiller_primer": {
     "title": "AK Microfiller & Primer (Lacquer)",
-    "codes": ["AK74", "AK75"],
+    "codes": ["microfiller_primer", "AK7"],
     "description": "Vysoce kvalitní syntetické primery s mikrotmelem. Dokonale vyhladí povrch a sjednotí podklad.",
     "thinner": "AK701 / AK702 / Lacquer Thinner.",
     "bestFor": "Základní vrstva pod Lacquer barvy a metalízy.",
@@ -41,7 +41,7 @@
   },
   "surface_primer": {
     "title": "AK Surface Primer (Acrylic)",
-    "codes": ["AK112"],
+    "codes": ["surface_primer", "AK1"],
     "description": "Akrylové polyuretanové primery na vodní bázi. Skvělá přilnavost bez zápachu.",
     "thinner": "Voda / AK 3rd Gen Thinner.",
     "bestFor": "Základní vrstva pro akrylové barvení v bytě.",
@@ -49,7 +49,7 @@
   },
   "varnishes": {
     "title": "AK Varnishes & Gauzy",
-    "codes": ["AK1123", "AK1124", "AK1125", "AK89"],
+    "codes": ["varnishes", "AK8", "AK9"],
     "description": "Speciální laky. Legendární Ultra Matte (AK11239) nebo Gauzy Shine pro kabinky letadel.",
     "thinner": "Většinou se neředí (ready to use).",
     "bestFor": "Závěrečná ochrana modelu a sjednocení lesku/matu.",
@@ -57,7 +57,7 @@
   },
   "inks": {
     "title": "AK Acrylic Inks",
-    "codes": ["AK1121", "AK1122"],
+    "codes": ["inks"],
     "description": "Tekuté inkousty s vysokou hustotou pigmentu pro filtry, stínování a intenzivní barvy.",
     "thinner": "Voda / Thinner.",
     "bestFor": "Stínování figurek, tónování barev.",

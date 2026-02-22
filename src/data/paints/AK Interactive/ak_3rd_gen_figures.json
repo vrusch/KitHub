@@ -1,0 +1,303 @@
+{
+  "AK_11401": {
+    "displayCode": "AK11401",
+    "name": "Light Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FAD5A5"
+  },
+  "AK_11402": {
+    "displayCode": "AK11402",
+    "name": "Base Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#E6BE8A"
+  },
+  "AK_11403": {
+    "displayCode": "AK11403",
+    "name": "Highlight Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#FFE4C4"
+  },
+  "AK_11404": {
+    "displayCode": "AK11404",
+    "name": "Shadow Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#C68E65"
+  },
+  "AK_11405": {
+    "displayCode": "AK11405",
+    "name": "Dark Shadow Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8D5524"
+  },
+  "AK_11406": {
+    "displayCode": "AK11406",
+    "name": "Reddish Flesh",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#D3A194"
+  },
+  "AK_11407": {
+    "displayCode": "AK11407",
+    "name": "Black Uniform Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#242526"
+  },
+  "AK_11408": {
+    "displayCode": "AK11408",
+    "name": "Black Uniform Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3A3B3C"
+  },
+  "AK_11409": {
+    "displayCode": "AK11409",
+    "name": "Black Uniform Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#18191A"
+  },
+  "AK_11410": {
+    "displayCode": "AK11410",
+    "name": "Dark Brown Uniform",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3E2723"
+  },
+  "AK_11411": {
+    "displayCode": "AK11411",
+    "name": "Light Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7B9C6B"
+  },
+  "AK_11412": {
+    "displayCode": "AK11412",
+    "name": "Medium Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5A7D4C"
+  },
+  "AK_11413": {
+    "displayCode": "AK11413",
+    "name": "Dark Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3A5232"
+  },
+  "AK_11414": {
+    "displayCode": "AK11414",
+    "name": "Splittermuster Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7A826B"
+  },
+  "AK_11415": {
+    "displayCode": "AK11415",
+    "name": "Splittermuster Brown",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5B4A3A"
+  },
+  "AK_11416": {
+    "displayCode": "AK11416",
+    "name": "Splittermuster Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#454D3D"
+  },
+  "AK_11417": {
+    "displayCode": "AK11417",
+    "name": "Field Grey Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5D6856"
+  },
+  "AK_11418": {
+    "displayCode": "AK11418",
+    "name": "Field Grey Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#76826E"
+  },
+  "AK_11419": {
+    "displayCode": "AK11419",
+    "name": "Field Grey Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#434B3E"
+  },
+  "AK_11420": {
+    "displayCode": "AK11420",
+    "name": "Waffen SS Spring Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#636648"
+  },
+  "AK_11421": {
+    "displayCode": "AK11421",
+    "name": "Waffen SS Spring Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7D805B"
+  },
+  "AK_11422": {
+    "displayCode": "AK11422",
+    "name": "Ochre Khaki",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#C29B62"
+  },
+  "AK_11423": {
+    "displayCode": "AK11423",
+    "name": "Waffen SS Spring Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#494C35"
+  },
+  "AK_11424": {
+    "displayCode": "AK11424",
+    "name": "Waffen SS Autumn Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "AK_11425": {
+    "displayCode": "AK11425",
+    "name": "Waffen SS Autumn Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A06B38"
+  },
+  "AK_11426": {
+    "displayCode": "AK11426",
+    "name": "Waffen SS Autumn Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#66411F"
+  },
+  "AK_11427": {
+    "displayCode": "AK11427",
+    "name": "British Uniform Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#7A643B"
+  },
+  "AK_11428": {
+    "displayCode": "AK11428",
+    "name": "British Uniform Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#968154"
+  },
+  "AK_11429": {
+    "displayCode": "AK11429",
+    "name": "British Uniform Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5D4C2B"
+  },
+  "AK_11430": {
+    "displayCode": "AK11430",
+    "name": "US Uniform Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6C7A53"
+  },
+  "AK_11431": {
+    "displayCode": "AK11431",
+    "name": "US Uniform Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#86946A"
+  },
+  "AK_11432": {
+    "displayCode": "AK11432",
+    "name": "Russian Green",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#4A6348"
+  },
+  "AK_11433": {
+    "displayCode": "AK11433",
+    "name": "Russian Uniform Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#8A794E"
+  },
+  "AK_11434": {
+    "displayCode": "AK11434",
+    "name": "Russian Uniform Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#A39265"
+  },
+  "AK_11435": {
+    "displayCode": "AK11435",
+    "name": "Russian Uniform Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#6E603C"
+  },
+  "AK_11436": {
+    "displayCode": "AK11436",
+    "name": "Panzer Crew Black Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "AK_11437": {
+    "displayCode": "AK11437",
+    "name": "Panzer Crew Black Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#333333"
+  },
+  "AK_11438": {
+    "displayCode": "AK11438",
+    "name": "Panzer Crew Black Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#0A0A0A"
+  },
+  "AK_11439": {
+    "displayCode": "AK11439",
+    "name": "Faded White",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#E8E8E8"
+  },
+  "AK_11440": {
+    "displayCode": "AK11440",
+    "name": "Dirty White",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#D1CDCD"
+  },
+  "AK_11441": {
+    "displayCode": "AK11441",
+    "name": "Leather Base",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#5C3A21"
+  },
+  "AK_11442": {
+    "displayCode": "AK11442",
+    "name": "Leather Highlight",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#825636"
+  },
+  "AK_11443": {
+    "displayCode": "AK11443",
+    "name": "Leather Shadow",
+    "type": "Akryl (3rd Gen)",
+    "finish": "Matná",
+    "hex": "#3B2414"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "TAMIYA_X20A": {
+    "displayCode": "X-20A",
+    "name": "Acrylic Thinner",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_X20": {
+    "displayCode": "X-20",
+    "name": "Enamel Thinner",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87077": {
+    "displayCode": "87077",
+    "name": "Lacquer Thinner (250ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87194": {
+    "displayCode": "87194",
+    "name": "Lacquer Thinner (Retarder Type)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87114": {
+    "displayCode": "87114",
+    "name": "Paint Retarder (Acrylic)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87093": {
+    "displayCode": "87093",
+    "name": "Mark Fit",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87135": {
+    "displayCode": "87135",
+    "name": "Mark Fit (Strong)",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87176": {
+    "displayCode": "87176",
+    "name": "Mark Fit (Super Strong)",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87193": {
+    "displayCode": "87193",
+    "name": "Decal Adhesive",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87205": {
+    "displayCode": "87205",
+    "name": "Masking Sol R",
+    "type": "chemistry",
+    "finish": "Transparentní",
+    "hex": "#A8D08D"
+  },
+  "TAMIYA_87089": {
+    "displayCode": "87089",
+    "name": "Airbrush Cleaner (80ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87033": {
+    "displayCode": "87033",
+    "name": "Cleaning Thinner (250ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  },
+  "TAMIYA_87198": {
+    "displayCode": "87198",
+    "name": "Paint Remover (250ml)",
+    "type": "chemistry",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  }
+}

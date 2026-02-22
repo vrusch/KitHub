@@ -4,7 +4,7 @@
     "name": "White",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#ffffff"
+    "hex": "#FFFFFF"
   },
   "GUNZE_H2": {
     "displayCode": "H-2",
@@ -18,21 +18,21 @@
     "name": "Red",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#ff0000"
+    "hex": "#FF0000"
   },
   "GUNZE_H4": {
     "displayCode": "H-4",
     "name": "Yellow",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#ffff00"
+    "hex": "#FFFF00"
   },
   "GUNZE_H5": {
     "displayCode": "H-5",
     "name": "Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#0000ff"
+    "hex": "#0000FF"
   },
   "GUNZE_H6": {
     "displayCode": "H-6",
@@ -46,42 +46,42 @@
     "name": "Brown",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#8b4513"
+    "hex": "#8B4513"
   },
   "GUNZE_H8": {
     "displayCode": "H-8",
     "name": "Silver",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#c0c0c0"
+    "hex": "#C0C0C0"
   },
   "GUNZE_H9": {
     "displayCode": "H-9",
     "name": "Gold",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#ffd700"
+    "hex": "#FFD700"
   },
   "GUNZE_H10": {
     "displayCode": "H-10",
     "name": "Copper",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#b87333"
+    "hex": "#B87333"
   },
   "GUNZE_H11": {
     "displayCode": "H-11",
     "name": "Flat White",
     "type": "Aqueous (Akryl)",
     "finish": "Matná",
-    "hex": "#f2f2f2"
+    "hex": "#F2F2F2"
   },
   "GUNZE_H12": {
     "displayCode": "H-12",
     "name": "Flat Black",
     "type": "Aqueous (Akryl)",
     "finish": "Matná",
-    "hex": "#1a1a1a"
+    "hex": "#1A1A1A"
   },
   "GUNZE_H13": {
     "displayCode": "H-13",
@@ -141,10 +141,10 @@
   },
   "GUNZE_H21": {
     "displayCode": "H-21",
-    "name": "Grand Prix White",
+    "name": "Off White",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#F8F8FF"
+    "hex": "#FDF5E6"
   },
   "GUNZE_H22": {
     "displayCode": "H-22",
@@ -158,14 +158,14 @@
     "name": "Shine Red",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#FF0000"
+    "hex": "#FF2400"
   },
   "GUNZE_H24": {
     "displayCode": "H-24",
     "name": "Orange Yellow",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#FFD700"
+    "hex": "#FFCC00"
   },
   "GUNZE_H25": {
     "displayCode": "H-25",
@@ -176,10 +176,10 @@
   },
   "GUNZE_H26": {
     "displayCode": "H-26",
-    "name": "Bright Green",
+    "name": "Light Green",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#00FF00"
+    "hex": "#90EE90"
   },
   "GUNZE_H27": {
     "displayCode": "H-27",
@@ -200,7 +200,7 @@
     "name": "Salmon Pink",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#FA8072"
+    "hex": "#FF91A4"
   },
   "GUNZE_H30": {
     "displayCode": "H-30",
@@ -214,14 +214,14 @@
     "name": "White Green",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#98FB98"
+    "hex": "#E0EEE0"
   },
   "GUNZE_H32": {
     "displayCode": "H-32",
-    "name": "Dark Gray (1)",
+    "name": "Field Gray (1)",
     "type": "Aqueous (Akryl)",
-    "finish": "Lesklá",
-    "hex": "#696969"
+    "finish": "Matná",
+    "hex": "#4D5D53"
   },
   "GUNZE_H33": {
     "displayCode": "H-33",
@@ -235,7 +235,7 @@
     "name": "Cream Yellow",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#FFFFE0"
+    "hex": "#FFFDD0"
   },
   "GUNZE_H35": {
     "displayCode": "H-35",
@@ -256,14 +256,14 @@
     "name": "Wood Brown",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#8B4513"
+    "hex": "#C19A6B"
   },
   "GUNZE_H38": {
     "displayCode": "H-38",
     "name": "Steel Red",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#A52A2A"
+    "hex": "#8B4545"
   },
   "GUNZE_H39": {
     "displayCode": "H-39",
@@ -276,7 +276,7 @@
     "displayCode": "H-40",
     "name": "Flat Base",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Aditivum",
     "hex": "#F5F5F5"
   },
   "GUNZE_H41": {
@@ -330,17 +330,17 @@
   },
   "GUNZE_H48": {
     "displayCode": "H-48",
-    "name": "Field Gray (1)",
+    "name": "Field Gray (2)",
     "type": "Aqueous (Akryl)",
-    "finish": "Lesklá",
-    "hex": "#4D5D53"
+    "finish": "Matná",
+    "hex": "#5A685A"
   },
   "GUNZE_H49": {
     "displayCode": "H-49",
-    "name": "Violet",
+    "name": "Light Brown",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#EE82EE"
+    "hex": "#B5651D"
   },
   "GUNZE_H50": {
     "displayCode": "H-50",
@@ -389,105 +389,105 @@
     "name": "Intermediate Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#4169E1"
+    "hex": "#5A768A"
   },
   "GUNZE_H57": {
     "displayCode": "H-57",
     "name": "Aircraft Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#D3D3D3"
+    "hex": "#A2AAB0"
   },
   "GUNZE_H58": {
     "displayCode": "H-58",
     "name": "Interior Green",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#ADFF2F"
+    "hex": "#6C7A53"
   },
   "GUNZE_H59": {
     "displayCode": "H-59",
-    "name": "IJN Green (Nakajima)",
+    "name": "IJN Green",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#2F4F2F"
+    "hex": "#2E4733"
   },
   "GUNZE_H60": {
     "displayCode": "H-60",
-    "name": "IJN Green (Mitsubishi)",
+    "name": "IJN Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#006400"
+    "hex": "#A2AAB0"
   },
   "GUNZE_H61": {
     "displayCode": "H-61",
-    "name": "IJN Gray (Nakajima)",
+    "name": "IJN Gray Green",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#A9A9A9"
+    "hex": "#A4A89A"
   },
   "GUNZE_H62": {
     "displayCode": "H-62",
-    "name": "IJN Gray (Mitsubishi)",
+    "name": "IJA Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#C0C0C0"
+    "hex": "#9BA4AB"
   },
   "GUNZE_H63": {
     "displayCode": "H-63",
-    "name": "Metallic Blue Green",
+    "name": "Metallic Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#20B2AA"
+    "hex": "#4682B4"
   },
   "GUNZE_H64": {
     "displayCode": "H-64",
     "name": "RLM71 Dark Green",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#556B2F"
+    "hex": "#3E4437"
   },
   "GUNZE_H65": {
     "displayCode": "H-65",
     "name": "RLM70 Black Green",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#2F4F2F"
+    "hex": "#2F352E"
   },
   "GUNZE_H66": {
     "displayCode": "H-66",
-    "name": "Sandy Brown",
+    "name": "RLM79 Sand Yellow",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#F4A460"
+    "hex": "#B5955C"
   },
   "GUNZE_H67": {
     "displayCode": "H-67",
     "name": "RLM65 Light Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#87CEEB"
+    "hex": "#A2C3D4"
   },
   "GUNZE_H68": {
     "displayCode": "H-68",
     "name": "RLM74 Dark Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#696969"
+    "hex": "#5D6856"
   },
   "GUNZE_H69": {
     "displayCode": "H-69",
-    "name": "RLM75 Gray",
+    "name": "RLM75 Gray Violet",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#808080"
+    "hex": "#7A7B69"
   },
   "GUNZE_H70": {
     "displayCode": "H-70",
     "name": "RLM02 Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#808069"
+    "hex": "#8B8D7D"
   },
   "GUNZE_H71": {
     "displayCode": "H-71",
@@ -505,31 +505,31 @@
   },
   "GUNZE_H73": {
     "displayCode": "H-73",
-    "name": "Dark Green (2)",
+    "name": "Dark Green (RAF)",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#006400"
+    "hex": "#3D4133"
   },
   "GUNZE_H74": {
     "displayCode": "H-74",
-    "name": "Sky (Duck Egg Green)",
+    "name": "Sky (RAF)",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#F0F8FF"
+    "hex": "#B5CBB7"
   },
   "GUNZE_H75": {
     "displayCode": "H-75",
-    "name": "Dark Seagray",
+    "name": "Dark Sea Gray",
     "type": "Aqueous (Akryl)",
     "finish": "Polomatná",
-    "hex": "#483D8B"
+    "hex": "#5E6466"
   },
   "GUNZE_H76": {
     "displayCode": "H-76",
     "name": "Burnt Iron",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#4a3c31"
+    "hex": "#4A3C31"
   },
   "GUNZE_H77": {
     "displayCode": "H-77",
@@ -542,14 +542,14 @@
     "displayCode": "H-78",
     "name": "Olive Drab (2)",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#556B2F"
+    "finish": "Polomatná",
+    "hex": "#555D42"
   },
   "GUNZE_H79": {
     "displayCode": "H-79",
-    "name": "Dark Yellow (Sand Yellow)",
+    "name": "Sandy Yellow",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#EEDC82"
   },
   "GUNZE_H80": {
@@ -557,7 +557,7 @@
     "name": "Khaki Green",
     "type": "Aqueous (Akryl)",
     "finish": "Matná",
-    "hex": "#556B2F"
+    "hex": "#7A7B69"
   },
   "GUNZE_H81": {
     "displayCode": "H-81",
@@ -568,30 +568,30 @@
   },
   "GUNZE_H82": {
     "displayCode": "H-82",
-    "name": "Dark Gray (2)",
+    "name": "Dark Gray (1)",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#464646"
+    "finish": "Polomatná",
+    "hex": "#A9A9A9"
   },
   "GUNZE_H83": {
     "displayCode": "H-83",
-    "name": "Dark Gray (2) (Blended)",
+    "name": "Dark Gray (2)",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#505050"
+    "finish": "Polomatná",
+    "hex": "#696969"
   },
   "GUNZE_H84": {
     "displayCode": "H-84",
     "name": "Mahogany",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#4E3629"
   },
   "GUNZE_H85": {
     "displayCode": "H-85",
     "name": "Sail Color",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#F5DEB3"
   },
   "GUNZE_H86": {
@@ -599,7 +599,7 @@
     "name": "Red Madder",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#A52A2A"
+    "hex": "#DC143C"
   },
   "GUNZE_H87": {
     "displayCode": "H-87",
@@ -610,10 +610,10 @@
   },
   "GUNZE_H88": {
     "displayCode": "H-88",
-    "name": "Metallic Blue",
+    "name": "Metallic Blue Green",
     "type": "Aqueous (Akryl)",
     "finish": "Metalická",
-    "hex": "#00008B"
+    "hex": "#20B2AA"
   },
   "GUNZE_H89": {
     "displayCode": "H-89",
@@ -669,112 +669,112 @@
     "name": "Smoke Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#708090"
+    "hex": "#4A6B8C"
   },
   "GUNZE_H301": {
     "displayCode": "H-301",
     "name": "Gray FS36081",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#4F4F4F"
+    "finish": "Polomatná",
+    "hex": "#3E4347"
   },
   "GUNZE_H302": {
     "displayCode": "H-302",
     "name": "Green FS34092",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#006400"
+    "finish": "Polomatná",
+    "hex": "#374735"
   },
   "GUNZE_H303": {
     "displayCode": "H-303",
     "name": "Green FS34102",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#228B22"
+    "finish": "Polomatná",
+    "hex": "#5D6856"
   },
   "GUNZE_H304": {
     "displayCode": "H-304",
     "name": "Olive Drab FS34087",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#556B2F"
+    "finish": "Polomatná",
+    "hex": "#4D5D53"
   },
   "GUNZE_H305": {
     "displayCode": "H-305",
     "name": "Gray FS36118",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#708090"
+    "finish": "Polomatná",
+    "hex": "#5E6466"
   },
   "GUNZE_H306": {
     "displayCode": "H-306",
     "name": "Gray FS36270",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#A9A9A9"
+    "finish": "Polomatná",
+    "hex": "#8A9BA8"
   },
   "GUNZE_H307": {
     "displayCode": "H-307",
     "name": "Gray FS36320",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#C0C0C0"
+    "finish": "Polomatná",
+    "hex": "#A2B3C1"
   },
   "GUNZE_H308": {
     "displayCode": "H-308",
     "name": "Gray FS36375",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#A9A9A9"
   },
   "GUNZE_H309": {
     "displayCode": "H-309",
     "name": "Green FS34079",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#006400"
+    "finish": "Polomatná",
+    "hex": "#2E4733"
   },
   "GUNZE_H310": {
     "displayCode": "H-310",
     "name": "Brown FS30219",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#8B4513"
+    "finish": "Polomatná",
+    "hex": "#A27A59"
   },
   "GUNZE_H311": {
     "displayCode": "H-311",
     "name": "Gray FS36622",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#DCDCDC"
+    "finish": "Polomatná",
+    "hex": "#D3D3D3"
   },
   "GUNZE_H312": {
     "displayCode": "H-312",
     "name": "Green FS34227",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#90EE90"
+    "finish": "Polomatná",
+    "hex": "#6C7A53"
   },
   "GUNZE_H313": {
     "displayCode": "H-313",
     "name": "Yellow FS33531",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#F0E68C"
+    "finish": "Polomatná",
+    "hex": "#EEDC82"
   },
   "GUNZE_H314": {
     "displayCode": "H-314",
-    "name": "Blue FS35622",
+    "name": "Blue FS35414",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#ADD8E6"
+    "finish": "Polomatná",
+    "hex": "#8AADC2"
   },
   "GUNZE_H315": {
     "displayCode": "H-315",
     "name": "Gray FS16440",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#D3D3D3"
+    "hex": "#B5B8B1"
   },
   "GUNZE_H316": {
     "displayCode": "H-316",
@@ -787,85 +787,85 @@
     "displayCode": "H-317",
     "name": "Gray FS36231",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#808080"
+    "finish": "Polomatná",
+    "hex": "#76797A"
   },
   "GUNZE_H318": {
     "displayCode": "H-318",
     "name": "Radome",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#F5DEB3"
+    "finish": "Polomatná",
+    "hex": "#DBCDB3"
   },
   "GUNZE_H319": {
     "displayCode": "H-319",
     "name": "Light Green",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#90EE90"
   },
   "GUNZE_H320": {
     "displayCode": "H-320",
     "name": "Dark Green",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#006400"
   },
   "GUNZE_H321": {
     "displayCode": "H-321",
     "name": "Light Brown",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#D2B48C"
+    "finish": "Polomatná",
+    "hex": "#B5651D"
   },
   "GUNZE_H322": {
     "displayCode": "H-322",
-    "name": "Phthalo Cyanine Blue",
+    "name": "Phthalocyanine Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#000080"
+    "hex": "#00008B"
   },
   "GUNZE_H323": {
     "displayCode": "H-323",
     "name": "Light Blue",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#87CEEB"
+    "hex": "#ADD8E6"
   },
   "GUNZE_H324": {
     "displayCode": "H-324",
     "name": "Light Gray",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Lesklá",
     "hex": "#D3D3D3"
   },
   "GUNZE_H325": {
     "displayCode": "H-325",
     "name": "Gray FS26440",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#D3D3D3"
+    "finish": "Polomatná",
+    "hex": "#B5B8B1"
   },
   "GUNZE_H326": {
     "displayCode": "H-326",
-    "name": "Blue FS15044",
+    "name": "Blue FS25042",
     "type": "Aqueous (Akryl)",
-    "finish": "Lesklá",
-    "hex": "#191970"
+    "finish": "Polomatná",
+    "hex": "#1B263B"
   },
   "GUNZE_H327": {
     "displayCode": "H-327",
     "name": "Red FS11136",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#DC143C"
+    "hex": "#A3202E"
   },
   "GUNZE_H328": {
     "displayCode": "H-328",
     "name": "Blue FS15050",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#0000CD"
+    "hex": "#1C2A43"
   },
   "GUNZE_H329": {
     "displayCode": "H-329",
@@ -878,224 +878,140 @@
     "displayCode": "H-330",
     "name": "Dark Green BS381C/641",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#006400"
+    "finish": "Polomatná",
+    "hex": "#3D4133"
   },
   "GUNZE_H331": {
     "displayCode": "H-331",
-    "name": "Dark Seagray BS381C/638",
+    "name": "Dark Sea Gray BS381C/638",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#4F4F4F"
+    "finish": "Polomatná",
+    "hex": "#4F5D66"
   },
   "GUNZE_H332": {
     "displayCode": "H-332",
     "name": "Light Aircraft Gray BS381C/627",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#D3D3D3"
+    "finish": "Polomatná",
+    "hex": "#C0C5C9"
   },
   "GUNZE_H333": {
     "displayCode": "H-333",
-    "name": "Extra Dark Seagray BS381C/640",
+    "name": "Extra Dark Sea Gray BS381C/640",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#696969"
+    "finish": "Polomatná",
+    "hex": "#3F5D7D"
   },
   "GUNZE_H334": {
     "displayCode": "H-334",
     "name": "Barley Gray BS4800/18B21",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#A9A9A9"
+    "finish": "Polomatná",
+    "hex": "#9BA4AB"
   },
   "GUNZE_H335": {
     "displayCode": "H-335",
-    "name": "Medium Seagray BS381C/637",
+    "name": "Medium Sea Gray BS381C/637",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#808080"
+    "finish": "Polomatná",
+    "hex": "#848E99"
   },
   "GUNZE_H336": {
     "displayCode": "H-336",
     "name": "Hemp BS4800/10B21",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#D2B48C"
+    "finish": "Polomatná",
+    "hex": "#A89F6A"
   },
   "GUNZE_H337": {
     "displayCode": "H-337",
     "name": "Grayish Blue FS35237",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#778899"
+    "finish": "Polomatná",
+    "hex": "#76828E"
   },
   "GUNZE_H338": {
     "displayCode": "H-338",
     "name": "Light Gray FS36495",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#F0F8FF"
+    "finish": "Polomatná",
+    "hex": "#C8CFD4"
   },
   "GUNZE_H339": {
     "displayCode": "H-339",
     "name": "Engine Gray FS16081",
     "type": "Aqueous (Akryl)",
     "finish": "Lesklá",
-    "hex": "#2F4F4F"
+    "hex": "#42494E"
   },
   "GUNZE_H340": {
     "displayCode": "H-340",
     "name": "Field Green FS34097",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#006400"
-  },
-  "GUNZE_H341": {
-    "displayCode": "H-341",
-    "name": "Mud",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#654321"
-  },
-  "GUNZE_H342": {
-    "displayCode": "H-342",
-    "name": "Oil",
-    "type": "Aqueous (Akryl)",
-    "finish": "Lesklá",
-    "hex": "#000000"
-  },
-  "GUNZE_H343": {
-    "displayCode": "H-343",
-    "name": "Soot",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#363636"
-  },
-  "GUNZE_H344": {
-    "displayCode": "H-344",
-    "name": "Rust",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#B7410E"
-  },
-  "GUNZE_H345": {
-    "displayCode": "H-345",
-    "name": "Rough Gray",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#808080"
-  },
-  "GUNZE_H346": {
-    "displayCode": "H-346",
-    "name": "Rough Sand",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#C2B280"
-  },
-  "GUNZE_H401": {
-    "displayCode": "H-401",
-    "name": "Dark Gray",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#A9A9A9"
-  },
-  "GUNZE_H402": {
-    "displayCode": "H-402",
-    "name": "Green Brown",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#556B2F"
-  },
-  "GUNZE_H403": {
-    "displayCode": "H-403",
-    "name": "Dark Yellow",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#EEDC82"
-  },
-  "GUNZE_H404": {
-    "displayCode": "H-404",
-    "name": "Khaki Brown",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#F0E68C"
-  },
-  "GUNZE_H405": {
-    "displayCode": "H-405",
-    "name": "Olive Green",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#556B2F"
-  },
-  "GUNZE_H406": {
-    "displayCode": "H-406",
-    "name": "Chocolate Brown",
-    "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#D2691E"
+    "finish": "Polomatná",
+    "hex": "#4A6B3C"
   },
   "GUNZE_H413": {
     "displayCode": "H-413",
     "name": "RLM04 Yellow",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
+    "finish": "Polomatná",
     "hex": "#FFD700"
   },
   "GUNZE_H414": {
     "displayCode": "H-414",
     "name": "RLM23 Red",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#DC143C"
+    "finish": "Polomatná",
+    "hex": "#C22127"
   },
   "GUNZE_H416": {
     "displayCode": "H-416",
     "name": "RLM66 Black Gray",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#4F4F4F"
+    "finish": "Polomatná",
+    "hex": "#3C3F42"
   },
   "GUNZE_H417": {
     "displayCode": "H-417",
     "name": "RLM76 Light Blue",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#99AAB5"
+    "finish": "Polomatná",
+    "hex": "#B5C1C8"
   },
   "GUNZE_H418": {
     "displayCode": "H-418",
     "name": "RLM78 Light Blue",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#B0E0E6"
+    "finish": "Polomatná",
+    "hex": "#6C92AF"
   },
   "GUNZE_H420": {
     "displayCode": "H-420",
     "name": "RLM80 Olive Green",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#556B2F"
+    "finish": "Polomatná",
+    "hex": "#4A5D23"
   },
   "GUNZE_H421": {
     "displayCode": "H-421",
     "name": "RLM81 Brown Violet",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#8B4513"
+    "finish": "Polomatná",
+    "hex": "#5D5348"
   },
   "GUNZE_H422": {
     "displayCode": "H-422",
     "name": "RLM82 Light Green",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#90EE90"
+    "finish": "Polomatná",
+    "hex": "#6E9C54"
   },
   "GUNZE_H423": {
     "displayCode": "H-423",
     "name": "RLM83 Dark Green",
     "type": "Aqueous (Akryl)",
-    "finish": "Matná",
-    "hex": "#006400"
+    "finish": "Polomatná",
+    "hex": "#2E4733"
   }
 }

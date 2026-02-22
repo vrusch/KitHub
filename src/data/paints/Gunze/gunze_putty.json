@@ -1,0 +1,23 @@
+{
+  "GUNZE_B511": {
+    "displayCode": "B-511",
+    "name": "Mr. White Putty",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFFF"
+  },
+  "GUNZE_B519": {
+    "displayCode": "B-519",
+    "name": "Mr. Dissolved Putty",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFE0"
+  },
+  "GUNZE_B528": {
+    "displayCode": "B-528",
+    "name": "Mr. White Putty R (Low Viscosity)",
+    "type": "putty",
+    "finish": "Matná",
+    "hex": "#FFFFFF"
+  }
+}

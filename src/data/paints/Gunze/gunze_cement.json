@@ -1,0 +1,8 @@
+{
+  "GUNZE_MC124": { "displayCode": "MC-124", "name": "Mr. Cement", "type": "cement", "finish": "Transparentní", "hex": "#F0F8FF" },
+  "GUNZE_MC127": { "displayCode": "MC-127", "name": "Mr. Cement Deluxe", "type": "cement", "finish": "Transparentní", "hex": "#F0F8FF" },
+  "GUNZE_MC129": { "displayCode": "MC-129", "name": "Mr. Cement S (Extra Thin)", "type": "cement", "finish": "Transparentní", "hex": "#F0F8FF" },
+  "GUNZE_MC131": { "displayCode": "MC-131", "name": "Mr. Cement SP (Super Power)", "type": "cement", "finish": "Transparentní", "hex": "#F0F8FF" },
+  "GUNZE_MC132": { "displayCode": "MC-132", "name": "Mr. Cement SP Black", "type": "cement", "finish": "Černá", "hex": "#1A1A1A" },
+  "GUNZE_MC130": { "displayCode": "MC-130", "name": "Mr. Cement Limonene", "type": "cement", "finish": "Transparentní", "hex": "#FFFFE0" }
+}

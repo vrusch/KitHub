@@ -1,42 +1,119 @@
 {
-  "lacquer": {
-    "title": "GSI Creos Mr. Color (C)",
+  "c_series": {
+    "title": "Mr. Color (C)",
     "codes": ["C"],
-    "description": "Standard profesionálních modelářů. Extrémně jemný pigment a odolnost.",
-    "thinner": "Mr. Color Thinner, Levelling Thinner.",
-    "bestFor": "Airbrush, přesné vojenské odstíny.",
-    "safety": "Obsahuje organická rozpouštědla, používejte masku."
+    "description": "Standard profesionálních modelářů (Lacquer/Syntetika). Extrémně jemný pigment, rychlé schnutí a obrovská odolnost.",
+    "proTip": "Naprostá klasika. Smrdí sice jako bolavá noha, ale jakmile ji naředíš Leveling Thinnerem, stříká se v podstatě sama a povrch je naprosto nezničitelný.",
+    "thinner": "Mr. Color Leveling Thinner (nejlepší) / Mr. Color Thinner.",
+    "bestFor": "Airbrush, přesné vojenské odstíny, lesklé povrchy (auta).",
+    "safety": "Obsahuje organická rozpouštědla, silný zápach – nutná maska a ventilace."
   },
-  "acrylic": {
-    "title": "GSI Creos Aqueous Hobby Color (H)",
+  "h_series": {
+    "title": "Aqueous Hobby Color (H)",
     "codes": ["H"],
-    "description": "Vodou ředitelné akryly, bezpečnější varianta pro domácí použití.",
-    "thinner": "Aqueous Hobby Color Thinner.",
-    "bestFor": "Štětec, začátečníci, práce v bytě.",
-    "safety": "Minimální zápach."
+    "description": "Vodou a alkoholem ředitelné akrylové barvy. Bezpečnější varianta pro domácí použití, po zaschnutí velmi odolné.",
+    "proTip": "Tzv. 'Gunze z obýváku'. Když do nich kápneš trochu Levelingu, chovají se skoro jako Lacquer Céčka, ale tolik nenaštveš manželku. Ideální kompromis.",
+    "thinner": "Aqueous Hobby Color Thinner / Mr. Color Leveling Thinner (pro airbrush).",
+    "bestFor": "Štětec i airbrush, bezpečnější práce v bytě.",
+    "safety": "Nízký zápach, nehořlavé."
   },
-  "lacquer_gx": {
-    "title": "Mr. Color GX Series",
+  "n_series": {
+    "title": "Acrysion (N)",
+    "codes": ["N"],
+    "description": "Nová generace akrylových barev na vodní emulzní bázi. Téměř bez zápachu, zasychají velmi rychle a netvoří 'kapičky' na štětci.",
+    "proTip": "Skvělá volba, když potřebuješ malovat štětcem a nesmradit. Ale bacha, neředí se ničím jiným než vlastním ředidlem, jinak se ti v pistoli srazí do žvýkačky!",
+    "thinner": "Speciální Acrysion Thinner (běžná ředidla jako Levelling nefungují!).",
+    "bestFor": "Malování štětcem, bezpečné barvení bez zápachu.",
+    "safety": "Netoxické, téměř bez zápachu."
+  },
+  "nw_series": {
+    "title": "Acrysion Wash (NW)",
+    "codes": ["NW"],
+    "description": "Patinovací vodičky a washe na bázi bezpečné akrylové emulze.",
+    "proTip": "Jejich největší zbraní je, že na rozdíl od agresivních syntetických (enamel) washů prakticky nezapáchají a nehrozí u nich narušení podkladové barvy ani popraskání plastu. Ideální pro bezpečný panel lining přímo v obýváku.",
+    "thinner": "Acrysion Wash Thinner (nesmíchat s běžným Acrysion!).",
+    "bestFor": "Panel lining a bezpečný weathering bez smradu.",
+    "safety": "Netoxické, téměř bez zápachu."
+  },
+  "gx_series": {
+    "title": "Mr. Color GX",
     "codes": ["GX"],
-    "description": "Prémiová řada s vyšší krycí schopností a sytostí barev.",
-    "thinner": "Mr. Color Thinner.",
-    "bestFor": "Konečné vrstvy, sytě bílá a černá.",
-    "safety": "Stejná jako řada C."
+    "description": "Prémiová řada Lacquer barev s mnohem vyšší krycí schopností a sytostí barev, tvrdším povrchem a lepším leskem.",
+    "proTip": "Laky Super Clear III (GX100) a Super Smooth Clear (GX114) jsou v podstatě černá magie. Dokonalý lesk nebo sametový mat bez námahy. A Cool White (GX1)? Ta překryje i černé svědomí.",
+    "thinner": "Mr. Color Leveling Thinner.",
+    "bestFor": "Konečné krycí vrstvy, sytě bílá/černá, prémiové laky (Super Clear).",
+    "safety": "Lacquer báze – nutná ventilace."
   },
-  "metal_color": {
-    "title": "Mr. Metal Color (Leštitelné)",
+  "sm_series": {
+    "title": "Super Metallic 2 (SM)",
+    "codes": ["SM"],
+    "description": "Vysoce kvalitní kovové barvy (Lacquer) s použitím extrémně jemných kovových částic.",
+    "proTip": "Původní řada byla nahrazena novější SM2. Tyto barvy jsou naprostým svatým grálem pro barvení leteckých motorů, trysek a leštěných povrchů, protože mají neuvěřitelný finiš a realistický zrnitý vzhled.",
+    "thinner": "Mr. Color Leveling Thinner / Rapid Thinner.",
+    "bestFor": "Realistické kovové povrchy, trysky motorů, chromové detaily.",
+    "safety": "Lacquer báze – nutná ventilace."
+  },
+  "mc_series": {
+    "title": "Mr. Metal Color (MC)",
     "codes": ["MC"],
-    "description": "Speciální metalízy, které se po zaschnutí leští do vysokého kovového lesku.",
+    "description": "Speciální metalízy, které zasychají matné, ale po jemném přeleštění získají dokonalý zrcadlový lesk.",
+    "proTip": "Jsou to ty slavné leštitelné barvy. Po nanesení (štětcem nebo pistolí) zaschnou do matna, ale jakmile je přeleštíš vatovou tyčinkou nebo jemným hadříkem, získáš luxusní a realistický kovový povrch.",
     "thinner": "Mr. Color Thinner.",
-    "bestFor": "Motory, zbraně, detaily s kovovým vzhledem.",
-    "safety": "Povrch je náchylný k otěru, dokud se nezalakuje."
+    "bestFor": "Zbraně, motory, drobné kovové detaily.",
+    "safety": "Lacquer báze, náchylné k otěru, dokud se nezalakují speciálním lakem (Metal Primer)."
   },
-  "primer": {
+  "xc_series": {
+    "title": "Mr. Crystal Color (XC)",
+    "codes": ["XC"],
+    "description": "Speciální perleťové a interferenční barvy, které mění odstín podle úhlu pohledu.",
+    "proTip": "Chceš dělat sci-fi, Gunpla nebo tuningová fára? Tyhle perletě mění barvu podle úhlu dopadu světla a barvy podkladu. Na černé udělají luxusní metalízu, na bílé jemnou perleť.",
+    "thinner": "Mr. Color Leveling Thinner.",
+    "bestFor": "Sci-Fi modely, Gunpla, moderní auto-moto.",
+    "safety": "Lacquer báze – nutná ventilace."
+  },
+  "cl_series": {
+    "title": "Lascivus (CL)",
+    "codes": ["CL"],
+    "description": "Série Lacquer barev vyvinutá speciálně pro dokonalé pleťové tóny u anime figurek a sci-fi modelů.",
+    "proTip": "Svatý grál pro figurkáře a anime nadšence. Vyčaruješ s nimi tak dokonalé pleťovky, stíny a průhledné odstíny vlasů, že ti to budou ostatní závidět.",
+    "thinner": "Mr. Color Leveling Thinner.",
+    "bestFor": "Figurky, stínování kůže.",
+    "safety": "Lacquer báze – nutná ventilace."
+  },
+  "primer_series": {
     "title": "Mr. Surfacer / Primer",
-    "codes": ["SF", "B"],
-    "description": "Kombinace základu a tmelu. Vyhlazuje povrch a odhaluje chyby v broušení.",
-    "thinner": "Mr. Color Thinner, Levelling Thinner.",
-    "bestFor": "Sjednocení povrchu před barvením.",
+    "codes": ["SF", "B", "MP", "surfacer_primer"],
+    "description": "Legendární kombinace základu a tmelu (ve spreji i lahvičce). Dokonale vyhladí povrch.",
+    "proTip": "Modelařina bez Surfacera je jako svíčková bez knedlíku. Číslo 1500 je jemné jak dětská prdelka, tisícovka je zlatý střed a pětistovka funguje jako tekutý tmel na poškrábané díly.",
+    "thinner": "Mr. Color Leveling Thinner / Rapid Thinner.",
+    "bestFor": "Příprava povrchu, tmelení mikro škrábanců, sjednocení před barvením.",
     "safety": "Vysoký obsah rozpouštědel, nutná ventilace."
+  },
+  "putty_series": {
+    "title": "Mr. Putty (Tmely)",
+    "codes": ["putty"],
+    "description": "Kvalitní modelářské tmely pro vyplňování spár a opravy.",
+    "proTip": "Mr. Dissolved Putty (tekutý tmel) je zázrak. Naneseš štětcem na spáru, necháš zaschnout a přebrousíš. Perfektní na místa, kam se s klasickým tmelem v tubě nedostaneš.",
+    "thinner": "Mr. Color Thinner (pro naředění nebo očištění).",
+    "bestFor": "Tmelení spár, úpravy povrchu.",
+    "safety": "Obsahuje rozpouštědla."
+  },
+  "weathering_series": {
+    "title": "Mr. Weathering Color (WC)",
+    "codes": ["WC"],
+    "description": "Předmíchané emalové (Enamel) barvy a washe pro patinovací techniky.",
+    "proTip": "Skvělá alternativa k washům od Tamiye. Líp se s nimi pracuje, dají se krásně stírat a roztupovat i po delší době a hlavně, i ten tmavý wash je méně agresivní a tolik nesmrdí.",
+    "thinner": "Mr. Weathering Color Solvent (WCT).",
+    "bestFor": "Panel lining (zvýraznění spár), stékance, prach a špína.",
+    "safety": "Enamel báze – mírný zápach, pracovat v dobře větraném prostoru."
+  },
+  "chem_series": {
+    "title": "Chemie (Lepidla, Obtisky, Ředidla)",
+    "codes": ["MC-1", "MS", "T-", "cement", "thiner", "chemistry"],
+    "description": "Základní tekutiny, bez kterých by se model nedal postavit ani nabarvit.",
+    "proTip": "Extra Thin lepidlo (Cement SP) se vsákne a drží hned. Mark Softer (změkčovač) dokáže rozežrat a 'vpít' do spár i ten nejtvrdší obtisk tak, že vypadá jako namalovaný. A Leveling Thinner? To je zkrátka živá voda modelařiny.",
+    "thinner": "-",
+    "bestFor": "Lepení, usazování obtisků a precizní ředění.",
+    "safety": "Vysoce těkavé a hořlavé. Vždy zavírat víčka!"
   }
 }

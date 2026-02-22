@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.34.0] - 2026-02-22
+
+### Změněno
+
+- **UI/UX:** Kompletní náhrada standardních HTML výběrových polí (`<select>`) za moderní `CustomSelect` komponenty s podporou ikon a stylů Tailwind CSS.
+- **Design:** Odstranění Emoji ikon napříč celou aplikací (Detail barvy, Modelu, Projektu, Nastavení) a jejich nahrazení za konzistentní sadu ikon Lucide.
+- **Barvy:** Vylepšení vzhledu sekce pro míchání barev (Mix) a kalkulátoru ředění.
+
+### Opraveno
+
+- **Data:** Reorganizace datových souborů pro Gunze (vyčlenění Acrysion Wash, odstranění duplicit v chemii).
+- **Data:** Oprava specifikací pro správné párování typů barev (Tamiya, Gunze, AK).
+- **Scraper:** Oprava stahování dat ze Scalemates implementací ScraperAPI (obchází blokace Cloudflare a funguje i na mobilních sítích).
+
 ## [2.33.0] - 2026-02-21
 
 ### Přidáno

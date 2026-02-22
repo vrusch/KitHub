@@ -1,0 +1,107 @@
+{
+  "GUNZE_WC01": {
+    "displayCode": "WC01",
+    "name": "Multi Black",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#1A1A1A"
+  },
+  "GUNZE_WC02": {
+    "displayCode": "WC02",
+    "name": "Ground Brown",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#4A3326"
+  },
+  "GUNZE_WC03": {
+    "displayCode": "WC03",
+    "name": "Stain Brown",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#6B4226"
+  },
+  "GUNZE_WC04": {
+    "displayCode": "WC04",
+    "name": "Sandy Wash",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#D2B48C"
+  },
+  "GUNZE_WC05": {
+    "displayCode": "WC05",
+    "name": "Multi White",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#F5F5F5"
+  },
+  "GUNZE_WC06": {
+    "displayCode": "WC06",
+    "name": "Multi Gray",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#808080"
+  },
+  "GUNZE_WC07": {
+    "displayCode": "WC07",
+    "name": "Grayish Brown",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#5D5348"
+  },
+  "GUNZE_WC08": {
+    "displayCode": "WC08",
+    "name": "Rust Orange",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#CC5500"
+  },
+  "GUNZE_WC09": {
+    "displayCode": "WC09",
+    "name": "Filter Liquid Shade Blue",
+    "type": "Weathering Color",
+    "finish": "Transparentní",
+    "hex": "#4A6B8C"
+  },
+  "GUNZE_WC10": {
+    "displayCode": "WC10",
+    "name": "Filter Liquid Spot Yellow",
+    "type": "Weathering Color",
+    "finish": "Transparentní",
+    "hex": "#FFD700"
+  },
+  "GUNZE_WC11": {
+    "displayCode": "WC11",
+    "name": "Filter Liquid Face Green",
+    "type": "Weathering Color",
+    "finish": "Transparentní",
+    "hex": "#4A5D23"
+  },
+  "GUNZE_WC12": {
+    "displayCode": "WC12",
+    "name": "Filter Liquid Violet",
+    "type": "Weathering Color",
+    "finish": "Transparentní",
+    "hex": "#4B0082"
+  },
+  "GUNZE_WC13": {
+    "displayCode": "WC13",
+    "name": "Light Rust",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#D2691E"
+  },
+  "GUNZE_WC14": {
+    "displayCode": "WC14",
+    "name": "Medium Mud",
+    "type": "Weathering Color",
+    "finish": "Matná",
+    "hex": "#8B5A2B"
+  },
+  "GUNZE_WCT101": {
+    "displayCode": "WCT101",
+    "name": "Weathering Color Thinner",
+    "type": "Chemie",
+    "finish": "Aditivum",
+    "hex": "#F0F8FF"
+  }
+}
